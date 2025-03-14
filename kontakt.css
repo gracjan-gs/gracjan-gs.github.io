@@ -121,6 +121,7 @@ a {
     font-weight: 100;
     animation: fadeInFromTop 1.2s ease-out forwards;
     color: rgba(255, 255, 255, 0.7) !important;
+    font-family: Arial, sans-serif !important; /* Wymusza czcionkę bez emoji */
 }
 
 .contact-title {
