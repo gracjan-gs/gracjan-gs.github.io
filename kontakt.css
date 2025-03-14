@@ -1,60 +1,139 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One Page Website</title>
-    <link rel="stylesheet" href="kontakt.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header class="header">
-        <nav class="navbar">
-            <section><a href="index.html">Dom</a></section>
-            <section><a id="nav1" href="kontakt.html">Kontakt</a></section>
-            <section><a href="wspolpraca.html">Współpraca</a></section>
-        </nav>
-    </header>
-    <main class="container2">
-        <img class="img2" src="img/G.jpg" alt="">
-    </main>
-    
-    <div class="contact-container">
-        <div class="contact-item">
-            <span class="icon">&#x2197;</span>
-            <div>
-                <p class="contact-title">Numer telefonu:</p>
-                <a href="tel:+48881530022"><p class="contact-info">881 530 022</p></a>
-            </div>
-        </div>
-        <div class="contact-item">
-            <span class="icon">&#x2197;</span>
-            <div>
-                <p class="contact-title">E-mail:</p>
-                <a href="mailto:gracjan.sliwinski.gs@gmail.com"><p class="contact-info">gracjan.sliwinski.gs@gmail.com</p></a>
-            </div>
-        </div>
-        <div class="contact-item">
-            <span class="icon">&#x2197;</span>
-            <div>
-                <p class="contact-title">WhatsApp:</p>
-                <a href="https://wa.me/48881530022"><p class="contact-info">Gracjan Śliwiński</p></a>
-            </div>
-        </div>
-        <div class="contact-item">
-            <span class="icon">&#x2197;</span>
-            <div>
-                <p class="contact-title">Strona internetowa:</p>
-                <a href="#"><p class="contact-info">gracjan-gs.github.io</p></a>
-            </div>
-        </div>
-    </div>
-    </div>
-    <!--https://wa.me/48XXXXXXXXX-->
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+body {
+    background-color: black;
+    color: white;
+}
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
+a {
+    text-decoration: none !important;
+}
+.navbar a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+#nav1 {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: rgb(255, 255, 255) !important;
+}
+.container2 {
+    display: flex;
+    align-items: center; /* Wyśrodkowanie w pionie */
+    justify-content: center; /* Wyśrodkowanie w poziomie */
+    gap: 5.5vw;
+    margin-top: 12vh;
+    animation: fadeInFromTop 1.2s ease-out forwards;
+}
 
-    <footer class="footer1">
-        &copy; 2025 Gracjan Śliwiński 
-    </footer>
-    <script src="script.js"></script>
-</body>
-</html>
+.img2 {
+    width: 24vh;
+    height: 24vh;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center; /* Ustawienie pozycji obrazu na środek */
+    border: 2px solid white;
+    flex-shrink: 0;
+}
+
+@keyframes fadeInFromTop {
+    0% {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.637);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.637);
+    }
+} 
+.h11 {
+    font-size: 4.5vh;
+    text-align: left;
+    line-height: 1.4;
+}
+.p1 {
+    font-size: 2vh; /* Mniejsza czcionka */
+    text-align: left; /* Wyrównanie do lewej */
+    margin-top: 1vh; /* Odstęp od imienia i nazwiska */
+    color: rgb(255, 255, 255); /* Lekko przygaszony kolor */
+    padding: 3vh; 
+    animation: fadeInFromTop 1.2s ease-out forwards;
+    letter-spacing: 0.1vh;
+    font-weight: 100;
+}
+.footer1 {
+    position: fixed; /* Trzyma stopkę na dole */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(50, 50, 50, 0.9); /* Ciemnoszary kolor tła */
+    color: white; /* Biały tekst */
+    text-align: center; /* Wyrównanie do środka */
+    padding: 1vh 0; /* Wysokość stopki */
+    font-size: 1.6vh; /* Dopasowany rozmiar tekstu */
+    font-weight: 100;
+}
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Wyrównanie do lewej */
+    margin-left: 10vw; /* Przesunięcie w prawo */
+    margin-top: 10vh; /* Większe obniżenie */
+    gap: 3vh; /* Odstęp między sekcjami */
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 2.5vw; /* Odstęp między ikoną a tekstem */
+}
+
+.icon {
+    font-size: 3.6vh;
+    opacity: 0.6;
+    font-weight: 100;
+    animation: fadeInFromTop 1.2s ease-out forwards;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.contact-title {
+    font-size: 2vh;
+    font-weight: 100;
+    color: rgba(255, 255, 255, 0.7);
+    animation: fadeInFromTop 1.2s ease-out forwards;
+}
+
+.contact-info {
+    font-size: 2vh;
+    font-weight: 100;
+    color: white;
+    animation: fadeInFromTop 1.2s ease-out forwards;
+}
+
