@@ -21,6 +21,9 @@ body {
     background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
 }
+a {
+    text-decoration: none !important;
+}
 .navbar a {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.7);
@@ -33,11 +36,104 @@ body {
     background-color: rgba(255, 255, 255, 0.2);
     color: rgb(255, 255, 255) !important;
 }
-.page-content {
-    height: 100vh;
+.container2 {
+    display: flex;
+    align-items: center; /* Wyśrodkowanie w pionie */
+    justify-content: center; /* Wyśrodkowanie w poziomie */
+    gap: 5.5vw;
+    margin-top: 12vh;
+    animation: fadeInFromTop 1.2s ease-out forwards;
+}
+
+.img2 {
+    width: 21vh;
+    height: 21vh;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center; /* Ustawienie pozycji obrazu na środek */
+    border: 2px solid white;
+    flex-shrink: 0;
+}
+
+@keyframes fadeInFromTop {
+    0% {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.637);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.637);
+    }
+} 
+.h11 {
+    font-size: 4.5vh;
+    text-align: left;
+    line-height: 1.4;
+}
+.p1 {
+    font-size: 2vh; /* Mniejsza czcionka */
+    text-align: left; /* Wyrównanie do lewej */
+    margin-top: 1vh; /* Odstęp od imienia i nazwiska */
+    color: rgb(255, 255, 255); /* Lekko przygaszony kolor */
+    padding: 3vh; 
+    animation: fadeInFromTop 1.2s ease-out forwards;
+    letter-spacing: 0.1vh;
+    font-weight: 100;
+}
+.footer1 {
+    position: fixed; /* Trzyma stopkę na dole */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(50, 50, 50, 0.9); /* Ciemnoszary kolor tła */
+    color: white; /* Biały tekst */
+    text-align: center; /* Wyrównanie do środka */
+    padding: 1vh 0; /* Wysokość stopki */
+    font-size: 1.6vh; /* Dopasowany rozmiar tekstu */
+    font-weight: 100;
+}
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Wyrównanie do lewej */
+    margin-left: 10vw; /* Przesunięcie w prawo */
+    margin-top: 10vh; /* Większe obniżenie */
+    gap: 3vh; /* Odstęp między sekcjami */
+}
+
+.contact-item {
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding-top: 60px;
+    gap: 2.5vw; /* Odstęp między ikoną a tekstem */
 }
+
+.icon {
+    font-size: 3.6vh;
+    opacity: 0.6;
+    font-weight: 100;
+    animation: fadeInFromTop 1.2s ease-out forwards;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.contact-title {
+    font-size: 2vh;
+    font-weight: 100;
+    color: rgba(255, 255, 255, 0.7);
+    animation: fadeInFromTop 1.2s ease-out forwards;
+}
+
+.contact-info {
+    font-size: 2vh;
+    font-weight: 100;
+    color: white;
+    animation: fadeInFromTop 1.2s ease-out forwards;
+}
+
