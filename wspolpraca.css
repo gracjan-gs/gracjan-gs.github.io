@@ -112,7 +112,10 @@ body {
     height: 15vh;
     border-radius: 50%;
     border: 2px solid white;
+    object-fit: contain;
+    background-color: black; /* lub inny kolor tła, żeby nie było pustych obszarów */
 }
+
 
 .partner p {
     font-size: 1.1rem;
