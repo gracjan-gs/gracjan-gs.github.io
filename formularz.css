@@ -1,0 +1,148 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+body {
+    background-color: black;
+    color: white;
+    overflow: hidden !important;
+}
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
+.navbar a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+#nav1 {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: rgb(255, 255, 255) !important;
+}
+.container {
+    display: flex; /* Układa zdjęcie i tekst w jednej linii */
+    align-items: center; /* Wyrównuje elementy w pionie */
+    gap: 5.5vw; /* Odstęp między zdjęciem a tekstem */
+    margin-top: 12vh; /* Przesuwa całość w dół */
+    margin-left: 2.5vw; /* Przesuwa całość lekko w prawo */
+    animation: fadeInFromTop 1.2s ease-out forwards;
+}
+
+.img1 {
+    width: 21vh;  
+    height: 21vh;  
+    border-radius: 50%;
+    object-fit: cover; /* Zapobiega rozciąganiu */
+    object-position: top; /* Przesuwa obraz w górę, przycinając dół */
+    border: 2px solid white;
+    flex-shrink: 0; /* Zapobiega zmniejszaniu zdjęcia */
+    animation: pulseGlow 1.8s infinite alternate ease-in-out;
+  }
+@keyframes fadeInFromTop {
+    0% {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.637);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.637);
+    }
+} 
+/* Kontener formularza */
+/* Kontener formularza */
+/* Kontener formularza */
+.form-container {
+    border-radius: 2vh;
+    width: 90%;
+    max-width: 90%;
+    text-align: center;
+    margin: 35vh auto; /* Centrowanie */
+    animation: fadeInFromTop 1.2s ease-out forwards;
+}
+
+
+
+h2 {
+    margin-bottom: 3vh;
+    font-size: 3vh;
+}
+
+/* Formularz */
+label {
+    display: block;
+    text-align: left;
+    margin-top: 2vh;
+    font-size: 2vh;
+}
+
+input {
+    width: 100%;
+    padding: 1.5vh;
+    margin-top: 1vh;
+    border: none;
+    border-radius: 1vh;
+    font-size: 2vh;
+    background-color: rgba(50, 50, 50, 0.9); /* Ciemnoszary kolor tła */
+    color: white;
+}
+
+input:focus {
+    outline: none;
+    background-color: rgb(255, 255, 255); /* Ciemnoszary kolor tła */
+    color: black;
+}
+
+/* Przycisk wysyłania */
+button {
+    width: 100%;
+    padding: 2vh;
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 2vh;
+    border: none;
+    border-radius: 1vh;
+    margin-top: 5vh;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover, button:active {
+    background-color: rgba(50, 50, 50, 0.9); /* Ciemnoszary kolor tła */
+    color: white;
+}
+
+.footer1 {
+    position: fixed; /* Trzyma stopkę na dole */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(50, 50, 50, 0.9); /* Ciemnoszary kolor tła */
+    color: white; /* Biały tekst */
+    text-align: center; /* Wyrównanie do środka */
+    padding: 1vh 0; /* Wysokość stopki */
+    font-size: 1.6vh; /* Dopasowany rozmiar tekstu */
+    font-weight: 100;
+}
