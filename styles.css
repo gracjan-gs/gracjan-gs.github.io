@@ -33,15 +33,6 @@ body {
     background-color: rgba(255, 255, 255, 0.2);
     color: rgb(255, 255, 255) !important;
 }
-.page-content {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding-top: 60px;
-    animation: fadeInFromTop 1.2s ease-out forwards;
-}
 .container {
     display: flex; /* Układa zdjęcie i tekst w jednej linii */
     align-items: center; /* Wyrównuje elementy w pionie */
@@ -106,5 +97,7 @@ body {
     font-size: 1.6vh; /* Dopasowany rozmiar tekstu */
     font-weight: 100;
 }
-
+.main {
+    padding-bottom: 5vh; /* Zapewnia miejsce na stopkę */
+}
 
