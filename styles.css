@@ -84,7 +84,7 @@ body {
     animation: fadeInFromTop 1.2s ease-out forwards;
     letter-spacing: 0.1vh;
     font-weight: 100;
-    margin-bottom: 4vh;
+    margin-bottom: 2vh;
 }
 .footer1 {
     position: fixed; /* Trzyma stopkę na dole */
