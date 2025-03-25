@@ -8,6 +8,9 @@ body {
     background-color: black;
     color: white;
 }
+header {
+    z-index: 1000 !important;
+}
 .navbar {
     display: flex;
     justify-content: center;
