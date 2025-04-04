@@ -8,6 +8,10 @@ body {
     background-color: black;
     color: white;
 }
+::selection {
+    background-color: #ffffff !important;
+    color: #000;
+}
 .navbar {
     display: flex;
     justify-content: center;
@@ -38,8 +42,8 @@ a {
 }
 .container2 {
     display: flex;
-    align-items: center; /* Wyśrodkowanie w pionie */
-    justify-content: center; /* Wyśrodkowanie w poziomie */
+    align-items: center;
+    justify-content: center;
     gap: 5.5vw;
     margin-top: 12vh;
     animation: fadeInFromTop 1.2s ease-out forwards;
@@ -50,7 +54,7 @@ a {
     height: 24vh;
     border-radius: 50%;
     object-fit: cover;
-    object-position: center; /* Ustawienie pozycji obrazu na środek */
+    object-position: center;
     border: 2px solid white;
     flex-shrink: 0;
 }
@@ -79,40 +83,40 @@ a {
     line-height: 1.4;
 }
 .p1 {
-    font-size: 2vh; /* Mniejsza czcionka */
-    text-align: left; /* Wyrównanie do lewej */
-    margin-top: 1vh; /* Odstęp od imienia i nazwiska */
-    color: rgb(255, 255, 255); /* Lekko przygaszony kolor */
+    font-size: 2vh;
+    text-align: left;
+    margin-top: 1vh; 
+    color: rgb(255, 255, 255);
     padding: 3vh; 
     animation: fadeInFromTop 1.2s ease-out forwards;
     letter-spacing: 0.1vh;
     font-weight: 100;
 }
 .footer1 {
-    position: fixed; /* Trzyma stopkę na dole */
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(50, 50, 50, 0.9); /* Ciemnoszary kolor tła */
-    color: white; /* Biały tekst */
-    text-align: center; /* Wyrównanie do środka */
-    padding: 1vh 0; /* Wysokość stopki */
-    font-size: 1.6vh; /* Dopasowany rozmiar tekstu */
+    background-color: rgba(50, 50, 50, 0.9); 
+    color: white; 
+    text-align: center;
+    padding: 1vh 0; 
+    font-size: 1.6vh; 
     font-weight: 100;
 }
 .contact-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Wyrównanie do lewej */
-    margin-left: 8vw; /* Przesunięcie w prawo */
-    margin-top: 10vh; /* Większe obniżenie */
-    gap: 3vh; /* Odstęp między sekcjami */
+    align-items: flex-start;
+    margin-left: 8vw;
+    margin-top: 10vh;
+    gap: 3vh; 
 }
 
 .contact-item {
     display: flex;
     align-items: center;
-    gap: 4vw; /* Odstęp między ikoną a tekstem */
+    gap: 4vw;
 }
 
 .icon {
