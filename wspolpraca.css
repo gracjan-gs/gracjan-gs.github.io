@@ -13,6 +13,10 @@ body {
     background-color: #ffffff !important;
     color: #000;
 }
+::-webkit-selection {
+    background-color: #ffffff !important;
+    color: #000 !important;
+}
 .container {
     animation: fadeInFromTop 1.2s ease-out forwards;
 }
