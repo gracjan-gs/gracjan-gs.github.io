@@ -8,8 +8,9 @@ body {
     background-color: black;
     color: white;
 }
-header {
-    z-index: 1000 !important;
+::selection {
+    background-color: #ffffff !important;
+    color: #000;
 }
 .navbar {
     display: flex;
@@ -37,11 +38,11 @@ header {
     color: rgb(255, 255, 255) !important;
 }
 .container {
-    display: flex; /* Układa zdjęcie i tekst w jednej linii */
-    align-items: center; /* Wyrównuje elementy w pionie */
-    gap: 5.5vw; /* Odstęp między zdjęciem a tekstem */
-    margin-top: 12vh; /* Przesuwa całość w dół */
-    margin-left: 2.5vw; /* Przesuwa całość lekko w prawo */
+    display: flex; 
+    align-items: center; 
+    gap: 5.5vw; 
+    margin-top: 12vh; 
+    margin-left: 2.5vw; 
     animation: fadeInFromTop 1.2s ease-out forwards;
 }
 
@@ -49,10 +50,10 @@ header {
     width: 21vh;  
     height: 21vh;  
     border-radius: 50%;
-    object-fit: cover; /* Zapobiega rozciąganiu */
-    object-position: top; /* Przesuwa obraz w górę, przycinając dół */
+    object-fit: cover;
+    object-position: top; 
     border: 2px solid white;
-    flex-shrink: 0; /* Zapobiega zmniejszaniu zdjęcia */
+    flex-shrink: 0;
     animation: pulseGlow 1.8s infinite alternate ease-in-out;
   }
 @keyframes fadeInFromTop {
@@ -78,11 +79,14 @@ header {
     text-align: left;
     line-height: 1.4;
 }
+header {
+    z-index: 1000 !important;
+}
 .p1 {
-    font-size: 2vh; /* Mniejsza czcionka */
-    text-align: left; /* Wyrównanie do lewej */
-    margin-top: 1vh; /* Odstęp od imienia i nazwiska */
-    color: rgb(255, 255, 255); /* Lekko przygaszony kolor */
+    font-size: 2vh; 
+    text-align: left;
+    margin-top: 1vh; 
+    color: rgb(255, 255, 255);
     padding: 3vh; 
     animation: fadeInFromTop 1.2s ease-out forwards;
     letter-spacing: 0.1vh;
@@ -90,18 +94,18 @@ header {
     margin-bottom: 2vh;
 }
 .footer1 {
-    position: fixed; /* Trzyma stopkę na dole */
+    position: fixed; 
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(50, 50, 50, 0.9); /* Ciemnoszary kolor tła */
-    color: white; /* Biały tekst */
-    text-align: center; /* Wyrównanie do środka */
-    padding: 1vh 0; /* Wysokość stopki */
-    font-size: 1.6vh; /* Dopasowany rozmiar tekstu */
+    background-color: rgba(50, 50, 50, 0.9); 
+    color: white; 
+    text-align: center;
+    padding: 1vh 0; 
+    font-size: 1.6vh; 
     font-weight: 100;
 }
 .main {
-    padding-bottom: 5vh; /* Zapewnia miejsce na stopkę */
+    padding-bottom: 5vh; 
 }
 
