@@ -9,6 +9,7 @@ body {
     color: white;
     overflow: hidden !important;
     touch-action: manipulation; /* Wyłącza pinch-to-zoom */
+    overflow: hidden;
 }
 .navbar {
     display: flex;
