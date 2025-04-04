@@ -8,8 +8,12 @@ body {
     background-color: black;
     color: white;
     overflow: hidden !important;
-    touch-action: manipulation; /* Wyłącza pinch-to-zoom */
+    touch-action: manipulation;
     overflow: hidden;
+}
+::selection {
+    background-color: #ffffff !important;
+    color: #000;
 }
 .navbar {
     display: flex;
@@ -37,11 +41,11 @@ body {
     color: rgb(255, 255, 255) !important;
 }
 .container {
-    display: flex; /* Układa zdjęcie i tekst w jednej linii */
-    align-items: center; /* Wyrównuje elementy w pionie */
-    gap: 5.5vw; /* Odstęp między zdjęciem a tekstem */
-    margin-top: 12vh; /* Przesuwa całość w dół */
-    margin-left: 2.5vw; /* Przesuwa całość lekko w prawo */
+    display: flex; 
+    align-items: center; 
+    gap: 5.5vw; 
+    margin-top: 12vh;
+    margin-left: 2.5vw; 
     animation: fadeInFromTop 1.2s ease-out forwards;
 }
 
@@ -49,10 +53,10 @@ body {
     width: 21vh;  
     height: 21vh;  
     border-radius: 50%;
-    object-fit: cover; /* Zapobiega rozciąganiu */
-    object-position: top; /* Przesuwa obraz w górę, przycinając dół */
+    object-fit: cover;
+    object-position: top; 
     border: 2px solid white;
-    flex-shrink: 0; /* Zapobiega zmniejszaniu zdjęcia */
+    flex-shrink: 0; 
     animation: pulseGlow 1.8s infinite alternate ease-in-out;
   }
 @keyframes fadeInFromTop {
@@ -73,15 +77,12 @@ body {
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.637);
     }
 } 
-/* Kontener formularza */
-/* Kontener formularza */
-/* Kontener formularza */
 .form-container {
     border-radius: 2vh;
     width: 90%;
     max-width: 90%;
     text-align: center;
-    margin: 35vh auto; /* Centrowanie */
+    margin: 35vh auto;
     animation: fadeInFromTop 1.2s ease-out forwards;
 }
 
@@ -92,7 +93,6 @@ h2 {
     font-size: 3vh;
 }
 
-/* Formularz */
 label {
     display: block;
     text-align: left;
@@ -107,20 +107,16 @@ input {
     border: none;
     border-radius: 1vh;
     font-size: 2vh;
-    background-color: rgba(50, 50, 50, 0.9); /* Ciemnoszary kolor tła */
+    background-color: rgba(50, 50, 50, 0.9);
     color: white;
-    transition: ease-in-out 0.5s;
-
+    caret-color: #020201; 
 }
 
 input:focus {
     outline: none;
-    background-color: rgb(255, 255, 255); /* Ciemnoszary kolor tła */
+    background-color: rgb(255, 255, 255); 
     color: black;
-    transition: ease-in-out 0.2s;
 }
-
-/* Przycisk wysyłania */
 button {
     width: 100%;
     padding: 2vh;
@@ -135,19 +131,19 @@ button {
 }
 
 button:hover, button:active {
-    background-color: rgba(50, 50, 50, 0.9); /* Ciemnoszary kolor tła */
+    background-color: rgba(50, 50, 50, 0.9); 
     color: white;
 }
 
 .footer1 {
-    position: fixed; /* Trzyma stopkę na dole */
+    position: fixed; 
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(50, 50, 50, 0.9); /* Ciemnoszary kolor tła */
-    color: white; /* Biały tekst */
-    text-align: center; /* Wyrównanie do środka */
-    padding: 1vh 0; /* Wysokość stopki */
-    font-size: 1.6vh; /* Dopasowany rozmiar tekstu */
+    background-color: rgba(50, 50, 50, 0.9); 
+    color: white;
+    text-align: center;
+    padding: 1vh 0; 
+    font-size: 1.6vh; 
     font-weight: 100;
 }
