@@ -23,3 +23,22 @@ document.getElementById("formularz").addEventListener("submit", function(event) 
         document.getElementById("odpowiedz").innerText = "Przepraszam, spróbuj ponownie pózniej";
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("formularz");
+    const submitButton = form.querySelector("button");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Zapobiega domyślnemu wysłaniu formularza
+        
+        // Zmiana tekstu przycisku
+        submitButton.textContent = "Przesłano";
+        submitButton.style.backgroundColor = "green"; // Opcjonalnie zmień kolor przycisku
+        submitButton.disabled = true; // Opcjonalnie zablokuj ponowne kliknięcie
+
+        // Tutaj możesz dodać kod do faktycznego wysłania danych np. AJAX/fetch
+        
+        setTimeout(() => {
+            form.submit(); // Jeśli chcesz, aby formularz jednak został wysłany po kilku sekundach
+        }, 2000);
+    });
+});
