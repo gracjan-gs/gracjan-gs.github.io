@@ -4,15 +4,14 @@
     padding: 0;
     font-family: 'Inter', sans-serif;
 }
-html {
-    text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-}
+
 body {
     background-color: black;
     color: white;
+}
+::selection {
+    background-color: #ffffff !important;
+    color: #000;
 }
 .container {
     animation: fadeInFromTop 1.2s ease-out forwards;
@@ -118,7 +117,7 @@ body {
     border-radius: 50%;
     border: 2px solid white;
     object-fit: contain;
-    background-color: black; /* lub inny kolor tła, żeby nie było pustych obszarów */
+    background-color: black;
 }
 
 
