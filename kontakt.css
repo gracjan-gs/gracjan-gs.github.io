@@ -144,10 +144,11 @@ a {
     color: white;
     animation: fadeInFromTop 1.2s ease-out forwards;
 }
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
     .content-wrap {
         margin-left: 20vw;
         margin-right: 20vw;
     }
 }
+
 
