@@ -151,9 +151,10 @@ button:hover, button:active {
     font-size: 1.6vh; 
     font-weight: 100;
 }
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
     .content-wrap {
         margin-left: 20vw;
         margin-right: 20vw;
     }
 }
+
