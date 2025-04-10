@@ -112,7 +112,7 @@ header {
 .main {
     padding-bottom: 5vh; 
 }
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
     .content-wrap {
         margin-left: 20vw;
         margin-right: 20vw;
