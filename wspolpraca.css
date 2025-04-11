@@ -202,10 +202,48 @@ body {
     line-height: 1.6;
     transition: opacity 0.4s ease;
 }
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.493);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.493);
+    }
+}
+
+.contact-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.contact-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 2vh;
+    padding: 1rem 2rem;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    animation: pulseGlow 2s infinite alternate;
+}
+
+.contact-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.contact-button:active {
+    transform: scale(1);
+}
+
+
 @media (min-width: 1025px) {
     .content-wrap {
         margin-left: 20vw;
         margin-right: 20vw;
     }
 }
-
