@@ -150,5 +150,7 @@ a {
         margin-right: 20vw;
     }
 }
-
-
+footer a {
+    text-decoration: none !important;
+    color: white;
+}
