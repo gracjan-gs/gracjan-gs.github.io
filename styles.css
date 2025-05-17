@@ -252,3 +252,6 @@ footer a {
     font-size: 2vh;
     border-radius: 8px;
 }
+.footer1 {
+    position: relative !important;
+}
