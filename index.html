@@ -19,10 +19,64 @@
     </header>
     <section class="content-wrap">
 <main class="container">
-     <img class="img1" src="img/portret.JPEG" alt="">
-     <h1 class="h11">Gracjan Śliwiński</h1>
+    <section class="image-stack-wrapper">
+        <section class="image-stack">
+          <img src="img/SecondPhoto.jpg" alt="Photo1">
+          <img src="img/Prof.jpg" alt="Photo1">
+        </section>
+    </section>
 </main>
-    <p class="p1">
+  <div class="counters-wrapper">
+    <div class="counter-box" data-target="100">
+      <div class="counter-title">Zaangażowanie w projekt</div>
+      <div class="counter">0</div>
+    </div>
+    <div class="counter-box" data-target="98">
+      <div class="counter-title">zadowolenie klienta</div>
+      <div class="counter">0</div>
+    </div>
+  </div>
+  <script>
+const boxes = document.querySelectorAll('.counter-box');
+
+const options = {
+  root: null, // obserwujemy względem viewportu
+  threshold: 0.1 // element uznajemy za widoczny, gdy choć 10% jest w widoku
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const box = entry.target;
+      const counter = box.querySelector('.counter');
+      const target = parseInt(box.getAttribute('data-target'), 10) || 100;
+      let count = 0;
+
+      const update = () => {
+        if (count <= target) {
+          counter.textContent = count + '%';
+          count++;
+          setTimeout(update, 20);
+        } else {
+          counter.textContent = target + '%';
+        }
+      };
+
+      update();
+
+      observer.unobserve(box); // odznaczamy, żeby animacja nie odpalała się ponownie
+    }
+  });
+}, options);
+
+boxes.forEach(box => {
+  observer.observe(box);
+});
+
+  </script>  
+    <section class="section-title"><b>O mnie:</b></section>
+<p class="p1">
+        <strong><em>Gracjan Śliwiński</em></strong><br><br>
         Cześć!
         Mam na imię Gracjan i w wolnym czasie zajmuję się tworzeniem prostych, 
         ale skutecznych stron internetowych, które NIE są oparte na 
