@@ -187,12 +187,12 @@ footer a {
     align-items: center;
     gap: 3.2rem;           /* większy gap na PC */
     padding: 3vh 2vw;
-    background: #000000;
+    background: black !important;
     min-height: 50vh;
   }
   
   .counter-box {
-    background: black !important;
+    background: rgb(34, 34, 34);
     border-radius: 1.5rem;
     padding: 1.8rem 2.5rem;
     text-align: center;
