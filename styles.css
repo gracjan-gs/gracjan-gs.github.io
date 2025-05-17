@@ -28,6 +28,7 @@ body {
     left: 0;
     background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
+    z-index: 1 !important;
 }
 .navbar a {
     text-decoration: none;
@@ -124,3 +125,130 @@ footer a {
 }
 
 
+.image-stack-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    width: 100vw;
+    z-index: -900;
+  }
+  
+  .image-stack {
+    position: relative;
+    width: 80vw;
+    max-width: 20rem;
+    aspect-ratio: 3 / 2;
+  }
+  
+  .image-stack img {
+    position: absolute;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+    width: 60%;
+    height: 100%;
+  }
+  
+  .image-stack img:first-child {
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+  
+  .image-stack img:last-child {
+    right: 0;
+    top: 10%;
+    z-index: 2;
+    transform: rotate(3deg);
+  }
+  
+  /* 🖥️ Dla PC – trochę większe */
+  @media (min-width: 768px) {
+    .image-stack-wrapper {
+        height: 40vh;
+      }
+    .image-stack {
+      max-width: 30rem; /* było 20rem */
+    }
+  
+    .image-stack img {
+      width: 65%; /* było 60% */
+    }
+  
+    .image-stack img:last-child {
+      top: 8%; /* trochę mniej przesunięte, bardziej wyśrodkowane */
+    }
+  }
+  .counters-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3.2rem;           /* większy gap na PC */
+    padding: 3vh 2vw;
+    background: #121212;
+    min-height: 50vh;
+  }
+  
+  .counter-box {
+    background: rgb(34, 34, 34);
+    border-radius: 1.5rem;
+    padding: 1.8rem 2.5rem;
+    text-align: center;
+    min-width: 200px;
+    max-width: 280px;
+    flex: 1 1 auto;
+    margin-top: 0.5rem;   /* większy margines na PC */
+    cursor: default;
+  }
+  
+  .counter-title {
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+    color: #e0e0e0;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    user-select: none;
+  }
+  
+  .counter {
+    font-size: 3rem;
+    color: #fff;
+    font-weight: 700;
+    user-select: none;
+    text-shadow: none;
+  }
+  
+  @media (max-width: 600px) {
+    .counters-wrapper {
+      gap: 0.1rem;        /* mniejszy gap na telefonach */
+    }
+    .counter-box {
+      padding: 1.2rem 1.8rem;
+      min-width: 140px;
+      max-width: 220px;
+      margin-top: 0.1rem;  /* mniejszy margines na telefonach */
+    }
+    .counter-title {
+      font-size: 1rem;
+      margin-bottom: 0.1rem;
+    }
+    .counter {
+      font-size: 2rem;
+    }
+  }
+  
+  
+  
+  
+  .section-title {
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 90%;
+    margin: 10vh auto 2vh;
+    padding: 1rem;
+    text-align: center;
+    font-size: 2vh;
+    border-radius: 8px;
+}
