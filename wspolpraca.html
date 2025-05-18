@@ -18,6 +18,30 @@
     </header>
     <section class="content-wrap">
     <main class="container">
+        <div class="single-video-wrapper">
+            <video
+              id="myVideo"
+              src="img/BLOG.mp4"
+              muted
+              playsinline
+              preload="auto"
+              style="width: 90%; max-width: 800px; display: block; margin: 1rem auto 0;"
+            ></video>
+          </div>
+          
+          <script>
+            const video = document.getElementById('myVideo');
+          
+            setTimeout(() => {
+              video.play().catch(e => {
+                console.log('Nie udało się odtworzyć video automatycznie:', e);
+              });
+            }, 500);
+          </script>
+          
+          
+          
+          
         <section class="section-title"><b>Jak wygląda współpraca ze mną?</b></section>
         
             <div class="content">
