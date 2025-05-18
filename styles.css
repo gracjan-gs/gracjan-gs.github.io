@@ -188,7 +188,7 @@ footer a {
     gap: 3.2rem;           /* większy gap na PC */
     padding: 3vh 2vw;
     background: black !important;
-    min-height: 57vh;
+    min-height: 60.5vh;
   }
   
   .counter-box {
