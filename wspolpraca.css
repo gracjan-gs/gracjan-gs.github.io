@@ -212,3 +212,23 @@ footer a {
     text-decoration: none !important;
     color: white;
 }
+.single-video-wrapper {
+    width: 90vw;
+    max-width: 600px;
+    margin: 5rem auto 2rem;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.07);
+  }
+  
+  .single-video-wrapper video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 1.5rem;
+    outline: none;
+    pointer-events: none; /* zablokuje wszelkie interakcje */
+  }
+  
+  
