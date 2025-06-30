@@ -1,104 +1,93 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gracjan Śliwiński</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="img/favico++.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gracjan Śliwiński — Tworzenie stron internetowych</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-   <body>
-    <header class="header">
-        <nav class="navbar">
-            <section><a id="nav1" href="index.html">Dom</a></section>
-            <section><a href="kontakt.html">Kontakt</a></section>
-            <section><a href="wspolpraca.html">Współpraca</a></section>
-        </nav>
-    </header>
-    <section class="content-wrap">
-<main class="container">
-    <section class="image-stack-wrapper">
-        <section class="image-stack">
-          <img src="img/SecondPhoto.jpg" alt="Photo1">
-          <img src="img/Prof.jpg" alt="Photo1">
-        </section>
-    </section>
-</main>
-  <div class="counters-wrapper">
-    <div class="counter-box" data-target="100">
-      <div class="counter-title">Zaangażowanie w projekt</div>
-      <div class="counter">0</div>
+
+  <header>
+    <div>
+      <div id="header-line">
+        <span id="h1">Gracjan Śliwiński</span>
+        <hr class="custom-hr">
+      </div>
+      <div class="subtitle">TWORZENIE STRON INTERNETOWYCH</div>
     </div>
-    <div class="counter-box" data-target="98">
-      <div class="counter-title">zadowolenie klienta</div>
-      <div class="counter">0</div>
-    </div>
+    <button class="menu-toggle" aria-label="Menu" id="hamburgerBtn">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <nav>
+      <ul style="list-style: none; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+        <li><a href="index.html"><i class="fas fa-house"></i> Start</a></li>
+        <li><a href="wspolpraca.html"><i class="fas fa-handshake"></i> Współpraca</a></li>
+        <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+        <li><a href="kontakt.html"><i class="fas fa-envelope"></i> Kontakt</a></li>
+        <li><a href="polityka.html"><i class="fas fa-lock"></i> Polityka prywatności</a></li>
+        <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
+      </ul>
+    </nav>
   </div>
+
+  <main>
+    <section class="intro">
+      <img src="img/Prof.jpg" alt="Zdjęcie Gracjana">
+      <div class="intro-text">
+        <p>Cześć! Mam na imię Gracjan i w wolnym czasie zajmuję się <strong>tworzeniem prostych, ale skutecznych stron internetowych</strong>, które NIE są oparte na popularnych CMS-ach, takich jak <strong>WordPress</strong>.</p>
+        <p><strong>To zaszczyt gościć Cię na mojej stronie!</strong> Jeśli tutaj jesteś, to najprawdopodobniej szukasz kogoś, kto zajmie się stworzeniem strony dla Ciebie lub Twojej firmy, prawda? Świetnie trafiłeś!</p>
+        <p>Kliknij w zakładkę Kontakt, napisz do mnie, a ustalimy szczegóły. Razem stworzymy stronę, która będzie realnym wsparciem dla Ciebie i Twojego biznesu. Zaczynajmy!</p>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <h2>Zadowolenie Klientów</h2>
+        <p>100%</p>
+      </div>
+      <div class="stat">
+        <h2>Zaangażowanie w projekt</h2>
+        <p>98%</p>
+      </div>
+    </section>
+
+    <section class="projects">
+      <h2>Wykonane projekty</h2>
+      <div class="partners">
+        <div class="partner">
+          <img src="img/LogotzsPNG.PNG" alt="Trenuj Ze Śliwką">
+          <div>
+            <p>Trenuj Ze Śliwką</p>
+            <a href="https://trenujzesliwka.github.io/">kliknij aby zobaczyć stronę</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <a href="#" class="contact-button">Kontakt ✉️</a>
+  </main>
+
+  <footer>
+    © 2025 Gracjan Śliwiński | Polityka prywatności
+  </footer>
+
   <script>
-const boxes = document.querySelectorAll('.counter-box');
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
 
-const options = {
-  root: null, // obserwujemy względem viewportu
-  threshold: 0.1 // element uznajemy za widoczny, gdy choć 10% jest w widoku
-};
+    hamburgerBtn.addEventListener('click', () => {
+      hamburgerBtn.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+  </script>
 
-const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const box = entry.target;
-      const counter = box.querySelector('.counter');
-      const target = parseInt(box.getAttribute('data-target'), 10) || 100;
-      let count = 0;
-
-      const update = () => {
-        if (count <= target) {
-          counter.textContent = count + '%';
-          count++;
-          setTimeout(update, 20);
-        } else {
-          counter.textContent = target + '%';
-        }
-      };
-
-      update();
-
-      observer.unobserve(box); // odznaczamy, żeby animacja nie odpalała się ponownie
-    }
-  });
-}, options);
-
-boxes.forEach(box => {
-  observer.observe(box);
-});
-
-  </script>  
-    <section class="section-title"><b>Dowiedz się czegoś o mnie:</b></section>
-<p class="p1">
-        <strong><em>Gracjan Śliwiński</em></strong><br><br>
-        Cześć!
-        Mam na imię Gracjan i w wolnym czasie zajmuję się tworzeniem prostych, 
-        ale skutecznych stron internetowych, które NIE są oparte na 
-        popularnych CMS-ach, takich jak WordPress. Każdy projekt 
-        tworzę od podstaw, dbając o jego lekkość, szybkość i dopasowanie 
-        do Twoich potrzeb.
-        <br>
-        <br>
-        To zaszczyt gościć Cię na mojej stronie! Jeśli tutaj jesteś, 
-        to najprawdopodobniej szukasz kogoś, kto zajmie się stworzeniem 
-        strony dla Ciebie lub Twojej firmy, prawda? Świetnie trafiłeś!
-        <br>
-        <br>
-        Kliknij w zakładkę <i><strong>Kontakt</strong></i>, napisz do mnie, a ustalimy szczegóły. 
-        Razem stworzymy stronę, która będzie realnym wsparciem dla Ciebie i 
-        Twojego biznesu. Zaczynajmy!
-    </p>
-</section>
-<footer class="footer1">
-    &copy; 2025 Gracjan Śliwiński | <a href="politykaprywatnosci.html">Polityka prywatności</a>
-</footer>
-<script src="script.js"></script>
 </body>
-
 </html>
