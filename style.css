@@ -11,7 +11,7 @@ html, body {
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font-main);
-  background: url('img/background.jpg') no-repeat center center/cover;
+  background: url('img/aboutBG.JPEG') no-repeat center center/cover;
   color: var(--white);
 }
 
@@ -261,6 +261,7 @@ footer {
 @media (max-width: 768px) {
   #h1 {
     font-size: 0.7rem;
+    font-weight: 300;
   }
 
   .intro img {
