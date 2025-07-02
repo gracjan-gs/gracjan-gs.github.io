@@ -1,455 +1,125 @@
-:root {
-  --black: #000000;
-  --white: #ffffff;
-  --gray: #e7e7e7;
-  --font-main: 'Canva Sans', sans-serif;
-  --font-script: 'Magnolia Script', cursive;
-}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gracjan Śliwiński — Tworzenie stron internetowych</title>
+  <link rel="stylesheet" href="kontakt.css">
+  <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div>
+      <div id="header-line">
+        <a href="index.html">
+        <span id="h1">Gracjan Śliwiński</span>
+        </a>
+        <hr class="custom-hr">
+      </div>
+      <a href="index.html">
+      <div class="subtitle">TWORZENIE STRON INTERNETOWYCH</div>
+      </a>
+    </div>
+    <button class="menu-toggle" aria-label="Menu" id="hamburgerBtn">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </header>
+  <div class="mobile-menu" id="mobileMenu">
+    <nav>
+      <ul style="list-style: none; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+        <li><a href="index.html"><i class="fas fa-house"></i> Start</a></li>
+        <li><a href="wspolpraca.html"><i class="fas fa-handshake"></i> Współpraca</a></li>
+        <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+        <li><a href="kontakt.html"><i class="fas fa-envelope"></i> Kontakt</a></li>
+        <li><a href="polityka.html"><i class="fas fa-lock"></i> Polityka prywatności</a></li>
+        <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
+      </ul>
+    </nav>
+  </div>
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  min-height: 100vh;
-  box-sizing: border-box;
-  font-family: var(--font-main);
-  color: var(--white);
-  background: url('img/aboutBG.JPEG') no-repeat center center/cover;
-  background-color: var(--black);
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-}
+  <main>
+    <section class="contact-section">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <a href="tel:+48881530022">Skontaktuj się przez telefon</a>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:gracjan.sliwinski.gs@gmail.com">Wyślij wiadomość e-mail</a>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <a href="https://wa.me/48881530022" target="_blank">Napisz na WhatsApp</a>
+          </div>
+        </div>
+      <form id="formularz">
+        <label for="imie">Imię i nazwisko / Firma</label>
+        <input type="text" id="imie" name="imie" required>
 
-/* Dodatkowo dla mobile, dynamiczna wysokość viewport */
-@media (max-width: 768px) {
-  body {
-    min-height: 100dvh;
-  }
-}
+        <label for="email">Adres email / Numer telefonu</label>
+        <input type="text" id="email" name="email" required>
 
-/* BODY jako flex container kolumnowy, main rośnie */
-body {
-  display: flex;
-  flex-direction: column;
-}
+        <button id="formButton" type="submit">Wyślij</button>
+        <p id="odpowiedz"></p>
+      </form>
+    </section>
+  </main>
 
-/* NAGŁÓWEK */
-header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: var(--black);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 5vw;
-  z-index: 1002;
-}
+  <footer>
+    © 2025 Gracjan Śliwiński | Polityka prywatności
+  </footer>
 
-a {
-  text-decoration: none !important;
-  color: white !important;
-}
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
 
-#header-line {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+    hamburgerBtn.addEventListener('click', () => {
+      hamburgerBtn.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
 
-#h1 {
-  font-family: 'Petit Formal Script', cursive;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+    document.getElementById("formularz").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const imie = document.getElementById("imie").value;
+      const email = document.getElementById("email").value;
 
-.custom-hr {
-  flex-grow: 1;
-  height: 1px;
-  width: 0.625rem;
-  background-color: white;
-  border: none;
-}
+      const url = "https://script.google.com/macros/s/AKfycbw7BTM1hG2XR3_7vaBk2WfQk2hfLgvPPPzGem0tSAyw8lQfiyB7_kdJZM9mXtinQ0_z/exec";
 
-.subtitle {
-  font-size: 1rem;
-  margin-top: 0.2rem;
-  font-weight: 200;
-}
+      const dane = new FormData();
+      dane.append("imie", imie);
+      dane.append("email", email);
 
-.menu-toggle {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  width: 2.5rem;
-  height: 2.5rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 1001;
-}
+      fetch(url, {
+        method: "POST",
+        body: dane
+      })
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("odpowiedz").innerText = "Dziękuję za wiadomość";
+        document.getElementById("formularz").reset();
+      })
+      .catch(error => {
+        document.getElementById("odpowiedz").innerText = "Wystąpił błąd, spróbuj ponownie";
+      });
 
-.bar {
-  width: 100%;
-  height: 2px;
-  background-color: var(--white);
-  transition: 0.4s ease;
-  border-radius: 2px;
-}
+      const submitButton = document.querySelector("#formularz button");
+      submitButton.textContent = "Przesłano";
+      submitButton.style.backgroundColor = "green";
+      submitButton.style.color = "white";
+      submitButton.disabled = true;
 
-.menu-toggle.open .bar:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.menu-toggle.open .bar:nth-child(2) {
-  opacity: 0;
-}
-.menu-toggle.open .bar:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
+      setTimeout(() => {
+        submitButton.textContent = "Wyślij";
+        submitButton.style.backgroundColor = "";
+        submitButton.style.color = "";
+        submitButton.disabled = false;
+      }, 3000);
+    });
+  </script>
 
-.mobile-menu {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  background: var(--black);
-  overflow: hidden;
-  transition: height 0.5s ease;
-  z-index: 999;
-  color: var(--white);
-}
-
-.mobile-menu.open {
-  height: 50vh;
-}
-
-.mobile-menu a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.mobile-menu a:hover {
-  color: var(--gray);
-}
-
-main {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  padding: 5vh 5vw;
-}
-
-.intro {
-  display: flex;
-  flex-direction: column;
-  background: var(--black);
-  border-radius: 2rem;
-  overflow: hidden;
-}
-
-.intro img {
-  width: 100%;
-  height: auto;
-  padding: 0.3rem;
-  border-radius: 2rem;
-}
-
-.intro-text {
-  padding: 2rem;
-  font-size: 1.125rem;
-}
-
-.stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.stat {
-  background: var(--black);
-  border-radius: 1.5rem;
-  padding: 2rem;
-  flex: 1 1 40%;
-  text-align: center;
-}
-
-.stat h2 {
-  font-weight: normal;
-  font-size: 1.125rem;
-}
-
-.stat p {
-  font-size: 2.25rem;
-  font-weight: bold;
-}
-
-.projects {
-  background: var(--black);
-  padding: 2rem;
-  border-radius: 2rem;
-  text-align: center;
-}
-
-.projects h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.partners {
-  width: 90%;
-  margin: 2vh auto;
-}
-
-.partner {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2vh;
-}
-
-.partner img {
-  width: 15vh;
-  height: 15vh;
-  border-radius: 50%;
-  border: 2px solid white;
-  object-fit: contain;
-  background-color: black;
-}
-
-.partner p {
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-.partner a {
-  color: lightgray;
-  font-size: 0.9rem;
-  text-decoration: underline;
-}
-
-.contact-button {
-  display: block;
-  width: fit-content;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  background: var(--black);
-  color: var(--white);
-  border: 0.1rem solid var(--white);
-  border-radius: 2rem;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.contact-button:hover {
-  background: var(--white);
-  color: var(--black);
-}
-
-footer {
-  background: var(--black);
-  padding: 2rem 5vw;
-  text-align: center;
-  font-size: 0.875rem;
-  flex-shrink: 0;
-}
-
-/* Kontakt - blok z czarnym tłem i formą kontaktu */
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 2rem;
-  background: var(--black);
-  border-radius: 1.5rem;
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  font-size: 1.1rem;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  width: 100%;
-  max-width: 400px;
-  text-align: left;
-}
-
-.contact-item i {
-  font-size: 1.5rem;
-  color: var(--white);
-  min-width: 30px;
-  text-align: center;
-}
-
-.contact-item a {
-  color: var(--white);
-  text-decoration: none;
-  font-weight: bold;
-  flex-grow: 1;
-  text-align: left;
-}
-
-/* Formularz kontaktowy */
-form#formularz {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-width: 700px;
-  margin: 2rem auto 0 auto;
-  background: var(--black);
-  padding: 2rem;
-  border-radius: 1.5rem;
-}
-
-form#formularz label {
-  font-weight: bold;
-  font-size: 1rem;
-  color: var(--white);
-}
-
-form#formularz input[type="text"] {
-  padding: 1rem;
-  border: 1px solid var(--gray);
-  border-radius: 1rem;
-  font-size: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--white);
-}
-
-form#formularz input[type="text"]::placeholder {
-  color: #cccccc;
-}
-
-form#formularz button {
-  padding: 1rem 2rem;
-  background-color: var(--white);
-  color: var(--black);
-  border: none;
-  border-radius: 2rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-form#formularz button:hover {
-  background-color: var(--gray);
-  color: var(--black);
-}
-
-#odpowiedz {
-  text-align: center;
-  margin-top: 1rem;
-  font-size: 1rem;
-  color: lightgreen;
-}
-
-/* --- MOBILE RESPONSIVE --- */
-@media (max-width: 768px) {
-  .contact-info {
-    padding: 1.5rem 1rem;
-  }
-
-  .contact-item {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1.5rem;
-    font-size: 1rem;
-    max-width: 100%;
-    text-align: left;
-  }
-
-  .contact-item i {
-    font-size: 1.3rem;
-    min-width: 30px;
-  }
-
-  .contact-item a {
-    flex-grow: 1;
-    text-align: left;
-    text-decoration: none !important;
-  }
-
-  form#formularz {
-    padding: 1.5rem 1rem;
-    max-width: 100%;
-    margin: 1rem auto 0 auto;
-  }
-
-  form#formularz input[type="text"] {
-    font-size: 0.95rem;
-  }
-
-  form#formularz button {
-    padding: 1rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .intro {
-    flex-direction: row;
-  }
-
-  .intro img {
-    width: 40%;
-  }
-
-  .intro-text {
-    width: 60%;
-  }
-}
-
-@media (max-width: 768px) {
-  #h1 {
-    font-size: 0.7rem;
-  }
-
-  .intro img {
-    width: 100%;
-    height: auto;
-    padding: 0rem;
-    border-radius: 2rem;
-  }
-
-  .subtitle {
-    font-size: 0.5rem;
-  }
-
-  .partner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .partner img {
-    width: 30vw;
-    height: 30vw;
-    max-width: 120px;
-    max-height: 120px;
-  }
-
-  .partner p {
-    margin-top: 1rem;
-  }
-}
-
-#formButton {
-  font-size: 1rem;
-}
+</body>
+</html>
