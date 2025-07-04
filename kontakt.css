@@ -419,7 +419,20 @@ form#formularz button:hover {
 
 @media (max-width: 768px) {
   #h1 {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
+    font-weight: 300;
+  }
+
+  .custom-hr {
+  flex-grow: 1;
+  height: 0.5px;
+  width: 0.625rem;
+  background-color: white;
+  border: none;
+  }
+
+  .subtitle {
+    font-size: 0.6rem;
   }
 
   .intro img {
@@ -427,10 +440,6 @@ form#formularz button:hover {
     height: auto;
     padding: 0rem;
     border-radius: 2rem;
-  }
-
-  .subtitle {
-    font-size: 0.5rem;
   }
 
   .partner {
