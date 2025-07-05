@@ -7,18 +7,30 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.9s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
   <header>
     <div>
       <div id="header-line">
         <a href="index.html">
-        <span id="h1">Gracjan Śliwiński</span>
+          <span id="h1">Gracjan Śliwiński</span>
         </a>
         <hr class="custom-hr">
       </div>
       <a href="index.html">
-      <div class="subtitle">TWORZENIE STRON INTERNETOWYCH</div>
+        <div class="subtitle">TWORZENIE STRON INTERNETOWYCH</div>
       </a>
     </div>
     <button class="menu-toggle" aria-label="Menu" id="hamburgerBtn">
@@ -27,6 +39,7 @@
       <span class="bar"></span>
     </button>
   </header>
+
   <div class="mobile-menu" id="mobileMenu">
     <nav>
       <ul style="list-style: none; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
@@ -41,7 +54,7 @@
   </div>
 
   <main>
-    <section class="intro">
+    <section class="intro reveal">
       <img src="img/Prof.jpg" alt="Zdjęcie Gracjana">
       <div class="intro-text">
         <p>Cześć! Mam na imię Gracjan i w wolnym czasie zajmuję się <strong>tworzeniem prostych, ale skutecznych stron internetowych</strong>, które NIE są oparte na popularnych CMS-ach, takich jak <strong>WordPress</strong>.</p>
@@ -50,18 +63,18 @@
       </div>
     </section>
 
-    <section class="stats">
+    <section class="stats reveal">
       <div class="stat">
         <h2>Zadowolenie Klientów</h2>
-        <p>100%</p>
+        <p data-target="100">0%</p>
       </div>
       <div class="stat">
         <h2>Zaangażowanie w projekt</h2>
-        <p>98%</p>
+        <p data-target="100">0%</p>
       </div>
     </section>
 
-    <section class="projects">
+    <section class="projects reveal">
       <h2>Wykonane projekty</h2>
       <div class="partners">
         <div class="partner">
@@ -74,7 +87,7 @@
       </div>
     </section>
 
-    <a href="#" class="contact-button">Kontakt <i class="fas fa-envelope"></i></a>
+    <a href="#" class="contact-button reveal">Kontakt <i class="fas fa-envelope"></i></a>
   </main>
 
   <footer>
@@ -82,6 +95,52 @@
   </footer>
 
   <script>
+    const stats = document.querySelectorAll('.stat p');
+
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'), 10);
+          let count = 0;
+
+          const update = () => {
+            if (count <= target) {
+              el.textContent = count + '%';
+              count++;
+              setTimeout(update, 40);
+            } else {
+              el.textContent = target + '%';
+            }
+          };
+
+          update();
+          observer.unobserve(el);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    stats.forEach(stat => counterObserver.observe(stat));
+
+    // Reveal effect for all .reveal elements
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Hamburger
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const mobileMenu = document.getElementById('mobileMenu');
 
@@ -90,6 +149,5 @@
       mobileMenu.classList.toggle('open');
     });
   </script>
-
 </body>
 </html>
