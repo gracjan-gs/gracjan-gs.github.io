@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gracjan Śliwiński — Tworzenie stron internetowych</title>
-  <link rel="stylesheet" href="kontakt.css">
-  <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="kontakt.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* Animacja wchodzenia od dołu */
+    .animate-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.9s ease;
+    }
+
+    .animate-up.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
   <header>
     <div>
       <div id="header-line">
         <a href="index.html">
-        <span id="h1">Gracjan Śliwiński</span>
+          <span id="h1">Gracjan Śliwiński</span>
         </a>
-        <hr class="custom-hr">
+        <hr class="custom-hr" />
       </div>
       <a href="index.html">
-      <div class="subtitle">TWORZENIE STRON INTERNETOWYCH</div>
+        <div class="subtitle">TWORZENIE STRON INTERNETOWYCH</div>
       </a>
     </div>
     <button class="menu-toggle" aria-label="Menu" id="hamburgerBtn">
@@ -40,28 +53,28 @@
     </nav>
   </div>
 
-  <main>
+  <main class="animate-up">
     <section class="contact-section">
-        <div class="contact-info">
-          <div class="contact-item">
-            <i class="fas fa-phone"></i>
-            <a href="tel:+48881530022">Skontaktuj się przez telefon</a>
-          </div>
-          <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <a href="mailto:gracjan.sliwinski.gs@gmail.com">Wyślij wiadomość e-mail</a>
-          </div>
-          <div class="contact-item">
-            <i class="fab fa-whatsapp"></i>
-            <a href="https://wa.me/48881530022" target="_blank">Napisz na WhatsApp</a>
-          </div>
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <a href="tel:+48881530022">Skontaktuj się przez telefon</a>
         </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:gracjan.sliwinski.gs@gmail.com">Wyślij wiadomość e-mail</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-whatsapp"></i>
+          <a href="https://wa.me/48881530022" target="_blank">Napisz na WhatsApp</a>
+        </div>
+      </div>
       <form id="formularz">
         <label for="imie">Imię i nazwisko / Firma</label>
-        <input type="text" id="imie" name="imie" required>
+        <input type="text" id="imie" name="imie" required />
 
         <label for="email">Adres email / Numer telefonu</label>
-        <input type="text" id="email" name="email" required>
+        <input type="text" id="email" name="email" required />
 
         <button id="formButton" type="submit">Wyślij</button>
         <p id="odpowiedz"></p>
@@ -82,44 +95,53 @@
       mobileMenu.classList.toggle('open');
     });
 
-    document.getElementById("formularz").addEventListener("submit", function(event) {
-      event.preventDefault();
-      const imie = document.getElementById("imie").value;
-      const email = document.getElementById("email").value;
+    window.addEventListener('load', () => {
+      const animated = document.querySelector('.animate-up');
+      if (animated) {
+        setTimeout(() => {
+          animated.classList.add('active');
+        }, 100);
+      }
+    });
 
-      const url = "https://script.google.com/macros/s/AKfycbw7BTM1hG2XR3_7vaBk2WfQk2hfLgvPPPzGem0tSAyw8lQfiyB7_kdJZM9mXtinQ0_z/exec";
+    document.getElementById('formularz').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const imie = document.getElementById('imie').value;
+      const email = document.getElementById('email').value;
+
+      const url =
+        'https://script.google.com/macros/s/AKfycbw7BTM1hG2XR3_7vaBk2WfQk2hfLgvPPPzGem0tSAyw8lQfiyB7_kdJZM9mXtinQ0_z/exec';
 
       const dane = new FormData();
-      dane.append("imie", imie);
-      dane.append("email", email);
+      dane.append('imie', imie);
+      dane.append('email', email);
 
       fetch(url, {
-        method: "POST",
-        body: dane
+        method: 'POST',
+        body: dane,
       })
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("odpowiedz").innerText = "Dziękuję za wiadomość";
-        document.getElementById("formularz").reset();
-      })
-      .catch(error => {
-        document.getElementById("odpowiedz").innerText = "Wystąpił błąd, spróbuj ponownie";
-      });
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById('odpowiedz').innerText = 'Dziękuję za wiadomość';
+          document.getElementById('formularz').reset();
+        })
+        .catch((error) => {
+          document.getElementById('odpowiedz').innerText = 'Wystąpił błąd, spróbuj ponownie';
+        });
 
-      const submitButton = document.querySelector("#formularz button");
-      submitButton.textContent = "Przesłano";
-      submitButton.style.backgroundColor = "green";
-      submitButton.style.color = "white";
+      const submitButton = document.querySelector('#formularz button');
+      submitButton.textContent = 'Przesłano';
+      submitButton.style.backgroundColor = 'green';
+      submitButton.style.color = 'white';
       submitButton.disabled = true;
 
       setTimeout(() => {
-        submitButton.textContent = "Wyślij";
-        submitButton.style.backgroundColor = "";
-        submitButton.style.color = "";
+        submitButton.textContent = 'Wyślij';
+        submitButton.style.backgroundColor = '';
+        submitButton.style.color = '';
         submitButton.disabled = false;
       }, 3000);
     });
   </script>
-
 </body>
 </html>
