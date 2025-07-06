@@ -11,7 +11,8 @@ html, body {
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font-main);
-  background: url('img/aboutBG.JPEG') no-repeat center center/cover;
+  background: url('img/DrewnoCiemne.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
   color: var(--white);
 }
 
@@ -227,14 +228,9 @@ main {
   background: var(--black);
   color: var(--white);
   border: 0.1rem solid var(--white);
-  border-radius: 2rem;
   text-decoration: none;
   font-weight: bold;
-}
-
-.contact-button:hover {
-  background: var(--white);
-  color: var(--black);
+  border-radius: 1rem;
 }
 
 footer {
