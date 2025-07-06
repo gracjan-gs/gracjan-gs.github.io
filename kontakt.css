@@ -14,7 +14,8 @@ html, body {
   box-sizing: border-box;
   font-family: var(--font-main);
   color: var(--white);
-  background: url('img/aboutBG.JPEG') no-repeat center center/cover;
+  background: url('img/DrewnoCiemne.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
   background-color: var(--black);
   overflow-x: hidden;
   display: flex;
