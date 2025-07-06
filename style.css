@@ -9,11 +9,17 @@
 html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  min-height: 100vh;
   box-sizing: border-box;
   font-family: var(--font-main);
+  color: var(--white);
   background: url('img/DrewnoCiemne.jpg') no-repeat center center/cover;
   background-attachment: fixed;
-  color: var(--white);
+  background-color: var(--black);
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
