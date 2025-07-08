@@ -332,6 +332,7 @@ footer {
   width: 100%; /* na małych ekranach pełna szerokość */
   height: auto;
   border-radius: 2rem;
+  padding: 0rem;
 }
 
 .intro-text {
