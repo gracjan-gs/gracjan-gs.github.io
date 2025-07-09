@@ -356,3 +356,199 @@ footer {
     padding: 0; /* usuń jeśli masz padding w tekście z góry */
   }
 }
+
+
+
+
+
+
+/* FAQ SECTION --------------------------------------------*/
+.faq-section {
+  background: var(--black);
+  border-radius: 2rem;
+  padding: 2rem;
+  margin-top: 2rem;
+  color: var(--white);
+}
+
+.faq-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 200 !important
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--gray);
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  font-weight: 200 !important
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--white);
+  font-size: 1.125rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+  color: var(--gray);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.faq-answer p {
+  margin: 0.5rem 0 0 0;
+  font-size: 1rem;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 300px; /* lub więcej, zależnie od treści */
+  opacity: 1;
+}
+
+.faq-question .icon {
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question .icon {
+  transform: rotate(180deg);
+}
+
+
+
+
+
+
+
+/* OFERTA SEKCJA ----------------------------------------------------*/
+  .pricing-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    background: #0e0e0e;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    max-width: 1000px;
+    margin: auto;
+    border-radius: 2rem;
+  }
+
+  .pricing-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(127, 105, 241, 0.3);
+  }
+
+  .plan-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fac813;
+    margin-bottom: 0.5rem;
+  }
+
+  .price {
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+    font-weight: 600;
+    color: white;
+  }
+
+  .price .old {
+    text-decoration: line-through;
+    font-size: 1rem;
+    color: #aaa;
+    margin-right: 0.5rem;
+  }
+
+  .old {
+    color: red !important;
+    font-weight: 100;
+    font-size: 1.3rem !important;
+  }
+
+  .desc {
+    font-size: 0.95rem;
+    color: #ccc;
+    margin: 1rem 0 1.5rem;
+    min-height: 50px;
+  }
+
+  .choose {
+    background: #00c164;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .choose:hover {
+    background: #00a855;
+  }
+
+  .more {
+    margin-top: 2.5rem;
+    font-size: 0.85rem;
+    color: #c2c2c2;
+    cursor: pointer;
+    text-decoration: underline;
+    font-style: italic;
+  }
+
+  .popular {
+    background: #1f1f1f;
+    border: 2px solid #fac813;
+  }
+
+  .popular .badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fac813;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+  }
+
+  .badge {
+    color: #000000 !important;
+  }
+
+  @media (max-width: 600px) {
+    .pricing-gallery {
+      grid-template-columns: 1fr;
+    }
+  }
