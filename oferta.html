@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gracjan Śliwiński — Tworzenie stron internetowych</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .reveal {
+      opacity: 0.7;
+      transform: translateY(50px);
+      transition: all 1s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <div id="header-line">
+        <a href="index.html">
+          <span id="h1">Gracjan Śliwiński</span>
+        </a>
+        <hr class="custom-hr">
+      </div>
+      <a href="index.html">
+        <div class="subtitle">TWORZENIE STRON INTERNETOWYCH</div>
+      </a>
+    </div>
+    <button class="menu-toggle" aria-label="Menu" id="hamburgerBtn">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <nav>
+      <ul style="list-style: none; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+        <li><a href="index.html"><i class="fas fa-house"></i> Start</a></li>
+        <li><a href="blog.html"><i class="fas fa-handshake"></i> Współpraca</a></li>
+        <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+        <li><a href="kontakt.html"><i class="fas fa-envelope"></i> Kontakt</a></li>
+        <li><a href="politykaPrywatnosci.html"><i class="fas fa-lock"></i> Polityka prywatności</a></li>
+        <li><a href="oferta.html"><i class="fas fa-tags"></i> Oferta</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main>
+    <section class="pricing-gallery">
+  <div class="pricing-card">
+    <h3 class="plan-name">Free</h3>
+    <p class="price"><span class="value">0</span> PLN</p>
+    <p class="desc">Stwórz i opublikuj stronę za darmo.</p>
+    <button class="choose">Wybierz</button>
+    <p class="more">Zobacz wszystkie funkcje</p>
+  </div>
+
+  <div class="pricing-card">
+    <h3 class="plan-name">Starter</h3>
+    <p class="price"><span class="old"></span> <span class="value">16,5</span> PLN</p>
+    <p class="desc">Wizytówka Twojego biznesu w sieci.</p>
+    <button class="choose">Wybierz</button>
+    <p class="more">Zobacz wszystkie funkcje</p>
+  </div>
+
+  <div class="pricing-card popular">
+    <div class="badge">Najpopularniejszy</div>
+    <h3 class="plan-name">Pro</h3>
+    <p class="price"><span class="old">45</span> <span class="value">22,5</span> PLN / mies</p>
+    <p class="desc">Rozbudowana strona z blogiem i narzędzia SEO.</p>
+    <button class="choose">Wybierz</button>
+    <p class="more">Zobacz wszystkie funkcje</p>
+  </div>
+
+  <div class="pricing-card">
+    <h3 class="plan-name">Business</h3>
+    <p class="price"><span class="old">65</span> <span class="value">32,5</span> PLN / mies</p>
+    <p class="desc">Strona bez limitów, sklep online bez prowizji i zaawansowane SEO.</p>
+    <button class="choose">Wybierz</button>
+    <p class="more">Zobacz wszystkie funkcje</p>
+  </div>
+</section>
+  </main>
+
+  <footer>
+    © 2025 Gracjan Śliwiński | Polityka prywatności
+  </footer>
+
+  <script>
+    const stats = document.querySelectorAll('.stat p');
+
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'), 10);
+          let count = 0;
+
+          const update = () => {
+            if (count <= target) {
+              el.textContent = count + '%';
+              count++;
+              setTimeout(update, 40);
+            } else {
+              el.textContent = target + '%';
+            }
+          };
+
+          update();
+          observer.unobserve(el);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    stats.forEach(stat => counterObserver.observe(stat));
+
+    // Reveal effect for all .reveal elements
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Hamburger
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburgerBtn.addEventListener('click', () => {
+      hamburgerBtn.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

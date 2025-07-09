@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gracjan Śliwiński — Tworzenie stron internetowych</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .reveal {
+      opacity: 0.7;
+      transform: translateY(50px);
+      transition: all 1s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <div id="header-line">
+        <a href="index.html">
+          <span id="h1">Gracjan Śliwiński</span>
+        </a>
+        <hr class="custom-hr">
+      </div>
+      <a href="index.html">
+        <div class="subtitle">TWORZENIE STRON INTERNETOWYCH</div>
+      </a>
+    </div>
+    <button class="menu-toggle" aria-label="Menu" id="hamburgerBtn">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <nav>
+      <ul style="list-style: none; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+        <li><a href="index.html"><i class="fas fa-house"></i> Start</a></li>
+        <li><a href="blog.html"><i class="fas fa-handshake"></i> Współpraca</a></li>
+        <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+        <li><a href="kontakt.html"><i class="fas fa-envelope"></i> Kontakt</a></li>
+        <li><a href="blog.html"><i class="fas fa-lock"></i> Polityka prywatności</a></li>
+        <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main>
+    <section id="privacy" class="content-section">
+  <h2>Polityka prywatności użytkownika</h2>
+  <p><strong>Administrator danych osobowych</strong><br>
+  Administratorem Twoich danych osobowych jest Gracjan Śliwiński.</p>
+
+  <p><strong>Cele i podstawa przetwarzania danych</strong><br>
+  Dane osobowe, takie jak imię oraz adres e-mail, przekazywane za pomocą formularza kontaktowego, przetwarzane są wyłącznie w celu umożliwienia kontaktu zwrotnego za pośrednictwem adresu e-mail podanego przez użytkownika. Podstawą prawną przetwarzania danych jest zgoda osoby, której dane dotyczą (art. 6 ust. 1 lit. a RODO).</p>
+
+  <p><strong>Dobrowolność podania danych</strong><br>
+  Podanie danych osobowych jest dobrowolne, ale konieczne do otrzymania odpowiedzi od Gracjana.</p>
+
+  <p><strong>Odbiorcy danych</strong><br>
+  Gracjan nie udostępnia danych osobowych innym podmiotom, nie przekazuje ich do państw trzecich ani nie wykorzystuje ich w celach marketingowych bez wyraźnej zgody użytkownika.</p>
+
+  <p><strong>Okres przechowywania danych</strong><br>
+  Dane osobowe przechowywane są przez czas niezbędny do utrzymania kontaktu oraz archiwizacji zgłoszeń, chyba że wcześniej zostanie zgłoszona potrzeba ich usunięcia lub poprawienia.</p>
+
+  <p><strong>Sposób usunięcia lub poprawienia danych</strong><br>
+  Aby zgłosić chęć usunięcia lub poprawienia danych, należy ponownie wypełnić formularz kontaktowy i w polu „Imię” wpisać odpowiednią komendę:</p>
+
+  <ul>
+    <li><strong>POPRAWIONE DANE [nowe imię]</strong> – aby zastąpić wcześniej podane dane nowymi. Przykład: <em>POPRAWIONE DANE Jan</em>.</li>
+    <li><strong>USUŃ DANE [imię]</strong> – aby zażądać trwałego usunięcia danych. Przykład: <em>USUŃ DANE Jan</em>.</li>
+  </ul>
+
+  <p>Dzięki temu Gracjan będzie mógł zidentyfikować wpis i odpowiednio go zaktualizować lub trwale usunąć.</p>
+
+  <p><strong>Kontakt</strong><br>
+  W sprawach związanych z przetwarzaniem danych osobowych należy kontaktować się poprzez formularz kontaktowy dostępny na stronie lub przez zakładkę Kontakt. Gracjan Śliwiński będzie odpowiadał na zgłoszenia wyłącznie na adres e-mail podany przez użytkownika.</p>
+</section>
+
+  </main>
+
+  <footer>
+    © 2025 Gracjan Śliwiński | Polityka prywatności
+  </footer>
+
+  <script>
+    const stats = document.querySelectorAll('.stat p');
+
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'), 10);
+          let count = 0;
+
+          const update = () => {
+            if (count <= target) {
+              el.textContent = count + '%';
+              count++;
+              setTimeout(update, 40);
+            } else {
+              el.textContent = target + '%';
+            }
+          };
+
+          update();
+          observer.unobserve(el);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    stats.forEach(stat => counterObserver.observe(stat));
+
+    // Reveal effect for all .reveal elements
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Hamburger
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburgerBtn.addEventListener('click', () => {
+      hamburgerBtn.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
