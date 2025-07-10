@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gracjan Śliwiński — Tworzenie stron internetowych</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="oferta.css">
   <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -56,36 +56,36 @@
   <main>
     <section class="pricing-gallery">
   <div class="pricing-card">
-    <h3 class="plan-name">Free</h3>
-    <p class="price"><span class="value"></span>SPRAWDŹ CENĘ</p>
-    <p class="desc">Stwórz i opublikuj stronę za darmo.</p>
+    <h3 class="plan-name">Wycena projektu</h3>
+    <p class="price"><span class="value">0 </span>ZŁ</p>
+    <p class="desc">Projekt tworzony od podstaw, w pełni dopasowany do Twojej marki – bez limitów, z pełną dbałością o każdy detal.</p>
     <button class="choose">Wybierz</button>
-    <p class="more">Zobacz wszystkie funkcje</p>
-  </div>
-
-  <div class="pricing-card">
-    <h3 class="plan-name">Starter</h3>
-    <p class="price"><span class="value"></span>SPRAWDŹ CENĘ </p>
-    <p class="desc">Wizytówka Twojego biznesu w sieci.</p>
-    <button class="choose">Wybierz</button>
-    <p class="more">Zobacz wszystkie funkcje</p>
+    <p class="more">Zobacz pełen opis</p>
   </div>
 
   <div class="pricing-card popular">
     <div class="badge">Najpopularniejszy</div>
-    <h3 class="plan-name">Pro</h3>
+    <h3 class="plan-name">Indywidualny</h3>
     <p class="price"><span class="value"></span>SPRAWDŹ CENĘ</p>
-    <p class="desc">Rozbudowana strona z blogiem i narzędzia SEO.</p>
+    <p class="desc">Projekt tworzony od podstaw, w pełni dopasowany do Twojej marki, bez limitów, z pełną dbałością o każdy detal.</p>
     <button class="choose">Wybierz</button>
-    <p class="more">Zobacz wszystkie funkcje</p>
+    <p class="more">Zobacz pełen opis</p>
   </div>
 
   <div class="pricing-card">
-    <h3 class="plan-name">Business</h3>
-    <p class="price"><span class="value"></span>SPRAWDŹ CENĘ</p>
-    <p class="desc">Strona bez limitów, sklep online bez prowizji i zaawansowane SEO.</p>
+    <h3 class="plan-name">Podstawowy</h3>
+    <p class="price"><span class="value"></span>SPRAWDŹ CENĘ </p>
+    <p class="desc">Przejrzysty pakiet z ograniczonym zakresem funkcji. Idealny na start.</p>
     <button class="choose">Wybierz</button>
-    <p class="more">Zobacz wszystkie funkcje</p>
+    <p class="more">Zobacz pełen opis</p>
+  </div>
+
+  <div class="pricing-card">
+    <h3 class="plan-name">Zaawansowany</h3>
+    <p class="price"><span class="value"></span>SPRAWDŹ CENĘ</p>
+    <p class="desc">Rozbudowany pakiet z większą elastycznością, więcej możliwości niż w podstawie, bez pełnej customizacji.</p>
+    <button class="choose">Wybierz</button>
+    <p class="more">Zobacz pełen opis</p>
   </div>
 </section>
   </main>
@@ -149,5 +149,42 @@
       mobileMenu.classList.toggle('open');
     });
   </script>
+
+<!-- MODAL: okno z pełnym opisem -->
+<div id="modal" style="display:none; position:fixed; top:0; left:50%; transform:translateX(-50%); width:90%; height:100%; background-color:rgba(0,0,0,0.6); z-index:1000; justify-content:center; align-items:center;">
+  <div style="background:#1a1a1a; color:white; padding:2rem; border-radius:1rem; width:90%; max-width:500px; position:relative; font-family:'Segoe UI', sans-serif; word-wrap:break-word; overflow-wrap:break-word;">
+    <button id="backModal" style="position:absolute; top:10px; left:10px; background:none; border:none; color:white; font-size:1.2rem; cursor:pointer;">←</button>
+    <div id="modalContent" style="margin-top:2rem; font-size:0.95rem; line-height:1.5;">
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  const descriptions = {
+    'Wycena projektu': 'Umawiamy się na niezobowiązującą rozmowę, podczas której omawiamy Twoje potrzeby i oczekiwania. Na tej podstawie przygotowuję szczegółową wycenę projektu – bez żadnych kosztów i zobowiązań. To pierwszy krok do stworzenia wymarzonego efektu.',
+    'Indywidualny': 'Kompleksowa realizacja projektu od podstaw, idealnie dopasowana do Twojej marki i potrzeb. Bez limitów na liczbę podstron, zdjęć czy poprawek. Każdy element tworzony jest z dbałością o detale i unikalność, co pozwala wyróżnić się na tle konkurencji i zbudować spójną, profesjonalną identyfikację wizualną.',
+    'Podstawowy': 'Pakiet zaprojektowany z myślą o prostych, funkcjonalnych stronach opartych na gotowych szablonach. Obejmuje do 3 stron (strona główna + 2 podstrony) oraz ograniczona liczbę elementów na stronie. To ekonomiczne i szybkie rozwiązanie, które pozwala na profesjonalną obecność w sieci przy jasno określonym zakresie usług.',
+    'Zaawansowany': 'Pakiet oferujący większą elastyczność niż podstawowy, do 4 stron (strona główna + 3 podstrony), bez ograniczeń elementów na stronie internetowej oraz wykorzystaniem bardziej zaawansowanych szablonów. Pozwala na lepsze dostosowanie strony do Twoich potrzeb, zapewniając bardziej rozbudowaną i estetyczną prezentację marki, bez pełnej indywidualnej realizacji.'
+  };
+
+  document.querySelectorAll('.more').forEach(moreBtn => {
+    moreBtn.addEventListener('click', () => {
+      const card = moreBtn.closest('.pricing-card');
+      const title = card.querySelector('.plan-name').textContent.trim();
+      const modal = document.getElementById('modal');
+      const modalContent = document.getElementById('modalContent');
+
+      modalContent.textContent = descriptions[title] || 'Brak dodatkowego opisu.';
+      modal.style.display = 'flex';
+    });
+  });
+
+  document.getElementById('backModal').addEventListener('click', () => {
+    document.getElementById('modal').style.display = 'none';
+  });
+</script>
+
 </body>
 </html>
