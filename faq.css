@@ -487,6 +487,9 @@ form#formularz button:hover {
 
 
 
+
+
+
 /* FAQ SECTION --------------------------------------------*/
 .faq-section {
   background: var(--black);
@@ -500,14 +503,14 @@ form#formularz button:hover {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
   text-align: center;
-  font-weight: 200 !important
+  font-weight: 200 !important;
 }
 
 .faq-item {
   border-bottom: 1px solid var(--gray);
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  font-weight: 200 !important
+  font-weight: 200 !important;
 }
 
 .faq-question {
@@ -534,7 +537,7 @@ form#formularz button:hover {
 .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
   opacity: 0;
 }
 
@@ -544,8 +547,10 @@ form#formularz button:hover {
 }
 
 .faq-item.active .faq-answer {
-  max-height: 300px; /* lub więcej, zależnie od treści */
+  max-height: 300px; /* max wysokość po rozwinięciu */
   opacity: 1;
+  overflow-y: auto; /* dodaje scroll, jeśli treść jest za długa */
+  padding-right: 10px; /* miejsce na scroll */
 }
 
 .faq-question .icon {
