@@ -18,9 +18,72 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    @import url('https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap');
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #0f0f0f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+      font-family: 'Petit Formal Script', cursive;
+    }
+
+    .loader-content {
+      text-align: center;
+      color: #fff;
+      padding: 1rem;
+    }
+
+    .loader-text {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .loader-bar {
+      width: 80vw;
+      max-width: 400px;
+      height: 8px;
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .loader-fill {
+      width: 0%;
+      height: 100%;
+      background: #717171;
+      transition: width 2.5s ease-in-out;
+    }
+
+    @media (max-width: 600px) {
+      .loader-text {
+        font-size: 1.2rem;
+      }
+
+      .loader-bar {
+        height: 6px;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <div id="loader">
+    <div class="loader-content">
+      <div class="loader-text">Gracjan Śliwiński</div>
+      <div class="loader-bar">
+        <div class="loader-fill" id="loaderFill"></div>
+      </div>
+    </div>
+  </div>
+
   <header>
     <div>
       <div id="header-line">
@@ -57,17 +120,7 @@
     <section class="intro reveal">
       <img src="img/CanvaPost.png" alt="Zdjęcie Gracjana">
       <div class="intro-text">
-        <p>Cześć! Nazywam się Gracjan i jeśli szukasz kogoś, kto stworzy dla Ciebie stronę internetową na miarę Twoich potrzeb, to dobrze trafiłeś. W wolnym czasie zajmuję się tworzeniem nowoczesnych, szybkich i wyjątkowych stron internetowych, które nie są oparte na popularnych,  CMS-ach, czyli gotowych edytorach, jak WordPress. Każdy projekt buduję od podstaw, indywidualnie, dbając o to, by Twoja strona działała bez zarzutu i wyróżniała się na tle konkurencji.Moje rozwiązania wykorzystują sztuczną inteligencję, dzięki czemu Twoja witryna będzie nie tylko estetyczna, szybka i funkcjonalna, ale też dostosowana do dzisiejszych trendów.
-        Wyobraź sobie stronę, która nie tylko wygląda świetnie, ale przede wszystkim realnie wspiera Ciebie, czy Twój biznes. Razem stworzymy coś więcej niż tylko wizytówkę — stronę, która stanie się Twoim najlepszym narzędziem do budowania relacji z klientami i rozwijania marki.
-        Dzięki indywidualnemu podejściu dokładnie zrozumiem, czego potrzebujesz, a potem dostarczę Ci rozwiązanie bazujące na Twoich oczekiwaniach. Idziemy na kompromisy, które sprawiają, że stajesz się częścią tej strony, a nie tylko reprezentujesz ją swoją marką osobistą.
-        Jeśli zależy Ci na:
-        - szybkim działaniu strony,
-        - niezawodności i wydajności,
-        -nowoczesnym wyglądzie, który robi wrażenie,
-        -autentycznym i profesjonalnym wizerunku w sieci,
-        to zapraszam do kontaktu. Zróbmy razem coś, co naprawdę zadziała i da Ci przewagę na rynku.
-        Nie czekaj, bo dobra strona to inwestycja, która zwraca się szybciej, niż myślisz. Napisz do mnie, porozmawiajmy o Twoich potrzebach i zacznijmy działać!  
-</p>
+        <p>Cześć! Nazywam się Gracjan i jeśli szukasz kogoś, kto stworzy dla Ciebie stronę internetową na miarę Twoich potrzeb, to dobrze trafiłeś. W wolnym czasie zajmuję się tworzeniem nowoczesnych, szybkich i wyjątkowych stron internetowych, które nie są oparte na popularnych, CMS-ach, czyli gotowych edytorach, jak WordPress. Każdy projekt buduję od podstaw, indywidualnie, dbając o to, by Twoja strona działała bez zarzutu i wyróżniała się na tle konkurencji.Moje rozwiązania wykorzystują sztuczną inteligencję, dzięki czemu Twoja witryna będzie nie tylko estetyczna, szybka i funkcjonalna, ale też dostosowana do dzisiejszych trendów. Wyobraź sobie stronę, która nie tylko wygląda świetnie, ale przede wszystkim realnie wspiera Ciebie, czy Twój biznes. Razem stworzymy coś więcej niż tylko wizytówkę — stronę, która stanie się Twoim najlepszym narzędziem do budowania relacji z klientami i rozwijania marki. Dzięki indywidualnemu podejściu dokładnie zrozumiem, czego potrzebujesz, a potem dostarczę Ci rozwiązanie bazujące na Twoich oczekiwaniach. Idziemy na kompromisy, które sprawiają, że stajesz się częścią tej strony, a nie tylko reprezentujesz ją swoją marką osobistą. Jeśli zależy Ci na: - szybkim działaniu strony, - niezawodności i wydajności, -nowoczesnym wyglądzie, który robi wrażenie, -autentycznym i profesjonalnym wizerunku w sieci, to zapraszam do kontaktu. Zróbmy razem coś, co naprawdę zadziała i da Ci przewagę na rynku. Nie czekaj, bo dobra strona to inwestycja, która zwraca się szybciej, niż myślisz. Napisz do mnie, porozmawiajmy o Twoich potrzebach i zacznijmy działać!  </p>
       </div>
     </section>
 
@@ -102,60 +155,88 @@
     © 2025 Gracjan Śliwiński | Polityka prywatności
   </footer>
 
-  <script>
-    const stats = document.querySelectorAll('.stat p');
+<script>
+  window.addEventListener("load", () => {
+    const fill = document.getElementById("loaderFill");
+    const loader = document.getElementById("loader");
 
-    const counterObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const target = parseInt(el.getAttribute('data-target'), 10);
-          let count = 0;
+    // Sprawdź, czy loader już był pokazany
+    if (sessionStorage.getItem("loaderShown")) {
+      loader.style.display = "none";
+    } else {
+      fill.style.width = "100%";
+      sessionStorage.setItem("loaderShown", "true");
 
-          const update = () => {
-            if (count <= target) {
-              el.textContent = count + '%';
-              count++;
-              setTimeout(update, 40);
-            } else {
-              el.textContent = target + '%';
-            }
-          };
+      setTimeout(() => {
+        loader.style.opacity = "0";
 
-          update();
-          observer.unobserve(el);
-        }
+        setTimeout(() => {
+          loader.style.display = "none";
+          afterLoad(); // uruchom resztę kodu po schowaniu loadera
+        }, 500);
+      }, 2500);
+
+      return; // zatrzymaj tu, bo po czasie się odpali `afterLoad`
+    }
+
+    afterLoad(); // uruchom natychmiast jeśli loader był już pokazany
+
+    function afterLoad() {
+      // === PO ZAŁADOWANIU STRONY ===
+
+      // Liczniki statystyk
+      const stats = document.querySelectorAll('.stat p');
+
+      const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.getAttribute('data-target'), 10);
+            let count = 0;
+
+            const update = () => {
+              if (count <= target) {
+                el.textContent = count + '%';
+                count++;
+                setTimeout(update, 40);
+              } else {
+                el.textContent = target + '%';
+              }
+            };
+
+            update();
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      stats.forEach(stat => counterObserver.observe(stat));
+
+      // Reveal effect
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+
+      // Hamburger menu
+      const hamburgerBtn = document.getElementById('hamburgerBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
       });
-    }, {
-      threshold: 0.1
-    });
+    }
+  });
+</script>
 
-    stats.forEach(stat => counterObserver.observe(stat));
-
-    // Reveal effect for all .reveal elements
-    const revealElements = document.querySelectorAll('.reveal');
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-
-    // Hamburger
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    hamburgerBtn.addEventListener('click', () => {
-      hamburgerBtn.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-    });
-  </script>
 </body>
 </html>
