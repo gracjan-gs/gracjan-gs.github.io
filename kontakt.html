@@ -127,7 +127,7 @@
         <label for="pakiet">Wybierz pakiet:</label>
         <select id="pakiet" name="pakiet">
           <option value="" disabled selected hidden>Wybierz jeden z pakietów</option>
-          <option value="Darmowa wycena">Darmowa wycena</option>
+          <option id="darmowaWycena" value="Darmowa wycena">Darmowa wycena</option>
           <option value="Pakiet podstawowy">Pakiet podstawowy</option>
           <option value="Pakiet zaawansowany">Pakiet zaawansowany</option>
           <option value="Pakiet indywidualny">Pakiet indywidualny</option>
@@ -219,5 +219,60 @@ fetch(url, {
 });
 
   </script>
+
+
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const pakiet = params.get('pakiet');
+
+    if (pakiet) {
+      const select = document.getElementById('pakiet');
+      if (select) {
+        select.value = pakiet;
+      }
+    }
+  });
+
+
+
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const pakiet = params.get('pakiet');
+
+  if (pakiet) {
+    const select = document.getElementById('pakiet');
+    if (select) {
+      select.value = pakiet;
+    }
+  }
+});
+
+const select = document.getElementById('pakiet');
+
+function updateSelectColor() {
+  switch (select.value) {
+    case 'Darmowa wycena':
+      select.style.color = '#00fff2';
+      break;
+    case 'Pakiet podstawowy':
+      select.style.color = '#00fff2';
+      break;
+    case 'Pakiet zaawansowany':
+      select.style.color = '#00fff2';
+      break;
+    case 'Pakiet indywidualny':
+      select.style.color = '#00fff2';
+      break;
+    default:
+      select.style.color = '#00fff2';
+  }
+}
+
+select.addEventListener('change', updateSelectColor);
+window.addEventListener('load', updateSelectColor);
+
+</script>
 </body>
 </html>
