@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    /* Animacja wchodzenia od dołu */
     .animate-up {
       opacity: 0.7;
       transform: translateY(30px);
@@ -18,6 +17,53 @@
     .animate-up.active {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    #zgodaTekst {
+      font-weight: 200 !important;
+    }
+
+    form#formularz select {
+      padding: 1rem;
+      border: 1px solid #aaa;
+      border-radius: 1rem;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 1rem;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20fill='white'%20class='bi%20bi-caret-down-fill'%20viewBox='0%200%2016%2016'%3E%3Cpath%20d='M7.247%2011.14%202.451%205.658c-.566-.687-.02-1.658.753-1.658h9.592c.773%200%201.319.97.753%201.658l-4.796%205.482a1%201%200%200%201-1.506%200z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1rem;
+    }
+
+    form#formularz select:invalid {
+      border-color: #ffffff;
+    }
+
+    form#formularz select option {
+      background-color: black;
+      color: white;
+    }
+
+    form#formularz input[type="checkbox"] {
+      accent-color: green;
+      width: 1.2rem;
+      height: 1.2rem;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+
+    .checkbox-label {
+      font-weight: 200;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
     }
   </style>
 </head>
@@ -40,6 +86,7 @@
       <span class="bar"></span>
     </button>
   </header>
+
   <div class="mobile-menu" id="mobileMenu">
     <nav>
       <ul style="list-style: none; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
@@ -69,12 +116,27 @@
           <a href="https://wa.me/48881530022" target="_blank">Napisz na WhatsApp</a>
         </div>
       </div>
+
       <form id="formularz">
         <label for="imie">Imię i nazwisko / Firma</label>
         <input type="text" id="imie" name="imie" required />
 
         <label for="email">Adres email / Numer telefonu</label>
         <input type="text" id="email" name="email" required />
+
+        <label for="pakiet">Wybierz pakiet:</label>
+        <select id="pakiet" name="pakiet">
+          <option value="" disabled selected hidden>Wybierz jeden z pakietów</option>
+          <option value="Darmowa wycena">Darmowa wycena</option>
+          <option value="Pakiet podstawowy">Pakiet podstawowy</option>
+          <option value="Pakiet zaawansowany">Pakiet zaawansowany</option>
+          <option value="Pakiet indywidualny">Pakiet indywidualny</option>
+        </select>
+
+        <label class="checkbox-label">
+        <input type="checkbox" id="zgoda" name="zgoda" value="Tak" required />
+          <p id="zgodaTekst">Wyrażam zgodę na przetwarzanie moich danych osobowych i otrzymywanie wiadomości poprzez email / nr telefonu.</p>
+        </label>
 
         <button id="formButton" type="submit">Wyślij</button>
         <p id="odpowiedz"></p>
@@ -105,43 +167,57 @@
     });
 
     document.getElementById('formularz').addEventListener('submit', function (event) {
-      event.preventDefault();
-      const imie = document.getElementById('imie').value;
-      const email = document.getElementById('email').value;
+  event.preventDefault();
 
-      const url =
-        'https://script.google.com/macros/s/AKfycbw7BTM1hG2XR3_7vaBk2WfQk2hfLgvPPPzGem0tSAyw8lQfiyB7_kdJZM9mXtinQ0_z/exec';
+  const imie = document.getElementById('imie').value;
+  const email = document.getElementById('email').value;
+  const pakiet = document.getElementById('pakiet').value;
+  const zgoda = document.getElementById('zgoda').checked ? 'Tak' : 'Nie';
 
-      const dane = new FormData();
-      dane.append('imie', imie);
-      dane.append('email', email);
+  if (!zgoda) {
+    document.getElementById('odpowiedz').innerText = 'Musisz wyrazić zgodę na przetwarzanie danych.';
+    return;
+  }
 
-      fetch(url, {
-        method: 'POST',
-        body: dane,
-      })
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById('odpowiedz').innerText = 'Dziękuję za wiadomość';
-          document.getElementById('formularz').reset();
-        })
-        .catch((error) => {
-          document.getElementById('odpowiedz').innerText = 'Wystąpił błąd, spróbuj ponownie';
-        });
+  const url = 'https://script.google.com/macros/s/AKfycbyhwKQWNeXC6o_Wr9ZVhoubh0PPEOGwHPTcmqJhs9oe9Tvno1mWvo2A3bNwRVxS0tgh9g/exec';
 
-      const submitButton = document.querySelector('#formularz button');
-      submitButton.textContent = 'Przesłano';
-      submitButton.style.backgroundColor = 'green';
-      submitButton.style.color = 'white';
-      submitButton.disabled = true;
+const dane = new URLSearchParams();
+dane.append('imie', imie);
+dane.append('email', email);
+dane.append('pakiet', pakiet);
+dane.append('zgoda', zgoda);
 
-      setTimeout(() => {
-        submitButton.textContent = 'Wyślij';
-        submitButton.style.backgroundColor = '';
-        submitButton.style.color = '';
-        submitButton.disabled = false;
-      }, 3000);
+fetch(url, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  body: dane.toString(),
+})
+
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById('odpowiedz').innerText = 'Dziękuję za wiadomość';
+      document.getElementById('formularz').reset();
+    })
+    .catch((error) => {
+      document.getElementById('odpowiedz').innerText = 'Wystąpił błąd, spróbuj ponownie';
     });
+
+  const submitButton = document.querySelector('#formularz button');
+  submitButton.textContent = 'Przesłano';
+  submitButton.style.backgroundColor = 'green';
+  submitButton.style.color = 'white';
+  submitButton.disabled = true;
+
+  setTimeout(() => {
+    submitButton.textContent = 'Wyślij';
+    submitButton.style.backgroundColor = '';
+    submitButton.style.color = '';
+    submitButton.disabled = false;
+  }, 3000);
+});
+
   </script>
 </body>
 </html>
