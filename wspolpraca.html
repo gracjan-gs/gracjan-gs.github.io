@@ -1,121 +1,294 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gracjan-Współpraca</title>
-    <link rel="stylesheet" href="wspolpraca.css">
-    <link rel="shortcut icon" href="img/favico++.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gracjan Śliwiński — Tworzenie stron internetowych</title>
+  <link rel="stylesheet" href="oferta.css">
+  <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .reveal {
+      opacity: 0.7;
+      transform: translateY(50px);
+      transition: all 1s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+
+
+
+
+
+
+:root {
+  --black: #0f0f0f;
+  --white: #ffffff;
+  --accent: #ffffff;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: Arial, sans-serif;
+}
+
+/* Reveal effect */
+.reveal {
+  opacity: 0.7;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Timeline block */
+main.timeline {
+  width: 90%;
+  margin: 4em auto;
+  background-color: var(--black);
+  border-radius: 2rem;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+  padding: 2rem 1.5rem;
+}
+
+/* Timeline entry */
+main.timeline p {
+  font-size: 1em;
+  line-height: 1.75em;
+  border-top: 3px solid var(--accent);
+  margin: 0;
+  padding: 40px;
+  counter-increment: section;
+  position: relative;
+  color: var(--white);
+}
+
+/* Kółka z numerami */
+main.timeline p::before {
+  content: counter(section);
+  position: absolute;
+  border-radius: 50%;
+  padding: 10px;
+  height: 1.25em;
+  width: 1.25em;
+  background-color: var(--accent);
+  text-align: center;
+  line-height: 1.25em;
+  color: var(--black);
+  font-size: 1em;
+}
+
+/* Odd (lewa strona) */
+main.timeline p:nth-child(odd) {
+  border-right: 3px solid var(--accent);
+  padding-left: 5rem;
+}
+
+main.timeline p:nth-child(odd)::before {
+  left: 100%;
+  margin-left: -20px;
+}
+
+/* Even (prawa strona) */
+main.timeline p:nth-child(even) {
+  border-left: 3px solid var(--accent);
+  padding-right: 0;
+}
+
+main.timeline p:nth-child(even)::before {
+  right: 100%;
+  margin-right: -20px;
+}
+
+/* First and last border fixes */
+main.timeline p:first-child {
+  border-top: 0;
+}
+
+main.timeline p:last-child {
+  border-bottom: 3px solid var(--accent);
+}
+@media (max-width: 768px) {
+  main.timeline {
+    max-width: 85vw; /* zamiast 90vw teraz 85vw */
+    margin: 2em auto;
+    padding: 1.5rem 1rem;
+  }
+
+  main.timeline p {
+    padding: 25px 20px; /* jak było */
+  }
+
+  main.timeline p::before {
+    padding: 6px;
+    height: 1em;
+    width: 1em;
+    font-size: 0.85em;
+    line-height: 1em;
+    margin-left: unset;
+    margin-right: unset;
+  }
+
+  main.timeline p:nth-child(odd)::before {
+    left: 100%;
+    margin-left: -15px;
+  }
+
+  main.timeline p:nth-child(even)::before {
+    right: 100%;
+    margin-right: -15px;
+  }
+  main.timeline p:nth-child(odd) {
+  border-right: 3px solid var(--accent);
+  padding-left: 1rem;
+}
+}
+
+
+
+
+
+
+  </style>
 </head>
 <body>
-    <header class="header sticky">
-        <nav class="navbar">
-            <section><a href="index.html">Dom</a></section>
-            <section><a href="kontakt.html">Kontakt</a></section>
-            <section><a id="nav1" href="wspolpraca.html">Współpraca</a></section>
-        </nav>
-    </header>
-    <section class="content-wrap">
-    <main class="container">
-          <div class="single-video-wrapper">
-            <img
-              id="myImage"
-              src="img/BLOG.png"
-              alt="Zrzut ekranu z filmu BLOG"
-              style="width: 90%; max-width: 800px; display: block; margin: 1rem auto 0; border-radius: 2rem;"
-            >
-          </div>
-      
-          <script>
-            const video = document.getElementById('myVideo');
-          
-            setTimeout(() => {
-              video.play().catch(e => {
-                console.log('Nie udało się odtworzyć video automatycznie:', e);
-              });
-            }, 500);
-          </script>
-          
-          
-          
-          
-        <section class="section-title"><b>Jak wygląda współpraca ze mną?</b></section>
-        
-            <div class="content">
-                <p class="point-header">&bull;<strong>Konsultacja</strong></p>
-                <p>Zaczynamy od rozmowy, w której wspólnie ustalamy, jak powinna wyglądać Twoja idealna strona. Poznaję Twoje potrzeby, oczekiwania oraz cele, aby stworzyć rozwiązanie idealnie dopasowane do Ciebie lub Twojego biznesu. Omawiamy funkcjonalności strony oraz najlepsze rozwiązania, które pozwolą osiągnąć zamierzony efekt.</p>
-            <div class="text-box">
-                <p class="point-header">&bull;<strong>Oferta i wycena</strong></p>
-                <p>Po zebraniu wszystkich niezbędnych informacji przygotowuję szczegółową propozycję rozwiązania wraz z przejrzystą wyceną. Ostateczny koszt zależy głównie od zakresu prac, takich jak liczba podstron, stopień zaawansowania funkcjonalności czy integracje z innymi systemami. Otrzymujesz jasny plan działań i dokładny kosztorys, dzięki czemu masz pełną kontrolę nad budżetem.</p>
-            </div>
-            <div class="text-box">
-                <p class="point-header">&bull;<strong>Projekt i zatwierdzenie</strong></p>
-                <p>Na tym etapie tworzę wstępną koncepcję, projektując stronę. To dopiero efekt początkowy, który ułatwi kolejne etapy. Przedstawiam układ, wygląd oraz kluczowe elementy, abyś mógł(a) zobaczyć, jak wszystko będzie wyglądać. Masz możliwość wniesienia uwag oraz nadania innego efektu wizualnego stronie, a po Twojej akceptacji przechodzimy do realizacji.</p>
-            </div>
-            <div class="text-box">
-                <p class="point-header">&bull;<strong>Realizacja</strong></p>
-                <p>To najważniejszy i najbardziej czasochłonny etap. Tworzę stronę od podstaw, dbając o jej wygląd, intuicyjność, szybkość działania i optymalizację. Każdy element jest starannie dopracowany, aby Twoja witryna była nie tylko estetyczna, ale i skuteczna.</p>
-            </div>
-            <div class="text-box">
-                <p class="point-header">&bull;<strong> Testy i wdrożenie</strong></p>
-                <p>Po zakończeniu prac przeprowadzam dokładne testy, aby upewnić się, że wszystko działa bez zarzutu. To moment, w którym wychwytujemy i eliminujemy wszelkie niedociągnięcia, dopracowując każdy detal. Następnie zajmuję się wdrożeniem i wrzuceniem projektu na serwer, dbając o to, aby wszystko działało płynnie i bezproblemowo od samego startu.</p>
-            </div>
-            <div class="text-box">
-                <p class="point-header">&bull;<strong> Wsparcie po wdrożeniu</strong></p>
-                <p>Jeśli chcesz na bieżąco dodawać nowe treści, aktualizować informacje czy rozbudowywać stronę, możesz skorzystać z jednego z dostępnych pakietów wsparcia: <u><em>miesięcznego</em></u> – Płacisz z góry za miesiąc i z wyprzedzeniem podajesz, jakie zmiany chcesz wprowadzić na stronie. Przez cały miesiąc jestem do Twojej dyspozycji, realizując zgłoszone zadania zgodnie z ustaleniami, <u><em>jednorazowego</em></u> – Płacisz raz za wykonanie zlecenia. Zgłaszasz zmiany z wyprzedzeniem, a ja je realizuję. Dzięki temu masz pewność, że zawsze możesz liczyć na moją pomoc – niezależnie od tego, czy chcesz dodać nowe treści, czy zaktualizować istniejące informacje.</p>
-            </div>
-            </div>            
+  <header>
+    <div>
+      <div id="header-line">
+        <a href="index.html">
+          <span id="h1">Gracjan Śliwiński</span>
+        </a>
+        <hr class="custom-hr">
+      </div>
+      <a href="index.html">
+        <div class="subtitle">TWORZENIE STRON INTERNETOWYCH</div>
+      </a>
+    </div>
+    <button class="menu-toggle" aria-label="Menu" id="hamburgerBtn">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </header>
 
-            <!--FAQ-->
-            <section class="section-title"><b>Najczęściej zadawane pytania:</b></section>
+  <div class="mobile-menu" id="mobileMenu">
+    <nav>
+      <ul style="list-style: none; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+        <li><a href="index.html"><i class="fas fa-house"></i> Start</a></li>
+        <li><a href="blog.html"><i class="fas fa-handshake"></i> Współpraca</a></li>
+        <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+        <li><a href="kontakt.html"><i class="fas fa-envelope"></i> Kontakt</a></li>
+        <li><a href="politykaPrywatnosci.html"><i class="fas fa-lock"></i> Polityka prywatności</a></li>
+        <li><a href="oferta.html"><i class="fas fa-tags"></i> Oferta</a></li>
+      </ul>
+    </nav>
+  </div>
+<main class="timeline reveal">
+  <p><strong>Konsultacja</strong><br>
+Zaczynamy od rozmowy, w której wspólnie ustalamy, jak powinna wyglądać Twoja idealna strona. Poznaję Twoje potrzeby, oczekiwania oraz cele, aby stworzyć rozwiązanie idealnie dopasowane do Ciebie lub Twojego biznesu. Omawiamy funkcjonalności strony oraz najlepsze rozwiązania, które pozwolą osiągnąć zamierzony efekt.
+</p>
+  <p>
+<strong>Oferta i wycena</strong><br>
+Po zebraniu wszystkich niezbędnych informacji przygotowuję szczegółową propozycję rozwiązania wraz z przejrzystą wyceną. Ostateczny koszt zależy głównie od zakresu prac, takich jak liczba podstron, stopień zaawansowania funkcjonalności czy integracje z innymi systemami. Otrzymujesz jasny plan działań i dokładny kosztorys, dzięki czemu masz pełną kontrolę nad budżetem.</p>
+  <p>
+    <strong>Projekt i zatwierdzenie</strong><br>
+Na tym etapie tworzę wstępną koncepcję, projektując stronę. To dopiero efekt początkowy, który ułatwi kolejne etapy. Przedstawiam układ, wygląd oraz kluczowe elementy, abyś mógł(a) zobaczyć, jak wszystko będzie wyglądać. Masz możliwość wniesienia uwag oraz nadania innego efektu wizualnego stronie, a po Twojej akceptacji przechodzimy do realizacji.</p>
+  <p>
+    <strong>Realizacja</strong><br>
+To najważniejszy i najbardziej czasochłonny etap. Tworzę stronę od podstaw, dbając o jej wygląd, intuicyjność, szybkość działania i optymalizację. Każdy element jest starannie dopracowany, aby Twoja witryna była nie tylko estetyczna, ale i skuteczna.</p>
 
-            <div class="faq-container">
-              <details>
-                <summary>Ile to kosztuje?</summary>
-                <p>Każdy projekt jest wyceniany indywidualnie – po wstępnej konsultacji otrzymujesz dokładną propozycję oraz kosztorys. Wszystko zależy od zakresu prac, liczby podstron i stopnia zaawansowania. Dzięki temu wiesz, za co płacisz i co otrzymasz.</p>
-              </details>
-            
-              <details>
-                <summary>A co po zakończeniu?</summary>
-                <p>Nie zostajesz sam/a. Oferuję pełne wsparcie po wdrożeniu strony – możesz wybrać pakiet miesięczny lub jednorazowy. W razie potrzeby masz do mnie kontakt i pewność, że strona będzie działać sprawnie również w przyszłości.</p>
-              </details>
-            
-              <details>
-                <summary>Czy poradzę sobie?</summary>
-                <p>Jasne, że tak! Cały proces jest prosty – zajmuję się wszystkim od A do Z, a Ty masz pełną kontrolę, bez zbędnego stresu. Na każdym etapie będziesz na bieżąco, więc nie musisz się martwić o techniczne szczegóły. Po zakończeniu współpracy to jeszcze nie koniec – masz możliwość wyboru jednego z dwóch pakietów wsparcia, które zapewnią Ci ciągłą pomoc i spokój, wiedząc, że Twoja strona zawsze będzie działać bez zarzutu. Ty skupiasz się na tym, co ważne, a ja dbam o całą resztę.</p>
-              </details>
+  <p>
+    <strong>Projekt i zatwierdzenie</strong><br>
+Na tym etapie tworzę wstępną koncepcję, projektując stronę. To dopiero efekt początkowy, który ułatwi kolejne etapy. Przedstawiam układ, wygląd oraz kluczowe elementy, abyś mógł(a) zobaczyć, jak wszystko będzie wyglądać. Masz możliwość wniesienia uwag oraz nadania innego efektu wizualnego stronie, a po Twojej akceptacji przechodzimy do realizacji.</p>
+  
+  <p>
+<strong>Wsparcie po wdrożeniu</strong><br>
+Jeśli chcesz na bieżąco dodawać nowe treści, aktualizować informacje czy rozbudowywać stronę, możesz skorzystać z jednego z dostępnych pakietów wsparcia: miesięcznego – Płacisz z góry za miesiąc i z wyprzedzeniem podajesz, jakie zmiany chcesz wprowadzić na stronie. Przez cały miesiąc jestem do Twojej dyspozycji, realizując zgłoszone zadania zgodnie z ustaleniami, jednorazowego – Płacisz raz za wykonanie zlecenia. Zgłaszasz zmiany z wyprzedzeniem, a ja je realizuję. Dzięki temu masz pewność, że zawsze możesz liczyć na moją pomoc – niezależnie od tego, czy chcesz dodać nowe treści, czy zaktualizować istniejące informacje.
+</p>
+</main>
+  <footer>
+    © 2025 Gracjan Śliwiński | Polityka prywatności
+  </footer>
 
-              <details>
-                <summary> Czy będę częścią projektu?</summary>
-                <p>Oczywiście, że tak! Chociaż ja zajmuję się większością pracy, cały czas będziesz miał/a wpływ na to, jak projekt wygląda. Zadaję dużo pytań, dzięki którym lepiej rozumiem Twoje potrzeby, a Ty masz pełną kontrolę nad tym, co się dzieje. Projekt tworzymy razem – ja zajmuję się technicznymi rzeczami, Ty dzielisz się swoimi uwagami i pomysłami. Dzięki temu strona będzie dokładnie taka, jaką sobie wyobrażasz.
-                </p>
-              </details>
-            </div>
-            <!--koniec->FAQ-->
+  <script>
+    const stats = document.querySelectorAll('.stat p');
 
-        <section class="section-title"><b>Obdarzyli mnie zaufaniem:</b></section>
-        <div class="partners">
-            <div class="partner">
-                <img src="img/LogotzsPNG.PNG" alt="Trenuj Ze Śliwką">
-                <div>
-                    <p>Trenuj Ze Śliwką</p>
-                    <a href="https://trenujzesliwka.github.io/">kliknij aby zobaczyć stronę</a>
-                </div>
-            </div>
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'), 10);
+          let count = 0;
 
-           <!-- <div class="partner">
-                <img src="img/G — kopia.png" alt="Trenuj Ze Śliwką">
-                <div>
-                    <p>Trenuj Ze Śliwką</p>
-                    <a href="#">kliknij aby zobaczyć stronę</a>
-                </div>
-             </div>-->
-        </div>
-    </main>
-    </section>
-    <footer class="footer1">
-        &copy; 2025 Gracjan Śliwiński | <a href="politykaprywatnosci.html">Polityka prywatności</a>
-    </footer>
+          const update = () => {
+            if (count <= target) {
+              el.textContent = count + '%';
+              count++;
+              setTimeout(update, 40);
+            } else {
+              el.textContent = target + '%';
+            }
+          };
+
+          update();
+          observer.unobserve(el);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    stats.forEach(stat => counterObserver.observe(stat));
+
+    // Reveal effect for all .reveal elements
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Hamburger
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburgerBtn.addEventListener('click', () => {
+      hamburgerBtn.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+  </script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const pakiet = params.get('pakiet');
+
+    if (pakiet) {
+      const select = document.getElementById('pakiet');
+      if (select) {
+        select.value = pakiet;
+      }
+    }
+  });
+</script>
+
+
+
 </body>
 </html>
