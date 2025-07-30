@@ -1,524 +1,104 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gracjan Śliwiński — Tworzenie stron internetowych</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    .reveal {<!DOCTYPE html>
-<html lang="pl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gracjan Śliwiński — Tworzenie stron internetowych</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    .reveal {
-      opacity: 0.7;
-      transform: translateY(50px);
-      transition: all 1s ease-out;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @import url('https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap');
-
-    #loader {
-      position: fixed;
-      inset: 0;
-      background: #0f0f0f;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 9999;
-      transition: opacity 0.5s ease;
-      font-family: 'Petit Formal Script', cursive;
-    }
-
-    .loader-content {
-      text-align: center;
-      color: #fff;
-      padding: 1rem;
-    }
-
-    .loader-text {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #ffffff;
-    }
-
-    .loader-bar {
-      width: 80vw;
-      max-width: 400px;
-      height: 8px;
-      background: #ffffff;
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    .loader-fill {
-      width: 0%;
-      height: 100%;
-      background: #717171;
-      transition: width 2.5s ease-in-out;
-    }
-
-    @media (max-width: 600px) {
-      .loader-text {
-        font-size: 1.2rem;
-      }
-
-      .loader-bar {
-        height: 6px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gracjan Śliwiński</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="img/favico++.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <div id="loader">
-    <div class="loader-content">
-      <div class="loader-text">Gracjan Śliwiński</div>
-      <div class="loader-bar">
-        <div class="loader-fill" id="loaderFill"></div>
-      </div>
+   <body>
+    <header class="header">
+        <nav class="navbar">
+            <section><a id="nav1" href="index.html">Dom</a></section>
+            <section><a href="kontakt.html">Kontakt</a></section>
+            <section><a href="wspolpraca.html">Współpraca</a></section>
+        </nav>
+    </header>
+    <section class="content-wrap">
+<main class="container">
+    <section class="image-stack-wrapper">
+        <section class="image-stack">
+          <img src="img/SecondPhoto.jpg" alt="Photo1">
+          <img src="img/Prof.jpg" alt="Photo1">
+        </section>
+    </section>
+</main>
+  <div class="counters-wrapper">
+    <div class="counter-box" data-target="100">
+      <div class="counter-title">Zaangażowanie w projekt</div>
+      <div class="counter">0</div>
+    </div>
+    <div class="counter-box" data-target="98">
+      <div class="counter-title">zadowolenie klienta</div>
+      <div class="counter">0</div>
     </div>
   </div>
+  <script>
+const boxes = document.querySelectorAll('.counter-box');
 
-  <header>
-    <div>
-      <div id="header-line">
-        <a href="index.html">
-          <span id="h1">Gracjan Śliwiński</span>
-        </a>
-        <hr class="custom-hr">
-      </div>
-      <a href="index.html">
-        <div class="subtitle">TWORZENIE STRON INTERNETOWYCH</div>
-      </a>
-    </div>
-    <button class="menu-toggle" aria-label="Menu" id="hamburgerBtn">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-  </header>
+const options = {
+  root: null, // obserwujemy względem viewportu
+  threshold: 0.1 // element uznajemy za widoczny, gdy choć 10% jest w widoku
+};
 
-  <div class="mobile-menu" id="mobileMenu">
-    <nav>
-      <ul style="list-style: none; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
-        <li><a href="index.html"><i class="fas fa-house"></i> Start</a></li>
-        <li><a href="kontakt.html"><i class="fas fa-envelope"></i> Kontakt</a></li>
-        <li><a href="oferta.html"><i class="fas fa-tags"></i> Oferta</a></li>
-        <li><a href="wspolpraca.html"><i class="fas fa-handshake"></i> Współpraca</a></li>
-        <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
-        <li><a href="politykaPrywatnosci.html"><i class="fas fa-lock"></i> Polityka prywatności</a></li>
-      </ul>
-    </nav>
-  </div>
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const box = entry.target;
+      const counter = box.querySelector('.counter');
+      const target = parseInt(box.getAttribute('data-target'), 10) || 100;
+      let count = 0;
 
-  <main>
-    <section class="intro reveal">
-      <img src="img/CanvaPost.png" alt="Zdjęcie Gracjana">
-      <div class="intro-text">
-        <br><br>
-       Cześć, nazywam się Gracjan. Projektuję i tworzę strony internetowe od podstaw — bez gotowców, bez skrótów.
-Każdy projekt to indywidualna realizacja, która powstaje w pełni ręcznie: pod kątem Twoich celów, odbiorców i specyfiki branży.
+      const update = () => {
+        if (count <= target) {
+          counter.textContent = count + '%';
+          count++;
+          setTimeout(update, 20);
+        } else {
+          counter.textContent = target + '%';
+        }
+      };
 
-Nie korzystam z WordPressa ani innych CMS-ów. Nie buduję na szablonach.
-Każda strona, którą oddaję, jest zoptymalizowana pod wydajność, trwałość i skalowalność.
-Działa szybko, wygląda profesjonalnie i zachowuje spójność na każdym urządzeniu.<br><br>
+      update();
 
-W całym procesie nie chodzi tylko o wygląd.
-Fundamentem jest funkcjonalność — strona ma wspierać Twoje działania biznesowe, komunikować to, co ważne, i robić to w sposób zrozumiały, przejrzysty i technicznie bezbłędny.
-W razie potrzeby wykorzystuję narzędzia oparte na sztucznej inteligencji, by usprawnić UX, SEO i automatyzację procesów.
-Wszystko zależy od realnych potrzeb.<br><br>
-
-Współpraca przebiega konkretnie.
-Rozpoznaję oczekiwania, zadaję pytania, proponuję rozwiązania.
-Bez przeciągania i bez presji.
-Celem jest gotowy projekt, który dowozi — zarówno wizualnie, jak i technicznie.<br><br>
-
-Jeśli zależy Ci na stronie, która wpisuje się w aktualne standardy technologiczne i wizualne,
-działa szybko, wygląda profesjonalnie i pracuje na Twój wizerunek — <a href="kontakt.html"><i>skontaktuj się.</i></a>
-<br><br>
-      </div>
-    </section>
-
-    <section class="stats reveal">
-      <div class="stat">
-        <h2>Zadowolenie Klientów</h2>
-        <p data-target="100">0%</p>
-      </div>
-      <div class="stat">
-        <h2>Zaangażowanie w projekt</h2>
-        <p data-target="100">0%</p>
-      </div>
-    </section>
-
-    <section class="projects reveal">
-      <h2>Wykonane projekty</h2>
-      <div class="partners">
-        <div class="partner">
-          <img src="img/LogotzsPNG.PNG" alt="Trenuj Ze Śliwką">
-          <div>
-            <p>Trenuj Ze Śliwką</p>
-            <a href="https://trenujzesliwka.github.io/"><i><u>kliknij aby zobaczyć stronę</u></i></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <a href="kontakt.html" class="contact-button reveal">Kontakt <i class="fas fa-envelope"></i></a>
-  </main>
-
-  <footer>
-    &copy; 2025 Gracjan Śliwiński | <a href="politykaPrywatnosci.html">Polityka prywatności</a>
-  </footer>
-
-<script>
-  window.addEventListener("load", () => {
-    const fill = document.getElementById("loaderFill");
-    const loader = document.getElementById("loader");
-
-    // Sprawdź, czy loader już był pokazany
-    if (sessionStorage.getItem("loaderShown")) {
-      loader.style.display = "none";
-    } else {
-      fill.style.width = "100%";
-      sessionStorage.setItem("loaderShown", "true");
-
-      setTimeout(() => {
-        loader.style.opacity = "0";
-
-        setTimeout(() => {
-          loader.style.display = "none";
-          afterLoad(); // uruchom resztę kodu po schowaniu loadera
-        }, 500);
-      }, 2500);
-
-      return; // zatrzymaj tu, bo po czasie się odpali `afterLoad`
-    }
-
-    afterLoad(); // uruchom natychmiast jeśli loader był już pokazany
-
-    function afterLoad() {
-      // === PO ZAŁADOWANIU STRONY ===
-
-      // Liczniki statystyk
-      const stats = document.querySelectorAll('.stat p');
-
-      const counterObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const el = entry.target;
-            const target = parseInt(el.getAttribute('data-target'), 10);
-            let count = 0;
-
-            const update = () => {
-              if (count <= target) {
-                el.textContent = count + '%';
-                count++;
-                setTimeout(update, 40);
-              } else {
-                el.textContent = target + '%';
-              }
-            };
-
-            update();
-            observer.unobserve(el);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      stats.forEach(stat => counterObserver.observe(stat));
-
-      // Reveal effect
-      const revealElements = document.querySelectorAll('.reveal');
-
-      const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      revealElements.forEach(el => revealObserver.observe(el));
-
-      // Hamburger menu
-      const hamburgerBtn = document.getElementById('hamburgerBtn');
-      const mobileMenu = document.getElementById('mobileMenu');
-
-      hamburgerBtn.addEventListener('click', () => {
-        hamburgerBtn.classList.toggle('open');
-        mobileMenu.classList.toggle('open');
-      });
+      observer.unobserve(box); // odznaczamy, żeby animacja nie odpalała się ponownie
     }
   });
-</script>
+}, options);
 
+boxes.forEach(box => {
+  observer.observe(box);
+});
+
+  </script>  
+    <section class="section-title"><b>Dowiedz się czegoś o mnie:</b></section>
+<p class="p1">
+        <strong><em>Gracjan Śliwiński</em></strong><br><br>
+        Cześć!
+        Mam na imię Gracjan i w wolnym czasie zajmuję się tworzeniem prostych, 
+        ale skutecznych stron internetowych, które NIE są oparte na 
+        popularnych CMS-ach, takich jak WordPress. Każdy projekt 
+        tworzę od podstaw, dbając o jego lekkość, szybkość i dopasowanie 
+        do Twoich potrzeb.
+        <br>
+        <br>
+        To zaszczyt gościć Cię na mojej stronie! Jeśli tutaj jesteś, 
+        to najprawdopodobniej szukasz kogoś, kto zajmie się stworzeniem 
+        strony dla Ciebie lub Twojej firmy, prawda? Świetnie trafiłeś!
+        <br>
+        <br>
+        Kliknij w zakładkę <i><strong>Kontakt</strong></i>, napisz do mnie, a ustalimy szczegóły. 
+        Razem stworzymy stronę, która będzie realnym wsparciem dla Ciebie i 
+        Twojego biznesu. Zaczynajmy!
+    </p>
+</section>
+<footer class="footer1">
+    &copy; 2025 Gracjan Śliwiński | <a href="politykaprywatnosci.html">Polityka prywatności</a>
+</footer>
+<script src="script.js"></script>
 </body>
-</html>
 
-      opacity: 0.7;
-      transform: translateY(50px);
-      transition: all 1s ease-out;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @import url('https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap');
-
-    #loader {
-      position: fixed;
-      inset: 0;
-      background: #0f0f0f;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 9999;
-      transition: opacity 0.5s ease;
-      font-family: 'Petit Formal Script', cursive;
-    }
-
-    .loader-content {
-      text-align: center;
-      color: #fff;
-      padding: 1rem;
-    }
-
-    .loader-text {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #ffffff;
-    }
-
-    .loader-bar {
-      width: 80vw;
-      max-width: 400px;
-      height: 8px;
-      background: #ffffff;
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    .loader-fill {
-      width: 0%;
-      height: 100%;
-      background: #717171;
-      transition: width 2.5s ease-in-out;
-    }
-
-    @media (max-width: 600px) {
-      .loader-text {
-        font-size: 1.2rem;
-      }
-
-      .loader-bar {
-        height: 6px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <div id="loader">
-    <div class="loader-content">
-      <div class="loader-text">Gracjan Śliwiński</div>
-      <div class="loader-bar">
-        <div class="loader-fill" id="loaderFill"></div>
-      </div>
-    </div>
-  </div>
-
-  <header>
-    <div>
-      <div id="header-line">
-        <a href="index.html">
-          <span id="h1">Gracjan Śliwiński</span>
-        </a>
-        <hr class="custom-hr">
-      </div>
-      <a href="index.html">
-        <div class="subtitle">TWORZENIE STRON INTERNETOWYCH</div>
-      </a>
-    </div>
-    <button class="menu-toggle" aria-label="Menu" id="hamburgerBtn">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-  </header>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <nav>
-      <ul style="list-style: none; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
-        <li><a href="index.html"><i class="fas fa-house"></i> Start</a></li>
-        <li><a href="kontakt.html"><i class="fas fa-envelope"></i> Kontakt</a></li>
-        <li><a href="oferta.html"><i class="fas fa-tags"></i> Oferta</a></li>
-        <li><a href="wspolpraca.html"><i class="fas fa-handshake"></i> Współpraca</a></li>
-        <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
-        <li><a href="politykaPrywatnosci.html"><i class="fas fa-lock"></i> Polityka prywatności</a></li>
-      </ul>
-    </nav>
-  </div>
-
-  <main>
-    <section class="intro reveal">
-      <img src="img/CanvaPost.png" alt="Zdjęcie Gracjana">
-      <div class="intro-text">
-        <br><br>
-       Cześć, nazywam się Gracjan. Projektuję i tworzę strony internetowe od podstaw — bez gotowców, bez skrótów.
-Każdy projekt to indywidualna realizacja, która powstaje w pełni ręcznie: pod kątem Twoich celów, odbiorców i specyfiki branży.
-
-Nie korzystam z WordPressa ani innych CMS-ów. Nie buduję na szablonach.
-Każda strona, którą oddaję, jest zoptymalizowana pod wydajność, trwałość i skalowalność.
-Działa szybko, wygląda profesjonalnie i zachowuje spójność na każdym urządzeniu.<br><br>
-
-W całym procesie nie chodzi tylko o wygląd.
-Fundamentem jest funkcjonalność — strona ma wspierać Twoje działania biznesowe, komunikować to, co ważne, i robić to w sposób zrozumiały, przejrzysty i technicznie bezbłędny.
-W razie potrzeby wykorzystuję narzędzia oparte na sztucznej inteligencji, by usprawnić UX, SEO i automatyzację procesów.
-Wszystko zależy od realnych potrzeb.<br><br>
-
-Współpraca przebiega konkretnie.
-Rozpoznaję oczekiwania, zadaję pytania, proponuję rozwiązania.
-Bez przeciągania i bez presji.
-Celem jest gotowy projekt, który dowozi — zarówno wizualnie, jak i technicznie.<br><br>
-
-Jeśli zależy Ci na stronie, która wpisuje się w aktualne standardy technologiczne i wizualne,
-działa szybko, wygląda profesjonalnie i pracuje na Twój wizerunek — <a href="kontakt.html"><i>skontaktuj się.</i></a>
-<br><br>
-      </div>
-    </section>
-
-    <section class="stats reveal">
-      <div class="stat">
-        <h2>Zadowolenie Klientów</h2>
-        <p data-target="100">0%</p>
-      </div>
-      <div class="stat">
-        <h2>Zaangażowanie w projekt</h2>
-        <p data-target="100">0%</p>
-      </div>
-    </section>
-
-    <section class="projects reveal">
-      <h2>Wykonane projekty</h2>
-      <div class="partners">
-        <div class="partner">
-          <img src="img/LogotzsPNG.PNG" alt="Trenuj Ze Śliwką">
-          <div>
-            <p>Trenuj Ze Śliwką</p>
-            <a href="https://trenujzesliwka.github.io/"><i><u>kliknij aby zobaczyć stronę</u></i></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <a href="kontakt.html" class="contact-button reveal">Kontakt <i class="fas fa-envelope"></i></a>
-  </main>
-
-  <footer>
-    &copy; 2025 Gracjan Śliwiński | <a href="politykaPrywatnosci.html">Polityka prywatności</a>
-  </footer>
-
-<script>
-  window.addEventListener("load", () => {
-    const fill = document.getElementById("loaderFill");
-    const loader = document.getElementById("loader");
-
-    // Sprawdź, czy loader już był pokazany
-    if (sessionStorage.getItem("loaderShown")) {
-      loader.style.display = "none";
-    } else {
-      fill.style.width = "100%";
-      sessionStorage.setItem("loaderShown", "true");
-
-      setTimeout(() => {
-        loader.style.opacity = "0";
-
-        setTimeout(() => {
-          loader.style.display = "none";
-          afterLoad(); // uruchom resztę kodu po schowaniu loadera
-        }, 500);
-      }, 2500);
-
-      return; // zatrzymaj tu, bo po czasie się odpali `afterLoad`
-    }
-
-    afterLoad(); // uruchom natychmiast jeśli loader był już pokazany
-
-    function afterLoad() {
-      // === PO ZAŁADOWANIU STRONY ===
-
-      // Liczniki statystyk
-      const stats = document.querySelectorAll('.stat p');
-
-      const counterObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const el = entry.target;
-            const target = parseInt(el.getAttribute('data-target'), 10);
-            let count = 0;
-
-            const update = () => {
-              if (count <= target) {
-                el.textContent = count + '%';
-                count++;
-                setTimeout(update, 40);
-              } else {
-                el.textContent = target + '%';
-              }
-            };
-
-            update();
-            observer.unobserve(el);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      stats.forEach(stat => counterObserver.observe(stat));
-
-      // Reveal effect
-      const revealElements = document.querySelectorAll('.reveal');
-
-      const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      revealElements.forEach(el => revealObserver.observe(el));
-
-      // Hamburger menu
-      const hamburgerBtn = document.getElementById('hamburgerBtn');
-      const mobileMenu = document.getElementById('mobileMenu');
-
-      hamburgerBtn.addEventListener('click', () => {
-        hamburgerBtn.classList.toggle('open');
-        mobileMenu.classList.toggle('open');
-      });
-    }
-  });
-</script>
-
-</body>
 </html>
