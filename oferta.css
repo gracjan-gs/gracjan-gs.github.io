@@ -485,7 +485,7 @@ form#formularz button:hover {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1.5rem;
     padding: 2rem;
-    background: #0e0e0e;
+    background: #000000;
     color: white;
     font-family: 'Segoe UI', sans-serif;
     max-width: 1000px;
