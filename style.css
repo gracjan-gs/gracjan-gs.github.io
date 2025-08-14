@@ -32,7 +32,7 @@ body::before {
 }
 
 body {
-  position: relative !important;
+  position: relative !;
 }
 
 main {
@@ -247,19 +247,6 @@ main {
   text-decoration: underline;
 }
 
-.contact-button {
-  display: block;
-  width: fit-content;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  background: var(--black);
-  color: var(--white);
-  border: 0.1rem solid var(--white);
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 1rem;
-}
-
 footer {
   background: var(--black);
   padding: 2rem 5vw;
@@ -376,3 +363,67 @@ footer {
 
 
 
+.button-86 {
+    display: block;
+    width: fit-content;
+    all: unset;
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    position: relative;
+    color: #f0f0f0;
+    cursor: pointer;
+    z-index: 1;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto; /* DODANE */
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+  .button-86::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -99999;
+    transform: translate(5%, 20%);
+    width: 110%;
+    height: 110%;
+    background: #000000;
+    border-radius: 10px;
+  }
+
+  .button-86::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -99999;
+    border-radius: 10px;
+    transform: translate(0, 0);
+    width: 100%;
+    height: 100%;
+    background: #ffffff2d;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+
+.contact-button {
+ 
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  background: var(--black);
+  color: var(--white);
+  border: 0.1rem solid var(--white);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 1rem;
+}
+/* DOKONCZYC */
