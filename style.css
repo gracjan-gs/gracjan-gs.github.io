@@ -9,7 +9,7 @@
 body {
   margin: 0;
   padding: 0;
-  min-height: 100svh; /* poprawione dla iOS 26 */
+  min-height: 100dvh; /* poprawione dla iOS */
   display: flex;
   flex-direction: column;
   font-family: var(--font-main);
@@ -25,25 +25,24 @@ body::before {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100svh; /* poprawione dla iOS 26 */
+  height: 100dvh; /* poprawione dla iOS */
   background: url('img/DrewnoCiemneKompresacja.jpg') no-repeat center center/cover;
   z-index: -1;
   will-change: transform;
 }
 
-
 main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
   padding: 5vh 5vw;
-  padding-bottom: env(safe-area-inset-bottom, 5vh); /* nowa linia */
+  padding-bottom: calc(env(safe-area-inset-bottom) + 2vh);
 }
 
 header {
   position: sticky;
-  top: 0;
+  top: env(safe-area-inset-top);
   left: 0;
   right: 0;
   background: var(--black);
@@ -90,8 +89,8 @@ a {
 .menu-toggle {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* wyśrodkowanie w pionie */
-  align-items: center;     /* wyśrodkowanie w poziomie */
+  justify-content: center;
+  align-items: center; 
   gap: 8px;
   width: 2.5rem;
   height: 2.5rem;
@@ -127,13 +126,14 @@ a {
   height: 0;
   background: var(--black);
   overflow: hidden;
-  transition: height 0.5s ease;
+  transition: height 0.4s ease;
   z-index: 999;
   color: var(--white);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .mobile-menu.open {
-  height: 50vh;
+  height: 100dvh; /* pełny ekran na mobile */
 }
 
 .mobile-menu a {
@@ -143,17 +143,11 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 1rem 2rem;
 }
 
 .mobile-menu a:hover {
   color: var(--gray);
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  padding: 5vh 5vw;
 }
 
 .intro {
@@ -162,42 +156,43 @@ main {
   background: var(--black);
   border-radius: 2rem;
   overflow: hidden;
+  gap: 1rem;
 }
 
 .intro img {
   width: 100%;
   height: auto;
-  padding: 0.3rem;
   border-radius: 2rem;
 }
 
 .intro-text {
-  padding: 2rem;
-  font-size: 1.125rem;
+  padding: 1.5rem;
+  font-size: 1.1rem;
 }
 
 .stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1.5rem;
   justify-content: center;
 }
 
 .stat {
   background: var(--black);
   border-radius: 1.5rem;
-  padding: 2rem;
-  flex: 1 1 40%;
+  padding: 1.5rem;
+  flex: 1 1 45%;
+  min-width: 130px;
   text-align: center;
 }
 
 .stat h2 {
   font-weight: normal;
-  font-size: 1.125rem;
+  font-size: 1rem;
 }
 
 .stat p {
-  font-size: 2.25rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 
@@ -223,8 +218,7 @@ main {
   align-items: center;
   gap: 1rem;
   margin-bottom: 2vh;
-  margin-top: 5rem;
-
+  margin-top: 3rem;
 }
 
 .partner img {
@@ -249,11 +243,12 @@ main {
 
 footer {
   background: var(--black);
-  padding: 2rem 5vw;
+  padding: 2rem 5vw calc(env(safe-area-inset-bottom) + 1rem);
   text-align: center;
   font-size: 0.875rem;
 }
 
+/* TABLETY */
 @media (min-width: 768px) {
   .intro {
     flex-direction: row;
@@ -268,29 +263,20 @@ footer {
   }
 }
 
-@media (max-width: 768px) {
+/* MOBILE TELEFONY */
+@media (max-width: 480px) {
   #h1 {
-    font-size: 0.9rem;
-    font-weight: 300;
-  }
-
-  .custom-hr {
-  flex-grow: 1;
-  height: 0.5px;
-  width: 0.625rem;
-  background-color: white;
-  border: none;
+    font-size: 1rem;
+    font-weight: 400;
   }
 
   .subtitle {
-    font-size: 0.6rem;
+    font-size: 0.75rem;
   }
 
-  .intro img {
-  width: 100%;
-  height: auto;
-  padding: 0rem;
-  border-radius: 2rem;
+  .intro-text {
+    padding: 1rem;
+    font-size: 1rem;
   }
 
   .partner {
@@ -299,8 +285,8 @@ footer {
   }
 
   .partner img {
-    width: 30vw;
-    height: 30vw;
+    width: 35vw;
+    height: 35vw;
     max-width: 120px;
     max-height: 120px;
   }
@@ -308,7 +294,13 @@ footer {
   .partner p {
     margin-top: 1rem;
   }
+
+  .stat p {
+    font-size: 1.5rem;
+  }
 }
+
+/* DESKOPY */
 @media (min-width: 1025px) {
   .intro {
     flex-direction: row;
@@ -322,101 +314,76 @@ footer {
     width: 60%;
   }
 }
-.intro {
-  display: flex;
-  flex-direction: column; /* domyślnie kolumna - zdjęcie nad tekstem */
-  background: var(--black);
-  border-radius: 2rem;
-  overflow: hidden;
-  gap: 1rem;
-}
 
-.intro img {
-  width: 100%; /* na małych ekranach pełna szerokość */
-  height: auto;
-  border-radius: 2rem;
-  padding: 0rem;
-}
-
-.intro-text {
-  padding: 1rem;
-}
-
-/* od 1025px w górę zmieniamy na rząd */
 @media (min-width: 1225px) {
   .intro {
-    flex-direction: row; /* zdjęcie i tekst obok siebie */
+    flex-direction: row;
     gap: 2rem;
   }
 
   .intro img {
-    width: 40%; /* zdjęcie zajmuje 40% */
+    width: 40%;
   }
 
   .intro-text {
-    width: 60%; /* tekst 60% */
-    padding: 0; /* usuń jeśli masz padding w tekście z góry */
+    width: 60%;
+    padding: 0;
   }
 }
-
-
-
-
 
 .button-86 {
-    display: block;
-    width: fit-content;
-    all: unset;
-    width: 100px;
-    height: 30px;
-    font-size: 16px;
-    background: transparent;
-    border: none;
-    position: relative;
-    color: #f0f0f0;
-    cursor: pointer;
-    z-index: 1;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto; /* DODANE */
-    white-space: nowrap;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+  display: block;
+  width: fit-content;
+  all: unset;
+  width: 100px;
+  height: 30px;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  position: relative;
+  color: #f0f0f0;
+  cursor: pointer;
+  z-index: 1;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-  .button-86::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: -99999;
-    transform: translate(5%, 20%);
-    width: 110%;
-    height: 110%;
-    background: #000000;
-    border-radius: 10px;
-  }
+.button-86::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -99999;
+  transform: translate(5%, 20%);
+  width: 110%;
+  height: 110%;
+  background: #000000;
+  border-radius: 10px;
+}
 
-  .button-86::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: -99999;
-    border-radius: 10px;
-    transform: translate(0, 0);
-    width: 100%;
-    height: 100%;
-    background: #ffffff2d;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-  }
+.button-86::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -99999;
+  border-radius: 10px;
+  transform: translate(0, 0);
+  width: 100%;
+  height: 100%;
+  background: #ffffff2d;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
 
 .contact-button {
- 
   margin: 0 auto;
   padding: 1rem 2rem;
   background: var(--black);
@@ -426,4 +393,3 @@ footer {
   font-weight: bold;
   border-radius: 1rem;
 }
-/* DOKONCZYC */
