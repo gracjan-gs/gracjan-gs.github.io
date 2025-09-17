@@ -9,7 +9,7 @@
 body {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  min-height: 100dvh; /* zmienione z 100vh */
   display: flex;
   flex-direction: column;
   font-family: var(--font-main);
@@ -19,20 +19,17 @@ body {
   overflow-x: hidden;
 }
 
+
 body::before {
   content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh; /* zmienione z 100vh */
   background: url('img/DrewnoCiemneKompresacja.jpg') no-repeat center center/cover;
   z-index: -1;
   will-change: transform;
-}
-
-body {
-  position: relative !;
 }
 
 main {
@@ -41,6 +38,7 @@ main {
   flex-direction: column;
   gap: 3rem;
   padding: 5vh 5vw;
+  padding-bottom: env(safe-area-inset-bottom, 5vh); /* nowa linia */
 }
 
 header {
