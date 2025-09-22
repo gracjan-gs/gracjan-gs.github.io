@@ -15,8 +15,8 @@ header {
 }
 
 body {
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 120vh;
+  min-height: 120dvh;
 }
 
 body {
@@ -387,7 +387,7 @@ footer {
     background: transparent;
     border: none;
     position: relative;
-    color: #f0f0f0;
+    color: #ff0000;
     cursor: pointer;
     z-index: 1;
     padding: 10px 20px;
