@@ -6,6 +6,19 @@
   --font-script: 'Magnolia Script', cursive;
 }
 
+main {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+header {
+  padding-top: env(safe-area-inset-top);
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -428,4 +441,3 @@ footer {
   border-radius: 1rem;
 }
 /* DOKONCZYC */
-
