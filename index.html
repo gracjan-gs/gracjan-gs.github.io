@@ -194,25 +194,32 @@ działa szybko, wygląda profesjonalnie i pracuje na Twój wizerunek — <a href
       </div>
     </section>
 
-    <section class="projects reveal">
-      <h2>Wykonane projekty</h2>
-      <div class="partners">
-        <div class="partner">
-          <img src="img/LogotzsPNG.PNG" alt="Trenuj Ze Śliwką">
-          <div>
-            <p>Trenuj Ze Śliwką</p>
-            <a href="https://trenujzesliwka.github.io/"><i><u>kliknij aby zobaczyć stronę</u></i></a>
-          </div>
-        </div>
-        <div class="partner">
-          <img src="img/prof.webp" alt="Trenuj Ze Śliwką">
-          <div>
-            <p>Przewodnik turystyczny po Helu</p>
-            <a href="https://przewodnikpohelu.github.io/"><i><u>kliknij aby zobaczyć stronę</u></i></a>
-          </div>
+<section class="portfolio-section">
+  <h2>Moje Projekty</h2>
+  <div class="portfolio-grid">
+    <div class="card" data-tilt>
+      <div class="card-inner">
+        <img src="img/LogotzsPNG.PNG" alt="Trenuj Ze Śliwką">
+        <div class="overlay">
+          <h3>Trenuj Ze Śliwką</h3>
+          <a href="https://trenujzesliwka.github.io/">Zobacz projekt →</a>
         </div>
       </div>
-    </section>
+    </div>
+    <div class="card" data-tilt>
+      <div class="card-inner">
+        <img src="img/prof.webp" alt="Przewodnik po Helu">
+        <div class="overlay">
+          <h3>Przewodnik po Helu</h3>
+          <a href="https://przewodnikpohelu.github.io/">Zobacz projekt →</a>
+        </div>
+      </div>
+    </div>
+    <!-- Dodaj kolejne projekty -->
+  </div>
+</section>
+
+
 
     <a href="kontakt.html"><button class="button-86 reveal" role="button">Skontaktuj się</button></a>
   </main>
@@ -319,6 +326,41 @@ działa szybko, wygląda profesjonalnie i pracuje na Twój wizerunek — <a href
       });
     }
   });
+
+  
+
+const cards = document.querySelectorAll('[data-tilt]');
+
+// Tilt na desktopzie (myszka)
+cards.forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const midX = rect.width / 2;
+    const midY = rect.height / 2;
+    const rotateX = ((y - midY) / midY) * 10;
+    const rotateY = ((x - midX) / midX) * -10;
+    card.querySelector('.card-inner').style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.querySelector('.card-inner').style.transform = `rotateX(0deg) rotateY(0deg)`;
+  });
+});
+
+// Tilt na telefonach (DeviceOrientation)
+if (window.DeviceOrientationEvent) {
+  window.addEventListener('deviceorientation', e => {
+    const beta = e.beta;
+    const gamma = e.gamma;
+    cards.forEach(card => {
+      card.querySelector('.card-inner').style.transform = `rotateX(${-beta/3}deg) rotateY(${gamma/3}deg)`;
+    });
+  });
+}
+
+
+
 </script>
 
 </body>
