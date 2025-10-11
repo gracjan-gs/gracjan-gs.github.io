@@ -1,294 +1,182 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html class="dark" lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gracjan Śliwiński — Tworzenie stron internetowych</title>
-  <link rel="stylesheet" href="oferta.css">
-  <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    .reveal {
-      opacity: 0.7;
-      transform: translateY(50px);
-      transition: all 1s ease-out;
-    }
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nasz Proces - Stitch Design</title>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-
-
-
-
-
-
-
-:root {
-  --black: #000000;
-  --white: #ffffff;
-  --accent: #ffffff;
-}
-
-body {
-  background-color: var(--black);
-  color: var(--white);
-  font-family: Arial, sans-serif;
-}
-
-/* Reveal effect */
-.reveal {
-  opacity: 0.7;
-  transform: translateY(50px);
-  transition: all 1s ease-out;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Timeline block */
-main.timeline {
-  width: 90%;
-  margin: 4em auto;
-  background-color: var(--black);
-  border-radius: 2rem;
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
-  padding: 2rem 1.5rem;
-}
-
-/* Timeline entry */
-main.timeline p {
-  font-size: 1em;
-  line-height: 1.75em;
-  border-top: 3px solid var(--accent);
-  margin: 0;
-  padding: 40px;
-  counter-increment: section;
-  position: relative;
-  color: var(--white);
-}
-
-/* Kółka z numerami */
-main.timeline p::before {
-  content: counter(section);
-  position: absolute;
-  border-radius: 50%;
-  padding: 10px;
-  height: 1.25em;
-  width: 1.25em;
-  background-color: var(--accent);
-  text-align: center;
-  line-height: 1.25em;
-  color: var(--black);
-  font-size: 1em;
-}
-
-/* Odd (lewa strona) */
-main.timeline p:nth-child(odd) {
-  border-right: 3px solid var(--accent);
-  padding-left: 5rem;
-}
-
-main.timeline p:nth-child(odd)::before {
-  left: 100%;
-  margin-left: -20px;
-}
-
-/* Even (prawa strona) */
-main.timeline p:nth-child(even) {
-  border-left: 3px solid var(--accent);
-  padding-right: 0;
-}
-
-main.timeline p:nth-child(even)::before {
-  right: 100%;
-  margin-right: -20px;
-}
-
-/* First and last border fixes */
-main.timeline p:first-child {
-  border-top: 0;
-}
-
-main.timeline p:last-child {
-  border-bottom: 3px solid var(--accent);
-}
-@media (max-width: 768px) {
-  main.timeline {
-    max-width: 85vw; /* zamiast 90vw teraz 85vw */
-    margin: 2em auto;
-    padding: 1.5rem 1rem;
-  }
-
-  main.timeline p {
-    padding: 25px 20px; /* jak było */
-  }
-
-  main.timeline p::before {
-    padding: 6px;
-    height: 1em;
-    width: 1em;
-    font-size: 0.85em;
-    line-height: 1em;
-    margin-left: unset;
-    margin-right: unset;
-  }
-
-  main.timeline p:nth-child(odd)::before {
-    left: 100%;
-    margin-left: -15px;
-  }
-
-  main.timeline p:nth-child(even)::before {
-    right: 100%;
-    margin-right: -15px;
-  }
-  main.timeline p:nth-child(odd) {
-  border-right: 3px solid var(--accent);
-  padding-left: 1rem;
-}
-}
-
-
-
-
-
-
-  </style>
-</head>
-<body>
-  <header>
-    <div>
-      <div id="header-line">
-        <a href="index.html">
-          <span id="h1">Gracjan Śliwiński</span>
-        </a>
-        <hr class="custom-hr">
-      </div>
-      <a href="index.html">
-        <div class="subtitle">TWORZENIE STRON INTERNETOWYCH</div>
-      </a>
-    </div>
-    <button class="menu-toggle" aria-label="Menu" id="hamburgerBtn">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-  </header>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <nav>
-      <ul style="list-style: none; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
-        <li><a href="index.html"><i class="fas fa-house"></i> Start</a></li>
-        <li><a href="kontakt.html"><i class="fas fa-envelope"></i> Kontakt</a></li>
-        <li><a href="oferta.html"><i class="fas fa-tags"></i> Oferta</a></li>
-        <li><a href="wspolpraca.html"><i class="fas fa-handshake"></i> Współpraca</a></li>
-        <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
-        <li><a href="politykaPrywatnosci.html"><i class="fas fa-lock"></i> Polityka prywatności</a></li>
-      </ul>
-    </nav>
-  </div>
-<main class="timeline reveal">
-  <p><strong>Konsultacja</strong><br>
-Zaczynamy od rozmowy, w której wspólnie ustalamy, jak powinna wyglądać Twoja idealna strona. Poznaję Twoje potrzeby, oczekiwania oraz cele, aby stworzyć rozwiązanie idealnie dopasowane do Ciebie lub Twojego biznesu. Omawiamy funkcjonalności strony oraz najlepsze rozwiązania, które pozwolą osiągnąć zamierzony efekt.
-</p>
-  <p>
-<strong>Oferta i wycena</strong><br>
-Po zebraniu wszystkich niezbędnych informacji przygotowuję szczegółową propozycję rozwiązania wraz z przejrzystą wyceną. Ostateczny koszt zależy głównie od zakresu prac, takich jak liczba podstron, stopień zaawansowania funkcjonalności czy integracje z innymi systemami. Otrzymujesz jasny plan działań i dokładny kosztorys, dzięki czemu masz pełną kontrolę nad budżetem.</p>
-  <p>
-    <strong>Projekt i zatwierdzenie</strong><br>
-Na tym etapie tworzę wstępną koncepcję, projektując stronę. To dopiero efekt początkowy, który ułatwi kolejne etapy. Przedstawiam układ, wygląd oraz kluczowe elementy, abyś mógł(a) zobaczyć, jak wszystko będzie wyglądać. Masz możliwość wniesienia uwag oraz nadania innego efektu wizualnego stronie, a po Twojej akceptacji przechodzimy do realizacji.</p>
-  <p>
-    <strong>Realizacja</strong><br>
-To najważniejszy i najbardziej czasochłonny etap. Tworzę stronę od podstaw, dbając o jej wygląd, intuicyjność, szybkość działania i optymalizację. Każdy element jest starannie dopracowany, aby Twoja witryna była nie tylko estetyczna, ale i skuteczna.</p>
-
-  <p>
-    <strong>Projekt i zatwierdzenie</strong><br>
-Na tym etapie tworzę wstępną koncepcję, projektując stronę. To dopiero efekt początkowy, który ułatwi kolejne etapy. Przedstawiam układ, wygląd oraz kluczowe elementy, abyś mógł(a) zobaczyć, jak wszystko będzie wyglądać. Masz możliwość wniesienia uwag oraz nadania innego efektu wizualnego stronie, a po Twojej akceptacji przechodzimy do realizacji.</p>
-  
-  <p>
-<strong>Wsparcie po wdrożeniu</strong><br>
-Jeśli chcesz na bieżąco dodawać nowe treści, aktualizować informacje czy rozbudowywać stronę, możesz skorzystać z jednego z dostępnych pakietów wsparcia: miesięcznego – Płacisz z góry za miesiąc i z wyprzedzeniem podajesz, jakie zmiany chcesz wprowadzić na stronie. Przez cały miesiąc jestem do Twojej dyspozycji, realizując zgłoszone zadania zgodnie z ustaleniami, jednorazowego – Płacisz raz za wykonanie zlecenia. Zgłaszasz zmiany z wyprzedzeniem, a ja je realizuję. Dzięki temu masz pewność, że zawsze możesz liczyć na moją pomoc – niezależnie od tego, czy chcesz dodać nowe treści, czy zaktualizować istniejące informacje.
-</p>
-</main>
-  <footer>
-    &copy; 2025 Gracjan Śliwiński | <a href="politykaPrywatnosci.html">Polityka prywatności</a>
-  </footer>
-
-  <script>
-    const stats = document.querySelectorAll('.stat p');
-
-    const counterObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const target = parseInt(el.getAttribute('data-target'), 10);
-          let count = 0;
-
-          const update = () => {
-            if (count <= target) {
-              el.textContent = count + '%';
-              count++;
-              setTimeout(update, 40);
-            } else {
-              el.textContent = target + '%';
-            }
-          };
-
-          update();
-          observer.unobserve(el);
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
-
-    stats.forEach(stat => counterObserver.observe(stat));
-
-    // Reveal effect for all .reveal elements
-    const revealElements = document.querySelectorAll('.reveal');
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-
-    // Hamburger
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    hamburgerBtn.addEventListener('click', () => {
-      hamburgerBtn.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-    });
-  </script>
 <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const pakiet = params.get('pakiet');
-
-    if (pakiet) {
-      const select = document.getElementById('pakiet');
-      if (select) {
-        select.value = pakiet;
-      }
-    }
-  });
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+            "primary": "#000",              // <--- zmiana na czarny
+            "background-light": "#000",     // <--- zmiana na czarny
+            "background-dark": "#000",
+      },
+      fontFamily: { 
+        display: ["Space Grotesk"], // cała strona
+        logo: ["Petit Formal Script", "cursive"] // logo
+      },
+    },
+  },
+};
 </script>
 
+<style>
+body { min-height: 100dvh; }
+.numberOfFont { font-family: 'Petit Formal Script', cursive; }
+.reveal { transition: all 1s ease-out; opacity: 0; filter: blur(5px); transform: translateY(20px); }
+.reveal.visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+</style>
+</head>
 
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+
+<div class="relative flex flex-col min-h-screen w-full justify-between overflow-x-hidden">
+
+  <!-- HEADER -->
+  <header class="absolute top-0 left-0 w-full z-20 px-9 py-7">
+    <nav class="container mx-auto flex items-center justify-between text-white">
+      <a class="text-base sm:text-xl font-bold numberOfFont" href="index.html">Gracjan Śliwiński</a>
+
+      <div class="hidden md:flex items-center space-x-6">
+        <a class="hover:text-gray-300" href="omnie.html">O mnie</a>
+        <a class="hover:text-gray-300" href="portfolio.html">Portfolio</a>
+        <a class="hover:text-gray-300" href="wspolpraca.html">Współpraca</a>
+        <a class="hover:text-gray-300" href="oferta.html">Oferta</a>
+        <a class="hover:text-gray-300" href="kontakt.html">Kontakt</a>
+      </div>
+
+      <button id="menu-btn" class="md:hidden">
+        <!-- Hamburger -->
+        <svg id="icon-hamburger" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 6h16M4 12h16m-7 6h7"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+        </svg>
+        <!-- X -->
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 18L18 6M6 6l12 12"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+        </svg>
+      </button>
+
+    </nav>
+    <div id="mobile-menu" class="fixed inset-0 z-30 hidden">
+      <div id="menu-overlay" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity"></div>
+      <div id="menu-panel"
+        class="absolute top-0 left-0 h-screen w-64 bg-primary text-white transform -translate-x-full transition-transform duration-300 flex flex-col p-6 space-y-6">
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="index.html"><i class="fas fa-house"></i><span>Strona Główna</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="omnie.html"><i class="fas fa-user"></i><span>O mnie</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="portfolio.html"><i class="fas fa-images"></i><span>Portfolio</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="wspolpraca.html"><i class="fas fa-handshake"></i><span>Współpraca</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="oferta.html"><i class="fas fa-tags"></i><span>Oferta</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="kontakt.html"><i class="fa-solid fa-address-book"></i><span>Kontakt</span></a>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- NASZ PROCES -->
+<main class="flex-grow container mx-auto px-6 py-12 mt-28 font-display">
+    <h1 class="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">Szczegółowy Opis Współpracy</h1>
+    <div class="relative">
+      <div class="absolute left-5 top-5 bottom-0 w-0.5 bg-gray-300/20 dark:bg-white/10"></div>
+      <div class="space-y-16">
+        <div class="relative pl-12 reveal">
+          <div class="absolute left-0 top-0 flex items-center justify-center w-10 h-10 rounded-full bg-primary ring-4 ring-background-light dark:ring-primary">
+            <i class="fas fa-lightbulb text-white"></i>
+          </div>
+          <div class="ml-4">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Krok 1: Konsultacja</h3>
+            <p class="mt-1 text-gray-600 dark:text-gray-400">Zaczynamy od rozmowy, w której wspólnie ustalamy, jak powinna wyglądać Twoja idealna strona. Poznaję Twoje potrzeby, oczekiwania oraz cele, aby stworzyć rozwiązanie idealnie dopasowane do Ciebie lub Twojego biznesu. Omawiamy funkcjonalności strony oraz najlepsze rozwiązania, które pozwolą osiągnąć zamierzony efekt.</p>
+          </div>
+        </div>
+        <div class="relative pl-12 reveal">
+          <div class="absolute left-0 top-0 flex items-center justify-center w-10 h-10 rounded-full bg-primary ring-4 ring-background-light dark:ring-primary">
+            <i class="fas fa-pencil-ruler text-white"></i>
+          </div>
+          <div class="ml-4">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Krok 2: Oferta i wycena</h3>
+            <p class="mt-1 text-gray-600 dark:text-gray-400">Po zebraniu wszystkich niezbędnych informacji przygotowuję szczegółową propozycję rozwiązania wraz z przejrzystą wyceną. Ostateczny koszt zależy głównie od zakresu prac, takich jak liczba podstron, stopień zaawansowania funkcjonalności czy integracje z innymi systemami. Otrzymujesz jasny plan działań i dokładny kosztorys, dzięki czemu masz pełną kontrolę nad budżetem.</p>
+          </div>
+        </div>
+        <div class="relative pl-12 reveal">
+          <div class="absolute left-0 top-0 flex items-center justify-center w-10 h-10 rounded-full bg-primary ring-4 ring-background-light dark:ring-primary">
+            <i class="fas fa-code text-white"></i>
+          </div>
+          <div class="ml-4">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Krok 3: Projekt i Kodowanie</h3>
+            <p class="mt-1 text-gray-600 dark:text-gray-400">Na tym etapie tworzę wstępną koncepcję strony, to efekt początkowy, który ułatwia kolejne etapy pracy. Przedstawiam układ, wygląd i kluczowe elementy, abyś mógł(a) zobaczyć, jak wszystko będzie wyglądać. Masz możliwość wniesienia uwag i nadania innego efektu wizualnego. Po Twojej akceptacji przechodzę do kodowania, czyli najbardziej czasochłonnego i technicznego procesu, w którym koncepcja staje się w pełni funkcjonalną stroną.</p>
+          </div>
+        </div>
+        <div class="relative pl-12 reveal">
+          <div class="absolute left-0 top-0 flex items-center justify-center w-10 h-10 rounded-full bg-primary ring-4 ring-background-light dark:ring-primary">
+            <i class="fas fa-headset text-white"></i>
+          </div>
+          <div class="ml-4">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Krok 4: Wsparcie po wdrożeniu</h3>
+            <p class="mt-1 text-gray-600 dark:text-gray-400">Jeśli chcesz na bieżąco dodawać nowe treści, aktualizować informacje czy rozbudowywać stronę, możesz skorzystać z jednego z dostępnych pakietów wsparcia: miesięcznego – Płacisz z góry za miesiąc i z wyprzedzeniem podajesz, jakie zmiany chcesz wprowadzić na stronie. Przez cały miesiąc jestem do Twojej dyspozycji, realizując zgłoszone zadania zgodnie z ustaleniami, jednorazowego – Płacisz raz za wykonanie zlecenia. Zgłaszasz zmiany z wyprzedzeniem, a ja je realizuję. Dzięki temu masz pewność, że zawsze możesz liczyć na moją pomoc – niezależnie od tego, czy chcesz dodać nowe treści, czy zaktualizować istniejące informacje.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-800">
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+      <div class="flex items-center justify-center space-x-6">
+        <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white" href="index.html">Home</a>
+        <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white" href="oferta.html">Oferta</a>
+        <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white" href="#">Polityka prywatności</a>
+      </div>
+      <p class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">&copy; 2025 Gracjan Śliwiński. Wszelkie prawa zastrzeżone.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+const btn = document.getElementById("menu-btn");
+const menu = document.getElementById("mobile-menu");
+const panel = document.getElementById("menu-panel");
+const overlay = document.getElementById("menu-overlay");
+const iconHamburger = document.getElementById("icon-hamburger");
+const iconClose = document.getElementById("icon-close");
+
+btn.addEventListener("click", () => {
+  if (menu.classList.contains("hidden")) {
+    menu.classList.remove("hidden");
+    setTimeout(() => { overlay.classList.remove("opacity-0"); panel.classList.remove("-translate-x-full"); }, 10);
+    iconHamburger.classList.add("hidden"); iconClose.classList.remove("hidden");
+  } else {
+    overlay.classList.add("opacity-0"); panel.classList.add("-translate-x-full");
+    iconClose.classList.add("hidden"); iconHamburger.classList.remove("hidden");
+    setTimeout(() => menu.classList.add("hidden"), 300);
+  }
+});
+
+overlay.addEventListener("click", () => {
+  overlay.classList.add("opacity-0"); panel.classList.add("-translate-x-full");
+  iconClose.classList.add("hidden"); iconHamburger.classList.remove("hidden");
+  setTimeout(() => menu.classList.add("hidden"), 300);
+});
+
+// ScrollReveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); obs.unobserve(entry.target); } });
+}, { threshold: 0.2 });
+reveals.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
