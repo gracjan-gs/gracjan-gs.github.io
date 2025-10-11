@@ -1,215 +1,197 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html class="dark" lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gracjan Śliwiński — Tworzenie stron internetowych</title>
-  <link rel="stylesheet" href="oferta.css">
-  <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    .reveal {
-      opacity: 0.7;
-      transform: translateY(50px);
-      transition: all 1s ease-out;
-    }
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Oferta — Gracjan Śliwiński</title>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    #AI {
-      color: rgb(0, 174, 255);
-      text-transform: capitalize;
-      font-size: 0.7rem;
-    }
-  </style>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#000",
+        "background-light": "#000",
+        "background-dark": "#000",
+      },
+      fontFamily: { 
+        display: ["Space Grotesk"],
+        logo: ["Petit Formal Script", "cursive"]
+      },
+    },
+  },
+};
+</script>
+
+<style>
+body { min-height: 100dvh; }
+.numberOfFont { font-family: 'Petit Formal Script', cursive; }
+.reveal { transition: all 1s ease-out; opacity: 0; filter: blur(5px); transform: translateY(20px); }
+.reveal.visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+</style>
 </head>
-<body>
-  <header>
-    <div>
-      <div id="header-line">
-        <a href="index.html">
-          <span id="h1">Gracjan Śliwiński</span>
-        </a>
-        <hr class="custom-hr">
+
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="relative flex flex-col min-h-screen w-full justify-between overflow-x-hidden">
+
+  <!-- HEADER -->
+  <header class="absolute top-0 left-0 w-full z-20 px-9 py-7">
+    <nav class="container mx-auto flex items-center justify-between text-white">
+      <a class="text-base sm:text-xl font-bold numberOfFont" href="index.html">Gracjan Śliwiński</a>
+
+      <div class="hidden md:flex items-center space-x-6">
+        <a class="hover:text-gray-300" href="omnie.html">O mnie</a>
+        <a class="hover:text-gray-300" href="portfolio.html">Portfolio</a>
+        <a class="hover:text-gray-300" href="wspolpraca.html">Współpraca</a>
+        <a class="hover:text-gray-300" href="oferta.html">Oferta</a>
+        <a class="hover:text-gray-300" href="kontakt.html">Kontakt</a>
       </div>
-      <a href="index.html">
-        <div class="subtitle">TWORZENIE STRON INTERNETOWYCH</div>
-      </a>
+
+      <button id="menu-btn" class="md:hidden">
+        <!-- Hamburger -->
+        <svg id="icon-hamburger" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 6h16M4 12h16m-7 6h7"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+        </svg>
+        <!-- X -->
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 18L18 6M6 6l12 12"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+        </svg>
+      </button>
+
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 z-30 hidden">
+      <div id="menu-overlay" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity"></div>
+      <div id="menu-panel"
+        class="absolute top-0 left-0 h-screen w-64 bg-primary text-white transform -translate-x-full transition-transform duration-300 flex flex-col p-6 space-y-6">
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="index.html"><i class="fas fa-house"></i><span>Strona Główna</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="omnie.html"><i class="fas fa-user"></i><span>O mnie</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="portfolio.html"><i class="fas fa-images"></i><span>Portfolio</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="wspolpraca.html"><i class="fas fa-handshake"></i><span>Współpraca</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="oferta.html"><i class="fas fa-tags"></i><span>Oferta</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="kontakt.html"><i class="fa-solid fa-address-book"></i><span>Kontakt</span></a>
+
+      </div>
     </div>
-    <button class="menu-toggle" aria-label="Menu" id="hamburgerBtn">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
   </header>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <nav>
-      <ul style="list-style: none; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
-        <li><a href="index.html"><i class="fas fa-house"></i> Start</a></li>
-        <li><a href="kontakt.html"><i class="fas fa-envelope"></i> Kontakt</a></li>
-        <li><a href="oferta.html"><i class="fas fa-tags"></i> Oferta</a></li>
-        <li><a href="wspolpraca.html"><i class="fas fa-handshake"></i> Współpraca</a></li>
-        <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
-        <li><a href="politykaPrywatnosci.html"><i class="fas fa-lock"></i> Polityka prywatności</a></li>
-      </ul>
-    </nav>
-  </div>
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 pt-40 pb-20 px-6 max-w-7xl mx-auto">
+    <section class="text-center mb-16 reveal">
+      <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-white">Oferta</h2>
+      <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
+        Warto zaznaczyć, że poszczególne oferty mogą być modyfikowane, wszystko zależy od potrzeb Twojej firmy.
+      </p>
+    </section>
 
-  <main>
-    <section class="pricing-gallery">
-  <div class="pricing-card">
-    <h3 class="plan-name">Wycena projektu</h3>
-    <p class="price"><span class="value">0 </span>ZŁ</p>
-    <p class="desc">Darmowa wycena – szybka i bez zobowiązań.</p>
-    <a href="kontakt.html?pakiet=Darmowa%20wycena"><button class="choose">Wybierz</button></a>
-    <p class="more">Zobacz pełen opis</p>
-  </div>
-
-  <div class="pricing-card popular">
-    <div class="badge">Najpopularniejszy</div>
-    <h3 class="plan-name">Indywidualny</h3>
-    <p class="price"><span class="value"></span>SPRAWDŹ CENĘ</p>
-    <p class="desc">Projekt tworzony od podstaw, w pełni dopasowany do Twojej marki, bez limitów, z pełną dbałością o każdy detal.<br><span id="AI">[Zaawansowana analiza AI]</span></p>
-    <a href="kontakt.html?pakiet=Pakiet%20indywidualny"><button class="choose">Wybierz</button></a>
-    <p class="more">Zobacz pełen opis</p>
-  </div>
-
-  <div class="pricing-card">
-    <h3 class="plan-name">Podstawowy</h3>
-    <p class="price"><span class="value"></span>SPRAWDŹ CENĘ </p>
-    <p class="desc">Przejrzysty pakiet z ograniczonym zakresem funkcji. Idealny na start.</p>
-    <a href="kontakt.html?pakiet=Pakiet%20podstawowy"><button class="choose">Wybierz</button></a>
-    <p class="more">Zobacz pełen opis</p>
-  </div>
-
-  <div class="pricing-card">
-    <h3 class="plan-name">Zaawansowany</h3>
-    <p class="price"><span class="value"></span>SPRAWDŹ CENĘ</p>
-    <p class="desc">Rozbudowany pakiet z większą elastycznością, więcej możliwości niż w podstawie, bez pełnej customizacji.</p>
-    <a href="kontakt.html?pakiet=Pakiet%20zaawansowany"><button class="choose">Wybierz</button></a>
-    <p class="more">Zobacz pełen opis</p>
-  </div>
-</section>
-  </main>
-
-  <footer>
-    &copy; 2025 Gracjan Śliwiński | <a href="politykaPrywatnosci.html">Polityka prywatności</a>
-  </footer>
-
-  <script>
-    const stats = document.querySelectorAll('.stat p');
-
-    const counterObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const target = parseInt(el.getAttribute('data-target'), 10);
-          let count = 0;
-
-          const update = () => {
-            if (count <= target) {
-              el.textContent = count + '%';
-              count++;
-              setTimeout(update, 40);
-            } else {
-              el.textContent = target + '%';
-            }
-          };
-
-          update();
-          observer.unobserve(el);
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
-
-    stats.forEach(stat => counterObserver.observe(stat));
-
-    // Reveal effect for all .reveal elements
-    const revealElements = document.querySelectorAll('.reveal');
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-
-    // Hamburger
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    hamburgerBtn.addEventListener('click', () => {
-      hamburgerBtn.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-    });
-  </script>
-
-<!-- MODAL: okno z pełnym opisem -->
-<div id="modal" style="display:none; position:fixed; top:0; left:50%; transform:translateX(-50%); width:90%; height:100%; background-color:rgba(0,0,0,0.6); z-index:1000; justify-content:center; align-items:center;">
-  <div style="background:#1a1a1a; color:white; padding:2rem; border-radius:1rem; width:90%; max-width:500px; position:relative; font-family:'Segoe UI', sans-serif; word-wrap:break-word; overflow-wrap:break-word;">
-    <button id="backModal" style="position:absolute; top:10px; left:10px; background:none; border:none; color:white; font-size:1.2rem; cursor:pointer;">←</button>
-    <div id="modalContent" style="margin-top:2rem; font-size:0.95rem; line-height:1.5;">
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+  <!-- Wycena Projektu -->
+  <div class="bg-neutral-900 p-6 rounded-xl border border-neutral-800 hover:border-neutral-700 transition-all duration-300 group reveal">
+    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6 group-hover:bg-neutral-700 transition-colors">
+      <i class="fa-solid fa-calculator text-2xl"></i> <!-- dopasowana ikona -->
     </div>
+    <h3 class="text-xl font-bold mb-2 text-white flex items-center justify-between">
+        Darmowa Wycena Projektu
+    </h3>
+    <p class="text-gray-400">Umawiamy się na niezobowiązującą rozmowę, podczas której omawiamy Twoje potrzeby i oczekiwania. Na tej podstawie przygotowuję szczegółową wycenę projektu – bez żadnych kosztów i zobowiązań. To pierwszy krok do stworzenia wymarzonego efektu.</p>
+  </div>
+
+  <!-- Projekt Indywidualny -->
+  <div class="bg-neutral-900 p-6 rounded-xl border border-neutral-800 hover:border-neutral-700 transition-all duration-300 group reveal">
+    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6 group-hover:bg-neutral-700 transition-colors">
+      <i class="fa-solid fa-pencil-ruler text-2xl"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-2 text-white flex items-center justify-between">
+      Projekt Indywidualny
+      <span class="text-green-500 text-sm ml-2">Najczęściej wybierane</span>
+    </h3>
+    <p class="text-gray-400">Kompleksowa realizacja projektu od podstaw z użyciem zaawansowanych rozwiązań, idealnie dopasowana do Twojej marki i potrzeb. Każdy element tworzony jest z dbałością o detale i unikalność, co pozwala wyróżnić się na tle konkurencji i zbudować spójną, profesjonalną identyfikację wizualną.</p>
+  </div>
+
+  <!-- One Page -->
+  <div class="bg-neutral-900 p-6 rounded-xl border border-neutral-800 hover:border-neutral-700 transition-all duration-300 group reveal">
+    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6 group-hover:bg-neutral-700 transition-colors">
+      <i class="fa-solid fa-file-lines text-2xl"></i> <!-- dopasowana ikona -->
+    </div>
+    <h3 class="text-xl font-bold mb-2 text-white">One Page</h3>
+    <p class="text-gray-400">Tworzę jednostronicową stronę internetową idealnie dopasowaną do Ciebie i Twoich potrzeb. Każdy element, od treści przez grafiki po układ, jest starannie przemyślany, aby przyciągał uwagę, był w pełni czytelny, a zarazem funkcjonalny. Strona jest prosta w obsłudze, estetyczna i wyjątkowa, dzięki czemu wyróżnisz się na tle konkurencji i zrobisz świetne pierwsze wrażenie na swoich klientach.</p>
+  </div>
+
+  <!-- Projekt Podstawowy -->
+  <div class="bg-neutral-900 p-6 rounded-xl border border-neutral-800 hover:border-neutral-700 transition-all duration-300 group reveal">
+    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6 group-hover:bg-neutral-700 transition-colors">
+      <i class="fa-solid fa-box-open text-2xl"></i> <!-- dopasowana ikona -->
+    </div>
+    <h3 class="text-xl font-bold mb-2 text-white">Projekt Podstawowy</h3>
+    <p class="text-gray-400">Pakiet zaprojektowany z myślą o prostych, funkcjonalnych stronach opartych na gotowych szablonach. Obejmuje do 3 stron (strona główna + 2 podstrony) oraz ograniczona liczbę elementów na stronie. To ekonomiczne i szybkie rozwiązanie, które pozwala na profesjonalną obecność w sieci przy jasno określonym zakresie usług.</p>
   </div>
 </div>
 
 
+  <!-- FOOTER -->
+  <footer class="bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-800">
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+      <div class="flex items-center justify-center space-x-6">
+        <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white" href="index.html">Home</a>
+        <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white" href="kontakt.html">Kontakt</a>
+        <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white" href="#">Polityka prywatności</a>
+      </div>
+      <p class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">&copy; 2025 Gracjan Śliwiński. Wszelkie prawa zastrzeżone.</p>
+    </div>
+  </footer>
+
+</div>
 
 <script>
-  const descriptions = {
-    'Wycena projektu': 'Umawiamy się na niezobowiązującą rozmowę, podczas której omawiamy Twoje potrzeby i oczekiwania. Na tej podstawie przygotowuję szczegółową wycenę projektu – bez żadnych kosztów i zobowiązań. To pierwszy krok do stworzenia wymarzonego efektu.',
-    'Indywidualny': 'Kompleksowa realizacja projektu od podstaw, idealnie dopasowana do Twojej marki i potrzeb. Bez limitów na liczbę podstron, zdjęć czy poprawek. Każdy element tworzony jest z dbałością o detale i unikalność, co pozwala wyróżnić się na tle konkurencji i zbudować spójną, profesjonalną identyfikację wizualną.',
-    'Podstawowy': 'Pakiet zaprojektowany z myślą o prostych, funkcjonalnych stronach opartych na gotowych szablonach. Obejmuje do 3 stron (strona główna + 2 podstrony) oraz ograniczona liczbę elementów na stronie. To ekonomiczne i szybkie rozwiązanie, które pozwala na profesjonalną obecność w sieci przy jasno określonym zakresie usług.',
-    'Zaawansowany': 'Pakiet oferujący większą elastyczność niż podstawowy, do 4 stron (strona główna + 3 podstrony), bez ograniczeń elementów na stronie internetowej oraz wykorzystaniem bardziej zaawansowanych szablonów. Pozwala na lepsze dostosowanie strony do Twoich potrzeb, zapewniając bardziej rozbudowaną i estetyczną prezentację marki, bez pełnej indywidualnej realizacji.'
-  };
+const btn = document.getElementById("menu-btn");
+const menu = document.getElementById("mobile-menu");
+const panel = document.getElementById("menu-panel");
+const overlay = document.getElementById("menu-overlay");
+const iconHamburger = document.getElementById("icon-hamburger");
+const iconClose = document.getElementById("icon-close");
 
-  document.querySelectorAll('.more').forEach(moreBtn => {
-    moreBtn.addEventListener('click', () => {
-      const card = moreBtn.closest('.pricing-card');
-      const title = card.querySelector('.plan-name').textContent.trim();
-      const modal = document.getElementById('modal');
-      const modalContent = document.getElementById('modalContent');
+btn.addEventListener("click", () => {
+  if (menu.classList.contains("hidden")) {
+    menu.classList.remove("hidden");
+    setTimeout(() => { overlay.classList.remove("opacity-0"); panel.classList.remove("-translate-x-full"); }, 10);
+    iconHamburger.classList.add("hidden"); iconClose.classList.remove("hidden");
+  } else {
+    overlay.classList.add("opacity-0"); panel.classList.add("-translate-x-full");
+    iconClose.classList.add("hidden"); iconHamburger.classList.remove("hidden");
+    setTimeout(() => menu.classList.add("hidden"), 300);
+  }
+});
 
-      modalContent.textContent = descriptions[title] || 'Brak dodatkowego opisu.';
-      modal.style.display = 'flex';
-    });
-  });
+overlay.addEventListener("click", () => {
+  overlay.classList.add("opacity-0"); panel.classList.add("-translate-x-full");
+  iconClose.classList.add("hidden"); iconHamburger.classList.remove("hidden");
+  setTimeout(() => menu.classList.add("hidden"), 300);
+});
 
-  document.getElementById('backModal').addEventListener('click', () => {
-    document.getElementById('modal').style.display = 'none';
-  });
-</script>
-
-
-
-
-
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const pakiet = params.get('pakiet');
-
-    if (pakiet) {
-      const select = document.getElementById('pakiet');
-      if (select) {
-        select.value = pakiet;
-      }
+// ScrollReveal z sekwencyjnym opóźnieniem
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach((entry, i) => {
+    if(entry.isIntersecting){
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, i * 200); // 200ms opóźnienia między elementami
+      obs.unobserve(entry.target);
     }
   });
+}, { threshold: 0.2 });
+reveals.forEach(el => observer.observe(el));
+
 </script>
-
-
 
 </body>
 </html>
