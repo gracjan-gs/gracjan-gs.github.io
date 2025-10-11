@@ -11,6 +11,11 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/img/gslogo3.png">
   <link rel="apple-touch-icon" href="/img/gslogo3.png">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+  <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Space+Grotesk:wght@400;500;700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
 
   <!-- SEO -->
   <meta name="description" content="Gracjan Śliwiński – profesjonalne strony internetowe od podstaw. Tworzę indywidualne projekty zoptymalizowane pod wydajność, UX i SEO.">
@@ -45,284 +50,365 @@
     ]
   }
   </script>
-  
-  <style>
-    .reveal {
-      opacity: 0.7;
-      transform: translateY(50px);
-      transition: all 1s ease-out;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @import url('https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap');
-
-    #loader {
-      position: fixed;
-      inset: 0;
-      background: #000000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 9999;
-      transition: opacity 0.5s ease;
-      font-family: 'Petit Formal Script', cursive;
-    }
-
-    .loader-content {
-      text-align: center;
-      color: #fff;
-      padding: 1rem;
-    }
-
-    .loader-text {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #ffffff;
-    }
-
-    .loader-bar {
-      width: 80vw;
-      max-width: 400px;
-      height: 8px;
-      background: #ffffff;
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    .loader-fill {
-      width: 0%;
-      height: 100%;
-      background: #5f5f5f;
-      transition: width 2.5s ease-in-out;
-    }
-
-    @media (max-width: 600px) {
-      .loader-text {
-        font-size: 1.2rem;
-      }
-
-      .loader-bar {
-        height: 6px;
-      }
-    }
-  </style>
+<script>
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                "primary": "#000",              
+                "background-light": "#000",     
+                "background-dark": "#000",    
+            },
+            fontFamily: {
+                "display": ["Space Grotesk"]
+            },
+            borderRadius: {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+        },
+    },
+}
+</script>
+<style>
+body {
+    min-height: max(884px, 100dvh);
+}
+.numberOfFont {
+    font-family: 'Petit Formal Script', cursive;
+}
+.reveal {
+  transition: all 1s ease-out;
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateY(20px);
+}
+.reveal.visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+.parallax {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+</style>
 </head>
-<body>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
 
-  <div id="loader">
-    <div class="loader-content">
-      <div class="loader-text">Gracjan Śliwiński</div>
-      <div class="loader-bar">
-        <div class="loader-fill" id="loaderFill"></div>
+<div class="relative flex h-auto min-h-screen w-full flex-col justify-between overflow-x-hidden">
+  <!-- HEADER -->
+  <header class="absolute top-0 left-0 w-full z-20 px-9 py-7">
+    <nav class="container mx-auto flex items-center justify-between text-white">
+      <a class="text-base sm:text-xl font-bold numberOfFont" href="index.html">Gracjan Śliwiński</a>
+
+      <div class="hidden md:flex items-center space-x-6">
+        <a class="hover:text-gray-300" href="omnie.html">O mnie</a>
+        <a class="hover:text-gray-300" href="portfolio.html">Portfolio</a>
+        <a class="hover:text-gray-300" href="wspolpraca.html">Współpraca</a>
+        <a class="hover:text-gray-300" href="oferta.html">Oferta</a>
+        <a class="hover:text-gray-300" href="kontakt.html">Kontakt</a>
+      </div>
+
+      <button id="menu-btn" class="md:hidden">
+        <!-- Hamburger -->
+        <svg id="icon-hamburger" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 6h16M4 12h16m-7 6h7"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+        </svg>
+        <!-- X -->
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 18L18 6M6 6l12 12"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+        </svg>
+      </button>
+
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 z-30 hidden">
+      <div id="menu-overlay" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity"></div>
+      <div id="menu-panel"
+        class="absolute top-0 left-0 h-screen w-64 bg-primary text-white transform -translate-x-full transition-transform duration-300 flex flex-col p-6 space-y-6">
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="index.html"><i class="fas fa-house"></i><span>Strona Główna</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="omnie.html"><i class="fas fa-user"></i><span>O mnie</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="portfolio.html"><i class="fas fa-images"></i><span>Portfolio</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="wspolpraca.html"><i class="fas fa-handshake"></i><span>Współpraca</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="oferta.html"><i class="fas fa-tags"></i><span>Oferta</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="kontakt.html"><i class="fa-solid fa-address-book"></i><span>Kontakt</span></a>
+
       </div>
     </div>
-  </div>
-
-  <header>
-    <div>
-      <div id="header-line">
-        <a href="index.html">
-          <span id="h1">Gracjan Śliwiński</span>
-        </a>
-        <hr class="custom-hr">
-      </div>
-      <a href="index.html">
-        <div class="subtitle">TWORZENIE STRON INTERNETOWYCH</div>
-      </a>
-    </div>
-    <button class="menu-toggle" aria-label="Menu" id="hamburgerBtn">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
   </header>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <nav>
-      <ul style="list-style: none; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
-        <li><a href="index.html"><i class="fas fa-house"></i> Start</a></li>
-        <li><a href="kontakt.html"><i class="fas fa-envelope"></i> Kontakt</a></li>
-        <li><a href="oferta.html"><i class="fas fa-tags"></i> Oferta</a></li>
-        <li><a href="wspolpraca.html"><i class="fas fa-handshake"></i> Współpraca</a></li>
-        <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
-        <li><a href="politykaPrywatnosci.html"><i class="fas fa-lock"></i> Polityka prywatności</a></li>
-      </ul>
-    </nav>
+  <!-- HERO PARALLAX -->
+<div class="p-4 @container">
+  <div class="relative flex min-h-[90vh] max-w-3xl lg:max-w-[calc(100%-64px)] mx-auto flex-col gap-6 overflow-hidden bg-cover bg-center bg-no-repeat rounded-xl p-6 @[480px]:gap-8 items-start justify-end parallax" style='background-image: url("img/ResBackgroundHome.jpg");'>
+    <div class="absolute inset-0 bg-black/50 rounded-xl"></div>
+    <div class="relative flex flex-col gap-4 text-left z-10">                                  
+      <h1 class="text-white text-4xl font-bold leading-tight tracking-tight @[480px]:text-6xl">Potrzebujesz Strony Internetowej?</h1>
+      <p class="text-gray-200 text-base font-normal leading-normal @[480px]:text-lg max-w-2xl">
+        Specjalizuję się w tworzeniu nowoczesnych i profesjonalnych stron internetowych w minimalistycznym stylu. Dbam o estetykę i detale wizualne, które sprawiają, że strona przyciąga uwagę i budzi zaufanie klientów.
+      </p>
+    </div>
+    <a class="relative z-10 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-wide transition-colors hover:bg-opacity-90" href="#about-section">
+      <span class="truncate">Czytaj dalej</span>
+    </a>
+  </div>
+</div>
+
+
+  <!-- CONTENT -->
+  <div id="about-section" class="flex flex-col gap-4 reveal">
+    <div class="flex flex-col gap-12 px-4 py-16 @container sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-4 text-center items-center">
+        <h2 class="text-gray-900 dark:text-white text-3xl font-bold leading-tight tracking-tight @[480px]:text-5xl max-w-3xl">Moje Podejście</h2>
+        <p class="text-gray-600 dark:text-gray-400 text-lg font-normal leading-normal max-w-3xl">
+          Stawiam na prostotę, przejrzystość i funkcjonalność. Każdy projekt traktuję indywidualnie, tak aby strona nie tylko dobrze wyglądała, ale przede wszystkim spełniała realne potrzeby użytkownika, wyróżniała się na tle innych i wspierała właśnie twoją markę osobistą.
+        </p>
+      </div>
+    </div>
   </div>
 
-  <main>
-    <section class="intro reveal">
-      <img src="img/CanvaPost.png" alt="Zdjęcie Gracjana">
-      <div class="intro-text">
-        <br><br>
-       Cześć, nazywam się Gracjan. Projektuję i tworzę strony internetowe od podstaw — bez gotowców, bez skrótów.
-Każdy projekt to indywidualna realizacja, która powstaje w pełni ręcznie: pod kątem Twoich celów, odbiorców i specyfiki branży.
+<!-- OPINIE (SLIDER) -->
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-[#1a1a1a] dark:bg-[#000000] reveal">
+  <h2 class="text-center text-white text-3xl font-bold mb-10">Opinie Klientów</h2>
 
-Nie korzystam z WordPressa ani innych CMS-ów. Nie buduję na szablonach.
-Każda strona, którą oddaję, jest zoptymalizowana pod wydajność, trwałość i skalowalność.
-Działa szybko, wygląda profesjonalnie i zachowuje spójność na każdym urządzeniu.<br><br>
+<!-- Przycisk Dodaj Opinię -->
+<div class="flex justify-center my-8">
+  <a href="https://www.google.com/search?sa=X&sca_esv=a95b1a567a7f3cbf&tbm=lcl&sxsrf=AE3TifNWlWxUSb4GHTOdjNU8M2j0OiwS_w:1760006832714&q=gracjan%20%C5%9Bliwi%C5%84ski%20-%20tworzenie%20stron%20internetowych%20opinie&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2NDUxMzYzNzQwMjMzMbYwBnI3MDK-YrRKL0pMzkrMUzg6OyezPPNoS3F2poKuQkl5flFVal5mqkJxSVF-nkJmXklqUV5qSX55ZXKGQn5BJlBqESsFmgFakANVlAAAAA&rldimm=1546367102664383546&hl=pl-PL&ved=0CAgQ5foLahcKEwigqfmt-JaQAxUAAAAAHQAAAAAQBQ&biw=1920&bih=992&dpr=1#lkt=LocalPoiReviews&arid=Ci9DQUlRQUNvZENodHljRjlvT2s1MWRXWnBObGxHY1RsRE9FY3pjRVozVFhwUWFXYxAB&lrd=0x6439cad4ffe81223:0x1575ccafd6a91c3a,3,,,," target="_blank"
+     class="flex items-center gap-2 px-5 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white 
+            rounded-lg shadow hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+    <img src="https://www.google.com/favicon.ico" alt="Google" class="w-5 h-5">
+    <span>Dodaj opinię</span>
+  </a>
+</div>
 
-W całym procesie nie chodzi tylko o wygląd.
-Fundamentem jest funkcjonalność — strona ma wspierać Twoje działania biznesowe, komunikować to, co ważne, i robić to w sposób zrozumiały, przejrzysty i technicznie bezbłędny.
-W razie potrzeby wykorzystuję narzędzia oparte na sztucznej inteligencji, by usprawnić UX, SEO i automatyzację procesów.
-Wszystko zależy od realnych potrzeb.<br><br>
-
-Współpraca przebiega konkretnie.
-Rozpoznaję oczekiwania, zadaję pytania, proponuję rozwiązania.
-Bez przeciągania i bez presji.
-Celem jest gotowy projekt, który dowozi — zarówno wizualnie, jak i technicznie.<br><br>
-
-Jeśli zależy Ci na stronie, która wpisuje się w aktualne standardy technologiczne i wizualne,
-działa szybko, wygląda profesjonalnie i pracuje na Twój wizerunek — <a href="kontakt.html"><i>skontaktuj się.</i></a>
-<br><br>
-      </div>
-    </section>
-
-    <section class="stats reveal">
-      <div class="stat">
-        <h2>Zadowolenie Klientów</h2>
-        <p data-target="100">0%</p>
-      </div>
-      <div class="stat">
-        <h2>Zaangażowanie w projekt</h2>
-        <p data-target="100">0%</p>
-      </div>
-    </section>
-
-    <section class="projects reveal">
-      <h2>Wykonane projekty</h2>
-      <div class="partners">
-        <div class="partner">
-          <img src="img/LogotzsPNG.PNG" alt="Trenuj Ze Śliwką">
-          <div>
-            <p>Trenuj Ze Śliwką</p>
-            <a href="https://trenujzesliwka.github.io/"><i><u>kliknij aby zobaczyć stronę</u></i></a>
+  <div class="relative overflow-hidden max-w-5xl mx-auto">
+    <div id="opinie-slider" class="flex transition-transform duration-700 ease-in-out">
+      <!-- Opinia 1 -->
+      <div class="min-w-full px-4">
+        <div class="bg-[#292929] rounded-lg shadow-lg p-8 text-center">
+          <div class="flex justify-center mb-3 text-yellow-400">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
           </div>
-        </div>
-        <div class="partner">
-          <img src="img/prof.webp" alt="Trenuj Ze Śliwką">
-          <div>
-            <p>Przewodnik turystyczny po Helu</p>
-            <a href="https://przewodnikpohelu.github.io/"><i><u>kliknij aby zobaczyć stronę</u></i></a>
-          </div>
+
+          <p id="review-text" class="text-gray-300 italic mb-2 overflow-hidden transition-[max-height] duration-700 ease-in-out max-h-[100px]">
+            "Chciałbym serdecznie podziękować Gracjanowi za stworzenie wspaniałej strony internetowej. Współpraca była czystą
+            przyjemnością od pierwszej do ostatniej minuty. Gracjan to nie tylko utalentowany profesjonalista, ale także osoba,
+            która z cierpliwością i zaangażowaniem podchodzi do projektu klienta. Każdy szczegół strony został w pełni
+            dopracowany. Dzięki temu czułem się zaopiekowany, a efekt finalny przerósł moje najśmielsze oczekiwania. Strona
+            działa doskonale i już przynosi pierwsze pozytywne efekty. Z całego serca polecam."
+          </p>
+
+          <button id="read-more" class="text-gray-400 text-sm hover:text-gray-300 mt-1 focus:outline-none">
+            Czytaj dalej
+          </button>
+
+          <h3 class="text-white font-semibold flex items-center justify-center gap-2 mt-4">
+            Marcin Śliwiński
+            <img src="verified.png" alt="verified" width="18" height="18" class="inline-block">
+          </h3>
         </div>
       </div>
-    </section>
+    </div>
 
-    <a href="kontakt.html"><button class="button-86 reveal" role="button">Skontaktuj się</button></a>
-  </main>
+    <!-- Nawigacja -->
+    <div class="flex justify-center gap-3 mt-6">
+      <button id="prev" class="text-gray-400 hover:text-white">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button id="next" class="text-gray-400 hover:text-white">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
 
-<footer>
-  &copy; 2025 Gracjan Śliwiński | 
-  <a href="https://www.instagram.com/gracjan_sliwinski/" target="_blank" style="margin:0 8px; color:#000;">
-    <i class="fa-brands fa-instagram"></i>
-  </a>
-  <a href="https://linkedin.com/" target="_blank" style="margin:0 8px; color:#000;">
-    <i class="fa-brands fa-linkedin"></i>
-  </a>
-</footer>
-<style>
-    footer a {
-    font-size: 1.2rem; /* domyślnie (desktop) */
-  }
 
-  @media (max-width: 600px) {
-    footer a {
-      font-size: 1rem; /* telefony */
-    }
-  }
-</style>
 
 <script>
-  window.addEventListener("load", () => {
-    const fill = document.getElementById("loaderFill");
-    const loader = document.getElementById("loader");
+  // --- Slider logic ---
+  const slider = document.getElementById('opinie-slider');
+  const slides = slider.children.length;
+  let index = 0;
 
-    // Sprawdź, czy loader już był pokazany
-    if (sessionStorage.getItem("loaderShown")) {
-      loader.style.display = "none";
+  function updateSlider() {
+    slider.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  if (slides > 1) {
+    document.getElementById('next').addEventListener('click', () => {
+      index = (index + 1) % slides;
+      updateSlider();
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      index = (index - 1 + slides) % slides;
+      updateSlider();
+    });
+
+    setInterval(() => {
+      index = (index + 1) % slides;
+      updateSlider();
+    }, 6000);
+  }
+
+  // --- Read more logic with smoother animation ---
+  const readMoreBtn = document.getElementById('read-more');
+  const reviewText = document.getElementById('review-text');
+  let expanded = false;
+
+  readMoreBtn.addEventListener('click', () => {
+    if (!expanded) {
+      const fullHeight = reviewText.scrollHeight;
+      reviewText.style.maxHeight = fullHeight + 'px';
+      readMoreBtn.textContent = 'Zwiń';
     } else {
-      fill.style.width = "100%";
-      sessionStorage.setItem("loaderShown", "true");
+      reviewText.style.maxHeight = '100px';
+      readMoreBtn.textContent = 'Czytaj dalej';
+    }
+    expanded = !expanded;
+  });
+</script>
 
+
+  <!-- BLOK 3 KAFELKI -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3 @[480px]:gap-6">
+      <!-- Kafelek 1 -->
+      <div class="flex flex-col gap-4 reveal">
+        <div class="w-full aspect-video bg-cover bg-center rounded-lg"
+          style='background-image: url("img/ResHome1.png");'>
+        </div>
+        <div>
+          <h3 class="text-gray-900 dark:text-white text-xl font-bold">Wizualna Doskonałość</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-base font-normal leading-relaxed">
+            Stawiam na wysoką jakość i minimalistyczną estetykę. Tworzę strony, które nie tylko dobrze wyglądają, ale też realnie działają na korzyść twojej marki.
+          </p>
+        </div>
+      </div>
+
+      <!-- Kafelek 2 -->
+      <div class="flex flex-col gap-4 reveal">
+        <div class="w-full aspect-video bg-cover bg-center rounded-lg"
+          style='background-image: url("img/ResHome2.jpg");'>
+        </div>
+        <div>
+          <h3 class="text-gray-900 dark:text-white text-xl font-bold">Funkcjonalny Design</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-base font-normal leading-relaxed">
+            Dbam o każdy techniczny detal, moje strony są szybkie, responsywne i niezawodne, dzięki czemu użytkownicy mają płynne i bezproblemowe doświadczenie.
+          </p>
+        </div>
+      </div>
+
+      <!-- Kafelek 3 -->
+      <div class="flex flex-col gap-4 reveal">
+        <div class="w-full aspect-video bg-cover bg-center rounded-lg"
+          style='background-image: url("img/ResHome3.png");'>
+        </div>
+        <div>
+          <h3 class="text-gray-900 dark:text-white text-xl font-bold">Angażujące Doświadczenie</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-base font-normal leading-relaxed">
+            W każdy projekt angażuję się w 100%. Doradzam i biorę udział w procesie tak, by efekt końcowy był dokładnie tym, czego oczekujesz, a nawet więcej. Priorytetem dla mnie jest twoje zdanie, które łączę z najnowszymi rozwiązaniami. Zarówno wizualnymi, jak i tymi technicznymi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-800">
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+      <div class="flex items-center justify-center space-x-6">
+        <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white" href="index.html">Home</a>
+        <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white" href="omnie.html">O mnie</a>
+        <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white" href="#">Polityka prywatności</a>
+      </div>
+      <p class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">&copy; 2025 Gracjan Śliwiński. Wszelkie prawa zastrzeżone.</p>
+    </div>
+  </footer>
+
+<script>
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  const panel = document.getElementById("menu-panel");
+  const overlay = document.getElementById("menu-overlay");
+  const iconHamburger = document.getElementById("icon-hamburger");
+  const iconClose = document.getElementById("icon-close");
+
+  btn.addEventListener("click", () => {
+    if (menu.classList.contains("hidden")) {
+      menu.classList.remove("hidden");
       setTimeout(() => {
-        loader.style.opacity = "0";
-
-        setTimeout(() => {
-          loader.style.display = "none";
-          afterLoad(); // uruchom resztę kodu po schowaniu loadera
-        }, 500);
-      }, 2500);
-
-      return; // zatrzymaj tu, bo po czasie się odpali `afterLoad`
+        overlay.classList.remove("opacity-0");
+        panel.classList.remove("-translate-x-full");
+      }, 10);
+      iconHamburger.classList.add("hidden");
+      iconClose.classList.remove("hidden");
+    } else {
+      overlay.classList.add("opacity-0");
+      panel.classList.add("-translate-x-full");
+      iconClose.classList.add("hidden");
+      iconHamburger.classList.remove("hidden");
+      setTimeout(() => menu.classList.add("hidden"), 300);
     }
+  });
 
-    afterLoad(); // uruchom natychmiast jeśli loader był już pokazany
+  overlay.addEventListener("click", () => {
+    overlay.classList.add("opacity-0");
+    panel.classList.add("-translate-x-full");
+    iconClose.classList.add("hidden");
+    iconHamburger.classList.remove("hidden");
+    setTimeout(() => menu.classList.add("hidden"), 300);
+  });
 
-    function afterLoad() {
-      // === PO ZAŁADOWANIU STRONY ===
-
-      // Liczniki statystyk
-      const stats = document.querySelectorAll('.stat p');
-
-      const counterObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const el = entry.target;
-            const target = parseInt(el.getAttribute('data-target'), 10);
-            let count = 0;
-
-            const update = () => {
-              if (count <= target) {
-                el.textContent = count + '%';
-                count++;
-                setTimeout(update, 40);
-              } else {
-                el.textContent = target + '%';
-              }
-            };
-
-            update();
-            observer.unobserve(el);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      stats.forEach(stat => counterObserver.observe(stat));
-
-      // Reveal effect
-      const revealElements = document.querySelectorAll('.reveal');
-
-      const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      revealElements.forEach(el => revealObserver.observe(el));
-
-      // Hamburger menu
-      const hamburgerBtn = document.getElementById('hamburgerBtn');
-      const mobileMenu = document.getElementById('mobileMenu');
-
-      hamburgerBtn.addEventListener('click', () => {
-        hamburgerBtn.classList.toggle('open');
-        mobileMenu.classList.toggle('open');
+  // Paralaksa z większą prędkością
+  const parallaxElements = document.querySelectorAll('.parallax');
+  const isMobile = /Mobi|Android/i.test(navigator.userAgent) || /iPad|iPhone|iPod/.test(navigator.userAgent);
+  
+  if(isMobile){
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.pageYOffset;
+      parallaxElements.forEach(el => {
+        el.style.backgroundPosition = `center ${scrollPos * 0.5}px`; // szybciej
       });
-    }
+    });
+  } else {
+    parallaxElements.forEach(el => el.style.backgroundAttachment = 'fixed');
+  }
+
+  // ScrollReveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth scroll "Czytaj dalej"
+  document.querySelector('a[href="#about-section"]').addEventListener('click', function(e){
+    e.preventDefault();
+    document.querySelector('#about-section').scrollIntoView({behavior:'smooth'});
   });
 </script>
 
 </body>
 </html>
+
 
 
 
