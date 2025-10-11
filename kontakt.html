@@ -1,278 +1,205 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html class="dark" lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gracjan Śliwiński — Tworzenie stron internetowych</title>
-  <link rel="stylesheet" href="kontakt.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    .animate-up {
-      opacity: 0.7;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.9s ease;
-    }
-
-    .animate-up.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    #zgodaTekst {
-      font-weight: 200 !important;
-    }
-
-    form#formularz select {
-      padding: 1rem;
-      border: 1px solid #aaa;
-      border-radius: 1rem;
-      font-size: 1rem;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      width: 100%;
-      box-sizing: border-box;
-      margin-bottom: 1rem;
-      appearance: none;
-      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20fill='white'%20class='bi%20bi-caret-down-fill'%20viewBox='0%200%2016%2016'%3E%3Cpath%20d='M7.247%2011.14%202.451%205.658c-.566-.687-.02-1.658.753-1.658h9.592c.773%200%201.319.97.753%201.658l-4.796%205.482a1%201%200%200%201-1.506%200z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 1rem center;
-      background-size: 1rem;
-    }
-
-    form#formularz select:invalid {
-      border-color: #ffffff;
-    }
-
-    form#formularz select option {
-      background-color: black;
-      color: white;
-    }
-
-    form#formularz input[type="checkbox"] {
-      accent-color: green;
-      width: 1.2rem;
-      height: 1.2rem;
-      vertical-align: middle;
-      margin-right: 0.5rem;
-    }
-
-    .checkbox-label {
-      font-weight: 200;
-      color: white;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div>
-      <div id="header-line">
-        <a href="index.html">
-          <span id="h1">Gracjan Śliwiński</span>
-        </a>
-        <hr class="custom-hr" />
-      </div>
-      <a href="index.html">
-        <div class="subtitle">TWORZENIE STRON INTERNETOWYCH</div>
-      </a>
-    </div>
-    <button class="menu-toggle" aria-label="Menu" id="hamburgerBtn">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-  </header>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <nav>
-      <ul style="list-style: none; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
-        <li><a href="index.html"><i class="fas fa-house"></i> Start</a></li>
-        <li><a href="kontakt.html"><i class="fas fa-envelope"></i> Kontakt</a></li>
-        <li><a href="oferta.html"><i class="fas fa-tags"></i> Oferta</a></li>
-        <li><a href="wspolpraca.html"><i class="fas fa-handshake"></i> Współpraca</a></li>
-        <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
-        <li><a href="politykaPrywatnosci.html"><i class="fas fa-lock"></i> Polityka prywatności</a></li>
-      </ul>
-    </nav>
-  </div>
-
-  <main class="animate-up">
-    <section class="contact-section">
-      <div class="contact-info">
-        <div class="contact-item">
-          <i class="fas fa-phone"></i>
-          <a href="tel:+48881530022">Skontaktuj się przez telefon</a>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-envelope"></i>
-          <a href="mailto:gracjan.sliwinski.gs@gmail.com">Wyślij wiadomość e-mail</a>
-        </div>
-        <div class="contact-item">
-          <i class="fab fa-whatsapp"></i>
-          <a href="https://wa.me/48881530022" target="_blank">Napisz na WhatsApp</a>
-        </div>
-      </div>
-
-      <form id="formularz">
-        <label for="imie">Imię i nazwisko / Firma</label>
-        <input type="text" id="imie" name="imie" required />
-
-        <label for="email">Adres email / Numer telefonu</label>
-        <input type="text" id="email" name="email" required />
-
-        <label for="pakiet">Wybierz pakiet:</label>
-        <select id="pakiet" name="pakiet">
-          <option value="" disabled selected hidden>Wybierz jeden z pakietów</option>
-          <option id="darmowaWycena" value="Darmowa wycena">Darmowa wycena</option>
-          <option value="Pakiet podstawowy">Pakiet podstawowy</option>
-          <option value="Pakiet zaawansowany">Pakiet zaawansowany</option>
-          <option value="Pakiet indywidualny">Pakiet indywidualny</option>
-        </select>
-
-        <label class="checkbox-label">
-        <input type="checkbox" id="zgoda" name="zgoda" value="Tak" required />
-          <p id="zgodaTekst">*Wyrażam zgodę na przetwarzanie moich danych osobowych w celu otrzymywania wiadomości poprzez email / nr. telefonu.</p>
-        </label>
-
-        <button id="formButton" type="submit">Wyślij</button>
-        <p id="odpowiedz"></p>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2025 Gracjan Śliwiński | <a href="politykaPrywatnosci.html">Polityka prywatności</a>
-  </footer>
-
-  <script>
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    hamburgerBtn.addEventListener('click', () => {
-      hamburgerBtn.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-    });
-
-    window.addEventListener('load', () => {
-      const animated = document.querySelector('.animate-up');
-      if (animated) {
-        setTimeout(() => {
-          animated.classList.add('active');
-        }, 100);
-      }
-    });
-
-    document.getElementById('formularz').addEventListener('submit', function (event) {
-  event.preventDefault();
-
-  const imie = document.getElementById('imie').value;
-  const email = document.getElementById('email').value;
-  const pakiet = document.getElementById('pakiet').value;
-  const zgoda = document.getElementById('zgoda').checked ? 'Tak' : 'Nie';
-
-  if (!zgoda) {
-    document.getElementById('odpowiedz').innerText = 'Musisz wyrazić zgodę na przetwarzanie danych.';
-    return;
-  }
-
-  const url = 'https://script.google.com/macros/s/AKfycbyhwKQWNeXC6o_Wr9ZVhoubh0PPEOGwHPTcmqJhs9oe9Tvno1mWvo2A3bNwRVxS0tgh9g/exec';
-
-const dane = new URLSearchParams();
-dane.append('imie', imie);
-dane.append('email', email);
-dane.append('pakiet', pakiet);
-dane.append('zgoda', zgoda);
-
-fetch(url, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded'
-  },
-  body: dane.toString(),
-})
-
-    .then((response) => response.text())
-    .then((data) => {
-      document.getElementById('odpowiedz').innerText = 'Dziękuję za wiadomość';
-      document.getElementById('formularz').reset();
-    })
-    .catch((error) => {
-      document.getElementById('odpowiedz').innerText = 'Wystąpił błąd, spróbuj ponownie';
-    });
-
-  const submitButton = document.querySelector('#formularz button');
-  submitButton.textContent = 'Przesłano';
-  submitButton.style.backgroundColor = 'green';
-  submitButton.style.color = 'white';
-  submitButton.disabled = true;
-
-  setTimeout(() => {
-    submitButton.textContent = 'Wyślij';
-    submitButton.style.backgroundColor = '';
-    submitButton.style.color = '';
-    submitButton.disabled = false;
-  }, 3000);
-});
-
-  </script>
-
-
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kontakt | Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
 
 <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const pakiet = params.get('pakiet');
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#000",
+        "background-light": "#000",
+        "background-dark": "#000",
+      },
+      fontFamily: {
+        "display": ["Space Grotesk"]
+      },
+    },
+  },
+}
+</script>
+<style>
+body { min-height: max(884px, 100dvh); }
+.numberOfFont { font-family: 'Petit Formal Script', cursive; }
+.parallax {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-200">
 
-    if (pakiet) {
-      const select = document.getElementById('pakiet');
-      if (select) {
-        select.value = pakiet;
-      }
-    }
-  });
+<div class="relative flex h-auto min-h-screen w-full flex-col justify-between overflow-x-hidden">
+
+  <!-- HEADER -->
+<header class="absolute top-0 left-0 w-full z-20 px-9 py-7">
+    <nav class="container mx-auto flex items-center justify-between text-white">
+      <a class="text-base sm:text-xl font-bold numberOfFont" href="index.html">Gracjan Śliwiński</a>
+
+      <div class="hidden md:flex items-center space-x-6">
+        <a class="hover:text-gray-300" href="omnie.html">O mnie</a>
+        <a class="hover:text-gray-300" href="portfolio.html">Portfolio</a>
+        <a class="hover:text-gray-300" href="wspolpraca.html">Współpraca</a>
+        <a class="hover:text-gray-300" href="oferta.html">Oferta</a>
+        <a class="hover:text-gray-300" href="kontakt.html">Kontakt</a>
+      </div>
+
+      <button id="menu-btn" class="md:hidden">
+        <!-- Hamburger -->
+        <svg id="icon-hamburger" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 6h16M4 12h16m-7 6h7"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+        </svg>
+        <!-- X -->
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 18L18 6M6 6l12 12"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+        </svg>
+      </button>
+
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 z-30 hidden">
+      <div id="menu-overlay" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity"></div>
+      <div id="menu-panel"
+        class="absolute top-0 left-0 h-screen w-64 bg-primary text-white transform -translate-x-full transition-transform duration-300 flex flex-col p-6 space-y-6">
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="index.html"><i class="fas fa-house"></i><span>Strona Główna</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="omnie.html"><i class="fas fa-user"></i><span>O mnie</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="portfolio.html"><i class="fas fa-images"></i><span>Portfolio</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="wspolpraca.html"><i class="fas fa-handshake"></i><span>Współpraca</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="oferta.html"><i class="fas fa-tags"></i><span>Oferta</span></a>
+        <a class="flex items-center space-x-3 hover:text-gray-300" href="kontakt.html"><i class="fa-solid fa-address-book"></i><span>Kontakt</span></a>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO + FORMULARZ NA TLE -->
+  <div class="p-4 @container">
+    <div class="relative flex min-h-[90vh] max-w-3xl lg:max-w-[calc(100%-64px)] mx-auto flex-col gap-6 overflow-hidden bg-cover bg-center rounded-xl @[480px]:gap-8 items-start justify-end parallax" 
+         style='background-image: url("pexels-rbrigant44-771881.jpg");'>
+      <div class="absolute inset-0 bg-black/50 rounded-xl"></div>
+      <div class="relative z-10 w-full flex flex-col items-center justify-center px-6 py-12">
+        <h1 class="text-white text-4xl font-bold mb-6 text-center md:text-5xl">Skontaktuj się ze mną</h1>
+        <form class="w-full max-w-xl bg-black/50 rounded-xl p-8 shadow-lg flex flex-col gap-4">
+          <input class="w-full bg-white/10 text-white placeholder-white/60 border border-white/20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white/50" placeholder="Imię / Firma" type="text" required/>
+          <input class="w-full bg-white/10 text-white placeholder-white/60 border border-white/20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white/50" placeholder="Adres e-mail" type="text" required/>
+          <textarea class="w-full bg-white/10 text-white placeholder-white/60 border border-white/20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white/50" placeholder="Wiadomość" rows="4" required></textarea>
+          <label class="flex items-center gap-2 text-sm text-gray-300">
+            <input type="checkbox" required class="w-4 h-4 rounded border-gray-400 bg-white/10"/>
+            Wyrażam zgodę na przetwarzanie moich danych osobowych w celu kontaktu.
+          </label>
+          <button class="w-full bg-white text-primary font-bold py-3 rounded-lg hover:bg-white/90 transition-colors" type="submit">Wyślij</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- KAFELKI KONTAKTU -->
+<div class="mx-auto mt-12 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3" style="max-width: 1000px;">
+  <div class="flex items-start gap-4 p-6 bg-white/5 rounded-lg border border-white/10">
+    <i class="fas fa-envelope text-white/60 text-xl mt-1"></i>
+    <div>
+      <h3 class="font-bold text-white">Email</h3>
+      <a href="mailto:gracjan.sliwinski.gs@gmail.com" class="text-gray-400 hover:text-white transition">gracjan.sliwinski.gs@gmail.com</a>
+    </div>
+  </div>
+  <div class="flex items-start gap-4 p-6 bg-white/5 rounded-lg border border-white/10">
+    <i class="fas fa-phone text-white/60 text-xl mt-1"></i>
+    <div>
+      <h3 class="font-bold text-white">Telefon</h3>
+      <a href="tel:+48881530022" class="text-gray-400 hover:text-white transition">+48 881 530 022</a>
+    </div>
+  </div>
+  <div class="flex items-start gap-4 p-6 bg-white/5 rounded-lg border border-white/10">
+    <i class="fas fa-share-nodes text-white/60 text-xl mt-1"></i>
+    <div>
+      <h3 class="font-bold text-white">Media Społecznościowe</h3>
+      <div class="flex gap-4 mt-1">
+        <a href="#" class="text-gray-400 hover:text-white transition">LinkedIn</a>
+        <a href="#" class="text-gray-400 hover:text-white transition">Instagram</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
-window.addEventListener('DOMContentLoaded', () => {
-  const params = new URLSearchParams(window.location.search);
-  const pakiet = params.get('pakiet');
+  <!-- FOOTER -->
+  <footer class="bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-800">
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+      <div class="flex items-center justify-center space-x-6">
+        <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white" href="index.html">Home</a>
+        <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white" href="omnie.html">O mnie</a>
+        <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white" href="#">Polityka prywatności</a>
+      </div>
+      <p class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">&copy; 2025 Gracjan Śliwiński. Wszelkie prawa zastrzeżone.</p>
+    </div>
+  </footer>
 
-  if (pakiet) {
-    const select = document.getElementById('pakiet');
-    if (select) {
-      select.value = pakiet;
-    }
+</div>
+
+<script>
+const btn = document.getElementById("menu-btn");
+const menu = document.getElementById("mobile-menu");
+const panel = document.getElementById("menu-panel");
+const overlay = document.getElementById("menu-overlay");
+const iconHamburger = document.getElementById("icon-hamburger");
+const iconClose = document.getElementById("icon-close");
+
+btn.addEventListener("click", () => {
+  if (menu.classList.contains("hidden")) {
+    menu.classList.remove("hidden");
+    setTimeout(() => {
+      overlay.classList.remove("opacity-0");
+      panel.classList.remove("-translate-x-full");
+    }, 10);
+    iconHamburger.classList.add("hidden");
+    iconClose.classList.remove("hidden");
+  } else {
+    overlay.classList.add("opacity-0");
+    panel.classList.add("-translate-x-full");
+    iconClose.classList.add("hidden");
+    iconHamburger.classList.remove("hidden");
+    setTimeout(() => menu.classList.add("hidden"), 300);
   }
 });
 
-const select = document.getElementById('pakiet');
+overlay.addEventListener("click", () => {
+  overlay.classList.add("opacity-0");
+  panel.classList.add("-translate-x-full");
+  iconClose.classList.add("hidden");
+  iconHamburger.classList.remove("hidden");
+  setTimeout(() => menu.classList.add("hidden"), 300);
+});
 
-function updateSelectColor() {
-  switch (select.value) {
-    case 'Darmowa wycena':
-      select.style.color = '#00fff2';
-      break;
-    case 'Pakiet podstawowy':
-      select.style.color = '#00fff2';
-      break;
-    case 'Pakiet zaawansowany':
-      select.style.color = '#00fff2';
-      break;
-    case 'Pakiet indywidualny':
-      select.style.color = '#00fff2';
-      break;
-    default:
-      select.style.color = 'white';
-  }
+// Parallax jak w index.html
+const parallaxElements = document.querySelectorAll('.parallax');
+const isMobile = /Mobi|Android/i.test(navigator.userAgent) || /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+if(isMobile){
+  window.addEventListener('scroll', () => {
+    const scrollPos = window.pageYOffset;
+    parallaxElements.forEach(el => {
+      el.style.backgroundPosition = `center ${scrollPos * 0.5}px`;
+    });
+  });
+} else {
+  parallaxElements.forEach(el => el.style.backgroundAttachment = 'fixed');
 }
-
-select.addEventListener('change', updateSelectColor);
-window.addEventListener('load', updateSelectColor);
-
 </script>
+
 </body>
 </html>
