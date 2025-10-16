@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stitch Design</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin/>
+  <link as="style" href="https://fonts.googleapis.com/css2?display=swap&family=Manrope:wght@400;500;700;800&family=Noto+Sans:wght@400;500;700;900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#ff7b00",
+            "background-light": "#ffffff",
+            "background-dark": "#0d0d0d",
+          },
+          fontFamily: {
+            display: ["Manrope"]
+          },
+        },
+      },
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/a2e0b2e9b5.js" crossorigin="anonymous"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { min-height: max(884px, 100dvh); }
+
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    @media (max-width: 768px) {
+      .parallax-bg { background-attachment: scroll; }
+    }
+
+    .fadein {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .fadein.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Animowany hamburger */
+    .hamburger {
+      width: 28px;
+      height: 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+    .hamburger span {
+      display: block;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s ease-in-out;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+
+<!-- NAVBAR -->
+<header class="fixed top-0 left-0 w-full z-50 bg-background-dark/80 backdrop-blur-md shadow">
+  <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+    <a href="index.html"><h1 class="text-2xl font-extrabold text-primary">LOGO</h1></a>
+    <nav class="hidden md:flex gap-6 text-white font-medium">
+      <a href="#services" class="hover:text-primary transition">Usługi</a>
+      <a href="#gallery" class="hover:text-primary transition">Galeria</a>
+      <a href="#pricing" class="hover:text-primary transition">Cennik</a>
+      <a href="#testimonials" class="hover:text-primary transition">Opinie</a>
+      <a href="#contact" class="hover:text-primary transition">Kontakt</a>
+    </nav>
+    <div id="menuBtn" class="hamburger md:hidden">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden flex-col bg-background-dark text-white px-6 py-4 md:hidden">
+    <a href="#services" class="py-2 hover:text-primary">Usługi</a><br>
+    <a href="#gallery" class="py-2 hover:text-primary">Galeria</a><br>
+    <a href="#pricing" class="py-2 hover:text-primary">Cennik</a><br>
+    <a href="#testimonials" class="py-2 hover:text-primary">Opinie</a><br>
+    <a href="#contact" class="py-2 hover:text-primary">Kontakt</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="relative flex min-h-screen flex-col gap-6 items-center justify-center p-4 overflow-hidden bg-center parallax-bg"
+     style='background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("awwwa.webp");'>
+  <div class="flex flex-col gap-6 text-center fadein max-w-3xl">
+    <h1 class="text-white text-5xl md:text-6xl font-extrabold leading-tight tracking-tighter">Salon Fryzjerski</h1>
+    <p class="text-white/90 text-lg md:text-xl font-normal leading-relaxed">Poznaj sztukę fryzjerstwa w nowoczesnym, stylowym salonie. Nasi eksperci stworzą dla Ciebie idealny look.</p>
+    <button class="flex mt-4 min-w-[140px] cursor-pointer items-center justify-center rounded-lg h-14 px-6 bg-primary text-white text-base font-bold shadow-lg hover:shadow-xl transition">
+      Umów Wizytę
+    </button>
+  </div>
+</div>
+
+<!-- USŁUGI -->
+<section id="services" class="flex flex-col gap-12 px-4 py-16 fadein">
+  <div class="flex flex-col gap-6 items-center text-center max-w-4xl mx-auto">
+    <h2 class="text-gray-900 dark:text-white text-4xl font-extrabold">Nasze Usługi</h2>
+    <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">Oferujemy profesjonalne strzyżenie, koloryzację, stylizację i pielęgnację włosów. Każda wizyta to indywidualne podejście i dbałość o każdy detal.</p>
+  </div>
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6 mt-8">
+    <div class="flex flex-col gap-4 rounded-xl border bg-white/50 dark:bg-black/20 p-6 text-center items-center">
+      <span class="material-symbols-outlined text-primary text-4xl">content_cut</span>
+      <h3 class="text-lg font-bold">Strzyżenie i Stylizacja</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Precyzyjne cięcia i fryzury dopasowane do Twojego stylu i okazji.</p>
+    </div>
+    <div class="flex flex-col gap-4 rounded-xl border bg-white/50 dark:bg-black/20 p-6 text-center items-center">
+      <span class="material-symbols-outlined text-primary text-4xl">palette</span>
+      <h3 class="text-lg font-bold">Koloryzacja i Zabiegi</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Refleksy, balayage i pielęgnacja — zdrowe i piękne włosy w każdym kolorze.</p>
+    </div>
+    <div class="flex flex-col gap-4 rounded-xl border bg-white/50 dark:bg-black/20 p-6 text-center items-center">
+      <span class="material-symbols-outlined text-primary text-4xl">calendar_month</span>
+      <h3 class="text-lg font-bold">Rezerwacja Online</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Zarezerwuj termin w kilka sekund — szybko, wygodnie i bez stresu.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section id="gallery" class="flex flex-col gap-8 py-16 fadein">
+  <h2 class="text-4xl font-extrabold text-center mb-4">Galeria</h2>
+  <div class="flex overflow-x-auto gap-4 px-4">
+    <div class="min-w-64 flex flex-col gap-3">
+      <div class="w-full aspect-square bg-cover rounded-xl" style='background-image:url("image.png");'></div>
+      <p class="text-center font-medium">Fryzura 1</p>
+    </div>
+    <div class="min-w-64 flex flex-col gap-3">
+      <div class="w-full aspect-square bg-cover rounded-xl" style='background-image:url("image\ copy.png");'></div>
+      <p class="text-center font-medium">Fryzura 2</p>
+    </div>
+    <div class="min-w-64 flex flex-col gap-3">
+      <div class="w-full aspect-square bg-cover rounded-xl" style='background-image:url("image\ copy\ 4.png");'></div>
+      <p class="text-center font-medium">Fryzura 3</p>
+    </div>
+    <div class="min-w-64 flex flex-col gap-3">
+      <div class="w-full aspect-square bg-cover rounded-xl" style='background-image:url("image\ copy\ 5.png");'></div>
+      <p class="text-center font-medium">Fryzura 5</p>
+    </div>
+        <div class="min-w-64 flex flex-col gap-3">
+      <div class="w-full aspect-square bg-cover rounded-xl" style='background-image:url("image\ copy\ 6.png");'></div>
+      <p class="text-center font-medium">Fryzura 6</p>
+    </div>
+        <div class="min-w-64 flex flex-col gap-3">
+      <div class="w-full aspect-square bg-cover rounded-xl" style='background-image:url("image\ copy\ 7.png");'></div>
+      <p class="text-center font-medium">Fryzura 7</p>
+    </div>
+        <div class="min-w-64 flex flex-col gap-3">
+      <div class="w-full aspect-square bg-cover rounded-xl" style='background-image:url("image\ copy\ 9.png");'></div>
+      <p class="text-center font-medium">Fryzura 8</p>
+    </div>
+  </div>
+</section>
+
+<!-- CENNIK -->
+<section id="pricing" class="flex flex-col gap-8 px-4 py-16 items-center fadein">
+  <h2 class="text-4xl font-extrabold text-center mb-6">Cennik</h2>
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6 w-full max-w-4xl">
+    <div class="flex flex-col gap-6 rounded-xl border bg-white/50 dark:bg-black/20 p-6">
+      <h3 class="text-lg font-bold">Strzyżenie</h3>
+      <span class="text-5xl font-extrabold text-primary">150 zł</span>
+      <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+        <li>✔ Mycie i cięcie</li>
+        <li>✔ Stylizacja</li>
+      </ul>
+    </div>
+    <div class="flex flex-col gap-6 rounded-xl border bg-white/50 dark:bg-black/20 p-6">
+      <h3 class="text-lg font-bold">Koloryzacja</h3>
+      <span class="text-5xl font-extrabold text-primary">250 zł</span>
+      <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+        <li>✔ Konsultacja</li>
+        <li>✔ Pełna aplikacja</li>
+        <li>✔ Odżywka i stylizacja</li>
+      </ul>
+    </div>
+    <div class="flex flex-col gap-6 rounded-xl border bg-white/50 dark:bg-black/20 p-6">
+      <h3 class="text-lg font-bold">Stylizacja</h3>
+      <span class="text-5xl font-extrabold text-primary">120 zł</span>
+      <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+        <li>✔ Modelowanie</li>
+        <li>✔ Upięcie</li>
+        <li>✔ Fryzura okolicznościowa</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- OPINIE -->
+<section id="testimonials" class="flex flex-col gap-8 px-4 py-16 fadein">
+  <h2 class="text-4xl font-extrabold text-center mb-6">Opinie Klientów</h2>
+  <div class="flex flex-col gap-6 max-w-3xl mx-auto">
+    <div class="p-6 rounded-xl border bg-white/50 dark:bg-black/20">
+      <p class="font-bold">Katarzyna Nowak</p>
+      <p class="text-sm text-gray-500">⭐⭐⭐⭐⭐</p>
+      <p class="mt-2">Najlepsze cięcie, jakie miałam! Stylistka idealnie zrozumiała, czego chcę.</p>
+    </div>
+    <div class="p-6 rounded-xl border bg-white/50 dark:bg-black/20">
+      <p class="font-bold">Ewa Kowalska</p>
+      <p class="text-sm text-gray-500">⭐⭐⭐⭐⭐</p>
+      <p class="mt-2">Przemiła obsługa i świetna atmosfera. Włosy wyglądają cudownie</p>
+    </div>
+    <div class="p-6 rounded-xl border bg-white/50 dark:bg-black/20">
+      <p class="font-bold">Anna Lis</p>
+      <p class="text-sm text-gray-500">⭐⭐⭐⭐</p>
+      <p class="mt-2">W miarę OK</p>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="contact" class="flex flex-col gap-6 px-4 py-16 text-center fadein">
+  <h2 class="text-4xl font-extrabold mb-4">Gotowa na zmianę?</h2>
+  <p class="max-w-3xl mx-auto text-gray-600 dark:text-gray-400 leading-relaxed text-lg">Zarezerwuj wizytę i pozwól naszym stylistom wydobyć Twoje piękno. Czekamy na Ciebie w Stitch Design!</p>
+  <button class="mx-auto min-w-[140px] h-14 px-6 bg-primary text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition">
+    Umów wizytę
+  </button>
+</section>
+
+<!-- STOPKA -->
+<footer class="bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-700 py-8 mt-8">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-4 gap-6">
+    <div>
+      <h3 class="text-xl font-bold text-primary">LOGO</h3>
+      <p class="text-gray-600 dark:text-gray-400 mt-1">ul. Fryzjerska 12, Warszawa</p>
+      <p class="text-gray-600 dark:text-gray-400">Email: kontakt@stitchdesign.pl</p>
+    </div>
+    <div class="flex gap-6 text-2xl text-primary">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p class="text-gray-500 dark:text-gray-400 text-sm mt-4 md:mt-0">&copy; 2025 NazwaFirmy | Realizacja: Gracjan Śliwiński. Wszelkie prawa zastrzeżone.</p>
+  </div>
+</footer>
+
+<script>
+  // Animacja hamburger + menu mobilne
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('active');
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Fade-in sekcje
+  const faders = document.querySelectorAll('.fadein');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.2 });
+  faders.forEach(fader => observer.observe(fader));
+</script>
+
+</body>
+</html>
