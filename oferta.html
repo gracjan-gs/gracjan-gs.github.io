@@ -36,14 +36,26 @@ body { min-height: 100dvh; }
 .numberOfFont { font-family: 'Petit Formal Script', cursive; }
 .reveal { transition: all 1s ease-out; opacity: 0; filter: blur(5px); transform: translateY(20px); }
 .reveal.visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+
+.typewriter-cursor::after {
+  content: '|';
+  margin-left: 2px;
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
 </style>
+
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
-<div class="relative flex flex-col min-h-screen w-full justify-between overflow-x-hidden">
+<div class="flex flex-col min-h-screen w-full overflow-x-hidden">
 
   <!-- HEADER -->
-  <header class="absolute top-0 left-0 w-full z-20 px-9 py-7">
+  <header class="z-20 px-9 py-7">
     <nav class="container mx-auto flex items-center justify-between text-white">
       <a class="text-base sm:text-xl font-bold numberOfFont" href="index.html">Gracjan Śliwiński</a>
 
@@ -82,13 +94,12 @@ body { min-height: 100dvh; }
         <a class="flex items-center space-x-3 hover:text-gray-300" href="wspolpraca.html"><i class="fas fa-handshake"></i><span>Współpraca</span></a>
         <a class="flex items-center text-gray-400 space-x-3 hover:text-gray-300" href="oferta.html"><i class="fas fa-tags"></i><span>Oferta</span></a>
         <a class="flex items-center space-x-3 hover:text-gray-300" href="kontakt.html"><i class="fa-solid fa-address-book"></i><span>Kontakt</span></a>
-
       </div>
     </div>
   </header>
 
   <!-- MAIN CONTENT -->
-  <main class="flex-1 pt-40 pb-20 px-6 max-w-7xl mx-auto">
+  <main class="flex-1 pt-20 pb-20 px-6 max-w-7xl mx-auto">
     <section class="text-center mb-16 reveal">
       <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-white">Oferta</h2>
       <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
@@ -97,51 +108,71 @@ body { min-height: 100dvh; }
     </section>
 
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-  <!-- Wycena Projektu -->
-  <div class="bg-neutral-900 p-6 rounded-xl border border-neutral-800 hover:border-neutral-700 transition-all duration-300 group reveal">
-    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6 group-hover:bg-neutral-700 transition-colors">
-      <i class="fa-solid fa-calculator text-2xl"></i> <!-- dopasowana ikona -->
-    </div>
-    <h3 class="text-xl font-bold mb-2 text-white flex items-center justify-between">
-        Darmowa Wycena Projektu
-    </h3>
-    <p class="text-gray-400">Umawiamy się na niezobowiązującą rozmowę, podczas której omawiamy Twoje potrzeby i oczekiwania. Na tej podstawie przygotowuję szczegółową wycenę projektu – bez żadnych kosztów i zobowiązań. To pierwszy krok do stworzenia wymarzonego efektu.</p>
-  </div>
+      <!-- Wycena Projektu -->
+      <div class="bg-neutral-900 p-6 rounded-xl border border-neutral-800 hover:border-neutral-700 transition-all duration-300 group reveal">
+        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6 group-hover:bg-neutral-700 transition-colors">
+          <i class="fa-solid fa-calculator text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-white flex items-center justify-between">
+          Darmowa Wycena Projektu
+        </h3>
+        <p class="text-gray-400">
+          Umawiamy się na niezobowiązującą rozmowę, podczas której omawiamy Twoje potrzeby i oczekiwania. Na tej podstawie przygotowuję szczegółową wycenę projektu – bez żadnych kosztów i zobowiązań. To pierwszy krok do stworzenia wymarzonego efektu.
+        </p>
+      </div>
 
-  <!-- Projekt Indywidualny -->
-  <div class="bg-neutral-900 p-6 rounded-xl border border-neutral-800 hover:border-neutral-700 transition-all duration-300 group reveal">
-    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6 group-hover:bg-neutral-700 transition-colors">
-      <i class="fa-solid fa-pencil-ruler text-2xl"></i>
-    </div>
-    <h3 class="text-xl font-bold mb-2 text-white flex items-center justify-between">
-      Projekt Indywidualny
-      <span class="text-green-500 text-sm ml-2">Najczęściej wybierane</span>
-    </h3>
-    <p class="text-gray-400">Kompleksowa realizacja projektu od podstaw z użyciem zaawansowanych rozwiązań, idealnie dopasowana do Twojej marki i potrzeb. Każdy element tworzony jest z dbałością o detale i unikalność, co pozwala wyróżnić się na tle konkurencji i zbudować spójną, profesjonalną identyfikację wizualną.</p>
-  </div>
+      <!-- PROJEKT INDYWIDUALNY -->
+      <div class="bg-neutral-900 p-6 rounded-xl border border-neutral-800 hover:border-neutral-700 transition-all duration-300 group reveal">
+        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6 group-hover:bg-neutral-700 transition-colors">
+          <i class="fa-solid fa-pencil-ruler text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-white flex items-center justify-between">
+          Projekt Indywidualny
+          <span class="text-green-500 text-sm ml-2">Szyty na miarę</span>
+        </h3>
+        <p class="text-gray-400 mb-4">
+          Dedykowany projekt od podstaw. Tworzony w pełni pod Twoją markę, strategię i cele. Idealny, gdy potrzebujesz czegoś wyjątkowego i dopasowanego w 100%.
+        </p>
+        <ul class="text-gray-400 text-sm space-y-1 mb-6">
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Projekt graficzny dopasowany do branży i stylu marki</li>
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> W pełni unikalny układ i treści</li>
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Pełna personalizacja wyglądu i funkcji</li>
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Wsparcie przy budowie treści i optymalizacji SEO</li>
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Opieka techniczna po wdrożeniu</li>
+        </ul>
+      </div>
 
-  <!-- One Page -->
-  <div class="bg-neutral-900 p-6 rounded-xl border border-neutral-800 hover:border-neutral-700 transition-all duration-300 group reveal">
-    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6 group-hover:bg-neutral-700 transition-colors">
-      <i class="fa-solid fa-file-lines text-2xl"></i> <!-- dopasowana ikona -->
+      <!-- GOTOWE SZABLONY -->
+      <div class="bg-neutral-900 p-6 rounded-xl border border-neutral-800 hover:border-neutral-700 transition-all duration-300 group reveal">
+        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6 group-hover:bg-neutral-700 transition-colors">
+          <i class="fa-solid fa-layer-group text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-white flex items-center justify-between">
+          Gotowe Szablony
+          <span class="text-green-500 text-sm ml-2">Najszybsza realizacja</span>
+        </h3>
+        <p class="text-gray-400 mb-4">
+          Jeśli chcesz stronę w mniej niż tydzień, wybierz jeden z ponad 50 gotowych szablonów. To szybki, niedrogi i w pełni profesjonalny start online.
+        </p>
+        <ul class="text-gray-400 text-sm space-y-1 mb-6">
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Ponad 50 gotowych, nowoczesnych projektów</li>
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Realizacja w mniej niż 7 dni</li>
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Personalizacja kolorów, treści i zdjęć</li>
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Zoptymalizowana struktura SEO</li>
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Instalacja i konfiguracja w cenie</li>
+        </ul>
+        <a href="szablony.html"
+          id="animated-btn"
+          class="relative inline-flex items-center justify-center bg-green-600 text-white py-2 px-4 rounded-lg text-sm font-semibold cursor-pointer transition-all duration-200"
+          style="width: 220px;">
+          <span id="btn-text">Zobacz wszystkie szablony</span>
+        </a>
+      </div>
     </div>
-    <h3 class="text-xl font-bold mb-2 text-white">One Page</h3>
-    <p class="text-gray-400">Tworzę jednostronicową stronę internetową idealnie dopasowaną do Ciebie i Twoich potrzeb. Każdy element, od treści przez grafiki po układ, jest starannie przemyślany, aby przyciągał uwagę, był w pełni czytelny, a zarazem funkcjonalny. Strona jest prosta w obsłudze, estetyczna i wyjątkowa, dzięki czemu wyróżnisz się na tle konkurencji i zrobisz świetne pierwsze wrażenie na swoich klientach.</p>
-  </div>
-
-  <!-- Projekt Podstawowy -->
-  <div class="bg-neutral-900 p-6 rounded-xl border border-neutral-800 hover:border-neutral-700 transition-all duration-300 group reveal">
-    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6 group-hover:bg-neutral-700 transition-colors">
-      <i class="fa-solid fa-box-open text-2xl"></i> <!-- dopasowana ikona -->
-    </div>
-    <h3 class="text-xl font-bold mb-2 text-white">Projekt Podstawowy</h3>
-    <p class="text-gray-400">Pakiet zaprojektowany z myślą o prostych, funkcjonalnych stronach opartych na gotowych szablonach. Obejmuje do 3 stron (strona główna + 2 podstrony) oraz ograniczona liczbę elementów na stronie. To ekonomiczne i szybkie rozwiązanie, które pozwala na profesjonalną obecność w sieci przy jasno określonym zakresie usług.</p>
-  </div>
-</div>
-
+  </main>
 
   <!-- FOOTER -->
-  <footer class="bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-800 mt-8">
+  <footer class="mt-auto bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-800">
     <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
       <div class="flex items-center justify-center space-x-6">
         <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white" href="index.html">Home</a>
@@ -151,7 +182,6 @@ body { min-height: 100dvh; }
       <p class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">&copy; 2025 Gracjan Śliwiński. Wszelkie prawa zastrzeżone.</p>
     </div>
   </footer>
-
 </div>
 
 <script>
@@ -187,13 +217,35 @@ const observer = new IntersectionObserver((entries, obs) => {
     if(entry.isIntersecting){
       setTimeout(() => {
         entry.target.classList.add('visible');
-      }, i * 200); // 200ms opóźnienia między elementami
+      }, i * 200);
       obs.unobserve(entry.target);
     }
   });
 }, { threshold: 0.2 });
 reveals.forEach(el => observer.observe(el));
 
+document.addEventListener('DOMContentLoaded', () => {
+  const animatedBtn = document.getElementById('animated-btn');
+  const btnTextEl = document.getElementById('btn-text');
+  const targetUrl = animatedBtn.getAttribute('href');
+  const message = "Przenoszę do szablonów...";
+
+  animatedBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    btnTextEl.textContent = '';
+    btnTextEl.classList.add('typewriter-cursor');
+
+    let i = 0;
+    const interval = setInterval(() => {
+      btnTextEl.textContent += message[i];
+      i++;
+      if(i >= message.length){
+        clearInterval(interval);
+        setTimeout(() => { window.location.href = targetUrl; }, 500);
+      }
+    }, 85);
+  });
+});
 </script>
 
 </body>
