@@ -48,362 +48,1420 @@
     ]
   }
   </script>
-  
+
 <script>
 tailwind.config = {
-    darkMode: "class",
-    theme: {
-        extend: {
-            colors: {
-                "primary": "#000",              
-                "background-light": "#000",     
-                "background-dark": "#000",    
-            },
-            fontFamily: {
-                "display": ["Space Grotesk"]
-            },
-            borderRadius: {
-                "DEFAULT": "0.25rem",
-                "lg": "0.5rem",
-                "xl": "0.75rem",
-                "full": "9999px"
-            },
-        },
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#ea2a33",
+        "background-light": "#000000",
+        "background-dark": "#000000",
+      },
+      fontFamily: {
+        display: ["Inter", "system-ui", "sans-serif"]
+      },
     },
+  },
 }
 </script>
 <style>
-body {
-    min-height: max(884px, 100dvh);
+@font-face {
+  font-family: "Amazing Slab";
+  src: url("fonts/AmazingSlab-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
-.numberOfFont {
-    font-family: 'Petit Formal Script', cursive;
-}
-.reveal {
-  transition: all 1s ease-out;
-  opacity: 0;
-  filter: blur(5px);
-  transform: translateY(20px);
-}
-.reveal.visible {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateY(0);
-}
-.parallax {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+
+@font-face {
+  font-family: "Amazing Slab";
+  src: url("fonts/AmazingSlab-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 </style>
+
+<style>
+.parallax {
+  background-image: url("IMG/bgofficial.jpg");
+}
+
+@media (min-width: 768px) {
+  .parallax {
+    background-image: url("IMG/officialbg1.jpg");
+  }
+}
+
+
+header {
+    z-index: 1000;
+}
+s {
+  text-decoration-color: #7a2aea;
+  text-decoration-thickness: 0.2rem;
+}
+
+.parallax {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-1 * (100vw - 100%) / 2);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.parallax::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.112);
+  z-index: 1;
+}
+.parallax > * { position: relative; z-index: 2; }
+@media (min-width: 768px) {
+  .parallax { background-position: center 10%; }
+}
+body { min-height: max(884px, 100dvh); }
+main > section { margin-top: 6rem; margin-bottom: 6rem; }
+html { scroll-behavior: smooth; }
+
+/* === ANIMACJE === */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-delay] { transition-delay: var(--delay, 0s); }
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* Fade-in dla startu strony */
+@keyframes appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.start-fade {
+  opacity: 0;
+  animation: appear 0.8s ease-out forwards;
+}
+
+/* Hamburger animacja */
+.hamburger {
+  position: relative;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.hamburger span {
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 8px; }
+.hamburger span:nth-child(3) { top: 16px; }
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 8px;
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 8px;
+}
+#join-btn {
+  color: #000000;
+  background: linear-gradient(270deg, #ffffff, #ffffff);
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+#join-btn:hover {
+  transform: scale(1.05);
+}
+
+</style>
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
 
-<div class="relative flex h-auto min-h-screen w-full flex-col justify-between overflow-x-hidden">
-  <!-- HEADER -->
-  <header class="absolute top-0 left-0 w-full z-20 px-9 py-7">
-    <nav class="container mx-auto flex items-center justify-between text-white">
-      <a class="text-base sm:text-xl font-bold numberOfFont" href="index.html">Gracjan Śliwiński</a>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
 
-      <div class="hidden md:flex items-center space-x-6">
-        <a class="hover:text-gray-300" href="omnie.html">O mnie</a>
-        <a class="hover:text-gray-300" href="portfolio.html">Portfolio</a>
-        <a class="hover:text-gray-300" href="wspolpraca.html">Współpraca</a>
-        <a class="hover:text-gray-300" href="oferta.html">Oferta</a>
-        <a class="hover:text-gray-300" href="kontakt.html">Kontakt</a>
-      </div>
+     <!-- LOGO + IKONKI -->
+<div class="flex items-center text-white mr-12">
 
-      <button id="menu-btn" class="md:hidden">
-        <!-- Hamburger -->
-        <svg id="icon-hamburger" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 6h16M4 12h16m-7 6h7"
-            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-        </svg>
-        <!-- X -->
-        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 18L18 6M6 6l12 12"
-            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-        </svg>
-      </button>
+<a href="#home" class="flex items-center">
+  <img src="IMG/BialeLogo.png"
+       alt="Logo"
+       class="h-12 md:h-12 lg:h-16 w-auto object-contain hover:opacity-80">
+</a>
 
-    </nav>
-
-    <div id="mobile-menu" class="fixed inset-0 z-30 hidden">
-      <div id="menu-overlay" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity"></div>
-      <div id="menu-panel"
-        class="absolute top-0 left-0 h-screen w-64 bg-primary text-white transform -translate-x-full transition-transform duration-300 flex flex-col p-6 space-y-6">
-        <a class="flex items-center space-x-3 text-gray-400 hover:text-gray-300" href="index.html"><i class="fas fa-house"></i><span>Strona Główna</span></a>
-        <a class="flex items-center space-x-3 hover:text-gray-300" href="omnie.html"><i class="fas fa-user"></i><span>O mnie</span></a>
-        <a class="flex items-center space-x-3 hover:text-gray-300" href="portfolio.html"><i class="fas fa-images"></i><span>Portfolio</span></a>
-        <a class="flex items-center space-x-3 hover:text-gray-300" href="wspolpraca.html"><i class="fas fa-handshake"></i><span>Współpraca</span></a>
-        <a class="flex items-center space-x-3 hover:text-gray-300" href="oferta.html"><i class="fas fa-tags"></i><span>Oferta</span></a>
-        <a class="flex items-center space-x-3 hover:text-gray-300" href="kontakt.html"><i class="fa-solid fa-address-book"></i><span>Kontakt</span></a>
-
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO PARALLAX -->
-<div class="p-4 @container">
-  <div class="relative flex min-h-[90vh] max-w-3xl lg:max-w-[calc(100%-64px)] mx-auto flex-col gap-6 overflow-hidden bg-cover bg-center bg-no-repeat rounded-xl p-6 @[480px]:gap-8 items-start justify-end parallax" style='background-image: url("img/resHome.jpg");'>
-    <div class="absolute inset-0 bg-black/50 rounded-xl"></div>
-    <div class="relative flex flex-col gap-4 text-left z-10">                                  
-      <h1 class="text-white text-4xl font-bold leading-tight tracking-tight @[480px]:text-6xl">Potrzebujesz Strony Internetowej?</h1>
-      <p class="text-gray-200 text-base font-normal leading-normal @[480px]:text-lg max-w-2xl">
-        Specjalizuję się w tworzeniu nowoczesnych i profesjonalnych stron internetowych w minimalistycznym stylu. Dbam o estetykę i detale wizualne, które sprawiają, że strona przyciąga uwagę i budzi zaufanie klientów.
-      </p>
-    </div>
-    <a class="relative z-10 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-wide transition-colors hover:bg-opacity-90" href="#about-section">
-      <span class="truncate">Czytaj dalej</span>
-    </a>
-  </div>
 </div>
 
 
-  <!-- CONTENT -->
-  <div id="about-section" class="flex flex-col gap-4 reveal">
-    <div class="flex flex-col gap-12 px-4 py-16 @container sm:px-6 lg:px-8">
-      <div class="flex flex-col gap-4 text-center items-center">
-        <h2 class="text-gray-900 dark:text-white text-3xl font-bold leading-tight tracking-tight @[480px]:text-5xl max-w-3xl">Moje Podejście</h2>
-        <p class="text-gray-600 dark:text-gray-400 text-lg font-normal leading-normal max-w-3xl">
-          Stawiam na prostotę, przejrzystość i funkcjonalność. Każdy projekt traktuję indywidualnie, tak aby strona nie tylko dobrze wyglądała, ale przede wszystkim spełniała realne potrzeby użytkownika, wyróżniała się na tle innych i wspierała właśnie twoją markę osobistą.
-        </p>
+      <style>
+      .social-icon i {
+        font-size: 20px;
+        display: inline-block;
+        transition: transform 0.3s ease, opacity 0.6s ease;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .social-icon i.fade-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .social-icon:hover i {
+        transform: scale(1.2) rotate(15deg);
+      }
+      </style>
+
+      <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.social-icon i').forEach((el, index) => {
+          setTimeout(() => el.classList.add('fade-in'), index * 100);
+        });
+      });
+      </script>
+
+      <!-- MENU GŁÓWNE (desktop) -->
+      <nav class="hidden md:flex space-x-6 text-white">
+        <a href="#home" class="relative group">Home<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#8000e2] transition-all group-hover:w-full"></span></a>
+        <a href="#services" class="relative group">O mnie<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#8000e2] transition-all group-hover:w-full"></span></a>
+        <a href="#gallery" class="relative group">Styl pracy<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#8000e2] transition-all group-hover:w-full"></span></a>
+        <a href="#about" class="relative group">Moja droga<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#8000e2] transition-all group-hover:w-full"></span></a>
+        <a href="#about-me" class="relative group">Kim jestem<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#8000e2] transition-all group-hover:w-full"></span></a>
+        <a href="#youtube" class="relative group">Współpraca<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#8000e2] transition-all group-hover:w-full"></span></a>
+        <a href="#contact" class="relative group">Pomysły<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#8000e2] transition-all group-hover:w-full"></span></a>
+
+      </nav>
+
+      <!-- MENU MOBILNE -->
+      <div id="menuToggle" class="hamburger md:hidden z-50">
+        <span></span><span></span><span></span>
       </div>
     </div>
   </div>
 
-<!-- OPINIE (SLIDER) -->
-<section class="py-16 px-4 sm:px-6 lg:px-8 bg-[#1a1a1a] dark:bg-[#000000] reveal">
-  <h2 class="text-center text-white text-3xl font-bold mb-10">Opinie Klientów</h2>
+  <!-- NAWIGACJA MOBILNA -->
+  <nav id="mobileNav"
+    class="fixed top-0 left-0 w-full bg-background-dark/95 backdrop-blur-md text-white flex flex-col items-center justify-center space-y-6 transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out md:hidden h-screen z-40">
+    <a href="#home" class="text-lg hover:text-primary">Home</a>
+    <a href="#services" class="text-lg hover:text-primary">O mnie</a>
+    <a href="#gallery" class="text-lg hover:text-primary">Styl pracy</a>
+    <a href="#about" class="text-lg hover:text-primary">Moja droga</a>
+    <a href="#about-me" class="text-lg hover:text-primary">Kim jestem</a>
+    <a href="#youtube" class="text-lg hover:text-primary">Współpraca</a>
+    <a href="#contact" class="text-lg hover:text-primary">Pomysły</a>
+  </nav>
+  <div id="scrollProgress"></div>
+</header>
+<!-- Scroll to top button -->
+<a href="#home" id="scrollTopBtn"
+   class="fixed bottom-4 right-4 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center opacity-0 pointer-events-none z-[9999] transition-opacity duration-700">
+  <i class="fas fa-arrow-up text-black text-lg md:text-xl"></i>
+</a>
+<script>
+  
+</script>
+<main>
+  <div id="home" class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+    <div class="parallax relative flex min-h-screen w-full flex-col p-6 text-white">
 
-<!-- Przycisk Dodaj Opinię -->
-<div class="flex justify-center my-8">
-  <a href="https://www.google.com/search?sa=X&sca_esv=a95b1a567a7f3cbf&tbm=lcl&sxsrf=AE3TifNWlWxUSb4GHTOdjNU8M2j0OiwS_w:1760006832714&q=gracjan%20%C5%9Bliwi%C5%84ski%20-%20tworzenie%20stron%20internetowych%20opinie&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2NDUxMzYzNzQwMjMzMbYwBnI3MDK-YrRKL0pMzkrMUzg6OyezPPNoS3F2poKuQkl5flFVal5mqkJxSVF-nkJmXklqUV5qSX55ZXKGQn5BJlBqESsFmgFakANVlAAAAA&rldimm=1546367102664383546&hl=pl-PL&ved=0CAgQ5foLahcKEwigqfmt-JaQAxUAAAAAHQAAAAAQBQ&biw=1920&bih=992&dpr=1#lkt=LocalPoiReviews&arid=Ci9DQUlRQUNvZENodHljRjlvT2s1MWRXWnBObGxHY1RsRE9FY3pjRVozVFhwUWFXYxAB&lrd=0x6439cad4ffe81223:0x1575ccafd6a91c3a,3,,,," target="_blank"
-     class="flex items-center gap-2 px-5 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white 
-            rounded-lg shadow hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-    <img src="https://www.google.com/favicon.ico" alt="Google" class="w-5 h-5">
-    <span>Dodaj opinię</span>
+      <!-- CONTENT -->
+      <div
+        class="absolute bottom-24 left-4 flex max-w-full flex-col gap-2 text-left md:max-w-lg"
+        style="font-family: 'Inter', system-ui, sans-serif;"
+      >
+        <!-- Google stars – MOBILE -->
+        <div class="fade-in flex items-center gap-1 text-gray-300 md:hidden">
+          <div class="flex gap-[2px] items-center">
+            <!-- 5 gwiazdek białych / szarych -->
+            <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
+            </svg>
+            <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
+            </svg>
+            <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
+            </svg>
+            <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
+            </svg>
+            <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
+            </svg>
+          </div>
+          <span class="ml-1 text-[10px] tracking-wide text-gray-400">
+            <a target="_blank" href="https://www.google.com/search?sca_esv=709dfd0b212bea1b&sxsrf=AE3TifMg94XIiHpxjrMOJg9Fvq2PhG3feQ:1766246676158&q=gracjan+sliwinski&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E7hDPgfimjyncrwbjsiEeVp0bTomI1HU7nvAT0hOv-jp_idydJJSi5nnjgDt3OGfl4eaxw8%3D&uds=AOm0WdF1eg4P3bLopmERYJ1GWcYkUo9UjUStKhzNDOtv5PEpvyagPkCtK2P2a5IlomX5gX5-I1MqwP1Inm784XzFR2W57AHVhe8WG724DRXq4w9TSQv0qSU&sa=X&sqi=2&ved=2ahUKEwjTlN_NxcyRAxVdQvEDHTb0NJkQ3PALegQIKBAF&biw=1920&bih=992&dpr=1">By Google</a>
+          </span>
+        </div>
+
+        <h1 class="fade-in text-4xl font-normal leading-snug text-white md:text-5xl">
+          Gracjan Śliwiński
+        </h1>
+
+        <h2 class="fade-in text-base font-light leading-relaxed text-white md:text-lg">
+          Tworzenie minimalistycznych, a zarazem praktycznych stron internetowych
+        </h2>
+
+        <!-- Przycisk – zawsze po lewej -->
+        <div class="flex mt-1 items-center relative w-full">
+          <button class=" fade-in items-center justify-center
+            h-10 w-48 md:w-48
+            rounded-lg border border-white/40
+            text-white text-sm
+            hover:border-white hover:bg-white/10
+            transition-colors duration-300
+            relative">
+            Wybierz formę kontaktu
+            <span class="absolute inset-0 bg-black opacity-10 rounded-lg pointer-events-none transform scale-0 transition-transform duration-500"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Google stars – DESKTOP / TABLET przy prawej krawędzi, lekko wyżej od przycisku -->
+      <div class="hidden md:flex items-center gap-1 absolute right-6 bottom-28 -translate-y-1 h-6">
+        <div class="flex gap-[2px] items-center">
+          <!-- 5 gwiazdek białych / szarych -->
+          <svg class="w-3.5 h-3.5 text-white fade-in" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
+          </svg>
+          <svg class="w-3.5 h-3.5 text-white fade-in" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
+          </svg>
+          <svg class="w-3.5 h-3.5 text-white fade-in" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
+          </svg>
+          <svg class="w-3.5 h-3.5 text-white fade-in" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
+          </svg>
+          <svg class="w-3.5 h-3.5 text-white fade-in" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
+          </svg>
+        </div>
+        <span class="ml-1 text-[10px] tracking-wide text-gray-400 fade-in">
+          <a target="_blank" href="https://www.google.com/search?sca_esv=709dfd0b212bea1b&sxsrf=AE3TifMg94XIiHpxjrMOJg9Fvq2PhG3feQ:1766246676158&q=gracjan+sliwinski&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E7hDPgfimjyncrwbjsiEeVp0bTomI1HU7nvAT0hOv-jp_idydJJSi5nnjgDt3OGfl4eaxw8%3D&uds=AOm0WdF1eg4P3bLopmERYJ1GWcYkUo9UjUStKhzNDOtv5PEpvyagPkCtK2P2a5IlomX5gX5-I1MqwP1Inm784XzFR2W57AHVhe8WG724DRXq4w9TSQv0qSU&sa=X&sqi=2&ved=2ahUKEwjTlN_NxcyRAxVdQvEDHTb0NJkQ3PALegQIKBAF&biw=1920&bih=992&dpr=1">By Google</a>
+        </span>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+
+
+
+
+
+
+<!-- === POPUP EBOOK === -->
+ <!--
+<div id="ebookPopup"
+     class="fixed inset-0 hidden items-center justify-center z-50 transition-opacity duration-300 opacity-0"
+     style="background-color: rgba(0,0,0,0.6); backdrop-filter: blur(6px);">
+  <div class="bg-black text-white rounded-2xl p-6 w-80 flex flex-col items-center gap-4 shadow-[0_0_50px_#8000e22a]"
+       style="animation: popupIn 300ms ease forwards;">
+    <img src="Marcin Śliwiński.jpg" alt="Okładka eBooka"
+         class="rounded-xl w-full object-cover">
+    <h3 class="text-xl font-bold text-center mt-4">Bezpłatny eBook</h3>
+    <p class="text-gray-300 text-sm text-center">
+      Pobierz mój darmowy eBook i dowiedz się, jak utrzymać dyscyplinę każdego dnia.
+    </p>
+    <a href="ebook.pdf" download
+       class="w-full text-center bg-primary text-white py-2 rounded-lg hover:bg-red-700 transition">
+       Pobierz teraz
+    </a>
+    <button id="closeEbookPopup"
+            class="mt-2 text-sm text-gray-400 hover:text-white transition">
+      Zamknij
+    </button>
+  </div>
+</div>
+-->
+<script>
+  const ebookPopup = document.getElementById('ebookPopup');
+  const closeEbookPopup = document.getElementById('closeEbookPopup');
+
+  function showEbookPopup() {
+    ebookPopup.classList.remove('hidden');
+    ebookPopup.classList.add('flex');
+    void ebookPopup.offsetHeight;
+    ebookPopup.classList.remove('opacity-0');
+    ebookPopup.classList.add('opacity-100');
+  }
+
+  function hideEbookPopup() {
+    ebookPopup.classList.remove('opacity-100');
+    ebookPopup.classList.add('opacity-0');
+    ebookPopup.addEventListener('transitionend', () => {
+      ebookPopup.classList.remove('flex');
+      ebookPopup.classList.add('hidden');
+    }, { once: true });
+  }
+
+  // pokaż popup po każdym odświeżeniu
+  window.addEventListener('load', () => {
+    setTimeout(showEbookPopup, 800);
+  });
+
+  closeEbookPopup.addEventListener('click', hideEbookPopup);
+  ebookPopup.addEventListener('click', e => { if (e.target === ebookPopup) hideEbookPopup(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') hideEbookPopup(); });
+</script>
+
+
+<!-- === POPUP (pewny fallback + optional blur) === -->
+<div id="popup"
+     class="fixed inset-0 hidden items-center justify-center z-50 transition-opacity duration-300 opacity-0"
+     style="background-color: rgba(0,0,0,0.6); /* fallback gdy bg-black/60 nie działa */
+            -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); /* opcjonalny blur */">
+<div id="popup-box" class="bg-black text-white rounded-2xl p-6 w-80 flex flex-col items-center gap-4 border border-white/10 shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+       style="animation: popupIn 300ms ease forwards;">
+    <h3 class="text-xl font-bold text-center">Dołącz do społeczności</h3>
+    <div class="flex flex-col gap-3 w-full">
+  <a href="https://www.instagram.com/michal.koziar/" target="_blank"
+     class="w-full text-center bg-pink-700 text-white py-2 rounded-lg hover:bg-pink-600 transition">
+     Instagram
+  </a>
+
+  <a href="https://www.tiktok.com/@michalzetoro" target="_blank"
+     class="w-full text-center bg-[#3a006e] text-white py-2 rounded-lg hover:bg-[#52009e] transition">
+     TikTok
+  </a>
+
+  <a href="https://www.youtube.com/channel/UCcxfnQqSkaQWV03TykKhcTg" target="_blank"
+     class="w-full text-center bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition">
+     YouTube
   </a>
 </div>
 
-  <div class="relative overflow-hidden max-w-5xl mx-auto">
-    <div id="opinie-slider" class="flex transition-transform duration-700 ease-in-out">
-      <!-- Opinia 1 -->
-      <div class="min-w-full px-4">
-        <div class="bg-[#121212] rounded-lg shadow-lg p-8 text-center">
-          <div class="flex justify-center mb-3 text-yellow-400">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
+<button id="close-popup"
+        class="mt-4 text-sm text-gray-400 hover:text-white transition">
+  Zamknij
+</button>
+  </div>
+</div>
 
-          <p id="review-text" class="text-gray-300 italic mb-2 overflow-hidden transition-[max-height] duration-700 ease-in-out max-h-[100px]">
-            "Chciałbym serdecznie podziękować Gracjanowi za stworzenie wspaniałej strony internetowej. Współpraca była czystą
-            przyjemnością od pierwszej do ostatniej minuty. Gracjan to nie tylko utalentowany profesjonalista, ale także osoba,
-            która z cierpliwością i zaangażowaniem podchodzi do projektu klienta. Każdy szczegół strony został w pełni
-            dopracowany. Dzięki temu czułem się zaopiekowany, a efekt finalny przerósł moje najśmielsze oczekiwania. Strona
-            działa doskonale i już przynosi pierwsze pozytywne efekty. Z całego serca polecam."
-          </p>
+<style>
+  @keyframes popupIn {
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes popupOut {
+    from { opacity: 1; transform: translateY(0) scale(1); }
+    to   { opacity: 0; transform: translateY(8px) scale(0.98); }
+  }
+</style>
 
-          <button id="read-more" class="text-gray-400 text-sm hover:text-gray-300 mt-1 focus:outline-none">
-            Czytaj dalej
-          </button>
+<script>
+  const btn = document.getElementById('join-btn');
+  const popup = document.getElementById('popup');
+  const popupBox = document.getElementById('popup-box');
+  const closeBtn = document.getElementById('close-popup');
 
-          <h3 class="text-white font-semibold flex items-center justify-center gap-2 mt-4">
-            Marcin Śliwiński
-            <img src="img/verified.png" alt="verified" width="18" height="18" class="inline-block">
-          </h3>
-        </div>
-      </div>
+  function showPopup() {
+    // pokaż kontener (hidden -> flex) i triggeruj przejście opacity
+    popup.classList.remove('hidden');
+    popup.classList.add('flex');
+
+    // wymuś reflow żeby transition zadziałało poprawnie
+    // (czyli przeglądarka "widzi" zmianę opakowania)
+    void popup.offsetHeight;
+
+    popup.classList.remove('opacity-0');
+    popup.classList.add('opacity-100');
+
+    // upewnij się, że box ma wejściową animację
+    popupBox.style.animation = 'popupIn 300ms ease forwards';
+  }
+
+  function hidePopup() {
+    // animacja out dla boxa
+    popupBox.style.animation = 'popupOut 220ms ease forwards';
+
+    // ukryj zasłonę (przez opacity), ale poczekamy na koniec transition aby usunąć flex/hidden
+    popup.classList.remove('opacity-100');
+    popup.classList.add('opacity-0');
+
+    // czekaj na koniec transition opacity (bez setTimeout)
+    function onTransitionEnd(e) {
+      if (e.propertyName === 'opacity') {
+        popup.removeEventListener('transitionend', onTransitionEnd);
+        popup.classList.remove('flex');
+        popup.classList.add('hidden');
+        // przywróć domyślną animację boxa na przyszłość
+        popupBox.style.animation = '';
+      }
+    }
+    popup.addEventListener('transitionend', onTransitionEnd);
+  }
+
+  btn.addEventListener('click', showPopup);
+  closeBtn.addEventListener('click', hidePopup);
+
+  // dodatkowo: kliknięcie poza boxem zamyka popup
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) hidePopup();
+  });
+
+  // ESC zamyka
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !popup.classList.contains('hidden')) hidePopup();
+  });
+</script>
+
+
+
+<section id="services" class="mt-20">
+  <h2 class="text-gray-800 dark:text-white text-[24px] font-bold px-6 pb-6 fade-in">Zacznij osiągać rezultaty</h2>
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-6 p-6">
+    <!-- Blok 1 -->
+    <div class="fade-in flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
+      <div class="text-primary mater"><span style="color: #53f0d8;" class="material-symbols-outlined">hdr_weak</span></div>
+      <h3 class="text-gray-900 text-lg dark:text-white font-bold">Wizualna Doskonałość</h3>
+      <p class="text-gray-600 dark:text-[#bdbdbd] text-sm">
+        Stawiam na wysoką jakość i minimalistyczną estetykę. Tworzę strony, które nie tylko dobrze wyglądają, ale też realnie działają na korzyść twojej marki.
+      </p>
     </div>
-
-    <!-- Nawigacja -->
-    <div class="flex justify-center gap-3 mt-6">
-      <button id="prev" class="text-gray-400 hover:text-white">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-      <button id="next" class="text-gray-400 hover:text-white">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
+    <!-- Blok 2 -->
+    <div class="fade-in flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
+      <div class="text-primary"><span style="color: #53f0d8;" class="material-symbols-outlined">hdr_weak</span></div>
+      <h3 class="text-gray-900 text-lg dark:text-white font-bold">Kreatywne Projekty</h3>
+      <p class="text-gray-600 dark:text-[#bdbdbd] text-sm">
+        Tworzę unikalne projekty, które wyróżniają się na tle konkurencji i są dostosowane do Twoich potrzeb oraz oczekiwań.
+      </p>
+    </div>
+    <div class="fade-in flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
+      <div class="text-primary"><span style="color: #53f0d8;" class="material-symbols-outlined">hdr_weak</span></div>
+      <h3 class="text-gray-900 text-lg dark:text-white font-bold">Kreatywne Projekty</h3>
+      <p class="text-gray-600 dark:text-[#bdbdbd] text-sm">
+        Tworzę unikalne projekty, które wyróżniają się na tle konkurencji i są dostosowane do Twoich potrzeb oraz oczekiwań.
+      </p>
+    </div>
+    <div class="fade-in flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
+      <div class="text-primary"><span style="color: #53f0d8;" class="material-symbols-outlined">Exercise</span></div>
+      <h3 class="text-gray-900 dark:text-white text-lg font-bold">Przeprowadzonych treningów rocznie</h3>
+      <p class="text-gray-600 dark:text-[#bdbdbd] text-sm"></p>
+      <span class="text-3xl dark:text-[#bdbdbd]" data-counter="1050">0</span>
     </div>
   </div>
 </section>
 
 
 
+
+<section class="w-full py-10">
+  <h2 class="text-gray-800 dark:text-white text-[24px] font-bold px-6 pb-6 fade-in">Portfolio</h2>
+
+  <!-- max-w zmniejszone NA PC: 900px -->
+<div class="relative overflow-hidden max-w-lg mx-6 md:mx-auto rounded-xl">
+    <div id="slider-track" class="flex transition-transform duration-700 ease-in-out">
+
+      <!-- SLIDE 1 -->
+      <a href="CarSerwis.html" class="min-w-full px-2 md:px-4">
+        <div class="relative w-full h-64 rounded-lg shadow-lg overflow-hidden group">
+          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+               style='background-image: url("resPorFryzjerstwo1.jpg");'></div>
+          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
+            <h2 class="text-white text-lg font-bold">Mechanik Samochodowy | DEMO</h2>
+          </div>
+        </div>
+      </a>
+
+      <!-- SLIDE 2 -->
+      <a href="Projekt2.html" class="min-w-full px-2 md:px-4">
+        <div class="relative w-full h-64 rounded-lg shadow-lg overflow-hidden group">
+          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+               style='background-image: url("resPorPrzewodnik.jpg");'></div>
+          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
+            <h2 class="text-white text-lg font-bold">Przewodnik turystyczny po Helu</h2>
+          </div>
+        </div>
+      </a>
+
+      <!-- SLIDE 3 -->
+      <a href="Projekt3.html" class="min-w-full px-2 md:px-4">
+        <div class="relative w-full h-64 rounded-lg shadow-lg overflow-hidden group">
+          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+               style='background-image: url("ResPortMechanik.jpg");'></div>
+          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
+            <h2 class="text-white text-lg font-bold">Projekt 3 | DEMO</h2>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+<div class="text-center mt-2">
+  <a href="#" class="btn-shine">Zobacz wszystkie szablony</a>
+</div>
+
+<style>
+.btn-shine,
+.btn-shine:link,
+.btn-shine:visited,
+.btn-shine:hover,
+.btn-shine:active {
+  text-decoration: none !important;
+}
+
+.btn-shine {
+  display: inline-block;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  white-space: nowrap;
+
+  background: linear-gradient(to right, #9f9f9f 0, #fff 10%, #868686 20%);
+  background-size: 200% auto;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  0%   { background-position: 0% 0; }
+  100% { background-position: -200% 0; }
+}
+</style>
+
+  </span>
+</div>
+
+</section>
+
 <script>
-  // --- Slider logic ---
-  const slider = document.getElementById('opinie-slider');
-  const slides = slider.children.length;
-  let index = 0;
+  const track = document.getElementById("slider-track");
+  const slides = track.children;
+  let aa = 0;
 
-  function updateSlider() {
-    slider.style.transform = `translateX(-${index * 100}%)`;
+  function nextSlide() {
+    aa++;
+    if (aa >= slides.length) aa = 0;
+    track.style.transform = `translateX(-${aa * 100}%)`;
   }
 
-  if (slides > 1) {
-    document.getElementById('next').addEventListener('click', () => {
-      index = (index + 1) % slides;
-      updateSlider();
-    });
-
-    document.getElementById('prev').addEventListener('click', () => {
-      index = (index - 1 + slides) % slides;
-      updateSlider();
-    });
-
-    setInterval(() => {
-      index = (index + 1) % slides;
-      updateSlider();
-    }, 6000);
-  }
-
-  // --- Read more logic with smoother animation ---
-  const readMoreBtn = document.getElementById('read-more');
-  const reviewText = document.getElementById('review-text');
-  let expanded = false;
-
-  readMoreBtn.addEventListener('click', () => {
-    if (!expanded) {
-      const fullHeight = reviewText.scrollHeight;
-      reviewText.style.maxHeight = fullHeight + 'px';
-      readMoreBtn.textContent = 'Zwiń';
-    } else {
-      reviewText.style.maxHeight = '100px';
-      readMoreBtn.textContent = 'Czytaj dalej';
-    }
-    expanded = !expanded;
-  });
+  setInterval(nextSlide, 3000);
 </script>
 
 
-  <!-- BLOK 3 KAFELKI -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-3 @[480px]:gap-6">
-      <!-- Kafelek 1 -->
-      <div class="flex flex-col gap-4 reveal">
-        <div class="w-full aspect-video bg-cover bg-center rounded-lg"
-          style='background-image: url("img/resHome1.jpg");'>
-        </div>
-        <div>
-          <h3 class="text-gray-900 dark:text-white text-xl font-bold">Wizualna Doskonałość</h3>
-          <p class="text-gray-600 dark:text-gray-400 text-base font-normal leading-relaxed">
-            Stawiam na wysoką jakość i minimalistyczną estetykę. Tworzę strony, które nie tylko dobrze wyglądają, ale też realnie działają na korzyść twojej marki.
-          </p>
-        </div>
-      </div>
 
-      <!-- Kafelek 2 -->
-      <div class="flex flex-col gap-4 reveal">
-        <div class="w-full aspect-video bg-cover bg-center rounded-lg"
-          style='background-image: url("img/resHome4.WEBP");'>
-        </div>
-        <div>
-          <h3 class="text-gray-900 dark:text-white text-xl font-bold">Funkcjonalny Design</h3>
-          <p class="text-gray-600 dark:text-gray-400 text-base font-normal leading-relaxed">
-            Dbam o każdy techniczny detal, moje strony są szybkie, responsywne i niezawodne, dzięki czemu użytkownicy mają płynne i bezproblemowe doświadczenie.
-          </p>
-        </div>
-      </div>
 
-      <!-- Kafelek 3 -->
-      <div class="flex flex-col gap-4 reveal">
-        <div class="w-full aspect-video bg-cover bg-center rounded-lg"
-          style='background-image: url("img/resHome3.png");'>
+
+
+
+<section class="bg-background-dark py-16 md:py-24" id="about" class="mt-20">
+<h2 class="fade-in text-gray-800 dark:text-white text-[24px] font-bold px-6 pb-6">Współpraca</h2>
+  <div class="container mx-auto flex flex-col items-center gap-10 px-4 md:px-6">
+    <div class="max-w-3xl text-center fade-in">
+
+      <div class="timeline-container text-left mt-12 relative">
+        
+        <!-- Pasek -->
+        <div class="timeline-line" id="timelineLine"></div>
+
+        <!-- Punkty osi czasu -->
+        <div class="timeline-item">
+          <div class="timeline-content rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
+            <h4 class="font-bold text-lg">Krok 1: Konsultacja</h4>
+            <p class="dark:text-[#bdbdbd] text-primary" >Zaczynamy od rozmowy, w której wspólnie ustalamy, jak powinna wyglądać Twoja idealna strona. Poznaję Twoje potrzeby, oczekiwania oraz cele, aby stworzyć rozwiązanie idealnie dopasowane do Ciebie lub Twojego biznesu. Omawiamy funkcjonalności strony oraz najlepsze rozwiązania, które pozwolą osiągnąć zamierzony efekt.</p>
+          </div>
         </div>
-        <div>
-          <h3 class="text-gray-900 dark:text-white text-xl font-bold">Angażujące Doświadczenie</h3>
-          <p class="text-gray-600 dark:text-gray-400 text-base font-normal leading-relaxed">
-            W każdy projekt angażuję się w 100%. Doradzam i biorę udział w procesie tak, by efekt końcowy był dokładnie tym, czego oczekujesz, a nawet więcej. Priorytetem dla mnie jest twoje zdanie, które łączę z najnowszymi rozwiązaniami. Zarówno wizualnymi, jak i tymi technicznymi.
-          </p>
+
+        <div class="timeline-item">
+          <div class="timeline-content rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
+            <h4 class="font-bold text-lg">Krok 2: Oferta i wycena</h4>
+            <p class="dark:text-[#bdbdbd]" >Po zebraniu wszystkich niezbędnych informacji przygotowuję szczegółową propozycję rozwiązania wraz z przejrzystą wyceną. Ostateczny koszt zależy głównie od zakresu prac, takich jak liczba podstron, stopień zaawansowania funkcjonalności czy integracje z innymi systemami. Otrzymujesz jasny plan działań i dokładny kosztorys, dzięki czemu masz pełną kontrolę nad budżetem.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
+            <h4 class="font-bold text-lg">Krok 3: Projekt i Kodowanie</h4>
+            <p class="dark:text-[#bdbdbd]" >Na tym etapie tworzę wstępną koncepcję strony, to efekt początkowy, który ułatwia kolejne etapy pracy. Przedstawiam układ, wygląd i kluczowe elementy, abyś mógł(a) zobaczyć, jak wszystko będzie wyglądać. Masz możliwość wniesienia uwag i nadania innego efektu wizualnego. Po Twojej akceptacji przechodzę do kodowania, czyli najbardziej czasochłonnego i technicznego procesu, w którym koncepcja staje się w pełni funkcjonalną stroną.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
+            <h4 class="font-bold text-lg">Krok 4: Wsparcie po wdrożeniu</h4>
+            <p class="dark:text-[#bdbdbd]" >Jeśli chcesz na bieżąco dodawać nowe treści, aktualizować informacje czy rozbudowywać stronę, możesz skorzystać z jednego z dostępnych pakietów wsparcia: miesięcznego – Płacisz z góry za miesiąc i z wyprzedzeniem podajesz, jakie zmiany chcesz wprowadzić na stronie. Przez cały miesiąc jestem do Twojej dyspozycji, realizując zgłoszone zadania zgodnie z ustaleniami, jednorazowego – Płacisz raz za wykonanie zlecenia. Zgłaszasz zmiany z wyprzedzeniem, a ja je realizuję. Dzięki temu masz pewność, że zawsze możesz liczyć na moją pomoc – niezależnie od tego, czy chcesz dodać nowe treści, czy zaktualizować istniejące informacje.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-800 mt-16">
-    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
-      <div class="flex items-center justify-center space-x-6">
-        <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white" href="index.html">Home</a>
-        <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white" href="omnie.html">O mnie</a>
-        <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white" href="#">Polityka prywatności</a>
+<section id="about-me" class="bg-background-dark py-20 px-6 md:px-0">
+  <div class="container mx-auto flex flex-col md:flex-row items-center gap-12">
+
+    <!-- OBRAZ -->
+    <div class="w-full md:w-1/2 flex justify-center">
+      <div class="w-64 sm:w-80 md:w-96 aspect-square overflow-hidden rounded-2xl">
+        <picture>
+          <!-- DESKTOP -->
+          <source 
+            srcset="gracjanOmnie1.jpg" 
+            media="(min-width: 768px)"
+          />
+          <!-- MOBILE (fallback) -->
+          <img 
+            src="gracjanOmnie2.jpg" 
+            alt="Gracjan – o mnie"
+            class="w-full h-full object-cover"
+          />
+        </picture>
       </div>
-      <p class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">&copy; 2025 Gracjan Śliwiński. Wszelkie prawa zastrzeżone.</p>
     </div>
-  </footer>
+
+    <!-- TEKST -->
+    <div class="w-full md:w-1/2 text-center md:text-left fade-in p-0">
+      <h2 class="text-white text-3xl font-bold mb-4">Kim jestem?</h2>
+
+      <p class="dark:text-[#bdbdbd] text-base leading-relaxed mb-4">
+        Nazywam się Gracjan Śliwiński i jestem uczniem szkoły średniej. W wolnym czasie zajmuję się projektowaniem i tworzeniem stron internetowych od podstaw, przekształcając je w dopracowane wizualnie i funkcjonalnie projekty.
+      </p>
+
+      <p class="dark:text-[#bdbdbd] text-base leading-relaxed mb-4">
+        <span style="font-style: italic;"><q>Każdy projekt to dla mnie indywidualna realizacja, powstająca w pełni ręcznie, z uwzględnieniem celów, odbiorców i specyfiki branży.</q></span>       
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<style>
+.timeline-container {
+  position: relative;
+  max-width: 50rem; /* 800px */
+  margin: 0 auto;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 3.125rem; /* 50px */
+  margin-bottom: 3.75rem; /* 60px */
+  opacity: 0;
+  transform: translateY(1.875rem); /* 30px */
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -0.125rem; /* -2px */
+  top: 0; /* wcześniej 8px */
+  width: 1.25rem; /* 20px */
+  height: 1.25rem; /* 20px */
+  border-radius: 50%;
+  background-color: #53f0d8;
+  opacity: 1;
+  z-index: 100;
+  box-shadow: 0 0 0.825rem #53f0d8, 0 0 0.25rem   #53f0d8; /* 10px, 20px */
+}
+
+.timeline-line {
+  position: absolute;
+  left: 0.5rem; /* 8px */
+  top: 0.625rem; /* 10px */
+  width: 0.1875rem; /* 3px */
+  height: 0;
+  background: linear-gradient(to bottom, #53f0d8 0%, #53f0d8 50%, #53f0d8 100%);
+  box-shadow: 0 0 0.75rem rgba(53, 25, 96, 0.7); /* 12px */
+  z-index: 2;
+  border-radius: 0.125rem; /* 2px */
+  transition: height 0.15s linear;
+}
+
+.timeline-content {
+  background: rgba(30, 30, 30, 0.7);
+  padding: 1.25rem; /* 20px */
+  border-radius: 0.5rem; /* 8px */
+  border-left: 0.1875rem solid #ffffff; /* 3px */
+  color: white;
+}
+</style>
+
 
 <script>
-  const btn = document.getElementById("menu-btn");
-  const menu = document.getElementById("mobile-menu");
-  const panel = document.getElementById("menu-panel");
-  const overlay = document.getElementById("menu-overlay");
-  const iconHamburger = document.getElementById("icon-hamburger");
-  const iconClose = document.getElementById("icon-close");
+let lastScrollY = 0;
+let ticking = false;
 
-  btn.addEventListener("click", () => {
-    if (menu.classList.contains("hidden")) {
-      menu.classList.remove("hidden");
-      setTimeout(() => {
-        overlay.classList.remove("opacity-0");
-        panel.classList.remove("-translate-x-full");
-      }, 10);
-      iconHamburger.classList.add("hidden");
-      iconClose.classList.remove("hidden");
-    } else {
-      overlay.classList.add("opacity-0");
-      panel.classList.add("-translate-x-full");
-      iconClose.classList.add("hidden");
-      iconHamburger.classList.remove("hidden");
-      setTimeout(() => menu.classList.add("hidden"), 300);
-    }
-  });
-
-  overlay.addEventListener("click", () => {
-    overlay.classList.add("opacity-0");
-    panel.classList.add("-translate-x-full");
-    iconClose.classList.add("hidden");
-    iconHamburger.classList.remove("hidden");
-    setTimeout(() => menu.classList.add("hidden"), 300);
-  });
-
-  // Paralaksa z większą prędkością
-  const parallaxElements = document.querySelectorAll('.parallax');
-  const isMobile = /Mobi|Android/i.test(navigator.userAgent) || /iPad|iPhone|iPod/.test(navigator.userAgent);
-  
-  if(isMobile){
-    window.addEventListener('scroll', () => {
-      const scrollPos = window.pageYOffset;
-      parallaxElements.forEach(el => {
-        el.style.backgroundPosition = `center ${scrollPos * 0.5}px`; // szybciej
-      });
+window.addEventListener('scroll', () => {
+  lastScrollY = window.scrollY;
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      handleTimelineScroll(lastScrollY);
+      ticking = false;
     });
-  } else {
-    parallaxElements.forEach(el => el.style.backgroundAttachment = 'fixed');
+    ticking = true;
   }
+});
 
-  // ScrollReveal
-  const reveals = document.querySelectorAll('.reveal');
+function handleTimelineScroll(scrollY) {
+  const section = document.querySelector('#about');
+  const line = document.querySelector('#timelineLine');
+  const items = section.querySelectorAll('.timeline-item');
+  const rect = section.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  if (rect.top < windowHeight && rect.bottom > 0) {
+    const start = scrollY + rect.top - windowHeight * 0.3;
+    const end = scrollY + rect.bottom - windowHeight * 0.6;
+    const rawProgress = (scrollY - start) / (end - start);
+    const progress = Math.min(1, Math.max(0, rawProgress * 1.2));
+
+    const firstItem = items[0].offsetTop + 20;
+    const lastItem = items[items.length - 1].offsetTop + 30;
+    const maxHeight = lastItem - firstItem;
+
+    line.style.height = maxHeight * progress + 'px';
+
+    items.forEach(item => {
+      const itemTop = item.offsetTop - firstItem - 40;
+      item.classList.toggle('visible', maxHeight * progress >= itemTop);
+    });
+  }
+}
+</script>
+
+
+
+<style>
+/* Twój istniejący CSS tutaj… (fade-in, parallax, hamburger, etc.) */
+
+/* === PASEK POSTĘPU === */
+#scrollProgress {
+  position: absolute;
+  bottom: 0; /* linia idealnie na dole navbara */
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: linear-gradient(to right, #fff, #fff);
+  transition: width 0.1s ease;
+}
+header {
+  position: sticky; /* już masz */
+  top: 0;
+}
+</style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display">
+
+<!-- Pasek przewijania -->
+<div id="scrollProgress"></div>
+
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+  <!-- Twój header -->
+</header>
+
+<main>
+  <!-- Twój content: parallax, sections, galerie, newsletter -->
+</main>
+
+<footer class="bg-background-dark text-gray-400 py-10 mt-16 fade-in">
+  <!-- Twój footer -->
+</footer>
+
+<script>
+let scrollTarget = 0;
+let scrollCurrent = 0;
+const scrollBar = document.getElementById('scrollProgress');
+
+function updateScrollBar() {
+  scrollCurrent += (scrollTarget - scrollCurrent) * 0.1; // im mniejsza wartość, tym wolniej
+  scrollBar.style.width = scrollCurrent + '%';
+  requestAnimationFrame(updateScrollBar);
+}
+updateScrollBar();
+
+window.addEventListener('scroll', () => {
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  scrollTarget = (window.scrollY / docHeight) * 100;
+});
+</script>
+
+<div class="w-full py-8">
+  <!-- CAROUSEL dla małych i średnich ekranów -->
+  <div class="block lg:hidden relative w-full overflow-hidden">
+    <!-- Strzałki -->
+    <button id="prev" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-neutral-800/70 hover:bg-neutral-700 text-white p-2 rounded-full">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button id="next" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-neutral-800/70 hover:bg-neutral-700 text-white p-2 rounded-full">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
+    <div id="carousel" class="flex gap-6 overflow-x-hidden overflow-y-hidden snap-x snap-mandatory scroll-smooth px-6">
+      <!-- Karta 1 -->
+      <div class="min-w-[280px] max-w-[280px] bg-neutral-950 p-6 rounded-2xl border border-neutral-800 hover:border-neutral-700 flex-shrink-0 snap-center">
+        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6">
+          <i class="fa-solid fa-calculator text-2xl text-white"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-white">Darmowa Wycena Projektu</h3>
+        <p class="text-gray-400 text-sm">
+          Umów się na niezobowiązującą rozmowę i otrzymaj szczegółową wycenę projektu.
+        </p>
+      </div>
+
+      <!-- Karta 2 -->
+      <div class="min-w-[280px] max-w-[280px] bg-neutral-950 p-6 rounded-2xl border border-neutral-800 hover:border-neutral-700 flex-shrink-0 snap-center">
+        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6">
+          <i class="fa-solid fa-pencil-ruler text-2xl text-white"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-white">Projekt Indywidualny <span class="text-blue-500 text-sm ml-2">Premium</span></h3>
+        <p class="text-gray-400 text-sm mb-4">
+          Dedykowany projekt od podstaw, szyty na miarę Twojej marki.
+        </p>
+        <ul class="text-gray-400 text-sm space-y-1">
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Personalizacja pod markę</li>
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Optymalizacja SEO</li>
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Wsparcie po wdrożeniu</li>
+        </ul>
+      </div>
+
+      <!-- Karta 3 -->
+      <div class="min-w-[280px] max-w-[280px] bg-neutral-950 p-6 rounded-2xl border border-neutral-800 hover:border-neutral-700 flex-shrink-0 snap-center">
+        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6">
+          <i class="fa-solid fa-layer-group text-2xl text-white"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-white">Gotowe Szablony <span class="text-green-500 text-sm ml-2">Szybka realizacja</span></h3>
+        <p class="text-gray-400 text-sm mb-4">
+          Wybierz jeden z gotowych szablonów i dopasuj go do swojej marki w krótkim czasie.
+        </p>
+        <ul class="text-gray-400 text-sm space-y-1">
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Szybki czas realizacji</li>
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Personalizacja kolorów i treści</li>
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Optymalizacja SEO</li>
+        </ul>
+        <a href="szablony.html" class="mt-4 inline-block bg-green-600 text-white py-2 px-4 rounded-lg font-semibold transition hover:bg-green-500 text-sm">
+          Zobacz wszystkie szablony
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATYCZNE KARTY dla dużych ekranów -->
+  <div class="hidden lg:flex gap-8 justify-center py-8">
+    <!-- Karta 1 -->
+    <div class="w-[280px] bg-neutral-950 p-6 rounded-2xl border border-neutral-800 hover:border-neutral-700">
+      <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6">
+        <i class="fa-solid fa-calculator text-2xl text-white"></i>
+      </div>
+      <h3 class="text-xl font-bold mb-2 text-white">Darmowa Wycena Projektu</h3>
+      <p class="text-gray-400 text-sm">
+        Umów się na niezobowiązującą rozmowę i otrzymaj szczegółową wycenę projektu.
+      </p>
+    </div>
+
+    <!-- Karta 2 -->
+    <div class="w-[280px] bg-neutral-950 p-6 rounded-2xl border border-neutral-800 hover:border-neutral-700">
+      <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6">
+        <i class="fa-solid fa-pencil-ruler text-2xl text-white"></i>
+      </div>
+      <h3 class="text-xl font-bold mb-2 text-white">Projekt Indywidualny <span class="text-blue-500 text-sm ml-2">Premium</span></h3>
+      <p class="text-gray-400 text-sm mb-4">
+        Dedykowany projekt od podstaw, szyty na miarę Twojej marki.
+      </p>
+      <ul class="text-gray-400 text-sm space-y-1">
+        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Personalizacja pod markę</li>
+        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Optymalizacja SEO</li>
+        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Wsparcie po wdrożeniu</li>
+      </ul>
+    </div>
+
+    <!-- Karta 3 -->
+    <div class="w-[280px] bg-neutral-950 p-6 rounded-2xl border border-neutral-800 hover:border-neutral-700">
+      <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6">
+        <i class="fa-solid fa-layer-group text-2xl text-white"></i>
+      </div>
+      <h3 class="text-xl font-bold mb-2 text-white">Gotowe Szablony <span class="text-green-500 text-sm ml-2">Szybka realizacja</span></h3>
+      <p class="text-gray-400 text-sm mb-4">
+        Wybierz jeden z gotowych szablonów i dopasuj go do swojej marki w krótkim czasie.
+      </p>
+      <ul class="text-gray-400 text-sm space-y-1">
+        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Szybki czas realizacji</li>
+        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Personalizacja kolorów i treści</li>
+        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Optymalizacja SEO</li>
+      </ul>
+      <a href="szablony.html" class="mt-4 inline-block bg-green-600 text-white py-2 px-4 rounded-lg font-semibold transition hover:bg-green-500 text-sm hover:color-[#53f0d8]">
+        Zobacz wszystkie szablony
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+const carousel = document.getElementById('carousel');
+const next = document.getElementById('next');
+const prev = document.getElementById('prev');
+
+if (carousel) {
+  const getCardWidth = () => carousel.children[0].offsetWidth + 24; // 24 = gap-6
+
+  next.addEventListener('click', () => {
+    carousel.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+  });
+
+  prev.addEventListener('click', () => {
+    carousel.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+  });
+
+  let autoScroll = setInterval(() => {
+    if (carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth) {
+      carousel.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      carousel.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+    }
+  }, 5000);
+
+  carousel.addEventListener('mouseenter', () => clearInterval(autoScroll));
+  carousel.addEventListener('mouseleave', () => {
+    autoScroll = setInterval(() => {
+      if (carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth) {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+      }
+    }, 5000);
+  });
+}
+</script>
+
+
+<!-- <section id="opinie" class="bg-background-dark py-20 px-6">
+  <h2 class="text-white text-[24px] font-bold mb-10 fade-in">Opinie podopiecznych</h2>
+
+  <div class="relative overflow-hidden max-w-3xl mx-auto">
+
+    <div id="opinieTrack" class="flex transition-transform duration-700 ease-out"></div>
+
+    <div id="opinieDots" class="flex justify-center gap-3 mt-6"></div>
+
+
+    <div class="mt-6 flex justify-center">
+      <a href="#" target="_blank" class="opacity-60 hover:opacity-100 transition">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png" alt="Google" class="w-8 h-8">
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+const opinie = [
+  { ocena: 5, tekst: "Najlepsze treningi w życiu. Zero lania wody, pełen konkret.", autor: "Kamil" },
+  { ocena: 4, tekst: "W końcu ktoś, kto wymaga, ale też tłumaczy jak człowiek.", autor: "Marek" },
+  { ocena: 5, tekst: "Mega atmosfera i profesjonalne podejście.", autor: "Ania" },
+  { ocena: 4, tekst: "Świetne podejście do techniki.", autor: "Oskar" },
+  { ocena: 5, tekst: "System i dyscyplina. Progres.", autor: "Sara" },
+  { ocena: 5, tekst: "Polecam każdemu.", autor: "Darek" },
+  { ocena: 4, tekst: "Solidna robota.", autor: "Wojtek" },
+  { ocena: 5, tekst: "Najbardziej merytoryczny trener.", autor: "Paweł" },
+  { ocena: 5, tekst: "Świetne dobranie planu.", autor: "Igor" },
+  { ocena: 4, tekst: "Każda sesja to krok do przodu.", autor: "Monika" },
+  { ocena: 5, tekst: "Widać pasję.", autor: "Szymon" },
+  { ocena: 4, tekst: "Poukładane i skuteczne.", autor: "Maja" },
+  { ocena: 5, tekst: "Super dla początkujących.", autor: "Ewelina" },
+  { ocena: 4, tekst: "Wymagający, ale fair.", autor: "Adrian" },
+  { ocena: 5, tekst: "Świetna decyzja.", autor: "Julia" },
+  { ocena: 5, tekst: "Mega motywacja.", autor: "Artur" },
+  { ocena: 4, tekst: "Widać doświadczenie.", autor: "Jarek" },
+  { ocena: 5, tekst: "Profesjonalne prowadzenie.", autor: "Patryk" },
+  { ocena: 4, tekst: "Efekty szybkie.", autor: "Kuba" },
+  { ocena: 5, tekst: "Świetne tempo.", autor: "Karolina" },
+  { ocena: 5, tekst: "Plan dopracowany.", autor: "Natalia" },
+  { ocena: 4, tekst: "Technika siłowa ogarnięta.", autor: "Michał" },
+  { ocena: 5, tekst: "Wiedza na poziomie.", autor: "Krzysiek" },
+  { ocena: 4, tekst: "Polecam.", autor: "Bartek" },
+  { ocena: 5, tekst: "Najwyższa motywacja.", autor: "Dominika" },
+  { ocena: 4, tekst: "Progres stabilny.", autor: "Tomek" },
+  { ocena: 5, tekst: "Świetna energia.", autor: "Kasia" },
+  { ocena: 4, tekst: "Zacząłem trenować porządnie.", autor: "Błażej" },
+  { ocena: 5, tekst: "Najlepszy trener.", autor: "Rafał" },
+  { ocena: 4, tekst: "Polecam zapracowanym.", autor: "Eliza" },
+  { ocena: 5, tekst: "Świetna mobilność.", autor: "Ala" },
+  { ocena: 4, tekst: "Logiczny trening.", autor: "Seweryn" },
+  { ocena: 5, tekst: "Czysty konkret.", autor: "Piotr" },
+  { ocena: 4, tekst: "Powrót po kontuzji udany.", autor: "Iza" },
+  { ocena: 5, tekst: "Ćwiczenia dobrane idealnie.", autor: "Filip" },
+  { ocena: 4, tekst: "Progres co tydzień.", autor: "Basia" },
+  { ocena: 5, tekst: "Konsekwencja i jakość.", autor: "Olek" },
+  { ocena: 5, tekst: "Robota robiona.", autor: "Maciek" },
+  { ocena: 4, tekst: "Organizacja perfekcyjna.", autor: "Lena" },
+];
+
+const track = document.getElementById("opinieTrack");
+const dotsContainer = document.getElementById("opinieDots");
+
+opinie.forEach((opinia) => {
+  const gwiazdki = Array.from({ length: 5 })
+    .map((_, i) =>
+      i < opinia.ocena
+        ? `<span class="text-yellow-400 text-xl">★</span>`
+        : `<span class="text-gray-600 text-xl">★</span>`
+    )
+    .join("");
+
+  track.innerHTML += `
+    <div class="min-w-full px-6">
+      <div class="bg-[#111] border border-white/10 rounded-2xl p-6 text-gray-300 shadow-[0_0_20px_#8000e233]">
+        <div class="flex items-center gap-2 mb-3">
+          <div class="flex">${gwiazdki}</div>
+          <span class="text-gray-400 text-sm">${opinia.ocena}/5</span>
+        </div>
+
+        <p class="text-100 mb-4">„${opinia.tekst}”</p>
+        <h4 class="text-white font-bold text-base">– ${opinia.autor}</h4>
+      </div>
+    </div>
+  `;
+});
+
+const itemsPerDot = 2;
+const totalDots = Math.ceil(opinie.length / itemsPerDot);
+
+for (let i = 0; i < totalDots; i++) {
+  dotsContainer.innerHTML += `
+    <button data-block="${i}" class="dot w-3 h-3 rounded-full bg-white/20"></button>
+  `;
+}
+
+const dots = document.querySelectorAll(".dot"); -->
+<script>
+let index = 0;
+function updateSlider() {
+  track.style.transform = `translateX(-${index * 100}%)`;
+
+  dots.forEach(d => d.classList.remove("bg-white"));
+  dots.forEach(d => d.classList.add("bg-white/20"));
+
+  const activeDot = Math.floor(index / itemsPerDot);
+  dots[activeDot].classList.remove("bg-white/20");
+  dots[activeDot].classList.add("bg-white");
+}
+
+dots.forEach(dot => {
+  dot.addEventListener("click", () => {
+    const block = Number(dot.dataset.block);
+    index = block * itemsPerDot;
+    updateSlider();
+  });
+});
+
+setInterval(() => {
+  index = (index + 1) % opinie.length;
+  updateSlider();
+}, 4500);
+
+updateSlider();
+</script>
+  </div>
+</section>
+
+<script>
+const textarea = document.getElementById('idea');
+textarea.addEventListener('input', () => {
+  textarea.style.height = 'auto';
+  textarea.style.height = textarea.scrollHeight + 'px';
+});
+</script>
+
+<section id="contact" class="bg-background-dark py-16 px-6">
+  <h2 class="fade-in text-gray-800 dark:text-white text-[24px] font-bold px-6 pb-6">
+    Kontakt
+  </h2>
+
+  <div id="contact-buttons" class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
+
+    <a href="tel:+48505848210"
+       class="contact-btn rounded-lg border border-neutral-800 bg-neutral-950 p-6 flex flex-col items-center justify-center text-white transition-colors"
+       data-color="#008709">
+      <i class="fas fa-phone-alt text-3xl mb-3"></i>
+      <span>Zadzwoń</span>
+    </a>
+
+    <a href="sms:+48505848210"
+       class="contact-btn rounded-lg border border-neutral-800 bg-neutral-950 p-6 flex flex-col items-center justify-center text-white transition-colors"
+       data-color="#8000e2">
+      <i class="fas fa-sms text-3xl mb-3"></i>
+      <span>Wyślij SMS</span>
+    </a>
+
+    <a href="https://wa.me/48505848210" target="_blank"
+       class="contact-btn rounded-lg border border-neutral-800 bg-neutral-950 p-6 flex flex-col items-center justify-center text-white transition-colors"
+       data-color="#25D366">
+      <i class="fab fa-whatsapp text-3xl mb-3"></i>
+      <span>WhatsApp</span>
+    </a>
+
+    <a href="https://m.me/marcin.sliwka.50" target="_blank"
+       class="contact-btn rounded-lg border border-neutral-800 bg-neutral-950 p-6 flex flex-col items-center justify-center text-white transition-colors"
+       data-color="#0084FF">
+      <i class="fab fa-facebook-messenger text-3xl mb-3"></i>
+      <span>Messenger</span>
+    </a>
+
+    <a href="https://www.instagram.com/trenuj_ze_sliwka/" target="_blank"
+       class="contact-btn rounded-lg border border-neutral-800 bg-neutral-950 p-6 flex flex-col items-center justify-center text-white transition-colors"
+       data-color="#E1306C">
+      <i class="fab fa-instagram text-3xl mb-3"></i>
+      <span>Instagram</span>
+    </a>
+
+  </div>
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".contact-btn").forEach(btn => {
+    const color = btn.dataset.color
+
+    btn.addEventListener("mouseenter", () => {
+      btn.style.backgroundColor = color
+    })
+
+    btn.addEventListener("mouseleave", () => {
+      btn.style.backgroundColor = ""
+    })
+  })
+})
+</script>
+
+
+<style>
+@keyframes slowPulse {
+  0%, 100% { background-color: #1a1a1a; }
+  50% { background-color: var(--pulse-color); }
+}
+
+.contact-btn.animate {
+  animation: slowPulse 0.8s ease-in-out;
+}
+</style>
+
+<script>
+const buttons = document.querySelectorAll('.contact-btn');
+
+const observer = new IntersectionObserver((entries, obs) => {
+  if(entries[0].isIntersecting) {
+    buttons.forEach((btn, i) => {
+      setTimeout(() => {
+        btn.style.setProperty('--pulse-color', btn.dataset.color);
+        btn.classList.add('animate');
+      }, i * 400); // wolniejsza sekwencja: co 0.4s
+    });
+    obs.disconnect(); // tylko raz
+  }
+}, { threshold: 0.3 });
+
+observer.observe(document.getElementById('contact-buttons'));
+</script>
+
+
+<footer class="bg-background-dark text-gray-400 py-10 mt-16 fade-in">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10 text-center md:text-left">
+  </div>
+
+  <div class="mt-10 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+    © <span id="year"></span> Gracjan Śliwiński. Wszelkie prawa zastrzeżone</a>
+    <br>
+    <span class="inline-block mt-3">
+      <i class="fa-solid fa-up-right-from-square mr-1" style="color: #ffffff;"></i>
+      <a href="#" class="hover:text-primary transition" style="color: #ffffff;">Polityka prywatności</a>
+    </span>
+  </div>
+</footer>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</main>
+  </section>
+<style>
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+
+<script>
+// ENERGICZNY, ALE PŁYNNIEJSZY FADE-IN OBSERVER
+const fadeEls = document.querySelectorAll('.fade-in');
+
+if (fadeEls.length) {
+  const observer = new IntersectionObserver((entries, obs) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      const el = e.target;
+      el.style.transitionDelay = el.dataset.delay || '0s';
+      el.classList.add('visible');
+      obs.unobserve(el);
+    }
+  }, { threshold: 0.05 });
+
+  fadeEls.forEach(el => observer.observe(el));
+}
+</script>
+
+<!-- === SCRIPTS === -->
+<script>
+function animateValue(el, start, end, duration) {
+  let startTime = null;
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const progress = Math.min((timestamp - startTime) / duration, 1);
+    const value = Math.floor(progress * (end - start) + start);
+    el.textContent = value.toLocaleString("pl-PL") + " +";
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll("[data-counter]");
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        obs.unobserve(entry.target);
+        const el = entry.target;
+        const end = parseInt(el.getAttribute("data-counter"), 10);
+        animateValue(el, 0, end, 2000);
+        obs.unobserve(el); // tylko raz
       }
     });
-  }, { threshold: 0.2 });
-  reveals.forEach(el => observer.observe(el));
+  }, { threshold: 0.4 }); // 0.4 = 40% widoczności
 
-  // Smooth scroll "Czytaj dalej"
-  document.querySelector('a[href="#about-section"]').addEventListener('click', function(e){
-    e.preventDefault();
-    document.querySelector('#about-section').scrollIntoView({behavior:'smooth'});
-  });
+  counters.forEach(el => observer.observe(el));
+});
 </script>
+
+
+<script>
+
+// MENU MOBILE — animacja + hamburger w X
+const toggleBtn = document.getElementById('menuToggle');
+const mobileNav = document.getElementById('mobileNav');
+let menuOpen = false;
+
+toggleBtn.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  toggleBtn.classList.toggle('active', menuOpen);
+  if (menuOpen) {
+    mobileNav.classList.remove('-translate-y-full', 'opacity-0');
+    mobileNav.classList.add('translate-y-0', 'opacity-100');
+  } else {
+    mobileNav.classList.add('-translate-y-full', 'opacity-0');
+    mobileNav.classList.remove('translate-y-0', 'opacity-100');
+  }
+});
+
+mobileNav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileNav.classList.add('-translate-y-full', 'opacity-0');
+    mobileNav.classList.remove('translate-y-0', 'opacity-100');
+    toggleBtn.classList.remove('active');
+    menuOpen = false;
+  });
+});
+</script>
+<script>
+// Paralaksa
+const parallaxElements = document.querySelectorAll('.parallax');
+const isMobile = /Mobi|Android/i.test(navigator.userAgent) || /iPad|iPhone|iPod/.test(navigator.userAgent);
+if (isMobile) {
+  window.addEventListener('scroll', () => {
+    const scrollPos = window.pageYOffset;
+    parallaxElements.forEach(el => {
+      el.style.backgroundPosition = `center ${scrollPos * 0.5}px`;
+    });
+  });
+} else {
+  parallaxElements.forEach(el => el.style.backgroundAttachment = 'fixed');
+}
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  const sections = Array.from(navLinks)
+    .map(link => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
+
+  // Dodajemy transition do każdego linka
+  navLinks.forEach(link => {
+    link.classList.add("transition-colors", "duration-300", "ease-in-out");
+  });
+
+  function setActiveLink(id) {
+    navLinks.forEach(link => {
+      link.classList.toggle("text-[#9e9e9e]", link.getAttribute("href") === `#${id}`);
+    });
+  }
+
+  function onScroll() {
+    let closestSection = null;
+    let minDist = Infinity;
+    const viewportCenter = window.innerHeight / 2;
+
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const sectionCenter = rect.top + rect.height / 2;
+      const dist = Math.abs(sectionCenter - viewportCenter);
+      if (dist < minDist) {
+        minDist = dist;
+        closestSection = section;
+      }
+    });
+
+    if (closestSection) setActiveLink(closestSection.id);
+  }
+
+  window.addEventListener("scroll", onScroll);
+  onScroll(); // ustawienie aktywnego linka przy załadowaniu strony
+});
+</script>
+
 
 </body>
 </html>
