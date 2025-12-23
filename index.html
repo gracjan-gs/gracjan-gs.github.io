@@ -695,39 +695,17 @@ mobileNav.querySelectorAll('a').forEach(link => {
     </div>
   </div>
 <div class="text-center mt-2">
-  <a href="privacyBtn" id="privacyBtn" class="btn-shine">Zobacz wszystkie szablony</a>
+  <a href="javascript:void(0)" id="templatesBtn" class="btn-shine">Zobacz wszystkie szablony</a>
 </div>
 
-
-
-
-
-
-  <div id="privacyModal"
-     class="fixed inset-0 hidden z-50 flex items-center justify-center bg-black/60">
-
+<!-- Modal 1: Szablony -->
+<div id="templatesModal" class="fixed inset-0 hidden z-50 flex items-center justify-center bg-black/60">
   <div class="absolute inset-0"></div>
-
-  <!-- OKNO -->
-  <div
-    class="relative rounded-lg border border-neutral-800 bg-neutral-950 p-6
-           flex flex-col items-center justify-center text-white transition-colors
-           w-full max-w-lg
-           mx-4 sm:mx-0
-           z-10">
-
-    <button id="closePrivacy"
-            class="absolute top-3 right-3 text-neutral-400 hover:text-white">
-      ✕
-    </button>
-
-    <h2 class="text-lg font-semibold mb-4">
-      Wszystkie szablony
-    </h2>
-
+  <div class="relative rounded-lg border border-neutral-800 bg-neutral-950 p-6 w-full max-w-lg mx-4 sm:mx-0 z-10">
+    <button id="closeTemplates" class="absolute top-3 right-3 text-neutral-400 hover:text-white">✕</button>
+    <h2 class="text-lg font-semibold mb-4 text-white">Wszystkie szablony</h2>
     <div class="max-h-[60vh] overflow-y-auto text-sm text-neutral-300 w-full">
-      
-  <!-- SLIDE 1 -->
+      <!-- SLIDE 1 -->
       <a href="CarSerwis.html" class="min-w-full px-2 md:px-4">
         <div class="relative w-full h-64 rounded-lg shadow-lg overflow-hidden group">
           <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
@@ -770,12 +748,36 @@ mobileNav.querySelectorAll('a').forEach(link => {
         </div>
       </a>
     </div>
-
   </div>
 </div>
 
 
+<script>
+  // Otwieranie modalów
+  document.getElementById('templatesBtn').onclick = () => {
+    document.getElementById('templatesModal').classList.remove('hidden');
+  };
 
+  document.getElementById('privacyBtn').onclick = () => {
+    document.getElementById('privacyModal').classList.remove('hidden');
+  };
+
+  // Zamknięcie modalów
+  document.getElementById('closeTemplates').onclick = () => {
+    document.getElementById('templatesModal').classList.add('hidden');
+  };
+
+  document.getElementById('closePrivacy').onclick = () => {
+    document.getElementById('privacyModal').classList.add('hidden');
+  };
+
+  // Kliknięcie w tło zamyka modal
+  document.querySelectorAll('.fixed.inset-0').forEach(modal => {
+    modal.querySelector('.absolute').onclick = () => {
+      modal.classList.add('hidden');
+    };
+  });
+</script>
 
 
 
@@ -1457,35 +1459,17 @@ observer.observe(document.getElementById('contact-buttons'));
     <br>
     <span class="inline-block mt-3">
       <i class="fa-solid fa-up-right-from-square mr-1" style="color: #ffffff;"></i>
-      <a href="#" id="privacyBtn" class="hover:text-primary transition" style="color:#ffffff;">Polityka prywatności</a>
+      <a href="javascript:void(0)" id="privacyBtn" class="hover:text-primary transition" style="color:#ffffff;">Polityka prywatności</a>
     </span>
   </div>
-</footer>
-<!--POPUp polityka prywatnosci-->
-<div id="privacyModal"
-     class="fixed inset-0 hidden z-50 flex items-center justify-center bg-black/60">
-
+</footer><!-- Modal 2: Polityka prywatności -->
+<div id="privacyModal" class="fixed inset-0 hidden z-50 flex items-center justify-center bg-black/60">
   <div class="absolute inset-0"></div>
-
-  <!-- OKNO -->
-  <div
-    class="relative rounded-lg border border-neutral-800 bg-neutral-950 p-6
-           flex flex-col items-center justify-center text-white transition-colors
-           w-full max-w-lg
-           mx-4 sm:mx-0
-           z-10">
-
-    <button id="closePrivacy"
-            class="absolute top-3 right-3 text-neutral-400 hover:text-white">
-      ✕
-    </button>
-
-    <h2 class="text-lg font-semibold mb-4">
-      Polityka prywatności
-    </h2>
-
+  <div class="relative rounded-lg border border-neutral-800 bg-neutral-950 p-6 w-full max-w-lg mx-4 sm:mx-0 z-10">
+    <button id="closePrivacy" class="absolute top-3 right-3 text-neutral-400 hover:text-white">✕</button>
+    <h2 class="text-lg font-semibold mb-4 text-white">Polityka prywatności</h2>
     <div class="max-h-[60vh] overflow-y-auto text-sm text-neutral-300 w-full">
-      <p>
+            <p>
 Administrator danych osobowych: Gracjan Śliwiński.<br><br>
 Twoja prywatność jest dla mnie ważna. Niniejsza polityka informuje, jakie dane mogą być przetwarzane podczas korzystania ze strony i w jakim celu.<br><br>
 1. Dane zbierane przez stronę:<br>
@@ -1501,29 +1485,35 @@ Administrator stosuje odpowiednie środki techniczne i organizacyjne, aby chroni
 6. Zmiany polityki prywatności:<br>
 Polityka może być aktualizowana w zależności od zmian funkcjonalności strony lub obowiązujących przepisów prawnych. Data ostatniej aktualizacji: 22 grudnia 2025.
 </p>
-
     </div>
-
   </div>
 </div>
-
 <script>
-  const modal = document.getElementById('privacyModal');
+  // Otwieranie modalów
+  document.getElementById('templatesBtn').onclick = () => {
+    document.getElementById('templatesModal').classList.remove('hidden');
+  };
 
-  document.getElementById('privacyBtn').onclick = e => {
-    e.preventDefault();
-    modal.classList.remove('hidden');
+  document.getElementById('privacyBtn').onclick = () => {
+    document.getElementById('privacyModal').classList.remove('hidden');
+  };
+
+  // Zamknięcie modalów
+  document.getElementById('closeTemplates').onclick = () => {
+    document.getElementById('templatesModal').classList.add('hidden');
   };
 
   document.getElementById('closePrivacy').onclick = () => {
-    modal.classList.add('hidden');
+    document.getElementById('privacyModal').classList.add('hidden');
   };
 
-  modal.querySelector('.absolute').onclick = () => {
-    modal.classList.add('hidden');
-  };
+  // Kliknięcie w tło zamyka modal
+  document.querySelectorAll('.fixed.inset-0').forEach(modal => {
+    modal.querySelector('.absolute').onclick = () => {
+      modal.classList.add('hidden');
+    };
+  });
 </script>
-
 
 
 
