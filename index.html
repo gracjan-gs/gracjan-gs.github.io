@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html class="dark" lang="en">
 <head>
@@ -255,15 +256,32 @@ html { scroll-behavior: smooth; }
 </header>
 
 <script>
-// Scroll progress
 const progressBar = document.getElementById('scrollProgress');
+
+let current = 0;
+let target = 0;
+
+function animate() {
+  // ultrasmooth, ale bez laga
+  current += (target - current) * 0.18;
+
+  // snap gdy bardzo blisko (żeby nie „dojeżdżał wiecznie”)
+  if (Math.abs(target - current) < 0.01) {
+    current = target;
+  }
+
+  progressBar.style.width = current + '%';
+  requestAnimationFrame(animate);
+}
+
 window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
   const docHeight = document.body.scrollHeight - window.innerHeight;
-  const scrollPercent = (scrollTop / docHeight) * 100;
-  progressBar.style.width = scrollPercent + '%';
+  target = (window.scrollY / docHeight) * 100;
 });
+
+animate();
 </script>
+
 
 <script>
 const menuCheckbox = document.getElementById('menuCheckbox');
