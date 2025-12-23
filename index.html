@@ -86,15 +86,25 @@ tailwind.config = {
 </style>
 
 <style>
+/* 📱 TELEFONY (do 767px) */
 .parallax {
-  background-image: url("bgofficial.jpg");
+  background-image: url("aa.jpg");
 }
 
-@media (min-width: 768px) {
+/* 📱➡️📲 TABLETY (768px – 1023px) */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .parallax {
+    background-image: url("mobileTab.jpg");
+  }
+}
+
+/* 💻 PC (1024px+) */
+@media (min-width: 1024px) {
   .parallax {
     background-image: url("officialbg1.jpg");
   }
 }
+
 
 
 header {
