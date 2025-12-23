@@ -1101,36 +1101,52 @@ const next = document.getElementById('next');
 const prev = document.getElementById('prev');
 
 if (carousel) {
-  const getCardWidth = () => carousel.children[0].offsetWidth + 24; // 24 = gap-6
+  const cards = Array.from(carousel.children);
+  let index = 0;
+
+  const scrollToCard = (i) => {
+    const card = cards[i];
+    const cardCenter =
+      card.offsetLeft + card.offsetWidth / 2;
+    const containerCenter =
+      carousel.offsetWidth / 2;
+
+    carousel.scrollTo({
+      left: cardCenter - containerCenter,
+      behavior: 'smooth'
+    });
+  };
 
   next.addEventListener('click', () => {
-    carousel.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+    index = (index + 1) % cards.length;
+    scrollToCard(index);
   });
 
   prev.addEventListener('click', () => {
-    carousel.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+    index = (index - 1 + cards.length) % cards.length;
+    scrollToCard(index);
   });
 
+  // auto-scroll
   let autoScroll = setInterval(() => {
-    if (carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth) {
-      carousel.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      carousel.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
-    }
+    index = (index + 1) % cards.length;
+    scrollToCard(index);
   }, 5000);
 
   carousel.addEventListener('mouseenter', () => clearInterval(autoScroll));
   carousel.addEventListener('mouseleave', () => {
     autoScroll = setInterval(() => {
-      if (carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth) {
-        carousel.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        carousel.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
-      }
+      index = (index + 1) % cards.length;
+      scrollToCard(index);
     }, 5000);
   });
+
+  // start od środkowej karty
+  index = 1;
+  scrollToCard(index);
 }
 </script>
+
 
 
 <!-- <section id="opinie" class="bg-background-dark py-20 px-6">
