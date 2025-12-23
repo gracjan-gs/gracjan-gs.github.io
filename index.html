@@ -232,13 +232,13 @@ html { scroll-behavior: smooth; }
 
       <!-- MENU GŁÓWNE (desktop > lg) -->
       <nav class="hidden lg:flex space-x-6 text-white">
-        <a href="#home" class="relative group">Home<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#8000e2] transition-all group-hover:w-full"></span></a>
-        <a href="#services" class="relative group">O mnie<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#8000e2] transition-all group-hover:w-full"></span></a>
-        <a href="#gallery" class="relative group">Styl pracy<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#8000e2] transition-all group-hover:w-full"></span></a>
-        <a href="#about" class="relative group">Moja droga<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#8000e2] transition-all group-hover:w-full"></span></a>
-        <a href="#about-me" class="relative group">Kim jestem<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#8000e2] transition-all group-hover:w-full"></span></a>
-        <a href="#youtube" class="relative group">Współpraca<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#8000e2] transition-all group-hover:w-full"></span></a>
-        <a href="#contact" class="relative group">Pomysły<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#8000e2] transition-all group-hover:w-full"></span></a>
+        <a href="#home" class="relative group">Glówna<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#53f0d8] transition-all group-hover:w-full"></span></a>
+        <a href="#services" class="relative group">Co zyskujesz<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#53f0d8] transition-all group-hover:w-full"></span></a>
+        <a href="#port" class="relative group">Portfolio<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#53f0d8] transition-all group-hover:w-full"></span></a>
+        <a href="#about" class="relative group">Współpraca<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#53f0d8] transition-all group-hover:w-full"></span></a>
+        <a href="#about-me" class="relative group">O mnie<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#53f0d8] transition-all group-hover:w-full"></span></a>
+        <a href="#oferta" class="relative group">Oferta<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#53f0d8] transition-all group-hover:w-full"></span></a>
+        <a href="#contact" class="relative group">Kontakt<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#53f0d8] transition-all group-hover:w-full"></span></a>
       </nav>
 
       <!-- HAMBURGER (tablet i mobile) -->
@@ -265,13 +265,13 @@ html { scroll-behavior: smooth; }
          lg:hidden z-40"
 >
 
-    <a href="#home" class="text-lg hover:text-primary">Home</a>
-    <a href="#services" class="text-lg hover:text-primary">O mnie</a>
-    <a href="#gallery" class="text-lg hover:text-primary">Styl pracy</a>
-    <a href="#about" class="text-lg hover:text-primary">Moja droga</a>
-    <a href="#about-me" class="text-lg hover:text-primary">Kim jestem</a>
-    <a href="#youtube" class="text-lg hover:text-primary">Współpraca</a>
-    <a href="#contact" class="text-lg hover:text-primary">Pomysły</a>
+    <a href="#home" class="text-lg hover:text-primary">Główna</a>
+    <a href="#services" class="text-lg hover:text-primary">Co zyskujesz</a>
+    <a href="#port" class="text-lg hover:text-primary">Portfolio</a>
+    <a href="#about" class="text-lg hover:text-primary">Współpraca</a>
+    <a href="#about-me" class="text-lg hover:text-primary">O mnie</a>
+    <a href="#oferta" class="text-lg hover:text-primary">Oferta</a>
+    <a href="#contact" class="text-lg hover:text-primary">Kontakt</a>
   </nav>
 </header>
 
@@ -600,9 +600,8 @@ mobileNav.querySelectorAll('a').forEach(link => {
 </script>
 
 
-
 <section id="services" class="mt-20">
-  <h2 class="text-gray-800 dark:text-white text-[24px] font-bold px-6 pb-6 fade-in">Zacznij osiągać rezultaty</h2>
+  <h2 class="text-gray-800 dark:text-white text-[24px] font-bold px-6 pb-6 fade-in">Co zyskujesz</h2>
   <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-6 p-6">
     <!-- Blok 1 -->
     <div class="fade-in flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
@@ -643,7 +642,7 @@ mobileNav.querySelectorAll('a').forEach(link => {
 
 
 
-<section class="w-full py-10">
+<section id="port" class="w-full py-10">
   <h2 class="text-gray-800 dark:text-white text-[24px] font-bold px-6 pb-6 fade-in">Portfolio</h2>
 
   <!-- max-w zmniejszone NA PC: 900px -->
@@ -995,7 +994,8 @@ window.addEventListener('scroll', () => {
 });
 </script>
 
-<div class="w-full py-8">
+<div class="w-full py-8" id="oferta">
+    <h2 class="text-gray-800 dark:text-white text-[24px] font-bold px-6 pb-6 fade-in">Oferta</h2>
   <!-- CAROUSEL dla małych i średnich ekranów -->
   <div class="block lg:hidden relative w-full overflow-hidden">
     <!-- Strzałki -->
