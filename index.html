@@ -157,8 +157,10 @@ html { scroll-behavior: smooth; }
   opacity: 0;
   animation: appear 0.8s ease-out forwards;
 }
-
-/* Hamburger animacja */
+.hamburger {
+  pointer-events: auto;
+  isolation: isolate;
+}
 .hamburger {
   position: relative;
   width: 28px;
@@ -244,7 +246,15 @@ html { scroll-behavior: smooth; }
   <div id="scrollProgress" class="absolute bottom-0 left-0 h-1 bg-primary w-0 transition-all duration-150"></div>
 
   <!-- NAWIGACJA MOBILNA -->
-  <nav id="mobileNav" class="fixed top-0 left-0 w-full bg-background-dark/95 backdrop-blur-md text-white flex flex-col items-center justify-center space-y-6 transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out lg:hidden h-screen z-50">
+<nav
+  id="mobileNav"
+  class="fixed top-16 left-0 w-full h-[90vh] bg-background-dark/95 backdrop-blur-md text-white
+         flex flex-col items-center justify-center space-y-6
+         transform -translate-y-full opacity-0
+         transition-all duration-500 ease-in-out
+         lg:hidden z-40"
+>
+
     <a href="#home" class="text-lg hover:text-primary">Home</a>
     <a href="#services" class="text-lg hover:text-primary">O mnie</a>
     <a href="#gallery" class="text-lg hover:text-primary">Styl pracy</a>
