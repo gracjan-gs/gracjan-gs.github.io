@@ -695,8 +695,92 @@ mobileNav.querySelectorAll('a').forEach(link => {
     </div>
   </div>
 <div class="text-center mt-2">
-  <a href="#" class="btn-shine">Zobacz wszystkie szablony</a>
+  <a href="privacyBtn" id="privacyBtn" class="btn-shine">Zobacz wszystkie szablony</a>
 </div>
+
+
+
+
+
+
+  <div id="privacyModal"
+     class="fixed inset-0 hidden z-50 flex items-center justify-center bg-black/60">
+
+  <div class="absolute inset-0"></div>
+
+  <!-- OKNO -->
+  <div
+    class="relative rounded-lg border border-neutral-800 bg-neutral-950 p-6
+           flex flex-col items-center justify-center text-white transition-colors
+           w-full max-w-lg
+           mx-4 sm:mx-0
+           z-10">
+
+    <button id="closePrivacy"
+            class="absolute top-3 right-3 text-neutral-400 hover:text-white">
+      ✕
+    </button>
+
+    <h2 class="text-lg font-semibold mb-4">
+      Wszystkie szablony
+    </h2>
+
+    <div class="max-h-[60vh] overflow-y-auto text-sm text-neutral-300 w-full">
+      
+  <!-- SLIDE 1 -->
+      <a href="CarSerwis.html" class="min-w-full px-2 md:px-4">
+        <div class="relative w-full h-64 rounded-lg shadow-lg overflow-hidden group">
+          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+               style='background-image: url("resPorFryzjerstwo1.jpg");'></div>
+          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
+            <h2 class="text-white text-lg font-bold">Mechanik Samochodowy | DEMO</h2>
+          </div>
+        </div>
+      </a>
+
+      <!-- SLIDE 2 -->
+      <a href="https://przewodnikpohelu.github.io/" class="min-w-full px-2 md:px-4" target="_blank">
+        <div class="relative w-full h-64 rounded-lg shadow-lg overflow-hidden group">
+          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+               style='background-image: url("resPorPrzewodnik.jpg");'></div>
+          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
+            <h2 class="text-white text-lg font-bold">Przewodnik turystyczny po Helu</h2>
+          </div>
+        </div>
+      </a>
+
+      <!-- SLIDE 3 -->
+      <a href="Projekt3.html" class="min-w-full px-2 md:px-4">
+        <div class="relative w-full h-64 rounded-lg shadow-lg overflow-hidden group">
+          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+               style='background-image: url("ResPortMechanik.jpg");'></div>
+          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
+            <h2 class="text-white text-lg font-bold">Projekt 3 | DEMO</h2>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://trenujzesliwka.github.io/" class="min-w-full px-2 md:px-4" target="_blank">
+        <div class="relative w-full h-64 rounded-lg shadow-lg overflow-hidden group">
+          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+               style='background-image: url("trenujzesliwkaWWW.jpg");'></div>
+          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
+            <h2 class="text-white text-lg font-bold">Trenuj Ze Śliwką </h2>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
 
 <style>
 .btn-shine,
@@ -1048,12 +1132,29 @@ window.addEventListener('scroll', () => {
           <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Personalizacja kolorów i treści</li>
           <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Optymalizacja SEO</li>
         </ul>
-        <a href="szablony.html" class="mt-4 inline-block bg-green-600 text-white py-2 px-4 rounded-lg font-semibold transition hover:bg-green-500 text-sm">
+        <a href="" class="mt-4 inline-block bg-green-600 text-white py-2 px-4 rounded-lg font-semibold transition hover:bg-green-500 text-sm">
           Zobacz wszystkie szablony
         </a>
       </div>
     </div>
   </div>
+<script>
+  const w = document.getElementById('privacyModal');
+
+  document.getElementById('privacyBtn').onclick = e => {
+    e.preventDefault();
+    w.classList.remove('hidden');
+  };
+
+  document.getElementById('closePrivacy').onclick = () => {
+    w.classList.add('hidden');
+  };
+
+  w.querySelector('.absolute').onclick = () => {
+    w.classList.add('hidden');
+  };
+</script>
+
 
   <!-- STATYCZNE KARTY dla dużych ekranów -->
   <div class="hidden lg:flex gap-8 justify-center py-8">
@@ -1089,7 +1190,7 @@ window.addEventListener('scroll', () => {
       <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6">
         <i class="fa-solid fa-layer-group text-2xl text-white"></i>
       </div>
-      <h3 class="text-xl font-bold mb-2 text-white">Gotowe Szablony <span class="text-green-500 text-sm ml-2">Szybka realizacja</span></h3>
+      <h3 class="text-xl font-bold mb-2 text-white">Gotowe Szablony<br><span class="text-green-500 text-sm ml-2">Szybka realizacja</span></h3>
       <p class="text-gray-400 text-sm mb-4">
         Wybierz jeden z gotowych szablonów i dopasuj go do swojej marki w krótkim czasie.
       </p>
@@ -1098,7 +1199,7 @@ window.addEventListener('scroll', () => {
         <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Personalizacja kolorów i treści</li>
         <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Optymalizacja SEO</li>
       </ul>
-      <a href="szablony.html" class="mt-4 inline-block bg-green-600 text-white py-2 px-4 rounded-lg font-semibold transition hover:bg-green-500 text-sm hover:color-[#53f0d8]">
+      <a href="#port" class="mt-4 inline-block bg-green-600 text-white py-2 px-4 rounded-lg font-semibold transition hover:bg-green-500 text-sm hover:color-[#53f0d8]">
         Zobacz wszystkie szablony
       </a>
     </div>
