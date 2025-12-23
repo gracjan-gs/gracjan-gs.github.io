@@ -1133,6 +1133,9 @@ if (carousel) {
     scrollToCard(index);
   }, 5000);
 
+const isDesktop = window.matchMedia('(hover: hover)').matches;
+
+if (isDesktop) {
   carousel.addEventListener('mouseenter', () => clearInterval(autoScroll));
   carousel.addEventListener('mouseleave', () => {
     autoScroll = setInterval(() => {
@@ -1140,6 +1143,8 @@ if (carousel) {
       scrollToCard(index);
     }, 5000);
   });
+}
+
 
   // start od środkowej karty
   index = 1;
