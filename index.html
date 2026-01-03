@@ -603,34 +603,31 @@ mobileNav.querySelectorAll('a').forEach(link => {
 <section id="services" class="mt-20">
   <h2 class="text-gray-800 dark:text-white text-[24px] font-bold px-6 pb-6 fade-in">Co zyskujesz</h2>
   <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-6 p-6">
-    <!-- Blok 1 -->
-    <div class="fade-in flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
+    <div class="service-block flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
       <div class="text-primary mater"><span style="color: #53f0d8;" class="material-symbols-outlined">emoji_objects</span></div>
       <h3 class="text-gray-900 text-lg dark:text-white font-bold">To co robisz da się opisać prościej</h3>
       <p class="text-gray-600 dark:text-[#bdbdbd] text-sm">
-                Na co dzień jest chaos, skróty myślowe, dopowiedzenia.
-                Strona zmusza do jasnego komunikatu... Co dokładnie oferujesz i jak ktoś może z tego skorzystać.
+        Na co dzień jest chaos, skróty myślowe, dopowiedzenia.
+        Strona zmusza do jasnego komunikatu... Co dokładnie oferujesz i jak ktoś może z tego skorzystać.
       </p>
     </div>
-    <!-- Blok 2 -->
-    <div class="fade-in flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
+    <div class="service-block flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
       <div class="text-primary"><span style="color: #53f0d8;" class="material-symbols-outlined">cottage</span></div>
       <h3 class="text-gray-900 text-lg dark:text-white font-bold">Lepiej mieć jedno miejsce niż pięć linków</h3>
       <p class="text-gray-600 dark:text-[#bdbdbd] text-sm">
-                Linki do sociali, formularzy, ofert i opisów łatwo się gubią.
-                Jedna strona zbiera to w całość i kończy temat.
+        Linki do sociali, formularzy, ofert i opisów łatwo się gubią.
+        Jedna strona zbiera to w całość i kończy temat.
       </p>
     </div>
-    <div class="fade-in flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
+    <div class="service-block flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
       <div class="text-primary"><span style="color: #53f0d8;" class="material-symbols-outlined">mobile_chat</span></div>
       <h3 class="text-gray-900 text-lg dark:text-white font-bold">Social media to nic konkretnego</h3>
       <p class="text-gray-600 dark:text-[#bdbdbd] text-sm">
-        Posty znikają, 
-        stories żyją chwilę.
-         Jeśli coś ma zostać na dłużej, potrzebuje miejsca, które nie znika po 24 godzinach.
+        Posty znikają, stories żyją chwilę.
+        Jeśli coś ma zostać na dłużej, potrzebuje miejsca, które nie znika po 24 godzinach.
       </p>
     </div>
-    <div class="fade-in flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
+    <div class="service-block flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
       <div class="text-primary"><span style="color: #53f0d8;" class="material-symbols-outlined">Timer</span></div>
       <h3 class="text-gray-900 dark:text-white text-lg font-bold">Godziny spędzone na tworzeniu witryn</h3>
       <p class="text-gray-600 dark:text-[#bdbdbd] text-sm"></p>
@@ -638,6 +635,34 @@ mobileNav.querySelectorAll('a').forEach(link => {
     </div>
   </div>
 </section>
+
+<style>
+.service-block {
+  transition: all 0.5s ease;
+}
+
+.service-block.dimmed {
+  filter: brightness(0.6) grayscale(0.3);
+  border-color: #888 !important;
+}
+</style>
+
+<script>
+const blocks = document.querySelectorAll('.service-block');
+
+const wewe = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.remove('dimmed');
+    } else {
+      entry.target.classList.add('dimmed');
+    }
+  });
+}, { threshold: 0.3 });
+
+blocks.forEach(block => wewe.observe(block));
+</script>
+
 
 
 
