@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html class="dark" lang="en">
 <head>
@@ -49,1710 +48,1869 @@
     ]
   }
   </script>
-
-<script>
-tailwind.config = {
-  darkMode: "class",
-  theme: {
-    extend: {
-      colors: {
-        "primary": "#ea2a33",
-        "background-light": "#000000",
-        "background-dark": "#000000",
-      },
-      fontFamily: {
-        display: ["Inter", "system-ui", "sans-serif"]
-      },
-    },
-  },
-}
-</script>
-<style>
-@font-face {
-  font-family: "Amazing Slab";
-  src: url("fonts/AmazingSlab-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Amazing Slab";
-  src: url("fonts/AmazingSlab-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-</style>
-
-<style>
-/* 📱 TELEFONY (do 767px) */
-.parallax {
-  background-image: url("aa.jpg");
-}
-
-/* 📱➡️📲 TABLETY (768px – 1023px) */
-@media (min-width: 600px) and (max-width: 1023px) {
-  .parallax {
-    background-image: url("mobileTab.jpg");
-  }
-}
-
-/* 💻 PC (1024px+) */
-@media (min-width: 1024px) {
-  .parallax {
-    background-image: url("officialbg1.jpg");
-  }
-}
-
-
-
-header {
-    z-index: 1000;
-}
-s {
-  text-decoration-color: #7a2aea;
-  text-decoration-thickness: 0.2rem;
-}
-
-.parallax {
-  position: relative;
-  width: 100vw;
-  margin-left: calc(-1 * (100vw - 100%) / 2);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.parallax::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.112);
-  z-index: 1;
-}
-.parallax > * { position: relative; z-index: 2; }
-@media (min-width: 768px) {
-  .parallax { background-position: center 10%; }
-}
-body { min-height: max(884px, 100dvh); }
-main > section { margin-top: 6rem; margin-bottom: 6rem; }
-html { scroll-behavior: smooth; }
-
-/* === ANIMACJE === */
-.fade-in {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-[data-delay] { transition-delay: var(--delay, 0s); }
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-/* Fade-in dla startu strony */
-@keyframes appear {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.start-fade {
-  opacity: 0;
-  animation: appear 0.8s ease-out forwards;
-}
-.hamburger {
-  pointer-events: auto;
-  isolation: isolate;
-}
-.hamburger {
-  position: relative;
-  width: 28px;
-  height: 20px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-.hamburger span {
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  background: white;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-.hamburger span:nth-child(1) { top: 0; }
-.hamburger span:nth-child(2) { top: 8px; }
-.hamburger span:nth-child(3) { top: 16px; }
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg);
-  top: 8px;
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg);
-  top: 8px;
-}
-#join-btn {
-  color: #000000;
-  background: linear-gradient(270deg, #ffffff, #ffffff);
-  background-size: 200% 200%;
-  animation: gradientShift 5s ease-in-out infinite;
-}
-
-@keyframes gradientShift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-#join-btn:hover {
-  transform: scale(1.05);
-}
-
-</style>
-</head>
-
-<body class="bg-background-light dark:bg-background-dark font-display">
-<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
-  <div class="container mx-auto px-4">
-    <div class="flex items-center justify-between h-16 relative">
-      <!-- LOGO -->
-      <div class="flex items-center text-white mr-12">
-        <a href="#home" class="flex items-center">
-          <img src="BialeLogo.png" alt="Logo" class="h-12 md:h-12 lg:h-16 w-auto object-contain hover:opacity-80">
-        </a>
-      </div>
-
-      <!-- MENU GŁÓWNE (desktop > lg) -->
-      <nav class="hidden lg:flex space-x-6 text-white">
-        <a href="#home" class="relative group">Glówna<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#53f0d8] transition-all group-hover:w-full"></span></a>
-        <a href="#services" class="relative group">Co zyskujesz<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#53f0d8] transition-all group-hover:w-full"></span></a>
-        <a href="#port" class="relative group">Portfolio<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#53f0d8] transition-all group-hover:w-full"></span></a>
-        <a href="#about" class="relative group">Współpraca<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#53f0d8] transition-all group-hover:w-full"></span></a>
-        <a href="#about-me" class="relative group">O mnie<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#53f0d8] transition-all group-hover:w-full"></span></a>
-        <a href="#oferta" class="relative group">Oferta<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#53f0d8] transition-all group-hover:w-full"></span></a>
-        <a href="#contact" class="relative group">Kontakt<span class="absolute left-0 -bottom-1 w-0 h-0.5 dark:bg-[#53f0d8] transition-all group-hover:w-full"></span></a>
-      </nav>
-
-      <!-- HAMBURGER (tablet i mobile) -->
-      <label class="hamburger relative lg:hidden z-[1000] -mt-2 cursor-pointer">
-        <input type="checkbox" id="menuCheckbox" class="hidden">
-        <svg viewBox="0 0 32 32" class="h-8 w-8 transition-transform duration-500">
-          <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22" stroke="white" stroke-width="3" stroke-linecap="round" fill="none"/>
-          <path class="line" d="M7 16 27 16" stroke="white" stroke-width="3" stroke-linecap="round" fill="none"/>
-        </svg>
-      </label>
-    </div>
-  </div>
-
-  <!-- SCROLL PROGRESS BAR -->
-  <div id="scrollProgress" class="absolute bottom-0 left-0 h-1 bg-primary w-0 transition-all duration-150"></div>
-
-  <!-- NAWIGACJA MOBILNA -->
-<nav
-  id="mobileNav"
-  class="fixed top-16 left-0 w-full h-[90vh] bg-background-dark/95 backdrop-blur-md text-white
-         flex flex-col items-center justify-center space-y-6
-         transform -translate-y-full opacity-0
-         transition-all duration-500 ease-in-out
-         lg:hidden z-40"
->
-
-    <a href="#home" class="text-lg hover:text-primary">Główna</a>
-    <a href="#services" class="text-lg hover:text-primary">Co zyskujesz</a>
-    <a href="#port" class="text-lg hover:text-primary">Portfolio</a>
-    <a href="#about" class="text-lg hover:text-primary">Współpraca</a>
-    <a href="#about-me" class="text-lg hover:text-primary">O mnie</a>
-    <a href="#oferta" class="text-lg hover:text-primary">Oferta</a>
-    <a href="#contact" class="text-lg hover:text-primary">Kontakt</a>
-  </nav>
-</header>
-
-<script>
-const progressBar = document.getElementById('scrollProgress');
-
-let current = 0;
-let target = 0;
-
-function animate() {
-  // ultrasmooth, ale bez laga
-  current += (target - current) * 0.18;
-
-  // snap gdy bardzo blisko (żeby nie „dojeżdżał wiecznie”)
-  if (Math.abs(target - current) < 0.01) {
-    current = target;
-  }
-
-  progressBar.style.width = current + '%';
-  requestAnimationFrame(animate);
-}
-
-window.addEventListener('scroll', () => {
-  const docHeight = document.body.scrollHeight - window.innerHeight;
-  target = (window.scrollY / docHeight) * 100;
-});
-
-animate();
-</script>
-
-
-<script>
-const menuCheckbox = document.getElementById('menuCheckbox');
-const ww= document.getElementById('mobileNav');
-
-// Toggle menu
-menuCheckbox.addEventListener('change', () => {
-  if(menuCheckbox.checked){
-    ww.classList.remove('-translate-y-full', 'opacity-0');
-    ww.classList.add('translate-y-0', 'opacity-100');
-  } else {
-    ww.classList.remove('translate-y-0', 'opacity-100');
-    ww.classList.add('-translate-y-full', 'opacity-0');
-  }
-});
-
-// Auto close menu after clicking a link
-mobileNav.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    menuCheckbox.checked = false;
-    mobileNav.classList.remove('translate-y-0', 'opacity-100');
-    mobileNav.classList.add('-translate-y-full', 'opacity-0');
-  });
-});
-</script>
-
-<style>
-.hamburger input:checked + svg {
-  transform: rotate(-45deg);
-}
-.line-top-bottom {
-  transition: stroke-dasharray 0.6s cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  stroke-dasharray: 12 63;
-}
-.hamburger input:checked + svg .line-top-bottom {
-  stroke-dasharray: 20 300;
-  stroke-dashoffset: -32.42;
-}
-</style>
-
-<!-- Scroll to top button -->
-<a href="#home" id="scrollTopBtn"
-   class="fixed bottom-4 right-4 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center opacity-0 pointer-events-none z-[9999] transition-opacity duration-700">
-  <i class="fas fa-arrow-up text-black text-lg md:text-xl"></i>
-</a>
-<script>
   
-</script>
-<main>
-  <div id="home" class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-    <div class="parallax relative flex min-h-screen w-full flex-col p-6 text-white">
-
-      <!-- CONTENT -->
-      <div
-        class="absolute bottom-24 left-4 flex max-w-full flex-col gap-2 text-left md:max-w-lg"
-        style="font-family: 'Inter', system-ui, sans-serif;"
-      >
-        <!-- Google stars – MOBILE -->
-        <div class="fade-in flex items-center gap-1 text-gray-300 md:hidden">
-          <div class="flex gap-[2px] items-center">
-            <!-- 5 gwiazdek białych / szarych -->
-            <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
-            </svg>
-            <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
-            </svg>
-            <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
-            </svg>
-            <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
-            </svg>
-            <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
-            </svg>
-          </div>
-          <span class="ml-1 text-[10px] tracking-wide text-gray-400">
-            <a target="_blank" href="https://www.google.com/search?sca_esv=709dfd0b212bea1b&sxsrf=AE3TifMg94XIiHpxjrMOJg9Fvq2PhG3feQ:1766246676158&q=gracjan+sliwinski&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E7hDPgfimjyncrwbjsiEeVp0bTomI1HU7nvAT0hOv-jp_idydJJSi5nnjgDt3OGfl4eaxw8%3D&uds=AOm0WdF1eg4P3bLopmERYJ1GWcYkUo9UjUStKhzNDOtv5PEpvyagPkCtK2P2a5IlomX5gX5-I1MqwP1Inm784XzFR2W57AHVhe8WG724DRXq4w9TSQv0qSU&sa=X&sqi=2&ved=2ahUKEwjTlN_NxcyRAxVdQvEDHTb0NJkQ3PALegQIKBAF&biw=1920&bih=992&dpr=1">By Google</a>
-          </span>
-        </div>
-
-        <h1 class="fade-in text-4xl font-normal leading-snug text-white md:text-5xl">
-          Gracjan Śliwiński
-        </h1>
-
-        <h2 class="fade-in text-base font-light leading-relaxed text-white md:text-lg">
-          Tworzenie minimalistycznych, a zarazem praktycznych stron internetowych
-        </h2>
-
-        <!-- Przycisk – zawsze po lewej -->
-      <a href="#contact">
-        <div class="flex mt-1 items-center relative w-full">
-          <button class=" fade-in items-center justify-center
-            h-10 w-48 md:w-48
-            rounded-lg border border-white/40
-            text-white text-sm
-            hover:border-white hover:bg-white/10
-            transition-colors duration-300
-            relative">
-            Wybierz formę kontaktu
-            <span class="absolute inset-0 bg-black opacity-10 rounded-lg pointer-events-none transform scale-0 transition-transform duration-500"></span>
-          </button>
-        </div>
-      </div>
-    </a>
-      <!-- Google stars – DESKTOP / TABLET przy prawej krawędzi, lekko wyżej od przycisku -->
-      <div class="hidden md:flex items-center gap-1 absolute right-6 bottom-28 -translate-y-1 h-6">
-        <div class="flex gap-[2px] items-center">
-          <!-- 5 gwiazdek białych / szarych -->
-          <svg class="w-3.5 h-3.5 text-white fade-in" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
-          </svg>
-          <svg class="w-3.5 h-3.5 text-white fade-in" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
-          </svg>
-          <svg class="w-3.5 h-3.5 text-white fade-in" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
-          </svg>
-          <svg class="w-3.5 h-3.5 text-white fade-in" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
-          </svg>
-          <svg class="w-3.5 h-3.5 text-white fade-in" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 15l-5.878 3.09 1.123-6.545L.488 6.91l6.562-.955L10 0l2.95 5.955 6.562.955-4.757 4.635 1.123 6.545z"/>
-          </svg>
-        </div>
-        <span class="ml-1 text-[10px] tracking-wide text-gray-400 fade-in">
-          <a target="_blank" href="https://www.google.com/search?sca_esv=709dfd0b212bea1b&sxsrf=AE3TifMg94XIiHpxjrMOJg9Fvq2PhG3feQ:1766246676158&q=gracjan+sliwinski&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E7hDPgfimjyncrwbjsiEeVp0bTomI1HU7nvAT0hOv-jp_idydJJSi5nnjgDt3OGfl4eaxw8%3D&uds=AOm0WdF1eg4P3bLopmERYJ1GWcYkUo9UjUStKhzNDOtv5PEpvyagPkCtK2P2a5IlomX5gX5-I1MqwP1Inm784XzFR2W57AHVhe8WG724DRXq4w9TSQv0qSU&sa=X&sqi=2&ved=2ahUKEwjTlN_NxcyRAxVdQvEDHTb0NJkQ3PALegQIKBAF&biw=1920&bih=992&dpr=1">By Google</a>
-        </span>
-      </div>
-
-    </div>
-  </div>
-</main>
-
-
-
-
-
-
-
-<!-- === POPUP EBOOK === -->
- <!--
-<div id="ebookPopup"
-     class="fixed inset-0 hidden items-center justify-center z-50 transition-opacity duration-300 opacity-0"
-     style="background-color: rgba(0,0,0,0.6); backdrop-filter: blur(6px);">
-  <div class="bg-black text-white rounded-2xl p-6 w-80 flex flex-col items-center gap-4 shadow-[0_0_50px_#8000e22a]"
-       style="animation: popupIn 300ms ease forwards;">
-    <img src="Marcin Śliwiński.jpg" alt="Okładka eBooka"
-         class="rounded-xl w-full object-cover">
-    <h3 class="text-xl font-bold text-center mt-4">Bezpłatny eBook</h3>
-    <p class="text-gray-300 text-sm text-center">
-      Pobierz mój darmowy eBook i dowiedz się, jak utrzymać dyscyplinę każdego dnia.
-    </p>
-    <a href="ebook.pdf" download
-       class="w-full text-center bg-primary text-white py-2 rounded-lg hover:bg-red-700 transition">
-       Pobierz teraz
-    </a>
-    <button id="closeEbookPopup"
-            class="mt-2 text-sm text-gray-400 hover:text-white transition">
-      Zamknij
-    </button>
-  </div>
-</div>
--->
-<script>
-  const ebookPopup = document.getElementById('ebookPopup');
-  const closeEbookPopup = document.getElementById('closeEbookPopup');
-
-  function showEbookPopup() {
-    ebookPopup.classList.remove('hidden');
-    ebookPopup.classList.add('flex');
-    void ebookPopup.offsetHeight;
-    ebookPopup.classList.remove('opacity-0');
-    ebookPopup.classList.add('opacity-100');
-  }
-
-  function hideEbookPopup() {
-    ebookPopup.classList.remove('opacity-100');
-    ebookPopup.classList.add('opacity-0');
-    ebookPopup.addEventListener('transitionend', () => {
-      ebookPopup.classList.remove('flex');
-      ebookPopup.classList.add('hidden');
-    }, { once: true });
-  }
-
-  // pokaż popup po każdym odświeżeniu
-  window.addEventListener('load', () => {
-    setTimeout(showEbookPopup, 800);
-  });
-
-  closeEbookPopup.addEventListener('click', hideEbookPopup);
-  ebookPopup.addEventListener('click', e => { if (e.target === ebookPopup) hideEbookPopup(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') hideEbookPopup(); });
-</script>
-
-
-<!-- === POPUP (pewny fallback + optional blur) === -->
-<div id="popup"
-     class="fixed inset-0 hidden items-center justify-center z-50 transition-opacity duration-300 opacity-0"
-     style="background-color: rgba(0,0,0,0.6); /* fallback gdy bg-black/60 nie działa */
-            -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); /* opcjonalny blur */">
-<div id="popup-box" class="bg-black text-white rounded-2xl p-6 w-80 flex flex-col items-center gap-4 border border-white/10 shadow-[0_0_30px_rgba(255,255,255,0.1)]"
-       style="animation: popupIn 300ms ease forwards;">
-    <h3 class="text-xl font-bold text-center">Dołącz do społeczności</h3>
-    <div class="flex flex-col gap-3 w-full">
-  <a href="https://www.instagram.com/michal.koziar/" target="_blank"
-     class="w-full text-center bg-pink-700 text-white py-2 rounded-lg hover:bg-pink-600 transition">
-     Instagram
-  </a>
-
-  <a href="https://www.tiktok.com/@michalzetoro" target="_blank"
-     class="w-full text-center bg-[#3a006e] text-white py-2 rounded-lg hover:bg-[#52009e] transition">
-     TikTok
-  </a>
-
-  <a href="https://www.youtube.com/channel/UCcxfnQqSkaQWV03TykKhcTg" target="_blank"
-     class="w-full text-center bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition">
-     YouTube
-  </a>
-</div>
-
-<button id="close-popup"
-        class="mt-4 text-sm text-gray-400 hover:text-white transition">
-  Zamknij
-</button>
-  </div>
-</div>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <style>
-  @keyframes popupIn {
-    from { opacity: 0; transform: translateY(8px) scale(0.98); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  @keyframes popupOut {
-    from { opacity: 1; transform: translateY(0) scale(1); }
-    to   { opacity: 0; transform: translateY(8px) scale(0.98); }
-  }
-</style>
-
-<script>
-  const btn = document.getElementById('join-btn');
-  const popup = document.getElementById('popup');
-  const popupBox = document.getElementById('popup-box');
-  const closeBtn = document.getElementById('close-popup');
-
-  function showPopup() {
-    // pokaż kontener (hidden -> flex) i triggeruj przejście opacity
-    popup.classList.remove('hidden');
-    popup.classList.add('flex');
-
-    // wymuś reflow żeby transition zadziałało poprawnie
-    // (czyli przeglądarka "widzi" zmianę opakowania)
-    void popup.offsetHeight;
-
-    popup.classList.remove('opacity-0');
-    popup.classList.add('opacity-100');
-
-    // upewnij się, że box ma wejściową animację
-    popupBox.style.animation = 'popupIn 300ms ease forwards';
-  }
-
-  function hidePopup() {
-    // animacja out dla boxa
-    popupBox.style.animation = 'popupOut 220ms ease forwards';
-
-    // ukryj zasłonę (przez opacity), ale poczekamy na koniec transition aby usunąć flex/hidden
-    popup.classList.remove('opacity-100');
-    popup.classList.add('opacity-0');
-
-    // czekaj na koniec transition opacity (bez setTimeout)
-    function onTransitionEnd(e) {
-      if (e.propertyName === 'opacity') {
-        popup.removeEventListener('transitionend', onTransitionEnd);
-        popup.classList.remove('flex');
-        popup.classList.add('hidden');
-        // przywróć domyślną animację boxa na przyszłość
-        popupBox.style.animation = '';
-      }
-    }
-    popup.addEventListener('transitionend', onTransitionEnd);
-  }
-
-  btn.addEventListener('click', showPopup);
-  closeBtn.addEventListener('click', hidePopup);
-
-  // dodatkowo: kliknięcie poza boxem zamyka popup
-  popup.addEventListener('click', (e) => {
-    if (e.target === popup) hidePopup();
-  });
-
-  // ESC zamyka
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !popup.classList.contains('hidden')) hidePopup();
-  });
-</script>
-
-
-<section id="services" class="mt-20">
-  <h2 class="text-gray-800 dark:text-white text-[24px] font-bold px-6 pb-6 fade-in">Co zyskujesz</h2>
-  <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-6 p-6">
-    <div class="service-block flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
-      <div class="text-primary mater"><span style="color: #53f0d8;" class="material-symbols-outlined">emoji_objects</span></div>
-      <h3 class="text-gray-900 text-lg dark:text-white font-bold">To co robisz da się opisać prościej</h3>
-      <p class="text-gray-600 dark:text-[#bdbdbd] text-sm">
-        Na co dzień jest chaos, skróty myślowe, dopowiedzenia.
-        Strona zmusza do jasnego komunikatu... Co dokładnie oferujesz i jak ktoś może z tego skorzystać.
-      </p>
-    </div>
-    <div class="service-block flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
-      <div class="text-primary"><span style="color: #53f0d8;" class="material-symbols-outlined">cottage</span></div>
-      <h3 class="text-gray-900 text-lg dark:text-white font-bold">Lepiej mieć jedno miejsce niż pięć linków</h3>
-      <p class="text-gray-600 dark:text-[#bdbdbd] text-sm">
-        Linki do sociali, formularzy, ofert i opisów łatwo się gubią.
-        Jedna strona zbiera to w całość i kończy temat.
-      </p>
-    </div>
-    <div class="service-block flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
-      <div class="text-primary"><span style="color: #53f0d8;" class="material-symbols-outlined">mobile_chat</span></div>
-      <h3 class="text-gray-900 text-lg dark:text-white font-bold">Social media to nic konkretnego</h3>
-      <p class="text-gray-600 dark:text-[#bdbdbd] text-sm">
-        Posty znikają, stories żyją chwilę.
-        Jeśli coś ma zostać na dłużej, potrzebuje miejsca, które nie znika po 24 godzinach.
-      </p>
-    </div>
-    <div class="service-block flex flex-col gap-4 rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
-      <div class="text-primary"><span style="color: #53f0d8;" class="material-symbols-outlined">Timer</span></div>
-      <h3 class="text-gray-900 dark:text-white text-lg font-bold">Godziny spędzone na tworzeniu witryn</h3>
-      <p class="text-gray-600 dark:text-[#bdbdbd] text-sm"></p>
-      <span class="text-3xl dark:text-[#bdbdbd]" data-counter="273">0</span>
-    </div>
-  </div>
-</section>
-
-<style>
-.service-block {
-  transition: all 0.5s ease;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
 }
 
-.service-block.dimmed {
-  filter: brightness(0.6) grayscale(0.3);
-  border-color: #888 !important;
-}
-</style>
-
-<script>
-const blocks = document.querySelectorAll('.service-block');
-
-const wewe = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.remove('dimmed');
-    } else {
-      entry.target.classList.add('dimmed');
-    }
-  });
-}, { threshold: 0.3 });
-
-blocks.forEach(block => wewe.observe(block));
-</script>
-
-
-
-
-
-<section id="port" class="w-full py-10">
-  <h2 class="text-gray-800 dark:text-white text-[24px] font-bold px-6 pb-6 fade-in">Portfolio</h2>
-
-  <!-- max-w zmniejszone NA PC: 900px -->
-<div class="relative overflow-hidden max-w-lg mx-6 md:mx-auto rounded-xl">
-    <div id="slider-track" class="flex transition-transform duration-700 ease-in-out">
-
-      <!-- SLIDE 1 -->
-      <a href="CarSerwis.html" class="min-w-full px-2 md:px-4">
-        <div class="relative w-full h-64 rounded-lg shadow-lg overflow-hidden group">
-          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-               style='background-image: url("resPorFryzjerstwo1.jpg");'></div>
-          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
-            <h2 class="text-white text-lg font-bold">Mechanik Samochodowy | DEMO</h2>
-          </div>
-        </div>
-      </a>
-
-      <!-- SLIDE 2 -->
-      <a href="https://przewodnikpohelu.github.io/" class="min-w-full px-2 md:px-4" target="_blank">
-        <div class="relative w-full h-64 rounded-lg shadow-lg overflow-hidden group">
-          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-               style='background-image: url("resPorPrzewodnik.jpg");'></div>
-          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
-            <h2 class="text-white text-lg font-bold">Przewodnik turystyczny po Helu</h2>
-          </div>
-        </div>
-      </a>
-
-      <!-- SLIDE 3 -->
-      <a href="Projekt3.html" class="min-w-full px-2 md:px-4">
-        <div class="relative w-full h-64 rounded-lg shadow-lg overflow-hidden group">
-          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-               style='background-image: url("ResPortMechanik.jpg");'></div>
-          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
-            <h2 class="text-white text-lg font-bold">Projekt 3 | DEMO</h2>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://trenujzesliwka.github.io/" class="min-w-full px-2 md:px-4" target="_blank">
-        <div class="relative w-full h-64 rounded-lg shadow-lg overflow-hidden group">
-          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-               style='background-image: url("trenujzesliwkaWWW.jpg");'></div>
-          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
-            <h2 class="text-white text-lg font-bold">Trenuj Ze Śliwką </h2>
-          </div>
-        </div>
-      </a>
-
-    </div>
-  </div>
-<div class="text-center mt-2">
-  <a href="javascript:void(0)" id="templatesBtn" class="btn-shine">Zobacz wszystkie szablony</a>
-</div>
-
-<!-- Modal 1: Szablony -->
-<div id="templatesModal" class="fixed inset-0 hidden z-50 flex items-center justify-center bg-black/60">
-  <div class="absolute inset-0"></div>
-  <div class="relative rounded-lg border border-neutral-800 bg-neutral-950 p-6 w-full max-w-lg mx-4 sm:mx-0 z-10">
-    <button id="closeTemplates" class="absolute top-3 right-3 text-neutral-400 hover:text-white">✕</button>
-    <h2 class="text-lg font-semibold mb-4 text-white">Wszystkie szablony</h2>
-    <div class="max-h-[60vh] overflow-y-auto text-sm text-neutral-300 w-full">
-      <!-- SLIDE 1 -->
-      <a href="CarSerwis.html" class="min-w-full px-2 md:px-4">
-        <div class="relative w-full h-64 rounded-lg shadow-lg overflow-hidden group">
-          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-               style='background-image: url("resPorFryzjerstwo1.jpg");'></div>
-          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
-            <h2 class="text-white text-lg font-bold">Mechanik Samochodowy | DEMO</h2>
-          </div>
-        </div>
-      </a>
-
-      <!-- SLIDE 2 -->
-      <a href="https://przewodnikpohelu.github.io/" class="min-w-full px-2 md:px-4" target="_blank">
-        <div class="relative w-full h-64 rounded-lg shadow-lg overflow-hidden group">
-          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-               style='background-image: url("resPorPrzewodnik.jpg");'></div>
-          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
-            <h2 class="text-white text-lg font-bold">Przewodnik turystyczny po Helu</h2>
-          </div>
-        </div>
-      </a>
-
-      <!-- SLIDE 3 -->
-      <a href="Projekt3.html" class="min-w-full px-2 md:px-4">
-        <div class="relative w-full h-64 rounded-lg shadow-lg overflow-hidden group">
-          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-               style='background-image: url("ResPortMechanik.jpg");'></div>
-          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
-            <h2 class="text-white text-lg font-bold">Projekt 3 | DEMO</h2>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://trenujzesliwka.github.io/" class="min-w-full px-2 md:px-4" target="_blank">
-        <div class="relative w-full h-64 rounded-lg shadow-lg overflow-hidden group">
-          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-               style='background-image: url("trenujzesliwkaWWW.jpg");'></div>
-          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
-            <h2 class="text-white text-lg font-bold">Trenuj Ze Śliwką </h2>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
-
-
-<script>
-  // Otwieranie modalów
-  document.getElementById('templatesBtn').onclick = () => {
-    document.getElementById('templatesModal').classList.remove('hidden');
-  };
-
-  document.getElementById('privacyBtn').onclick = () => {
-    document.getElementById('privacyModal').classList.remove('hidden');
-  };
-
-  // Zamknięcie modalów
-  document.getElementById('closeTemplates').onclick = () => {
-    document.getElementById('templatesModal').classList.add('hidden');
-  };
-
-  document.getElementById('closePrivacy').onclick = () => {
-    document.getElementById('privacyModal').classList.add('hidden');
-  };
-
-  // Kliknięcie w tło zamyka modal
-  document.querySelectorAll('.fixed.inset-0').forEach(modal => {
-    modal.querySelector('.absolute').onclick = () => {
-      modal.classList.add('hidden');
-    };
-  });
-</script>
-
-
-
-
-
-
-<style>
-.btn-shine,
-.btn-shine:link,
-.btn-shine:visited,
-.btn-shine:hover,
-.btn-shine:active {
-  text-decoration: none !important;
+body{
+  background:#ffffff;
+  color:#111;
 }
 
-.btn-shine {
-  display: inline-block;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  white-space: nowrap;
-
-  background: linear-gradient(to right, #9f9f9f 0, #fff 10%, #868686 20%);
-  background-size: 200% auto;
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  animation: shine 3s linear infinite;
+/* NAV */
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0.15rem 1.5rem;
+  background:#fffffff5;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
-@keyframes shine {
-  0%   { background-position: 0% 0; }
-  100% { background-position: -200% 0; }
+/* LOGO */
+.logo img{
+  height:60px;
+  width:auto;
+  display:block;
 }
-</style>
 
-  </span>
-</div>
+/* MENU */
+.menu{
+  display:flex;
+  gap:1.875rem;
+}
 
-</section>
+.menu a{
+  text-decoration:none;
+  color:#333;
+}
 
-<script>
-  const track = document.getElementById("slider-track");
-  const slides = track.children;
-  let aa = 0;
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  cursor:pointer;
+  width:32px;
+  height:32px;
+  position:relative;
+}
 
-  function nextSlide() {
-    aa++;
-    if (aa >= slides.length) aa = 0;
-    track.style.transform = `translateX(-${aa * 100}%)`;
+.hamburger .material-icons{
+  position:absolute;
+  font-size:32px;
+  transition:0.3s;
+}
+
+.hamburger .material-icons:nth-child(2){
+  opacity:0;
+  transform:rotate(90deg);
+}
+
+.hamburger.active .material-icons:nth-child(1){
+  opacity:0;
+  transform:rotate(-90deg);
+}
+
+.hamburger.active .material-icons:nth-child(2){
+  opacity:1;
+  transform:rotate(0);
+}
+
+/* MOBILE MENU */
+.mobile-menu{
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:100%;
+  height:100vh;
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+  padding:1.25rem;
+  gap:1rem;
+  transition:0.3s;
+  z-index:99;
+}
+
+.mobile-menu a{
+  padding:0.625rem 0;
+  text-decoration:none;
+  color:#111;
+  display:flex;
+  align-items:center;
+  gap:0.6rem;
+}
+
+/* overlay */
+.overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.4);
+  opacity:0;
+  pointer-events:none;
+  transition:0.3s;
+  z-index:98;
+}
+
+.overlay.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.mobile-menu.open{
+  right:0;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:5rem 1.25rem 2.75rem;
+}
+
+.badge{
+  display:inline-block;
+  font-size:0.8rem;
+  padding:0.4em 0.8em;
+  border-radius:9999px;
+  border:1px solid #ffa8a8;
+  color:#ff2f00;
+}
+
+h1{
+  font-size: calc(clamp(2rem, 6vw, 4rem) + 1.2rem);
+  margin-top:1.2rem;
+  line-height:1.15;
+}
+
+h1 span{
+  color:#ff2f00;
+}
+
+.subtitle{
+  margin-top:1.5rem;
+  color:#777;
+}
+
+.buttons{
+  margin-top:2rem;
+  display:flex;
+  gap:1rem;
+  justify-content:center;
+}
+
+/* BUTTONS – dopasowany, premium biznesowy */
+.btn{
+  padding:0.72rem 1.7rem;
+  border-radius:2rem;
+  border:1px solid #111;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  background:transparent;
+  color:#111;
+  transition:color 0.55s ease, border-color 0.55s ease, background 0.55s ease;
+}
+
+.btn span{
+  position:relative;
+  z-index:1;
+}
+
+.btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0) 60%);
+  transform:translateX(-130%);
+  transition:transform 1.1s ease;
+  opacity:0.9;
+}
+
+.btn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:2rem;
+  border:1px solid rgba(0,0,0,0.1);
+  opacity:0;
+  transition:opacity 0.6s ease;
+}
+
+.btn:hover::before{
+  transform:translateX(130%);
+}
+
+.btn:hover::after{
+  opacity:1;
+}
+
+.btn-primary{
+  background:#111;
+  color:#fff;
+  border:1px solid #111;
+}
+
+.btn-primary::before{
+  background:linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.30) 45%, rgba(255,255,255,0) 60%);
+}
+
+.btn-secondary{
+  background:transparent;
+  color:#111;
+  border:1px solid #111;
+}
+
+/* MOCKUP */
+.mockup-wrapper{
+  display:flex;
+  justify-content:center;
+  padding:2.5rem 1rem 5rem;
+}
+
+.browser{
+  width:100%;
+  max-width:56rem;
+  background:#fff;
+  border-radius:1rem;
+  box-shadow:0 1rem 3rem rgba(0,0,0,0.1);
+  overflow:hidden;
+}
+
+.browser-top{
+  background:#eee;
+  padding:0.5rem;
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+}
+
+.dot{
+  width:0.5rem;
+  height:0.5rem;
+  border-radius:50%;
+  background:#ccc;
+}
+
+.search-bar{
+  flex:1;
+  background:#fff;
+  padding:0.4rem 0.7rem;
+  border-radius:1rem;
+  font-size:0.8rem;
+}
+
+/* FAQ */
+.faq{
+  padding:1rem;
+}
+
+.faq-item{
+  border-bottom:1px solid #eee;
+  display:none;
+}
+
+@media (max-width:48rem){
+  .faq-item:nth-child(-n+8){
+    display:block;
   }
 
-  setInterval(nextSlide, 3000);
-</script>
-
-
-
-
-
-
-
-<section class="bg-background-dark py-16 md:py-24" id="about" class="mt-20">
-<h2 class="fade-in text-gray-800 dark:text-white text-[24px] font-bold px-6 pb-6">Współpraca</h2>
-  <div class="container mx-auto flex flex-col items-center gap-10 px-4 md:px-6">
-    <div class="max-w-3xl text-center fade-in">
-
-      <div class="timeline-container text-left mt-12 relative">
-        
-        <!-- Pasek -->
-        <div class="timeline-line" id="timelineLine"></div>
-
-        <!-- Punkty osi czasu -->
-        <div class="timeline-item">
-          <div class="timeline-content rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
-            <h4 class="font-bold text-lg">Krok 1: Konsultacja</h4>
-            <p class="dark:text-[#bdbdbd] text-primary" >Zaczynamy od rozmowy, w której wspólnie ustalamy, jak powinna wyglądać Twoja idealna strona. Poznaję Twoje potrzeby, oczekiwania oraz cele, aby stworzyć rozwiązanie idealnie dopasowane do Ciebie lub Twojego biznesu. Omawiamy funkcjonalności strony oraz najlepsze rozwiązania, które pozwolą osiągnąć zamierzony efekt.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-content rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
-            <h4 class="font-bold text-lg">Krok 2: Oferta i wycena</h4>
-            <p class="dark:text-[#bdbdbd]" >Po zebraniu wszystkich niezbędnych informacji przygotowuję szczegółową propozycję rozwiązania wraz z przejrzystą wyceną. Ostateczny koszt zależy głównie od zakresu prac, takich jak liczba podstron, stopień zaawansowania funkcjonalności czy integracje z innymi systemami. Otrzymujesz jasny plan działań i dokładny kosztorys, dzięki czemu masz pełną kontrolę nad budżetem.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-content rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
-            <h4 class="font-bold text-lg">Krok 3: Projekt i Kodowanie</h4>
-            <p class="dark:text-[#bdbdbd]" >Na tym etapie tworzę wstępną koncepcję strony, to efekt początkowy, który ułatwia kolejne etapy pracy. Przedstawiam układ, wygląd i kluczowe elementy, abyś mógł(a) zobaczyć, jak wszystko będzie wyglądać. Masz możliwość wniesienia uwag i nadania innego efektu wizualnego. Po Twojej akceptacji przechodzę do kodowania, czyli najbardziej czasochłonnego i technicznego procesu, w którym koncepcja staje się w pełni funkcjonalną stroną.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-content rounded-lg border border-neutral-800 dark:border-neutral-800 bg-neutral-950 dark:bg-neutral-950 p-6">
-            <h4 class="font-bold text-lg">Krok 4: Wsparcie po wdrożeniu</h4>
-            <p class="dark:text-[#bdbdbd]" >Jeśli chcesz na bieżąco dodawać nowe treści, aktualizować informacje czy rozbudowywać stronę, możesz skorzystać z jednego z dostępnych pakietów wsparcia: miesięcznego – Płacisz z góry za miesiąc i z wyprzedzeniem podajesz, jakie zmiany chcesz wprowadzić na stronie. Przez cały miesiąc jestem do Twojej dyspozycji, realizując zgłoszone zadania zgodnie z ustaleniami, jednorazowego – Płacisz raz za wykonanie zlecenia. Zgłaszasz zmiany z wyprzedzeniem, a ja je realizuję. Dzięki temu masz pewność, że zawsze możesz liczyć na moją pomoc – niezależnie od tego, czy chcesz dodać nowe treści, czy zaktualizować istniejące informacje.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="about-me" class="bg-background-dark py-20 px-6 md:px-0">
-  <div class="container mx-auto flex flex-col md:flex-row items-center gap-12">
-
-    <!-- OBRAZ -->
-    <div class="w-full md:w-1/2 flex justify-center">
-      <div class="w-64 sm:w-80 md:w-96 aspect-square overflow-hidden rounded-2xl">
-        <picture>
-          <!-- DESKTOP -->
-          <source 
-            srcset="gracjanOmnie1.jpg" 
-            media="(min-width: 768px)"
-          />
-          <!-- MOBILE (fallback) -->
-          <img 
-            src="gracjanOmnie2.jpg" 
-            alt="Gracjan – o mnie"
-            class="w-full h-full object-cover"
-          />
-        </picture>
-      </div>
-    </div>
-
-    <!-- TEKST -->
-    <div class="w-full md:w-1/2 text-center md:text-left fade-in p-0">
-      <h2 class="text-white text-3xl font-bold mb-4">Kim jestem?</h2>
-
-      <p class="dark:text-[#bdbdbd] text-base leading-relaxed mb-4">
-        Nazywam się Gracjan Śliwiński i jestem uczniem szkoły średniej. W wolnym czasie zajmuję się projektowaniem i tworzeniem stron internetowych od podstaw, przekształcając je w dopracowane wizualnie i funkcjonalnie projekty.
-      </p>
-
-      <p class="dark:text-[#bdbdbd] text-base leading-relaxed mb-4">
-        <span style="font-style: italic;"><q>Każdy projekt to dla mnie indywidualna realizacja, powstająca w pełni ręcznie, z uwzględnieniem celów, odbiorców i specyfiki branży.</q></span>       
-      </p>
-    </div>
-
-  </div>
-</section>
-
-
-<style>
-.timeline-container {
-  position: relative;
-  max-width: 50rem; /* 800px */
-  margin: 0 auto;
-}
-
-.timeline-item {
-  position: relative;
-  padding-left: 3.125rem; /* 50px */
-  margin-bottom: 3.75rem; /* 60px */
-  opacity: 0;
-  transform: translateY(1.875rem); /* 30px */
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.timeline-item.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -0.125rem; /* -2px */
-  top: 0; /* wcześniej 8px */
-  width: 1.25rem; /* 20px */
-  height: 1.25rem; /* 20px */
-  border-radius: 50%;
-  background-color: #53f0d8;
-  opacity: 1;
-  z-index: 100;
-  box-shadow: 0 0 0.825rem #53f0d8, 0 0 0.25rem   #53f0d8; /* 10px, 20px */
-}
-
-.timeline-line {
-  position: absolute;
-  left: 0.5rem; /* 8px */
-  top: 0.625rem; /* 10px */
-  width: 0.1875rem; /* 3px */
-  height: 0;
-  background: linear-gradient(to bottom, #53f0d8 0%, #53f0d8 50%, #53f0d8 100%);
-  box-shadow: 0 0 0.75rem rgba(53, 25, 96, 0.7); /* 12px */
-  z-index: 2;
-  border-radius: 0.125rem; /* 2px */
-  transition: height 0.15s linear;
-}
-
-.timeline-content {
-  background: rgba(30, 30, 30, 0.7);
-  padding: 1.25rem; /* 20px */
-  border-radius: 0.5rem; /* 8px */
-  border-left: 0.1875rem solid #ffffff; /* 3px */
-  color: white;
-}
-</style>
-
-
-<script>
-let lastScrollY = 0;
-let ticking = false;
-
-window.addEventListener('scroll', () => {
-  lastScrollY = window.scrollY;
-  if (!ticking) {
-    window.requestAnimationFrame(() => {
-      handleTimelineScroll(lastScrollY);
-      ticking = false;
-    });
-    ticking = true;
+  .faq-question{
+    font-size:0.85rem;
+    padding:0.75rem 0.5rem;
   }
-});
 
-function handleTimelineScroll(scrollY) {
-  const section = document.querySelector('#about');
-  const line = document.querySelector('#timelineLine');
-  const items = section.querySelectorAll('.timeline-item');
-  const rect = section.getBoundingClientRect();
-  const windowHeight = window.innerHeight;
+  .faq-answer{
+    font-size:0.8rem;
+  }
 
-  if (rect.top < windowHeight && rect.bottom > 0) {
-    const start = scrollY + rect.top - windowHeight * 0.3;
-    const end = scrollY + rect.bottom - windowHeight * 0.6;
-    const rawProgress = (scrollY - start) / (end - start);
-    const progress = Math.min(1, Math.max(0, rawProgress * 1.2));
-
-    const firstItem = items[0].offsetTop + 20;
-    const lastItem = items[items.length - 1].offsetTop + 30;
-    const maxHeight = lastItem - firstItem;
-
-    line.style.height = maxHeight * progress + 'px';
-
-    items.forEach(item => {
-      const itemTop = item.offsetTop - firstItem - 40;
-      item.classList.toggle('visible', maxHeight * progress >= itemTop);
-    });
+  .icon{
+    width:0.75rem;
+    height:0.75rem;
   }
 }
-</script>
 
-
-
-<style>
-/* Twój istniejący CSS tutaj… (fade-in, parallax, hamburger, etc.) */
-
-/* === PASEK POSTĘPU === */
-#scrollProgress {
-  position: absolute;
-  bottom: 0; /* linia idealnie na dole navbara */
-  left: 0;
-  width: 0%;
-  height: 1px;
-  background: linear-gradient(to right, #fff, #fff);
-  transition: width 0.1s ease;
+@media (min-width:48rem){
+  .faq-item:nth-child(-n+10){
+    display:block;
+  }
 }
-header {
-  position: sticky; /* już masz */
-  top: 0;
+
+.faq-question{
+  width:100%;
+  text-align:left;
+  padding:1rem 0.5rem;
+  background:none;
+  border:none;
+  font-size:1rem;
+  font-weight:500;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+}
+
+.icon{
+  position:relative;
+  width:0.75rem;
+  height:0.75rem;
+}
+
+.icon::before,
+.icon::after{
+  content:"";
+  position:absolute;
+  background:#111;
+}
+
+.icon::before{
+  width:100%;
+  height:1px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.icon::after{
+  width:1px;
+  height:100%;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.faq-item.active .icon::after{
+  transform:translateX(-50%) scaleY(0);
+}
+
+.faq-answer{
+  height:0;
+  overflow:hidden;
+  transition:height 0.35s ease;
+  padding:0 0.5rem;
+  font-size:0.9rem;
+  line-height:1.5;
+  color:#777;
+}
+
+/* FADE IN */
+.fade-item{
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity 0.7s ease, transform 0.7s ease;
+  transition-delay:var(--delay, 0s);
+}
+
+.fade-in{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* MOBILE NAV */
+@media(max-width:56rem){
+  .menu{display:none;}
+  .hamburger{display:block;}
+  h1 {
+      font-size: calc(clamp(2rem, 6vw, 4rem) + 1rem);
+  }
+}
+
+/* ================= PROCESS – FINAL ================= */
+.process{
+  background:#f7f7f7;
+  padding:4rem 1.25rem;
+  min-height:80vh;
+}
+
+.process-inner{
+  max-width:72rem;
+  margin:0 auto;
+  width:100%;
+  text-align:center;
+
+  min-height:80vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+/* HEADER */
+.process h2{
+  font-size:2.1rem;
+  margin-bottom:0.6rem;
+}
+
+.process p.lead{
+  color:#777;
+  max-width:42rem;
+  margin:0 auto 2.5rem;
+}
+
+/* GRID */
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:1.25rem;
+}
+
+/* CARD */
+.process-card{
+  background:#fff;
+  border:1px solid #e8e6e2;
+  border-radius:1.25rem;
+  position:relative;
+  overflow:hidden;
+
+  aspect-ratio:1/1;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  padding:1.5rem;
+}
+
+/* tło efekt */
+.process-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(160px 90px at 0% 0%, rgba(255,47,0,0.08), transparent 60%);
+  pointer-events:none;
+}
+
+/* NUMER */
+.process-step{
+  position:absolute;
+  top:1.3rem;
+  right:1.2rem;
+
+  font-size:2.2rem;
+  font-weight:700;
+  color:#e6e6e6;
+  line-height:1;
+}
+
+/* IKONA */
+.process-icon{
+  position:absolute;
+  top:1rem;
+  left:1rem;
+
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  background:#fff;
+  border:1px solid #eee;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#ff2f00;
+}
+
+/* TEKST */
+.process-card h3{
+  font-size:1.2rem;
+  margin-bottom:0.4rem;
+  width:100%;
+  text-align:left;
+}
+
+.process-card p{
+  font-size:1rem;
+  color:#777;
+  line-height:1.4;
+  margin:0;
+  text-align:left;
+}
+
+/* RESPONSYWNOŚĆ - TABLET */
+@media(max-width:68rem){
+  .process-grid{
+    grid-template-columns:repeat(2, 1fr);
+  }
+}
+
+/* MOBILE - jak oferta (mniejsze, nie full width) */
+@media(max-width:40rem){
+  .process-grid{
+    grid-template-columns:1fr;
+    justify-items:center;
+  }
+
+  .process-card{
+    width:95%;
+    max-width:390px;
+  }
+
+  .process h2{
+    font-size:1.8rem;
+  }
+
+  .process p.lead{
+    font-size:0.9rem;
+  }
+}
+.offer{
+  padding:4rem 1.25rem;
+  background:#fff;
+  min-height:80vh;
+}
+
+.offer-inner{
+  max-width:72rem;
+  margin:0 auto;
+  text-align:center;
+
+  min-height:80vh;   /* KLUCZ */
+  display:flex;
+  flex-direction:column;
+  justify-content:center; /* pion */
+}
+
+.offer h2{
+  font-size:2.1rem;
+  margin-bottom:0.6rem;
+}
+
+.offer .lead{
+  color:#777;
+  max-width:42rem;
+  margin:0 auto 2.5rem;
+}
+
+/* GRID */
+.offer-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1.25rem;
+}
+
+/* CARD */
+.offer-card{
+  background:#fff;
+  border:1px solid #e8e6e2;
+  border-radius:1.25rem;
+  padding:1.8rem 1.5rem;
+  text-align:left;
+  position:relative;
+  transition:0.3s ease;
+}
+
+/* HOVER */
+.offer-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 1rem 2rem rgba(0,0,0,0.06);
+}
+
+/* WYRÓŻNIONA */
+.offer-card.highlight{
+  border:1px solid #111;
+}
+
+/* BADGE */
+.offer-card .badge{
+  position:absolute;
+  top:-10px;
+  left:20px;
+  background:#ff2f00;
+  color:#fff;
+  font-size:0.7rem;
+  padding:0.25rem 0.7rem;
+  border-radius:999px;
+}
+
+/* TYTUŁ */
+.offer-card h3{
+  font-size:1.4rem;
+  margin-bottom:0.4rem;
+}
+
+/* CENA */
+.price{
+  font-size:1.2rem;
+  font-weight:700;
+  margin-bottom:1.2rem;
+}
+
+/* LISTA */
+.checklist{
+  list-style:none;
+  margin-bottom:1.5rem;
+}
+
+.checklist li{
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+  margin-bottom:0.45rem;
+  color:#555;
+  font-size:0.95rem;
+}
+
+/* CZERWONE HACZYKI */
+.checklist li::before{
+  content:"check";
+  font-family:"Material Icons";
+  color:#ff2f00;
+  font-size:18px;
+}
+
+/* RESPONSYWNOŚĆ */
+@media(max-width:68rem){
+  .offer-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:40rem){
+  .offer-grid{
+    grid-template-columns:1fr;
+  }
+}
+/* ================= KONTAKT – PREMIUM ================= */
+
+.contact{
+  padding:5rem 1.25rem;
+  background-color: #fff;
+  min-height: 80vh;
+
+    display:flex;
+  align-items:center;
+}
+
+.contact-inner{
+  max-width:72rem;
+  margin:0 auto;
+  text-align:center;
+}
+
+.contact h2{
+  font-size:2.3rem;
+  margin-bottom:0.6rem;
+}
+
+.contact .lead{
+  color:#777;
+  max-width:40rem;
+  margin:0 auto 3rem;
+}
+
+/* GRID */
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  gap:1.2rem;
+}
+
+/* CARD */
+.contact-card{
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:1.4rem;
+  padding:2rem 1.2rem;
+  text-align:center;
+  text-decoration:none;
+  color:#111;
+  position:relative;
+  overflow:hidden;
+  transition:all 0.35s ease;
+}
+
+/* SUBTELNY GLOW */
+.contact-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(120px 80px at 0% 0%, rgba(255,47,0,0.08), transparent 60%);
+  opacity:0;
+  transition:0.35s;
+}
+
+/* IKONA */
+.contact-card .material-icons{
+  font-size:34px;
+  color:#ff2f00;
+  margin-bottom:0.6rem;
+  transition:0.3s;
+}
+
+/* TEKST */
+.contact-card h3{
+  font-size:1.05rem;
+  margin-bottom:0.3rem;
+}
+
+.contact-card p{
+  font-size:0.85rem;
+  color:#777;
+}
+
+/* HOVER – TU JEST RÓŻNICA */
+.contact-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 1.2rem 2.5rem rgba(0,0,0,0.08);
+  border-color:#ff2f00;
+}
+
+.contact-card:hover::before{
+  opacity:1;
+}
+
+.contact-card:hover .material-icons{
+  transform:scale(1.15);
+}
+
+/* RESPONSYWNOŚĆ */
+@media(max-width:68rem){
+  .contact-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:40rem){
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark font-display">
+<body>
 
-<!-- Pasek przewijania -->
-<div id="scrollProgress"></div>
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
-<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
-  <!-- Twój header -->
-</header>
+<nav class="nav">
+  <div class="logo">
+    <a href="#home">
+        <img src="CzarneLogo.png" alt="WebStudio">
+    </a>
+  </div>
 
-<main>
-  <!-- Twój content: parallax, sections, galerie, newsletter -->
-</main>
+  <div class="menu">
+    <a href="#">Start</a>
+    <a href="#">Oferta</a>
+    <a href="#">Realizacje</a>
+    <a href="#">Opinie</a>
+    <a href="#">Kontakt</a>
+  </div>
 
-<footer class="bg-background-dark text-gray-400 py-10 mt-16 fade-in">
-  <!-- Twój footer -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <span class="material-icons">menu</span>
+    <span class="material-icons">close</span>
+  </div>
+  <div class="scroll-bar">
+  <div class="scroll-progress"></div>
+</div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#"><span class="material-icons">home</span> Start</a>
+  <a href="#"><span class="material-icons">work</span> Oferta</a>
+  <a href="#"><span class="material-icons">photo_library</span> Realizacje</a>
+  <a href="#"><span class="material-icons">star</span> Opinie</a>
+  <a href="#"><span class="material-icons">mail</span> Kontakt</a>
+</div>
+
+<section class="hero">
+  <div class="badge fade-item" style="--delay:0.05s">Tworzenie stron internetowych</div>
+  <h1 class="fade-item" style="--delay:0.15s">Zadbaj o swój <span>biznes</span></h1>
+  <p class="subtitle fade-item" style="--delay:0.25s">Nowoczesne strony internetowe dopasowane do potrzeb.</p>
+
+  <div class="buttons">
+    <button class="btn btn-primary fade-item" style="--delay:0.4s"><span>Zamów wycenę</span></button>
+    <button class="btn btn-secondary fade-item" style="--delay:0.5s"><span>Zobacz realizacje</span></button>
+  </div>
+</section>
+
+<section class="mockup-wrapper fade-item" style="--delay:0.1s">
+  <div class="browser">
+
+    <div class="browser-top">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="search-bar">mojafirma.pl</div>
+    </div>
+
+    <div class="faq">
+
+      <div class="faq-item ">
+        <button class="faq-question">
+          Ile kosztuje strona internetowa?
+          <div class="icon"></div>
+        </button>
+        <div class="faq-answer">
+          Cena zależy od zakresu: projekt graficzny, liczba podstron, funkcje (np. formularze, sklep), CMS i teksty. Istotne są też elementy SEO (struktura nagłówków, szybkość, dane strukturalne) oraz koszty stałe jak hosting, domena i SSL. Dlatego dokładną wycenę robi się po krótkim briefie potrzeb.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Ile trwa wykonanie strony?
+          <div class="icon"></div>
+        </button>
+        <div class="faq-answer">
+          Termin zależy od złożoności: prosta strona może powstać szybciej, a większe projekty (więcej podstron, rozbudowane funkcje) wymagają dłuższego harmonogramu. W praktyce liczy się czas na projekt, wdrożenie, testy i poprawki po Twojej akceptacji.
+        </div>
+      </div>
+
+      <div class="faq-item ">
+        <button class="faq-question">
+          Co daje własna strona?
+          <div class="icon"></div>
+        </button>
+        <div class="faq-answer">
+          Responsywność to standard – strona musi działać dobrze na smartfonach i tabletach. Dodatkowo dbamy o szybkość (optymalizacja obrazów, struktura strony), bo wpływa ona na doświadczenie użytkownika i widoczność w Google.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Co po stworzeniu strony, kiedy sie nie znam?
+          <div class="icon"></div>
+        </button>
+        <div class="faq-answer">
+          Najczęściej w grę wchodzą: hosting, domena oraz certyfikat SSL. Do tego dochodzą aktualizacje, kopie bezpieczeństwa i ewentualne prace rozwojowe lub SEO. To koszty cykliczne, które warto uwzględnić w planowaniu.
+        </div>
+      </div>
+
+      <div class="faq-item ">
+        <button class="faq-question">
+          Dlaczego strona jest tak ważna?
+          <div class="icon"></div>
+        </button>
+        <div class="faq-answer">
+          Tak, najlepiej myśleć o SEO już na etapie budowy: struktura nagłówków, przyjazne URL‑e, szybkość, dane strukturalne i architektura podstron. Dzięki temu strona ma lepszy start i nie wymaga kosztownych poprawek później.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Czy strona internetowa opłaca się w 2026?
+          <div class="icon"></div>
+        </button>
+        <div class="faq-answer">
+          Tak, zwykle wdrażamy CMS, dzięki któremu łatwo zmienisz teksty, zdjęcia i sekcje.
+        </div>
+      </div>
+
+      <div class="faq-item ">
+        <button class="faq-question">
+          Czy można połączyć stronę z social media?
+          <div class="icon"></div>
+        </button>
+        <div class="faq-answer">
+          Możemy pomóc w wyborze, konfiguracji i przeniesieniu domeny oraz hostingu.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Czy to jest bezpieczne?
+          <div class="icon"></div>
+        </button>
+        <div class="faq-answer">
+          Stosujemy HTTPS (SSL) i regularne kopie zapasowe, żeby chronić stronę i dane.
+        </div>
+      </div>
+
+      <div class="faq-item ">
+        <button class="faq-question">
+        Czy stronę da się rozbudować w przyszłości?
+          <div class="icon"></div>
+        </button>
+        <div class="faq-answer">
+          Tak, projektujemy tak, by łatwo dodać nowe sekcje, podstrony lub funkcje.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Czy strona będzie działać dobrze na telefonach?
+          <div class="icon"></div>
+        </button>
+        <div class="faq-answer">
+          Tak, możemy podpiąć statystyki, piksele reklamowe i formularze leadowe.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="process-inner">
+    <h2>Przebieg współpracy</h2>
+    <p class="lead">Prosty, sprawdzony proces – od pierwszej rozmowy po stałe wsparcie.</p>
+
+    <div class="process-grid">
+      <div class="process-card fade-item" style="--delay:0s">
+        <div class="process-step">01</div>
+        <div class="process-icon"><span class="material-icons">forum</span></div>
+        <h3>Konsultacja</h3>
+        <p>Zaczynamy od rozmowy, w której wspólnie ustalamy, jak powinna wyglądać Twoja idealna strona.</p>
+      </div>
+
+      <div class="process-card fade-item" style="--delay:0.2s">
+        <div class="process-step">02</div>
+        <div class="process-icon"><span class="material-icons">request_quote</span></div>
+        <h3>Oferta i Wycena</h3>
+        <p>Po zebraniu wszystkich niezbędnych informacji przygotowuję szczegółową propozycję rozwiązania wraz z przejrzystą wyceną.</p>
+      </div>
+
+      <div class="process-card fade-item" style="--delay:0.4s">
+        <div class="process-step">03</div>
+        <div class="process-icon"><span class="material-icons">code</span></div>
+        <h3>Kodowanie</h3>
+        <p>Tworzę wstępną koncepcję strony jako projekt wizualny, a po Twojej akceptacji przechodzę do kodowania</p>
+      </div>
+
+      <div class="process-card fade-item" style="--delay:0.6s">
+        <div class="process-step">04</div>
+        <div class="process-icon"><span class="material-icons">support_agent</span></div>
+        <h3>Wsparcie</h3>
+        <p>Po wdrożeniu pomagam w aktualizacjach, rozwoju i utrzymaniu strony.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="offer">
+  <div class="offer-inner">
+    <h2>Oferta</h2>
+    <p class="lead">Bez zbędnych kombinacji – wybierasz pakiet dopasowany do biznesu.</p>
+
+    <div class="offer-grid">
+
+    <section class="fade-item" style="--delay:0.2s">
+      <div class="offer-card">
+        <h3>Strona wizytówka</h3>
+        <div class="price">od 1200 zł</div>
+
+        <ul class="checklist">
+          <li>1–3 podstrony</li>
+          <li>Nowoczesny design</li>
+          <li>Responsywność (telefon)</li>
+          <li>Podstawowe SEO</li>
+        </ul>
+
+        <button class="btn btn-primary"><span>Wybieram</span></button>
+      </div>
+    </section>
+
+    <section class="fade-item" style="--delay:0.4s">
+      <div class="offer-card highlight">
+        <div class="badge">Najczęściej wybierane</div>
+        <h3>Strona firmowa</h3>
+        <div class="price">od 2500 zł</div>
+
+        <ul class="checklist">
+          <li>Do 6 podstron</li>
+          <li>Indywidualny projekt</li>
+          <li>Szybkość + SEO</li>
+          <li>CMS do edycji</li>
+        </ul>
+
+        <button class="btn btn-primary"><span>Wybieram</span></button>
+      </div>
+    </section>
+
+
+    <section class="fade-item" style="--delay:0.6s">
+      <div class="offer-card">
+        <h3>Strona premium</h3>
+        <div class="price">od 4500 zł</div>
+
+        <ul class="checklist">
+          <li>Rozbudowana struktura</li>
+          <li>Projekt UX/UI</li>
+          <li>Optymalizacja konwersji</li>
+          <li>Wsparcie + rozwój</li>
+        </ul>
+
+        <button class="btn btn-primary"><span>Wybieram</span></button>
+      </div>
+    </section>
+
+
+    </div>
+  </div>
+</section>
+<style>
+/* ================= PORTFOLIO CAROUSEL (FINAL FIX) ================= */
+
+.portfolio{
+  padding:5rem 1.25rem;
+  background:#f7f7f7;
+  min-height:80vh;
+  display:flex;
+  align-items:center;
+}
+
+.portfolio-inner{
+  max-width:72rem;
+  margin:0 auto;
+  width:100%;
+}
+
+.portfolio-header{
+  text-align:center;
+  margin-bottom:2.5rem;
+}
+
+.portfolio-header h2{
+  font-size:2.3rem;
+  margin-bottom:0.5rem;
+}
+
+.portfolio-header p{
+  color:#777;
+}
+
+/* VIEWPORT */
+.portfolio-carousel{
+  overflow:hidden;
+  position:relative;
+}
+
+/* TRACK */
+.portfolio-track{
+  display:flex;
+  gap:1.5rem;
+  cursor:grab;
+  will-change:transform;
+  transition:transform 0.55s cubic-bezier(.2,.8,.2,1);
+  touch-action:pan-y;
+}
+
+.portfolio-track:active{
+  cursor:grabbing;
+}
+
+/* CARD */
+.portfolio-item{
+  flex:0 0 auto;
+  width:360px;
+  border:1px solid #eee;
+  border-radius:1.4rem;
+  overflow:hidden;
+  background:#fff;
+}
+
+/* IMAGE */
+.portfolio-thumb{
+  width:100%;
+  height:220px;
+  overflow:hidden;
+  background:#f3f3f3;
+}
+
+.portfolio-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* CONTENT */
+.portfolio-content{
+  padding:1.3rem;
+}
+
+.portfolio-content h3{
+  font-size:1.1rem;
+  margin-bottom:0.4rem;
+}
+
+.portfolio-content p{
+  font-size:0.92rem;
+  color:#777;
+}
+
+.portfolio-tag{
+  display:inline-block;
+  margin-top:0.8rem;
+  font-size:0.75rem;
+  padding:0.25rem 0.65rem;
+  border-radius:999px;
+  background:#fff0ed;
+  color:#ff2f00;
+}
+
+/* PC */
+@media(min-width:1024px){
+  .portfolio-item{ width:400px; }
+  .portfolio-thumb{ height:240px; }
+}
+
+/* MOBILE – 1 karta idealnie na środku */
+@media(max-width:768px){
+  .portfolio-item{ width:85vw; }
+  .portfolio-header h2{ font-size:1.8rem; }
+  .portfolio-header p{ font-size:0.9rem; }
+}
+</style>
+
+<section class="portfolio">
+  <div class="portfolio-inner">
+
+    <div class="portfolio-header fade-item" style="--delay:0.1s">
+      <h2>Realizacje</h2>
+      <p>Przesuń palcem lub myszką</p>
+    </div>
+
+    <div class="portfolio-carousel fade-item" id="carousel" style="--delay:0.2s">
+      <div class="portfolio-track" id="track">
+
+        <div class="portfolio-item">
+          <div class="portfolio-thumb"><img src="resPorFryzjerstwo1.jpg"></div>
+          <div class="portfolio-content">
+            <h3>Projekt 1</h3>
+            <p>Opis projektu</p>
+            <span class="portfolio-tag">Zobacz</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <div class="portfolio-thumb"><img src="resPorPrzewodnik.jpg"></div>
+          <div class="portfolio-content">
+            <h3>Projekt 2</h3>
+            <p>Opis projektu</p>
+            <span class="portfolio-tag">Zobacz</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <div class="portfolio-thumb"><img src="resPorTZS.jpg"></div>
+          <div class="portfolio-content">
+            <h3>Projekt 3</h3>
+            <p>Opis projektu</p>
+            <span class="portfolio-tag">Zobacz</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <div class="portfolio-thumb"><img src="ResPortMechanik.jpg"></div>
+          <div class="portfolio-content">
+            <h3>Projekt 4</h3>
+            <p>Opis projektu</p>
+            <span class="portfolio-tag">Zobacz</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+const track = document.getElementById("track");
+const carousel = document.getElementById("carousel");
+
+let items = Array.from(document.querySelectorAll(".portfolio-item"));
+let index = 1;
+let startX = 0;
+let dragging = false;
+let auto;
+
+/* CLONES (infinite loop bez pustych miejsc) */
+function initClones(){
+  const first = items[0].cloneNode(true);
+  const last = items[items.length - 1].cloneNode(true);
+
+  track.appendChild(first);
+  track.insertBefore(last, items[0]);
+
+  items = Array.from(document.querySelectorAll(".portfolio-item"));
+}
+initClones();
+
+function step(){
+  const style = window.getComputedStyle(track);
+  return items[0].offsetWidth + parseFloat(style.gap);
+}
+
+function center(){
+  return (carousel.offsetWidth - items[index].offsetWidth) / 2;
+}
+
+function update(animate = true){
+  track.style.transition = animate ? "transform 0.55s cubic-bezier(.2,.8,.2,1)" : "none";
+  track.style.transform = `translateX(${-index * step() + center()}px)`;
+}
+
+/* LOOP FIX */
+function fix(){
+  const realCount = items.length - 2;
+
+  if(index === 0){
+    index = realCount;
+    update(false);
+  }
+
+  if(index === items.length - 1){
+    index = 1;
+    update(false);
+  }
+}
+
+/* AUTO */
+function next(){
+  index++;
+  update();
+  setTimeout(fix, 550);
+}
+
+function startAuto(){
+  auto = setInterval(next, 5000);
+}
+
+function stopAuto(){
+  clearInterval(auto);
+}
+
+/* DRAG */
+function pos(e){
+  return e.type.includes("mouse") ? e.pageX : e.touches[0].clientX;
+}
+
+track.addEventListener("mousedown", e => {
+  dragging = true;
+  startX = pos(e);
+  stopAuto();
+});
+
+track.addEventListener("touchstart", e => {
+  dragging = true;
+  startX = pos(e);
+  stopAuto();
+});
+
+window.addEventListener("mouseup", end);
+window.addEventListener("touchend", end);
+window.addEventListener("mousemove", move);
+window.addEventListener("touchmove", move);
+
+function move(e){
+  if(!dragging) return;
+
+  const diff = pos(e) - startX;
+  const base = -index * step() + center();
+
+  track.style.transition = "none";
+  track.style.transform = `translateX(${base + diff}px)`;
+}
+
+function end(){
+  if(!dragging) return;
+  dragging = false;
+
+  const diff = pos(event) - startX;
+
+  if(diff < -80) index++;
+  if(diff > 80) index--;
+
+  update();
+  setTimeout(fix, 550);
+  startAuto();
+}
+
+/* INIT */
+window.addEventListener("load", () => {
+  index = 1;
+  update(false);
+  startAuto();
+});
+
+window.addEventListener("resize", () => update(false));
+</script>
+<section class="contact">
+  <div class="contact-inner">
+    <h2>Kontakt</h2>
+    <p class="lead">Wybierz najwygodniejszą formę kontaktu – odpowiadam szybko i konkretnie.</p>
+
+    <div class="contact-grid">
+
+      <a href="tel:+48123456789" class="contact-card fade-item" style="--delay:0.2s !important">
+        <span class="material-icons">call</span>
+        <h3>Telefon</h3>
+        <p>Zadzwoń bezpośrednio</p>
+      </a>
+
+      <a href="sms:+48123456789" class="contact-card fade-item" style="--delay:0.4s">
+        <span class="material-icons">sms</span>
+        <h3>SMS</h3>
+        <p>Napisz krótką wiadomość</p>
+      </a>
+
+      <a href="https://wa.me/48123456789" target="_blank" class="contact-card fade-item" style="--delay:0.6s">
+        <span class="material-icons">chat</span>
+        <h3>WhatsApp</h3>
+        <p>Szybki kontakt online</p>
+      </a>
+
+      <a href="https://instagram.com/twojprofil" target="_blank" class="contact-card fade-item" style="--delay:0.8s">
+        <span class="material-icons">photo_camera</span>
+        <h3>Instagram</h3>
+        <p>Napisz na DM</p>
+      </a>
+
+      <a href="https://m.me/twojprofil" target="_blank" class="contact-card fade-item" style="--delay:0.10s">
+        <span class="material-icons">facebook</span>
+        <h3>Messenger</h3>
+        <p>Rozmowa na Facebooku</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<style>
+.about{
+  min-height:80vh;
+  padding:5rem 1.25rem;
+  background:linear-gradient(180deg,#f7f7f7,#ffffff);
+  display:flex;
+  align-items:center;
+}
+
+.about-inner{
+  max-width:72rem;
+  margin:0 auto;
+  width:100%;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:4rem;
+  align-items:center;
+}
+
+/* TEKST */
+.about-text h2{
+  font-size:2.6rem;
+  margin-bottom:1rem;
+  letter-spacing:-0.02em;
+  position:relative;
+}
+
+/* APPLE-LIKE GRADIENT LINE */
+.about-text h2::after{
+  content:"";
+  display:block;
+  width:90px;
+  height:4px;
+  margin-top:0.7rem;
+  border-radius:999px;
+  background:linear-gradient(90deg,#ff2f00,rgba(255,47,0,0.2),transparent);
+}
+
+/* SUBTEXT */
+.about-text p{
+  color:#666;
+  line-height:1.75;
+  margin-bottom:1rem;
+  font-size:1.05rem;
+}
+
+/* IMAGE */
+.about-image{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* soft glow jak Apple */
+.about-image::before{
+  content:"";
+  position:absolute;
+  width:280px;
+  height:280px;
+  background:radial-gradient(circle, rgba(255,47,0,0.18), transparent 65%);
+  filter:blur(14px);
+  border-radius:50%;
+}
+
+.about-image img{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:260px;
+  height:auto;
+  object-fit:contain;
+  filter:drop-shadow(0 1.4rem 2.8rem rgba(0,0,0,0.18));
+  transition:0.35s ease;
+}
+
+.about-image img:hover{
+  transform:translateY(-8px) scale(1.02);
+}
+
+/* ================= MOBILE PREMIUM ================= */
+@media(max-width:768px){
+  .about-inner{
+    grid-template-columns:1fr;
+    text-align:center;
+    gap:2rem;
+  }
+
+  .about-text h2{
+    font-size:2rem;
+  }
+
+  .about-text h2::after{
+    margin:0.7rem auto 0;
+    width:70px;
+  }
+
+  .about-text p{
+    font-size:0.98rem;
+  }
+
+  .about-image img{
+    max-width:240px;
+  }
+
+  .about-image::before{
+    width:200px;
+    height:200px;
+  }
+}
+
+/* small phones */
+@media(max-width:420px){
+  .about{
+    padding:4rem 1rem;
+  }
+
+  .about-text h2{
+    font-size:1.8rem;
+  }
+
+  .about-image img{
+    max-width:200px;
+  }
+}
+</style>
+
+<section class="about">
+  <div class="about-inner">
+
+    <div class="about-text">
+      <h2>O mnie</h2>
+      <p>
+Nazywam się Gracjan Śliwiński i jestem uczniem szkoły średniej. W wolnym czasie zajmuję się projektowaniem i tworzeniem stron internetowych od podstaw, przekształcając je w dopracowane wizualnie i funkcjonalnie projekty.
+      </p>
+    </div>
+
+    <div class="about-image">
+      <img src="omnieOMNIE copy.png" alt="O mnie">
+    </div>
+
+  </div>
+</section>
+<footer class="footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-top">
+
+      <!-- LEFT -->
+      <div class="footer-left">
+        <div class="footer-brand">Twoja Firma</div>
+
+        <p class="footer-desc">
+          Tworzymy nowoczesne strony internetowe dopasowane do biznesu.
+        </p>
+
+        <div class="footer-icons">
+          <a href="#"><span class="material-icons">call</span></a>
+          <a href="#"><span class="material-icons">mail</span></a>
+          <a href="#"><span class="material-icons">chat</span></a>
+        </div>
+      </div>
+
+      <!-- RIGHT NAV -->
+      <div class="footer-right">
+
+        <div class="footer-col">
+          <div class="footer-title" onclick="toggleFooter(this)">Kontakt</div>
+          <div class="footer-content">
+            <a href="tel:+48123456789">Telefon</a>
+            <a href="mailto:kontakt@firma.pl">Email</a>
+            <a href="#">Formularz</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-title" onclick="toggleFooter(this)">Nawigacja</div>
+          <div class="footer-content">
+            <a href="#">Start</a>
+            <a href="#">Oferta</a>
+            <a href="#">Realizacje</a>
+            <a href="#">Kontakt</a>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="line"></div>
+      <p>&COPY; 2026 Gracjan Śliwiński | Wszelkie prawa zastrzeżone | <a href="#" style="text-decoration: none !important; color: #777;">Polityka Prywatności</a></p>
+    </div>
+
+  </div>
 </footer>
 
-<script>
-let scrollTarget = 0;
-let scrollCurrent = 0;
-const scrollBar = document.getElementById('scrollProgress');
-
-function updateScrollBar() {
-  scrollCurrent += (scrollTarget - scrollCurrent) * 0.1; // im mniejsza wartość, tym wolniej
-  scrollBar.style.width = scrollCurrent + '%';
-  requestAnimationFrame(updateScrollBar);
-}
-updateScrollBar();
-
-window.addEventListener('scroll', () => {
-  const docHeight = document.body.scrollHeight - window.innerHeight;
-  scrollTarget = (window.scrollY / docHeight) * 100;
-});
-</script>
-
-<div class="w-full py-8" id="oferta">
-    <h2 class="text-gray-800 dark:text-white text-[24px] font-bold px-6 pb-6 fade-in">Oferta</h2>
-    <!-- DESKTOP / TABLET -->
-<div class="hidden lg:flex justify-center px-6">
-  <div class="flex gap-6">
-
-    <!-- KOPIA 1:1 KART (NIC NIE ZMIENIONE) -->
-
-    <div class="w-[280px] bg-neutral-950 p-6 rounded-2xl border border-neutral-800 hover:border-neutral-700">
-      <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6">
-        <i class="fa-solid fa-calculator text-2xl text-white"></i>
-      </div>
-      <h3 class="text-xl font-bold mb-2 text-white">Darmowa Wycena Projektu</h3>
-      <p class="text-gray-400 text-sm">
-        Umów się na niezobowiązującą rozmowę i otrzymaj szczegółową wycenę projektu.
-      </p>
-    </div>
-
-    <div class="w-[280px] bg-neutral-950 p-6 rounded-2xl border border-neutral-800 hover:border-neutral-700">
-      <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6">
-        <i class="fa-solid fa-pencil-ruler text-2xl text-white"></i>
-      </div>
-      <h3 class="text-xl font-bold mb-2 text-white">
-        Projekt Indywidualny <span class="text-blue-500 text-sm ml-2">Premium</span>
-      </h3>
-      <p class="text-gray-400 text-sm mb-4">
-        Dedykowany projekt od podstaw, szyty na miarę Twojej marki.
-      </p>
-      <ul class="text-gray-400 text-sm space-y-1">
-        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Personalizacja pod markę</li>
-        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Optymalizacja SEO</li>
-        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Wsparcie po wdrożeniu</li>
-      </ul>
-    </div>
-
-    <div class="w-[280px] bg-neutral-950 p-6 rounded-2xl border border-neutral-800 hover:border-neutral-700">
-      <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6">
-        <i class="fa-solid fa-layer-group text-2xl text-white"></i>
-      </div>
-      <h3 class="text-xl font-bold mb-2 text-white">
-        Gotowe Szablony
-        <span class="text-green-500 text-sm ml-2 block">Szybka realizacja</span>
-      </h3>
-      <p class="text-gray-400 text-sm mb-4">
-        Wybierz jeden z gotowych szablonów i dopasuj go do swojej marki.
-      </p>
-      <ul class="text-gray-400 text-sm space-y-1">
-        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Szybki czas realizacji</li>
-        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Personalizacja kolorów i treści</li>
-        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Optymalizacja SEO</li>
-      </ul>
-      <a href="#port" class="mt-4 inline-block bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-500 text-sm">
-        Zobacz wszystkie szablony
-      </a>
-    </div>
-
-  </div>
-</div>
-
-  <!-- CAROUSEL dla małych i średnich ekranów -->
-  <div class="block lg:hidden relative w-full overflow-hidden">
-    <!-- Strzałki -->
-    <button id="prev" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-neutral-800/70 hover:bg-neutral-700 text-white p-2 rounded-full">
-      <i class="fa-solid fa-chevron-left"></i>
-    </button>
-    <button id="next" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-neutral-800/70 hover:bg-neutral-700 text-white p-2 rounded-full">
-      <i class="fa-solid fa-chevron-right"></i>
-    </button>
-
-    <div id="carousel" class="flex gap-6 overflow-x-hidden overflow-y-hidden snap-x snap-mandatory scroll-smooth px-6">
-      <!-- Karta 1 -->
-      <div class="min-w-[280px] max-w-[280px] bg-neutral-950 p-6 rounded-2xl border border-neutral-800 hover:border-neutral-700 flex-shrink-0 snap-center">
-        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6">
-          <i class="fa-solid fa-calculator text-2xl text-white"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-2 text-white">Darmowa Wycena Projektu</h3>
-        <p class="text-gray-400 text-sm">
-          Umów się na niezobowiązującą rozmowę i otrzymaj szczegółową wycenę projektu.
-        </p>
-      </div>
-
-      <!-- Karta 2 -->
-      <div class="min-w-[280px] max-w-[280px] bg-neutral-950 p-6 rounded-2xl border border-neutral-800 hover:border-neutral-700 flex-shrink-0 snap-center">
-        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6">
-          <i class="fa-solid fa-pencil-ruler text-2xl text-white"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-2 text-white">Projekt Indywidualny <span class="text-blue-500 text-sm ml-2">Premium</span></h3>
-        <p class="text-gray-400 text-sm mb-4">
-          Dedykowany projekt od podstaw, szyty na miarę Twojej marki.
-        </p>
-        <ul class="text-gray-400 text-sm space-y-1">
-          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Personalizacja pod markę</li>
-          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Optymalizacja SEO</li>
-          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Wsparcie po wdrożeniu</li>
-        </ul>
-      </div>
-
-      <!-- Karta 3 -->
-      <div class="min-w-[280px] max-w-[280px] bg-neutral-950 p-6 rounded-2xl border border-neutral-800 hover:border-neutral-700 flex-shrink-0 snap-center">
-        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-neutral-800 mb-6">
-          <i class="fa-solid fa-layer-group text-2xl text-white"></i>
-        </div>
-          <h3 class="text-xl font-bold mb-2 text-white">
-            Gotowe Szablony
-            <span class="text-green-500 text-sm ml-2 block">Szybka realizacja</span>
-          </h3>
-        <p class="text-gray-400 text-sm mb-4">
-          Wybierz jeden z gotowych szablonów i dopasuj go do swojej marki w krótkim czasie.
-        </p>
-        <ul class="text-gray-400 text-sm space-y-1">
-          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Szybki czas realizacji</li>
-          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Personalizacja kolorów i treści</li>
-          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Optymalizacja SEO</li>
-        </ul>
-        <a href="#port" class="mt-4 inline-block bg-green-600 text-white py-2 px-4 rounded-lg font-semibold transition hover:bg-green-500 text-sm">
-          Zobacz wszystkie szablony
-        </a>
-      </div>
-    </div>
-  </div>
-<script>
-  const w = document.getElementById('privacyModal');
-
-  document.getElementById('privacyBtn').onclick = e => {
-    e.preventDefault();
-    w.classList.remove('hidden');
-  };
-
-  document.getElementById('closePrivacy').onclick = () => {
-    w.classList.add('hidden');
-  };
-
-  w.querySelector('.absolute').onclick = () => {
-    w.classList.add('hidden');
-  };
-</script>
-
-
-
-<script>
-const carousel = document.getElementById('carousel');
-const next = document.getElementById('next');
-const prev = document.getElementById('prev');
-
-if (carousel) {
-  const cards = Array.from(carousel.children);
-  let index = 0;
-
-  const scrollToCard = (i) => {
-    const card = cards[i];
-    const cardCenter =
-      card.offsetLeft + card.offsetWidth / 2;
-    const containerCenter =
-      carousel.offsetWidth / 2;
-
-    carousel.scrollTo({
-      left: cardCenter - containerCenter,
-      behavior: 'smooth'
-    });
-  };
-
-  next.addEventListener('click', () => {
-    index = (index + 1) % cards.length;
-    scrollToCard(index);
-  });
-
-  prev.addEventListener('click', () => {
-    index = (index - 1 + cards.length) % cards.length;
-    scrollToCard(index);
-  });
-
-  // auto-scroll
-  let autoScroll = setInterval(() => {
-    index = (index + 1) % cards.length;
-    scrollToCard(index);
-  }, 5000);
-
-const isDesktop = window.matchMedia('(hover: hover)').matches;
-
-if (isDesktop) {
-  carousel.addEventListener('mouseenter', () => clearInterval(autoScroll));
-  carousel.addEventListener('mouseleave', () => {
-    autoScroll = setInterval(() => {
-      index = (index + 1) % cards.length;
-      scrollToCard(index);
-    }, 5000);
-  });
-}
-
-
-  // start od środkowej karty
-  index = 1;
-  scrollToCard(index);
-}
-</script>
-
-
-
-<!-- <section id="opinie" class="bg-background-dark py-20 px-6">
-  <h2 class="text-white text-[24px] font-bold mb-10 fade-in">Opinie podopiecznych</h2>
-
-  <div class="relative overflow-hidden max-w-3xl mx-auto">
-
-    <div id="opinieTrack" class="flex transition-transform duration-700 ease-out"></div>
-
-    <div id="opinieDots" class="flex justify-center gap-3 mt-6"></div>
-
-
-    <div class="mt-6 flex justify-center">
-      <a href="#" target="_blank" class="opacity-60 hover:opacity-100 transition">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png" alt="Google" class="w-8 h-8">
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<script>
-const opinie = [
-  { ocena: 5, tekst: "Najlepsze treningi w życiu. Zero lania wody, pełen konkret.", autor: "Kamil" },
-  { ocena: 4, tekst: "W końcu ktoś, kto wymaga, ale też tłumaczy jak człowiek.", autor: "Marek" },
-  { ocena: 5, tekst: "Mega atmosfera i profesjonalne podejście.", autor: "Ania" },
-  { ocena: 4, tekst: "Świetne podejście do techniki.", autor: "Oskar" },
-  { ocena: 5, tekst: "System i dyscyplina. Progres.", autor: "Sara" },
-  { ocena: 5, tekst: "Polecam każdemu.", autor: "Darek" },
-  { ocena: 4, tekst: "Solidna robota.", autor: "Wojtek" },
-  { ocena: 5, tekst: "Najbardziej merytoryczny trener.", autor: "Paweł" },
-  { ocena: 5, tekst: "Świetne dobranie planu.", autor: "Igor" },
-  { ocena: 4, tekst: "Każda sesja to krok do przodu.", autor: "Monika" },
-  { ocena: 5, tekst: "Widać pasję.", autor: "Szymon" },
-  { ocena: 4, tekst: "Poukładane i skuteczne.", autor: "Maja" },
-  { ocena: 5, tekst: "Super dla początkujących.", autor: "Ewelina" },
-  { ocena: 4, tekst: "Wymagający, ale fair.", autor: "Adrian" },
-  { ocena: 5, tekst: "Świetna decyzja.", autor: "Julia" },
-  { ocena: 5, tekst: "Mega motywacja.", autor: "Artur" },
-  { ocena: 4, tekst: "Widać doświadczenie.", autor: "Jarek" },
-  { ocena: 5, tekst: "Profesjonalne prowadzenie.", autor: "Patryk" },
-  { ocena: 4, tekst: "Efekty szybkie.", autor: "Kuba" },
-  { ocena: 5, tekst: "Świetne tempo.", autor: "Karolina" },
-  { ocena: 5, tekst: "Plan dopracowany.", autor: "Natalia" },
-  { ocena: 4, tekst: "Technika siłowa ogarnięta.", autor: "Michał" },
-  { ocena: 5, tekst: "Wiedza na poziomie.", autor: "Krzysiek" },
-  { ocena: 4, tekst: "Polecam.", autor: "Bartek" },
-  { ocena: 5, tekst: "Najwyższa motywacja.", autor: "Dominika" },
-  { ocena: 4, tekst: "Progres stabilny.", autor: "Tomek" },
-  { ocena: 5, tekst: "Świetna energia.", autor: "Kasia" },
-  { ocena: 4, tekst: "Zacząłem trenować porządnie.", autor: "Błażej" },
-  { ocena: 5, tekst: "Najlepszy trener.", autor: "Rafał" },
-  { ocena: 4, tekst: "Polecam zapracowanym.", autor: "Eliza" },
-  { ocena: 5, tekst: "Świetna mobilność.", autor: "Ala" },
-  { ocena: 4, tekst: "Logiczny trening.", autor: "Seweryn" },
-  { ocena: 5, tekst: "Czysty konkret.", autor: "Piotr" },
-  { ocena: 4, tekst: "Powrót po kontuzji udany.", autor: "Iza" },
-  { ocena: 5, tekst: "Ćwiczenia dobrane idealnie.", autor: "Filip" },
-  { ocena: 4, tekst: "Progres co tydzień.", autor: "Basia" },
-  { ocena: 5, tekst: "Konsekwencja i jakość.", autor: "Olek" },
-  { ocena: 5, tekst: "Robota robiona.", autor: "Maciek" },
-  { ocena: 4, tekst: "Organizacja perfekcyjna.", autor: "Lena" },
-];
-
-const track = document.getElementById("opinieTrack");
-const dotsContainer = document.getElementById("opinieDots");
-
-opinie.forEach((opinia) => {
-  const gwiazdki = Array.from({ length: 5 })
-    .map((_, i) =>
-      i < opinia.ocena
-        ? `<span class="text-yellow-400 text-xl">★</span>`
-        : `<span class="text-gray-600 text-xl">★</span>`
-    )
-    .join("");
-
-  track.innerHTML += `
-    <div class="min-w-full px-6">
-      <div class="bg-[#111] border border-white/10 rounded-2xl p-6 text-gray-300 shadow-[0_0_20px_#8000e233]">
-        <div class="flex items-center gap-2 mb-3">
-          <div class="flex">${gwiazdki}</div>
-          <span class="text-gray-400 text-sm">${opinia.ocena}/5</span>
-        </div>
-
-        <p class="text-100 mb-4">„${opinia.tekst}”</p>
-        <h4 class="text-white font-bold text-base">– ${opinia.autor}</h4>
-      </div>
-    </div>
-  `;
-});
-
-const itemsPerDot = 2;
-const totalDots = Math.ceil(opinie.length / itemsPerDot);
-
-for (let i = 0; i < totalDots; i++) {
-  dotsContainer.innerHTML += `
-    <button data-block="${i}" class="dot w-3 h-3 rounded-full bg-white/20"></button>
-  `;
-}
-
-const dots = document.querySelectorAll(".dot"); -->
-<script>
-let index = 0;
-function updateSlider() {
-  track.style.transform = `translateX(-${index * 100}%)`;
-
-  dots.forEach(d => d.classList.remove("bg-white"));
-  dots.forEach(d => d.classList.add("bg-white/20"));
-
-  const activeDot = Math.floor(index / itemsPerDot);
-  dots[activeDot].classList.remove("bg-white/20");
-  dots[activeDot].classList.add("bg-white");
-}
-
-dots.forEach(dot => {
-  dot.addEventListener("click", () => {
-    const block = Number(dot.dataset.block);
-    index = block * itemsPerDot;
-    updateSlider();
-  });
-});
-
-setInterval(() => {
-  index = (index + 1) % opinie.length;
-  updateSlider();
-}, 4500);
-
-updateSlider();
-</script>
-  </div>
-</section>
-
-<script>
-const textarea = document.getElementById('idea');
-textarea.addEventListener('input', () => {
-  textarea.style.height = 'auto';
-  textarea.style.height = textarea.scrollHeight + 'px';
-});
-</script>
-
-<section id="contact" class="bg-background-dark py-16 px-6">
-  <h2 class="fade-in text-gray-800 dark:text-white text-[24px] font-bold px-6 pb-6">
-    Kontakt
-  </h2>
-
-  <div id="contact-buttons" class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
-
-    <a href="tel:+48881530022"
-       class="contact-btn rounded-lg border border-neutral-800 bg-neutral-950 p-6 flex flex-col items-center justify-center text-white transition-colors"
-       data-color="#008709">
-      <i class="fas fa-phone-alt text-3xl mb-3"></i>
-      <span>Zadzwoń</span>
-    </a>
-
-    <a href="sms:+48881530022"
-       class="contact-btn rounded-lg border border-neutral-800 bg-neutral-950 p-6 flex flex-col items-center justify-center text-white transition-colors"
-       data-color="#00a14e">
-      <i class="fas fa-sms text-3xl mb-3"></i>
-      <span>Wyślij SMS</span>
-    </a>
-
-    <a href="https://wa.me/48881530022" target="_blank"
-       class="contact-btn rounded-lg border border-neutral-800 bg-neutral-950 p-6 flex flex-col items-center justify-center text-white transition-colors"
-       data-color="#00ff7b">
-      <i class="fab fa-whatsapp text-3xl mb-3"></i>
-      <span>WhatsApp</span>
-    </a>
-
-    <a href="https://m.me/gracjan124" target="_blank"
-       class="contact-btn rounded-lg border border-neutral-800 bg-neutral-950 p-6 flex flex-col items-center justify-center text-white transition-colors"
-       data-color="#0084FF">
-      <i class="fab fa-facebook-messenger text-3xl mb-3"></i>
-      <span>Messenger</span>
-    </a>
-
-    <a href="https://www.instagram.com/gracjan_sliwinski/" target="_blank"
-       class="contact-btn rounded-lg border border-neutral-800 bg-neutral-950 p-6 flex flex-col items-center justify-center text-white transition-colors"
-       data-color="#E1306C">
-      <i class="fab fa-instagram text-3xl mb-3"></i>
-      <span>Instagram</span>
-    </a>
-
-  </div>
-</section>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".contact-btn").forEach(btn => {
-    const color = btn.dataset.color
-
-    btn.addEventListener("mouseenter", () => {
-      btn.style.backgroundColor = color
-    })
-
-    btn.addEventListener("mouseleave", () => {
-      btn.style.backgroundColor = ""
-    })
-  })
-})
-</script>
-
-
 <style>
-@keyframes slowPulse {
-  0%, 100% { background-color: #1a1a1a; }
-  50% { background-color: var(--pulse-color); }
+.footer{
+  background:#0b0b0b;
+  color:#fff;
+  padding:5rem 1.25rem 2rem;
+  position:relative;
+  overflow:hidden;
 }
 
-.contact-btn.animate {
-  animation: slowPulse 0.8s ease-in-out;
+/* TOP LINE (Apple red) */
+.footer::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:2px;
+  background:linear-gradient(90deg, transparent, #ff2f00, transparent);
+}
+
+/* CONTAINER */
+.footer-inner{
+  max-width:1100px;
+  margin:0 auto;
+}
+
+/* DESKTOP LAYOUT */
+.footer-top{
+  display:flex;
+  justify-content:space-between;
+  gap:4rem;
+}
+
+/* LEFT */
+.footer-left{
+  max-width:340px;
+}
+
+.footer-brand{
+  font-size:1.4rem;
+  font-weight:700;
+  margin-bottom:0.6rem;
+}
+
+.footer-desc{
+  color:#aaa;
+  font-size:0.9rem;
+  line-height:1.5;
+  margin-bottom:1.2rem;
+}
+
+/* ICONS */
+.footer-icons{
+  display:flex;
+  gap:0.8rem;
+}
+
+.footer-icons a{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #222;
+  color:#ff2f00;
+  transition:0.3s;
+  text-decoration:none;
+}
+
+.footer-icons a:hover{
+  border-color:#ff2f00;
+  transform:translateY(-3px);
+}
+
+/* RIGHT */
+.footer-right{
+  display:flex;
+  gap:4rem;
+}
+
+/* COLUMN */
+.footer-title{
+  font-size:0.95rem;
+  font-weight:600;
+  margin-bottom:1rem;
+  cursor:pointer;
+  position:relative;
+}
+
+/* underline hover desktop */
+.footer-title::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  width:0%;
+  height:2px;
+  background:#ff2f00;
+  transition:0.3s;
+}
+
+.footer-col:hover .footer-title::after{
+  width:100%;
+}
+
+/* LINKS */
+.footer-content{
+  display:flex;
+  flex-direction:column;
+  gap:0.6rem;
+}
+
+.footer-content a{
+  color:#aaa;
+  text-decoration:none;
+  font-size:0.9rem;
+  transition:0.25s;
+}
+
+.footer-content a:hover{
+  color:#fff;
+  transform:translateX(4px);
+}
+
+/* BOTTOM */
+.footer-bottom{
+  margin-top:3.5rem;
+  text-align:center;
+  color:#666;
+  font-size:0.85rem;
+}
+
+.line{
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(255,47,0,0.5), transparent);
+  margin-bottom:1rem;
+}
+
+/* MOBILE = APPLE ACCORDION */
+@media(max-width:768px){
+
+  .footer-top{
+    flex-direction:column;
+  }
+
+  .footer-left{
+    text-align:center;
+    max-width:100%;
+  }
+
+  .footer-icons{
+    justify-content:center;
+  }
+
+  .footer-right{
+    flex-direction:column;
+    gap:0;
+    margin-top:2rem;
+  }
+
+  .footer-title{
+    display:flex;
+    justify-content:space-between;
+    padding:0.9rem 0;
+    border-bottom:1px solid #1f1f1f;
+  }
+
+  .footer-content{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.35s ease;
+  }
+
+  .footer-col.active .footer-content{
+    max-height:220px;
+    margin-bottom:0.6rem;
+  }
+}
+.scroll-bar{
+  position:fixed;
+  top:65px; 
+  left:0;
+  width:100%;
+  height:1px;
+  background:#fffffff5;
+  z-index:101;
+}
+
+.scroll-progress{
+  height:100%;
+  width:0%;
+  background:#000000;
+  transition:width 0.1s linear;
 }
 </style>
 
 <script>
-const buttons = document.querySelectorAll('.contact-btn');
-
-const observer = new IntersectionObserver((entries, obs) => {
-  if(entries[0].isIntersecting) {
-    buttons.forEach((btn, i) => {
-      setTimeout(() => {
-        btn.style.setProperty('--pulse-color', btn.dataset.color);
-        btn.classList.add('animate');
-      }, i * 400); // wolniejsza sekwencja: co 0.4s
-    });
-    obs.disconnect(); // tylko raz
-  }
-}, { threshold: 0.3 });
-
-observer.observe(document.getElementById('contact-buttons'));
-</script>
-
-
-<footer class="bg-background-dark text-gray-400 py-10 mt-16 fade-in">
-  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10 text-center md:text-left">
-  </div>
-
-  <div class="mt-10 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
-    © <span id="year"></span> Gracjan Śliwiński. Wszelkie prawa zastrzeżone</a>
-    <br>
-    <span class="inline-block mt-3">
-      <i class="fa-solid fa-up-right-from-square mr-1" style="color: #ffffff;"></i>
-      <a href="javascript:void(0)" id="privacyBtn" class="hover:text-primary transition" style="color:#ffffff;">Polityka prywatności</a>
-    </span>
-  </div>
-</footer><!-- Modal 2: Polityka prywatności -->
-<div id="privacyModal" class="fixed inset-0 hidden z-50 flex items-center justify-center bg-black/60">
-  <div class="absolute inset-0"></div>
-  <div class="relative rounded-lg border border-neutral-800 bg-neutral-950 p-6 w-full max-w-lg mx-4 sm:mx-0 z-10">
-    <button id="closePrivacy" class="absolute top-3 right-3 text-neutral-400 hover:text-white">✕</button>
-    <h2 class="text-lg font-semibold mb-4 text-white">Polityka prywatności</h2>
-    <div class="max-h-[60vh] overflow-y-auto text-sm text-neutral-300 w-full">
-            <p>
-Administrator danych osobowych: Gracjan Śliwiński.<br><br>
-Twoja prywatność jest dla mnie ważna. Niniejsza polityka informuje, jakie dane mogą być przetwarzane podczas korzystania ze strony i w jakim celu.<br><br>
-1. Dane zbierane przez stronę:<br>
-Strona nie zbiera żadnych danych osobowych bezpośrednio od użytkownika. Nie ma formularzy, pól do wpisywania treści ani mechanizmów rejestracji.<br><br>
-2. Kontakt za pomocą przycisków:<br>
-Użytkownik może korzystać z przycisków (buttonów), które przekierowują do: Instagram, SMS, połączeń telefonicznych, Messengera lub WhatsApp. Podczas korzystania z tych buttonów, dane kontaktowe są przekazywane wyłącznie w zakresie wymaganym przez wybraną platformę i pozostają poza kontrolą tej strony.<br><br>
-3. Statystyki i narzędzia analityczne:<br>
-Strona korzysta ze statystyk Google w celu monitorowania ruchu oraz poprawy jakości strony. Nie są zbierane żadne dane osobowe ani nie jest prowadzona personalizacja użytkowników.<br><br>
-4. Prawa użytkownika:<br>
-Użytkownik ma prawo do wglądu w swoje dane, żądania ich poprawienia lub usunięcia, a także prawo do cofnięcia zgody na przetwarzanie danych w zakresie, w jakim zostały udostępnione przez zewnętrzne platformy (np. Instagram, WhatsApp).<br><br>
-5. Bezpieczeństwo danych:<br>
-Administrator stosuje odpowiednie środki techniczne i organizacyjne, aby chronić dane przed nieuprawnionym dostępem, utratą lub udostępnieniem.<br><br>
-6. Zmiany polityki prywatności:<br>
-Polityka może być aktualizowana w zależności od zmian funkcjonalności strony lub obowiązujących przepisów prawnych. Data ostatniej aktualizacji: 22 grudnia 2025.
-</p>
-    </div>
-  </div>
-</div>
-<script>
-  // Otwieranie modalów
-  document.getElementById('templatesBtn').onclick = () => {
-    document.getElementById('templatesModal').classList.remove('hidden');
-  };
-
-  document.getElementById('privacyBtn').onclick = () => {
-    document.getElementById('privacyModal').classList.remove('hidden');
-  };
-
-  // Zamknięcie modalów
-  document.getElementById('closeTemplates').onclick = () => {
-    document.getElementById('templatesModal').classList.add('hidden');
-  };
-
-  document.getElementById('closePrivacy').onclick = () => {
-    document.getElementById('privacyModal').classList.add('hidden');
-  };
-
-  // Kliknięcie w tło zamyka modal
-  document.querySelectorAll('.fixed.inset-0').forEach(modal => {
-    modal.querySelector('.absolute').onclick = () => {
-      modal.classList.add('hidden');
-    };
-  });
-</script>
-
-
-
-<script>
-document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-
-</main>
-  </section>
-<style>
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: opacity, transform;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-</style>
-
-<script>
-// ENERGICZNY, ALE PŁYNNIEJSZY FADE-IN OBSERVER
-const fadeEls = document.querySelectorAll('.fade-in');
-
-if (fadeEls.length) {
-  const observer = new IntersectionObserver((entries, obs) => {
-    for (const e of entries) {
-      if (!e.isIntersecting) continue;
-      const el = e.target;
-      el.style.transitionDelay = el.dataset.delay || '0s';
-      el.classList.add('visible');
-      obs.unobserve(el);
-    }
-  }, { threshold: 0.05 });
-
-  fadeEls.forEach(el => observer.observe(el));
+function toggleFooter(el){
+  const col = el.parentElement;
+  col.classList.toggle("active");
 }
 </script>
-
-<!-- === SCRIPTS === -->
 <script>
-function animateValue(el, start, end, duration) {
-  let startTime = null;
-  function step(timestamp) {
-    if (!startTime) startTime = timestamp;
-    const progress = Math.min((timestamp - startTime) / duration, 1);
-    const value = Math.floor(progress * (end - start) + start);
-    el.textContent = value.toLocaleString("pl-PL") + " +";
-    if (progress < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
+function toggleMenu(){
+  const menu = document.getElementById("mobileMenu");
+  const overlay = document.getElementById("overlay");
+  const burger = document.querySelector(".hamburger");
 
-window.addEventListener("DOMContentLoaded", () => {
-  const counters = document.querySelectorAll("[data-counter]");
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const end = parseInt(el.getAttribute("data-counter"), 10);
-        animateValue(el, 0, end, 2000);
-        obs.unobserve(el); // tylko raz
-      }
-    });
-  }, { threshold: 0.4 }); // 0.4 = 40% widoczności
+  const isOpen = menu.classList.contains("open");
 
-  counters.forEach(el => observer.observe(el));
-});
-</script>
-
-
-<script>
-
-// MENU MOBILE — animacja + hamburger w X
-const toggleBtn = document.getElementById('menuToggle');
-const mobileNav = document.getElementById('mobileNav');
-let menuOpen = false;
-
-toggleBtn.addEventListener('click', () => {
-  menuOpen = !menuOpen;
-  toggleBtn.classList.toggle('active', menuOpen);
-  if (menuOpen) {
-    mobileNav.classList.remove('-translate-y-full', 'opacity-0');
-    mobileNav.classList.add('translate-y-0', 'opacity-100');
+  if(isOpen){
+    menu.classList.remove("open");
+    overlay.classList.remove("active");
+    burger.classList.remove("active");
+    document.body.style.overflow = "auto";
   } else {
-    mobileNav.classList.add('-translate-y-full', 'opacity-0');
-    mobileNav.classList.remove('translate-y-0', 'opacity-100');
+    menu.classList.add("open");
+    overlay.classList.add("active");
+    burger.classList.add("active");
+    document.body.style.overflow = "hidden";
   }
-});
-
-mobileNav.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    mobileNav.classList.add('-translate-y-full', 'opacity-0');
-    mobileNav.classList.remove('translate-y-0', 'opacity-100');
-    toggleBtn.classList.remove('active');
-    menuOpen = false;
-  });
-});
-</script>
-<script>
-// Paralaksa
-const parallaxElements = document.querySelectorAll('.parallax');
-const isMobile = /Mobi|Android/i.test(navigator.userAgent) || /iPad|iPhone|iPod/.test(navigator.userAgent);
-if (isMobile) {
-  window.addEventListener('scroll', () => {
-    const scrollPos = window.pageYOffset;
-    parallaxElements.forEach(el => {
-      el.style.backgroundPosition = `center ${scrollPos * 0.5}px`;
-    });
-  });
-} else {
-  parallaxElements.forEach(el => el.style.backgroundAttachment = 'fixed');
 }
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const navLinks = document.querySelectorAll('nav a[href^="#"]');
-  const sections = Array.from(navLinks)
-    .map(link => document.querySelector(link.getAttribute("href")))
-    .filter(Boolean);
 
-  // Dodajemy transition do każdego linka
-  navLinks.forEach(link => {
-    link.classList.add("transition-colors", "duration-300", "ease-in-out");
-  });
-
-  function setActiveLink(id) {
-    navLinks.forEach(link => {
-      link.classList.toggle("text-[#9e9e9e]", link.getAttribute("href") === `#${id}`);
-    });
-  }
-
-  function onScroll() {
-    let closestSection = null;
-    let minDist = Infinity;
-    const viewportCenter = window.innerHeight / 2;
-
-    sections.forEach(section => {
-      const rect = section.getBoundingClientRect();
-      const sectionCenter = rect.top + rect.height / 2;
-      const dist = Math.abs(sectionCenter - viewportCenter);
-      if (dist < minDist) {
-        minDist = dist;
-        closestSection = section;
-      }
-    });
-
-    if (closestSection) setActiveLink(closestSection.id);
-  }
-
-  window.addEventListener("scroll", onScroll);
-  onScroll(); // ustawienie aktywnego linka przy załadowaniu strony
+document.querySelectorAll(".mobile-menu a").forEach(link => {
+  link.addEventListener("click", toggleMenu);
 });
+
+document.querySelectorAll(".faq-question").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const item = btn.parentElement;
+    const answer = item.querySelector(".faq-answer");
+    const icon = btn.querySelector(".icon");
+
+    if(item.classList.contains("active")){
+      icon.animate(
+        [
+          { transform: "scale(1) rotate(0deg)" },
+          { transform: "scale(1.15) rotate(90deg)" },
+          { transform: "scale(1) rotate(180deg)" }
+        ],
+        { duration: 260, easing: "cubic-bezier(.2,.8,.2,1)" }
+      );
+
+      answer.style.height = answer.scrollHeight + "px";
+      requestAnimationFrame(() => answer.style.height = "0px");
+      item.classList.remove("active");
+    } else {
+      document.querySelectorAll(".faq-item").forEach(i => {
+        if(i !== item){
+          i.classList.remove("active");
+          i.querySelector(".faq-answer").style.height = "0px";
+        }
+      });
+
+      icon.animate(
+        [
+          { transform: "scale(1) rotate(0deg)" },
+          { transform: "scale(1.15) rotate(-90deg)" },
+          { transform: "scale(1) rotate(-180deg)" }
+        ],
+        { duration: 260, easing: "cubic-bezier(.2,.8,.2,1)" }
+      );
+
+      item.classList.add("active");
+      answer.style.height = answer.scrollHeight + "px";
+    }
+  });
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("fade-in");
+    } else {
+      entry.target.classList.remove("fade-in");
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll(".fade-item").forEach(el => observer.observe(el));
+const progress = document.querySelector(".scroll-progress");
+
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const height = document.body.scrollHeight - window.innerHeight;
+  const percent = (scrollTop / height) * 100;
+
+  progress.style.width = percent + "%";
+});
+
+
 </script>
 
+<script>
+(() => {
+  let current = window.scrollY;
+  let target = current;
+  let isTicking = false;
 
+  const ease = 0.025;
+  const step = 1.1;
+
+  const onWheel = (e) => {
+    e.preventDefault();
+    target += e.deltaY * step;
+
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    target = Math.max(0, Math.min(max, target));
+
+    if (!isTicking) {
+      isTicking = true;
+      requestAnimationFrame(update);
+    }
+  };
+
+  const update = () => {
+    current += (target - current) * ease;
+
+    if (Math.abs(target - current) < 0.2) {
+      current = target;
+    }
+
+    window.scrollTo(0, current);
+
+    if (current !== target) {
+      requestAnimationFrame(update);
+    } else {
+      isTicking = false;
+    }
+  };
+
+  window.addEventListener('wheel', onWheel, { passive: false });
+})();
+</script>
 </body>
 </html>
