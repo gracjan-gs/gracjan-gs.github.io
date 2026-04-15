@@ -1116,7 +1116,7 @@ h1 span{
   cursor:grab;
   will-change:transform;
   transition:transform 0.55s cubic-bezier(.2,.8,.2,1);
-  touch-action:pan-y;
+  touch-action:none !important;
 }
 
 .portfolio-track:active{
@@ -1308,30 +1308,30 @@ function stopAuto(){
   clearInterval(auto);
 }
 
-/* DRAG */
+/* DRAG FIX MOBILE */
 function pos(e){
   return e.type.includes("mouse") ? e.pageX : e.touches[0].clientX;
 }
 
-track.addEventListener("mousedown", e => {
-  dragging = true;
-  startX = pos(e);
-  stopAuto();
-});
-
-track.addEventListener("touchstart", e => {
-  dragging = true;
-  startX = pos(e);
-  stopAuto();
-});
+track.addEventListener("mousedown", start);
+track.addEventListener("touchstart", start, { passive: false });
 
 window.addEventListener("mouseup", end);
 window.addEventListener("touchend", end);
+
 window.addEventListener("mousemove", move);
-window.addEventListener("touchmove", move);
+window.addEventListener("touchmove", move, { passive: false });
+
+function start(e){
+  dragging = true;
+  startX = pos(e);
+  stopAuto();
+}
 
 function move(e){
   if(!dragging) return;
+
+  e.preventDefault(); // 🔥 KLUCZ – blokuje scroll
 
   const diff = pos(e) - startX;
   const base = -index * step() + center();
@@ -1340,6 +1340,19 @@ function move(e){
   track.style.transform = `translateX(${base + diff}px)`;
 }
 
+function end(e){
+  if(!dragging) return;
+  dragging = false;
+
+  const diff = pos(e) - startX;
+
+  if(diff < -60) index++;
+  if(diff > 60) index--;
+
+  update();
+  setTimeout(fix, 550);
+  startAuto();
+}
 /* 🔥 FIX: event jako parametr */
 function end(e){
   if(!dragging) return;
@@ -1456,18 +1469,15 @@ window.addEventListener("resize", setupControls);
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  width:42px;
-  height:42px;
+  width:39px;
+  height:39px;
   border-radius:50%;
-  border:none;
+  border:1px solid rgba(0, 0, 0, 0);
 
-  /* 🔥 MAGIC */
-  background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(10px) saturate(160%);
-  -webkit-backdrop-filter:blur(10px) saturate(160%);
-
-  /* kontrast względem tła */
-  mix-blend-mode:difference;
+  /* GLASS CORE – dopasowany do Twojego akcentu */
+  background:rgba(0, 0, 0, 0.08);
+  backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
 
   color:#fff;
   font-size:20px;
@@ -1479,9 +1489,20 @@ window.addEventListener("resize", setupControls);
   justify-content:center;
 
   transition:0.25s ease;
-  font-weight: 200 !important;
-}
+  overflow:hidden;
 
+}
+.carousel-btn::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:radial-gradient(circle at 30% 20%,
+    rgba(0, 0, 0, 0.35),
+    rgba(255, 255, 255, 0.12),
+    transparent 60%);
+  transform:rotate(25deg);
+  opacity:0.7;
+}
 .carousel-btn:hover{
   opacity:1;
 }
