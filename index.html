@@ -566,8 +566,6 @@ h1 span{
     grid-template-columns:repeat(2, 1fr);
   }
 }
-
-/* MOBILE - jak oferta (mniejsze, nie full width) */
 @media(max-width:40rem){
   .process-grid{
     grid-template-columns:1fr;
@@ -577,6 +575,26 @@ h1 span{
   .process-card{
     width:95%;
     max-width:390px;
+
+    /* niższa karta */
+    max-height: 240px;
+    height: auto;
+
+    /* klucz: zmniejszenie “pustej przestrzeni” */
+    padding: 0.9rem 1rem;
+
+    overflow: hidden;
+  }
+
+  .process-card h3{
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .process-card p{
+    font-size: 0.85rem;
+    line-height: 1.25;
+    margin: 0;
   }
 
   .process h2{
@@ -933,7 +951,7 @@ h1 span{
       <div class="dot"></div>
       <div class="dot"></div>
       <div class="dot"></div>
-      <div class="search-bar">mojafirma.pl</div>
+      <div class="search-bar">twojafirma.pl / FAQ</div>
     </div>
 
     <div class="faq">
