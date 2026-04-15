@@ -129,15 +129,24 @@ body{
 .mobile-menu{
   position:fixed;
   top:0;
-  right:-100%;
+  right:0;
   width:100%;
   height:100vh;
+
   background:#fff;
+
   display:flex;
   flex-direction:column;
   padding:1.25rem;
   gap:1rem;
-  transition:0.3s;
+
+  /* 🔥 KLUCZ */
+  transform:translateX(100%);
+  transition:transform 0.45s cubic-bezier(.22,.9,.3,1);
+
+  will-change:transform;
+  backface-visibility:hidden;
+
   z-index:99;
 }
 
@@ -169,8 +178,22 @@ body{
   pointer-events:auto;
 }
 
+.overlay{
+  opacity:0;
+  transition:opacity 0.3s ease;
+  will-change:opacity;
+}
+
 .mobile-menu.open{
-  right:0;
+  transform:translateX(0);
+}
+
+.mobile-menu{
+  transform:translate3d(100%,0,0);
+}
+
+.mobile-menu.open{
+  transform:translate3d(0,0,0);
 }
 
 /* HERO */
