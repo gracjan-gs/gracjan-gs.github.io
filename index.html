@@ -1212,11 +1212,12 @@ h1 span{
         </div>
 
       </div>
+      <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
+<button class="carousel-btn next" id="nextBtn">&#10095;</button>
     </div>
 
   </div>
 </section>
-
 <script>
 const track = document.getElementById("track");
 const carousel = document.getElementById("carousel");
@@ -1227,7 +1228,7 @@ let startX = 0;
 let dragging = false;
 let auto;
 
-/* CLONES (infinite loop bez pustych miejsc) */
+/* CLONES */
 function initClones(){
   const first = items[0].cloneNode(true);
   const last = items[items.length - 1].cloneNode(true);
@@ -1276,6 +1277,7 @@ function next(){
 }
 
 function startAuto(){
+  stopAuto(); // 🔥 ważne — brak duplikacji intervali
   auto = setInterval(next, 5000);
 }
 
@@ -1315,18 +1317,19 @@ function move(e){
   track.style.transform = `translateX(${base + diff}px)`;
 }
 
-function end(){
+/* 🔥 FIX: event jako parametr */
+function end(e){
   if(!dragging) return;
   dragging = false;
 
-  const diff = pos(event) - startX;
+  const diff = pos(e) - startX;
 
   if(diff < -80) index++;
   if(diff > 80) index--;
 
   update();
   setTimeout(fix, 550);
-  startAuto();
+  startAuto(); // wraca auto po drag
 }
 
 /* INIT */
@@ -1337,6 +1340,51 @@ window.addEventListener("load", () => {
 });
 
 window.addEventListener("resize", () => update(false));
+
+/* STRZAŁKI */
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+/* DETEKCJA TOUCH */
+function isTouchDevice(){
+  return ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+}
+
+/* POKAZYWANIE STRZAŁEK */
+function setupControls(){
+  if(isTouchDevice()){
+    prevBtn.style.display = "flex";
+    nextBtn.style.display = "flex";
+  } else {
+    prevBtn.style.display = "none";
+    nextBtn.style.display = "none";
+  }
+}
+
+/* 🔥 NAJWAŻNIEJSZE — RESET TIMERA */
+prevBtn.addEventListener("click", () => {
+  stopAuto();
+
+  index--;
+  update();
+  setTimeout(fix, 550);
+
+  startAuto(); // restart 5s
+});
+
+nextBtn.addEventListener("click", () => {
+  stopAuto();
+
+  index++;
+  update();
+  setTimeout(fix, 550);
+
+  startAuto(); // restart 5s
+});
+
+/* INIT */
+window.addEventListener("load", setupControls);
+window.addEventListener("resize", setupControls);
 </script>
 <section class="contact">
   <div class="contact-inner">
@@ -1381,6 +1429,54 @@ window.addEventListener("resize", () => update(false));
 
 
 <style>
+.carousel-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:none;
+
+  /* 🔥 MAGIC */
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(10px) saturate(160%);
+  -webkit-backdrop-filter:blur(10px) saturate(160%);
+
+  /* kontrast względem tła */
+  mix-blend-mode:difference;
+
+  color:#fff;
+  font-size:20px;
+  cursor:pointer;
+  z-index:5;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  transition:0.25s ease;
+  font-weight: 200 !important;
+}
+
+.carousel-btn:hover{
+  opacity:1;
+}
+
+.carousel-btn.prev{ left:10px; }
+.carousel-btn.next{ right:10px; }
+
+/* DOMYŚLNIE UKRYTE */
+.carousel-btn{
+  display:none;
+}
+
+/* POKAŻ NA MOBILE + TABLET */
+@media (max-width:1024px){
+  .carousel-btn{
+    display:flex;
+  }
+}
 .about{
   min-height:80vh;
   padding:5rem 1.25rem;
