@@ -809,6 +809,43 @@ h1 span{
     grid-template-columns:1fr;
   }
 }
+.mobile-menu{
+  display:flex;
+  flex-direction:column;
+  height:100vh; /* KLUCZ */
+}
+
+/* wypycha wszystko nad ikonami w dół */
+.menu-icons{
+  margin-top:auto;
+  display:flex;
+  justify-content:center;
+  gap:0.8rem;
+  padding:1rem 0;
+  margin-bottom: 15vh;
+}
+
+/* styl ikon */
+.menu-icons a{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  border:1px solid #222;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#ff2f00;
+  text-decoration:none;
+
+  transition:0.3s ease;
+}
+
+.menu-icons a:hover{
+  border-color:#ff2f00;
+  transform:translateY(-3px);
+}
 </style>
 </head>
 
@@ -846,6 +883,15 @@ h1 span{
   <a href="#"><span class="material-icons">photo_library</span> Realizacje</a>
   <a href="#"><span class="material-icons">star</span> Opinie</a>
   <a href="#"><span class="material-icons">mail</span> Kontakt</a>
+  
+        <div class="menu-icons">
+          <a href="#"><span class="material-icons">call</span></a>
+          <a href="#"><span class="material-icons">mail</span></a>
+          <a href="#"><span class="material-icons">chat</span></a>
+        </div>
+      </div>
+
+
 </div>
 
 <section class="hero">
