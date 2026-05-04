@@ -128,10 +128,11 @@ body{
 /* MOBILE MENU */
 .mobile-menu{
   position:fixed;
-  top:20;
+  top:40px;
   right:0;
   width:100%;
   height:100vh;
+  margin-top: 20px;
 
   background:#fffffff5;
 
@@ -1000,11 +1001,12 @@ h1 span{
   </div>
 
   <div class="menu">
-    <a href="#">Start</a>
-    <a href="#">Oferta</a>
-    <a href="#">Realizacje</a>
-    <a href="#">Opinie</a>
-    <a href="#">Kontakt</a>
+    <a href="#home">Start</a>
+    <a href="#ws">Współpraca</a>
+    <a href="#of">Oferta</a>
+    <a href="#rea">Realizacje</a>
+    <a href="#kon">Kontakt</a>
+    <a href="#omn">O mnie</a>
   </div>
 
   <div class="hamburger" onclick="toggleMenu()">
@@ -1017,11 +1019,12 @@ h1 span{
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#"><span class="material-icons">home</span> Start</a>
-  <a href="#"><span class="material-icons">work</span> Oferta</a>
-  <a href="#"><span class="material-icons">photo_library</span> Realizacje</a>
-  <a href="#"><span class="material-icons">star</span> Opinie</a>
-  <a href="#"><span class="material-icons">mail</span> Kontakt</a>
+    <a href="#home">Start</a>
+    <a href="#ws">Współpraca</a>
+    <a href="#of">Oferta</a>
+    <a href="#rea">Realizacje</a>
+    <a href="#kon">Kontakt</a>
+    <a href="#omn">O mnie</a>
   
 <div class="menu-bottom">
   <div class="footer-brand signature">Gracjan Śliwiński</div>
@@ -1036,7 +1039,7 @@ h1 span{
 
 </div>
 
-<section class="hero">
+<section class="hero" id="home">
   <div class="badge fade-item" style="--delay:0.05s">Tworzenie stron internetowych</div>
   <h1 class="fade-item" style="--delay:0.15s">Zadbaj o swój <span>biznes</span></h1>
   <p class="subtitle fade-item" style="--delay:0.25s">Nowoczesne strony internetowe dopasowane do potrzeb.</p>
@@ -1162,7 +1165,7 @@ h1 span{
   </div>
 </section>
 
-<section class="process">
+<section class="process" id="ws">
   <div class="process-inner">
     <h2>Przebieg współpracy</h2>
     <p class="lead">Prosty, sprawdzony proces – od pierwszej rozmowy po stałe wsparcie.</p>
@@ -1199,7 +1202,7 @@ h1 span{
   </div>
 </section>
 <section class="offer">
-  <div class="offer-inner">
+  <div class="offer-inner" id="of">
     <h2>Oferta</h2>
     <p class="lead">Bez zbędnych kombinacji – wybierasz pakiet dopasowany do biznesu.</p>
 
@@ -1374,7 +1377,7 @@ h1 span{
 }
 </style>
 
-<section class="portfolio">
+<section class="portfolio" id="rea">
   <div class="portfolio-inner">
 
     <div class="portfolio-header fade-item" style="--delay:0.1s">
@@ -1609,7 +1612,7 @@ nextBtn.addEventListener("click", () => {
 window.addEventListener("load", setupControls);
 window.addEventListener("resize", setupControls);
 </script>
-<section class="contact">
+<section class="contact" id="kon">
   <div class="contact-inner">
     <h2>Kontakt</h2>
     <p class="lead">Wybierz najwygodniejszą formę kontaktu – odpowiadam szybko i konkretnie.</p>
@@ -1822,7 +1825,7 @@ window.addEventListener("resize", setupControls);
 }
 </style>
 
-<section class="about">
+<section class="about" id="omn">
   <div class="about-inner">
 
     <div class="about-text">
@@ -2197,46 +2200,6 @@ window.addEventListener("scroll", () => {
 
 
 </script>
-<script>
-(() => {
-  let current = window.scrollY;
-  let target = current;
-  let isTicking = false;
 
-  const ease = 0.025;
-  const step = 1.1;
-
-  const onWheel = (e) => {
-    e.preventDefault();
-    target += e.deltaY * step;
-
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    target = Math.max(0, Math.min(max, target));
-
-    if (!isTicking) {
-      isTicking = true;
-      requestAnimationFrame(update);
-    }
-  };
-
-  const update = () => {
-    current += (target - current) * ease;
-
-    if (Math.abs(target - current) < 0.2) {
-      current = target;
-    }
-
-    window.scrollTo(0, current);
-
-    if (current !== target) {
-      requestAnimationFrame(update);
-    } else {
-      isTicking = false;
-    }
-  };
-
-  window.addEventListener('wheel', onWheel, { passive: false });
-})();
-</script>
 </body>
 </html>
