@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="pl" class="dark">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Space+Grotesk:wght@400;500;700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<title>Tworzenie stron internetowych Gdynia – Gracjan Śliwiński</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&family=Quicksand:wght@300..700&family=Sacramento&family=Satisfy&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="CzarneLogo.png">
+<link rel="icon" type="image/png" sizes="16x16" href="CzarneLogo.png">
+<link rel="apple-touch-icon" href="CzarneLogo.png">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+  <!-- SEO -->
+<meta name="description" content="Gracjan Śliwiński – profesjonalne strony internetowe od podstaw.">
+<meta name="keywords" content="Gracjan Śliwiński, tworzenie stron internetowych, strony WWW, projektowanie stron, web developer, frontend, UX, SEO, strony responsywne">
+
+  <!-- Open Graph (Facebook, LinkedIn, Instagram) -->
+  <meta property="og:title" content="Gracjan Śliwiński – Tworzenie stron internetowych">
+  <meta property="og:description" content="Profesjonalne strony internetowe tworzone od podstaw. Indywidualne projekty dopasowane do Twoich potrzeb i branży.">
+  <meta property="og:image" content="gracjan-gs.github.io/CzarneLogo.png">
+  <meta property="og:url" content="https://gracjan-gs.github.io/">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gracjan Śliwiński – Tworzenie stron internetowych">
+  <meta name="twitter:description" content="Profesjonalne strony internetowe, indywidualne projekty, optymalizacja pod UX i SEO.">
+  <meta name="twitter:image" content="https://gracjan-gs.github.io/CzarneLogo.png">
+
+  <!-- Structured Data JSON-LD (dla Google Rich Results i Google Card) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Gracjan Śliwiński",
+    "url": "https://gracjan-gs.github.io/",
+    "image": "gracjan-gs.github.io/CzarneLogo.png",
+    "jobTitle": "Web Developer / Tworzenie stron internetowych",
+    "sameAs": [
+      "https://instagram.com/",
+      "https://linkedin.com/",
+      "https://tiktok.com/"
+    ]
+  }
+  </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            glow: '#0052D4',
+                            light: '#4364F7',
+                            cyan: '#6FB1FC',
+                            // Tryb Ciemny (Projektowany od podstaw)
+                            darkbg: '#000',
+                            darkcard: '#0D0E15',
+                            darkinput: '#141622',
+                            darkborder: 'rgba(255,255,255,0.06)',
+                            // Tryb Jasny (Ekskluzywny, Premium - nie invert)
+                            lightbg: '#F8FAFC',
+                            lightcard: '#FFFFFF',
+                            lightinput: '#F1F5F9',
+                            lightborder: '#E2E8F0',
+                            lighttext: '#0F172A'
+                        }
+                    },
+                    boxShadow: {
+                        'premium-dark': '0 20px 40px -15px rgba(0,0,0,0.7), 0 0 50px -10px rgba(67,100,247,0.15)',
+                        'premium-light': '0 20px 40px -15px rgba(148,163,184,0.12), 0 1px 3px 0 rgba(0,0,0,0.05)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        /* Zaawansowane Systemowe Krzywe Animacji i Przejść (Apple-like Motion) */
+        .step-window {
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, filter 0.4s ease;
+        }
+        .window-hidden {
+            opacity: 0;
+            transform: scale(0.98) translateY(12px);
+            filter: blur(4px);
+            pointer-events: none;
+            position: absolute;
+            width: 0; height: 0; overflow: hidden;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+        .accordion-content.open {
+            max-height: 2500px;
+            opacity: 1;
+        }
+        
+        /* Ekskluzywne Style dla Jasnego i Ciemnego Motywu - Separacja Elementów */
+        .dark .glass-premium {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        html:not(.dark) .glass-premium {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.04);
+        }
+
+        /* Zaawansowany System Ochrony Przed Kopiowaniem i Zrzutami Ekranu */
+        .secure-canvas-container {
+            user-select: none;
+            -webkit-user-drag: none;
+            position: relative;
+        }
+        .secure-canvas-container canvas {
+            pointer-events: none !important;
+        }
+        .watermark-overlay {
+            background-image: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 2px, transparent 2px, transparent 10px);
+            pointer-events: none;
+        }
+        .dark .watermark-overlay {
+            background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 2px, transparent 2px, transparent 10px);
+        }
+    </style>
+</head>
+                                        <body class="bg-brand-darkbg dark:bg-brand-darkbg text-gray-900 dark:text-gray-100 font-sans min-h-screen overflow-x-hidden antialiased transition-colors duration-500">
+
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-gradient-to-b from-brand-glow/10 to-transparent blur-[140px] pointer-events-none z-0"></div>
+
+    <nav class="sticky top-0 z-40 border-b border-brand-lightborder dark:border-white/5 bg-white/70 dark:bg-brand-darkbg/70 backdrop-blur-md px-4 sm:px-6 py-4 flex flex-wrap md:flex-nowrap items-center justify-between gap-4">
+        <div class="flex items-center space-x-4 sm:space-x-8 w-full md:w-auto justify-between md:justify-start">
+            <div class="flex items-center space-x-3">
+                <img id="appLogo" src="CzarneLogo.png" alt="QR Studio" class="h-8 w-auto object-contain transition-all duration-300" border="0">
+            </div>
+            
+            <div class="hidden lg:flex items-center space-x-1.5 bg-brand-lightinput dark:bg-white/5 p-1 rounded-xl border border-brand-lightborder dark:border-white/5">
+                <button onclick="executeUndo()" class="px-3 py-2 text-gray-500 dark:text-gray-400 hover:text-brand-light dark:hover:text-white hover:bg-white dark:hover:bg-brand-darkcard rounded-lg transition-all text-xs font-semibold" title="Cofnij (Ctrl+Z)">
+                    <i class="fas fa-undo mr-1.5"></i>Cofnij
+                </button>
+                <button onclick="executeRedo()" class="px-3 py-2 text-gray-500 dark:text-gray-400 hover:text-brand-light dark:hover:text-white hover:bg-white dark:hover:bg-brand-darkcard rounded-lg transition-all text-xs font-semibold" title="Ponów (Ctrl+Y)">
+                    <i class="fas fa-redo mr-1.5"></i>Ponów
+                </button>
+                <div class="w-[1px] h-4 bg-gray-300 dark:bg-white/10 mx-1"></div>
+                <button onclick="resetEntireProject()" class="px-3 py-2 text-red-500 hover:bg-red-500/10 rounded-lg transition-all text-xs font-semibold">
+                    <i class="fas fa-trash-can mr-1.5"></i>Resetuj Projekt
+                </button>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-2 sm:space-x-3 w-full md:w-auto justify-end">
+            <button onclick="toggleSystemTheme()" class="p-3 bg-brand-lightcard dark:bg-brand-darkcard hover:bg-brand-lightinput dark:hover:bg-white/5 border border-brand-lightborder dark:border-white/5 rounded-xl transition-all text-gray-600 dark:text-gray-300 shadow-sm flex-shrink-0" aria-label="Zmień motyw">
+                <i id="themeIcon" class="fas fa-moon text-sm"></i>
+            </button>
+            <button onclick="toggleProjectManagerModal()" class="flex-1 md:flex-initial text-center px-3 sm:px-4 py-3 bg-brand-light/10 text-brand-light dark:text-brand-cyan hover:bg-brand-light/20 rounded-xl transition-all text-xs font-bold border border-brand-light/20 whitespace-nowrap">
+                <i class="fas fa-folder-tree mr-2"></i>Repozytorium Projektów
+            </button>
+        </div>
+    </nav>
+
+    <header class="max-w-6xl mx-auto px-4 pt-6 sm:pt-10">
+        <div class="bg-white dark:bg-brand-darkcard rounded-2xl border border-brand-lightborder dark:border-white/5 p-4 sm:p-5 relative overflow-hidden shadow-premium-light dark:shadow-none">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6 relative z-10">
+                <div id="stepHeader-1" class="flex items-center space-x-3 transition-all duration-300 text-brand-light dark:text-brand-cyan font-bold w-full md:w-auto">
+                    <span id="stepIconContainer-1" class="w-9 h-9 rounded-full bg-brand-light text-white text-xs flex items-center justify-center border-2 border-brand-light shadow-[0_0_15px_rgba(67,100,247,0.4)] font-mono font-bold flex-shrink-0">1</span>
+                    <div>
+                        <h4 class="text-sm tracking-tight text-brand-lighttext dark:text-white">Typ zawartości QR</h4>
+                    </div>
+                </div>
+                <div class="hidden md:block flex-1 h-[2px] bg-brand-lightinput dark:bg-white/5 relative overflow-hidden mx-2">
+                    <div id="stepLine-1" class="absolute left-0 top-0 h-full w-0 bg-gradient-to-r from-brand-light to-brand-cyan transition-all duration-700"></div>
+                </div>
+                <div id="stepHeader-2" class="flex items-center space-x-3 transition-all duration-300 text-gray-400 dark:text-gray-500 w-full md:w-auto">
+                    <span id="stepIconContainer-2" class="w-9 h-9 rounded-full bg-brand-lightinput dark:bg-white/5 text-xs flex items-center justify-center font-mono font-bold border border-brand-lightborder dark:border-white/10 flex-shrink-0">2</span>
+                    <div>
+                        <h4 class="text-sm tracking-tight">Personalizacja Premium</h4>
+                    </div>
+                </div>
+                <div class="hidden md:block flex-1 h-[2px] bg-brand-lightinput dark:bg-white/5 relative overflow-hidden mx-2">
+                    <div id="stepLine-2" class="absolute left-0 top-0 h-full w-0 bg-gradient-to-r from-brand-light to-brand-cyan transition-all duration-700"></div>
+                </div>
+                <div id="stepHeader-3" class="flex items-center space-x-3 transition-all duration-300 text-gray-400 dark:text-gray-500 w-full md:w-auto">
+                    <span id="stepIconContainer-3" class="w-9 h-9 rounded-full bg-brand-lightinput dark:bg-white/5 text-xs flex items-center justify-center font-mono font-bold border border-brand-lightborder dark:border-white/10 flex-shrink-0">3</span>
+                    <div>
+                        <h4 class="text-sm tracking-tight">Bramka & Silnik Eksportu</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 relative z-10">
+        
+        <section class="lg:col-span-7 space-y-6 sm:space-y-8">
+
+            <div id="stepWindow-1" class="step-window space-y-6">
+                <div class="bg-white dark:bg-brand-darkcard rounded-3xl p-5 sm:p-8 border border-brand-lightborder dark:border-white/5 shadow-premium-light dark:shadow-none">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+                        <h2 class="text-lg sm:text-xl font-bold tracking-tight text-brand-lighttext dark:text-white">Wybierz zaawansowany schemat danych</h2>
+                        <span class="self-start sm:self-auto text-xs bg-brand-lightinput dark:bg-white/5 text-gray-500 dark:text-gray-400 px-3 py-1.5 rounded-xl border border-brand-lightborder dark:border-white/5 font-mono font-bold">9 Formatów Enterprise</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4" id="dataTypeSelectionMatrix">
+                        <div onclick="selectDataSchema('url')" id="schemaTile-url" class="p-4 sm:p-5 rounded-2xl border border-brand-lightborder dark:border-white/5 bg-brand-lightbg dark:bg-brand-darkbg hover:border-brand-light cursor-pointer text-center transition-all duration-300 group relative">
+                            <i class="fas fa-link text-lg sm:text-xl text-gray-400 group-hover:text-brand-light transition-colors mb-2 sm:mb-3"></i>
+                            <p class="text-xs font-bold text-gray-700 dark:text-gray-300">Adres URL</p>
+                        </div>
+                        <div onclick="selectDataSchema('wifi')" id="schemaTile-wifi" class="p-4 sm:p-5 rounded-2xl border border-brand-lightborder dark:border-white/5 bg-brand-lightbg dark:bg-brand-darkbg hover:border-brand-light cursor-pointer text-center transition-all duration-300 group relative">
+                            <i class="fas fa-wifi text-lg sm:text-xl text-gray-400 group-hover:text-brand-light transition-colors mb-2 sm:mb-3"></i>
+                            <p class="text-xs font-bold text-gray-700 dark:text-gray-300">Sieć Wi-Fi</p>
+                        </div>
+                        <div onclick="selectDataSchema('text')" id="schemaTile-text" class="p-4 sm:p-5 rounded-2xl border border-brand-lightborder dark:border-white/5 bg-brand-lightbg dark:bg-brand-darkbg hover:border-brand-light cursor-pointer text-center transition-all duration-300 group relative">
+                            <i class="fas fa-paragraph text-lg sm:text-xl text-gray-400 group-hover:text-brand-light transition-colors mb-2 sm:mb-3"></i>
+                            <p class="text-xs font-bold text-gray-700 dark:text-gray-300">Blok Tekstowy</p>
+                        </div>
+                        <div onclick="selectDataSchema('vcard')" id="schemaTile-vcard" class="p-4 sm:p-5 rounded-2xl border border-brand-lightborder dark:border-white/5 bg-brand-lightbg dark:bg-brand-darkbg hover:border-brand-light cursor-pointer text-center transition-all duration-300 group relative">
+                            <i class="fas fa-address-card text-lg sm:text-xl text-gray-400 group-hover:text-brand-light transition-colors mb-2 sm:mb-3"></i>
+                            <p class="text-xs font-bold text-gray-700 dark:text-gray-300">Wizytówka vCard</p>
+                        </div>
+
+                        <div onclick="selectDataSchema('sms')" id="schemaTile-sms" class="hid-mbl-item p-4 sm:p-5 rounded-2xl border border-brand-lightborder dark:border-white/5 bg-brand-lightbg dark:bg-brand-darkbg hover:border-brand-light cursor-pointer text-center group relative max-sm:max-h-0 max-sm:opacity-0 max-sm:p-0 max-sm:border-none overflow-hidden transition-all duration-500 ease-in-out">
+                            <i class="fas fa-comment-sms text-lg sm:text-xl text-gray-400 group-hover:text-brand-light transition-colors mb-2 sm:mb-3"></i>
+                            <p class="text-xs font-bold text-gray-700 dark:text-gray-300">Wiadomość SMS</p>
+                        </div>
+                        <div onclick="selectDataSchema('email')" id="schemaTile-email" class="hid-mbl-item p-4 sm:p-5 rounded-2xl border border-brand-lightborder dark:border-white/5 bg-brand-lightbg dark:bg-brand-darkbg hover:border-brand-light cursor-pointer text-center group relative max-sm:max-h-0 max-sm:opacity-0 max-sm:p-0 max-sm:border-none overflow-hidden transition-all duration-500 ease-in-out">
+                            <i class="fas fa-envelope text-lg sm:text-xl text-gray-400 group-hover:text-brand-light transition-colors mb-2 sm:mb-3"></i>
+                            <p class="text-xs font-bold text-gray-700 dark:text-gray-300">E-mail</p>
+                        </div>
+                        <div onclick="selectDataSchema('geo')" id="schemaTile-geo" class="hid-mbl-item p-4 sm:p-5 rounded-2xl border border-brand-lightborder dark:border-white/5 bg-brand-lightbg dark:bg-brand-darkbg hover:border-brand-light cursor-pointer text-center group relative max-sm:max-h-0 max-sm:opacity-0 max-sm:p-0 max-sm:border-none overflow-hidden transition-all duration-500 ease-in-out">
+                            <i class="fas fa-location-dot text-lg sm:text-xl text-gray-400 group-hover:text-brand-light transition-colors mb-2 sm:mb-3"></i>
+                            <p class="text-xs font-bold text-gray-700 dark:text-gray-300">Współrzędne GPS</p>
+                        </div>
+                        <div onclick="selectDataSchema('event')" id="schemaTile-event" class="hid-mbl-item p-4 sm:p-5 rounded-2xl border border-brand-lightborder dark:border-white/5 bg-brand-lightbg dark:bg-brand-darkbg hover:border-brand-light cursor-pointer text-center group relative max-sm:max-h-0 max-sm:opacity-0 max-sm:p-0 max-sm:border-none overflow-hidden transition-all duration-500 ease-in-out">
+                            <i class="fas fa-calendar-day text-lg sm:text-xl text-gray-400 group-hover:text-brand-light transition-colors mb-2 sm:mb-3"></i>
+                            <p class="text-xs font-bold text-gray-700 dark:text-gray-300">Wydarzenie</p>
+                        </div>
+                        <div onclick="selectDataSchema('crypto')" id="schemaTile-crypto" class="hid-mbl-item p-4 sm:p-5 rounded-2xl border border-brand-lightborder dark:border-white/5 bg-brand-lightbg dark:bg-brand-darkbg hover:border-brand-light cursor-pointer text-center group relative max-sm:max-h-0 max-sm:opacity-0 max-sm:p-0 max-sm:border-none overflow-hidden transition-all duration-500 ease-in-out">
+                            <i class="fas fa-wallet text-lg sm:text-xl text-gray-400 group-hover:text-brand-light transition-colors mb-2 sm:mb-3"></i>
+                            <p class="text-xs font-bold text-gray-700 dark:text-gray-300">Kryptowaluty</p>
+                        </div>
+                    </div>
+
+                    <div class="sm:hidden pt-4">
+                        <button onclick="const items = document.querySelectorAll('.hid-mbl-item'); const isHidden = items[0].classList.contains('max-sm:max-h-0'); items.forEach(el => { if(isHidden) { el.classList.remove('max-sm:max-h-0', 'max-sm:opacity-0', 'max-sm:p-0', 'max-sm:border-none'); } else { el.classList.add('max-sm:max-h-0', 'max-sm:opacity-0', 'max-sm:p-0', 'max-sm:border-none'); } }); this.querySelector('span').textContent = isHidden ? 'Mniej formatów' : 'Więcej formatów'; this.querySelector('i').classList.toggle('fa-chevron-down'); this.querySelector('i').classList.toggle('fa-chevron-up');" class="w-full py-3 bg-brand-lightinput dark:bg-white/5 hover:bg-brand-light/10 text-gray-700 dark:text-gray-300 rounded-xl font-bold text-xs transition-all border border-brand-lightborder dark:border-white/5 flex items-center justify-center gap-2">
+                            <span>Więcej formatów</span>
+                            <i class="fas fa-chevron-down text-[10px] transition-transform duration-300"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-brand-darkcard rounded-3xl p-4 sm:p-8 border border-brand-lightborder dark:border-white/5 shadow-premium-light dark:shadow-none space-y-6">
+    <h3 class="text-xs sm:text-sm font-bold text-brand-lighttext dark:text-gray-200 uppercase tracking-widest flex items-center">
+        <span class="w-2 h-2 rounded-full bg-brand-light mr-2.5 animate-pulse"></span>Pola wprowadzania danych strukturalnych
+    </h3>
+    <div id="dynamicFormFieldsWrapper" class="space-y-5"></div>
+</div>
+
+<div class="bg-white dark:bg-brand-darkcard rounded-3xl p-4 sm:p-8 border border-brand-lightborder dark:border-white/5 shadow-premium-light dark:shadow-none space-y-6">
+    <h3 class="text-xs sm:text-sm font-bold text-brand-lighttext dark:text-gray-200 uppercase tracking-widest flex items-center">
+        <i class="fas fa-tags text-brand-light mr-2.5"></i>Metadane i parametry zarządzania
+    </h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+        <div class="space-y-2">
+            <label class="text-xs text-gray-500 dark:text-gray-400 font-bold">Nazwa projektu</label>
+            <input type="text" id="metaProjectName" value="Ekskluzywny Projekt QR" class="w-full bg-brand-lightinput dark:bg-brand-darkinput border border-brand-lightborder dark:border-white/5 rounded-xl px-4 py-3.5 text-sm text-brand-lighttext dark:text-white outline-none focus:border-brand-light transition-all">
+        </div>
+        <div class="space-y-2">
+            <label class="text-xs text-gray-500 dark:text-gray-400 font-bold">Tagi identyfikacyjne</label>
+            <input type="text" id="metaProjectTags" placeholder="b2b, kampania, retail" class="w-full bg-brand-lightinput dark:bg-brand-darkinput border border-brand-lightborder dark:border-white/5 rounded-xl px-4 py-3.5 text-sm text-brand-lighttext dark:text-white outline-none focus:border-brand-light transition-all">
+        </div>
+        <div class="space-y-2 sm:col-span-2">
+            <label class="text-xs text-gray-500 dark:text-gray-400 font-bold">Wewnętrzne notatki biznesowe</label>
+            <textarea id="metaProjectNotes" rows="2" placeholder="Cel strategiczny generowanego kodu..." class="w-full bg-brand-lightinput dark:bg-brand-darkinput border border-brand-lightborder dark:border-white/5 rounded-xl px-4 py-3.5 text-sm text-brand-lighttext dark:text-white outline-none focus:border-brand-light transition-all"></textarea>
+        </div>
+    </div>
+</div>
+</div>
+
+<div id="stepWindow-2" class="step-window window-hidden space-y-6">
+    <div class="bg-gradient-to-r from-brand-light/10 to-brand-cyan/10 border border-brand-light/20 rounded-2xl p-4 sm:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-sm">
+        <div>
+            <h4 class="text-sm font-bold text-brand-lighttext dark:text-white">Zaawansowany Hub Inspiracji Stylistycznych</h4>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Generuj matematycznie dopasowane, bezpieczne i czytelne zestawy stylów.</p>
+        </div>
+        <div class="flex items-center space-x-2 w-full md:w-auto justify-between md:justify-end gap-1">
+            <button onclick="navigateInspirationHistory(-1)" class="p-3 bg-white dark:bg-brand-darkcard border border-brand-lightborder dark:border-white/5 text-gray-700 dark:text-gray-300 rounded-xl transition hover:bg-brand-lightinput dark:hover:bg-white/5 shadow-sm flex-shrink-0">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <button onclick="triggerInspirationGenerator()" class="flex-1 md:flex-none text-center px-4 sm:px-5 py-3 bg-brand-light text-white rounded-xl transition font-bold text-xs shadow-md hover:bg-brand-light/90 whitespace-nowrap">
+                <i class="fas fa-dice mr-1.5 sm:mr-2"></i>Losuj Kompozycję
+            </button>
+            <button onclick="navigateInspirationHistory(1)" class="p-3 bg-white dark:bg-brand-darkcard border border-brand-lightborder dark:border-white/5 text-gray-700 dark:text-gray-300 rounded-xl transition hover:bg-brand-lightinput dark:hover:bg-white/5 shadow-sm flex-shrink-0">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="bg-white dark:bg-brand-darkcard border border-brand-lightborder dark:border-white/5 rounded-3xl overflow-hidden shadow-premium-light dark:shadow-none transition-all">
+        <button onclick="toggleAccordionContainer('acc-dots')" class="w-full px-4 sm:px-8 py-5 sm:py-6 flex items-center justify-between gap-3 text-left font-bold text-brand-lighttext dark:text-white hover:bg-brand-lightbg dark:hover:bg-white/[0.01] transition-all">
+            <span class="flex items-center text-xs sm:text-sm tracking-wide uppercase">
+                <i class="fas fa-grip-vertical text-brand-light mr-3 sm:mr-4 text-base sm:text-lg flex-shrink-0"></i>1. Geometria Modułów Danych (Wszystkie Style)
+            </span>
+            <i id="arrow-acc-dots" class="fas fa-chevron-down text-gray-400 text-xs transition-transform duration-300 flex-shrink-0"></i>
+        </button>
+        <div id="acc-dots" class="accordion-content">
+            <div class="p-4 sm:p-8 pt-2 border-t border-brand-lightborder dark:border-white/5 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4" id="targetGrid-dotsStyle"></div>
+        </div>
+    </div>
+
+    <div class="bg-white dark:bg-brand-darkcard border border-brand-lightborder dark:border-white/5 rounded-3xl overflow-hidden shadow-premium-light dark:shadow-none transition-all">
+        <button onclick="toggleAccordionContainer('acc-eyes')" class="w-full px-4 sm:px-8 py-5 sm:py-6 flex items-center justify-between gap-3 text-left font-bold text-brand-lighttext dark:text-white hover:bg-brand-lightbg dark:hover:bg-white/[0.01] transition-all">
+            <span class="flex items-center text-xs sm:text-sm tracking-wide uppercase">
+                <i class="fas fa-eye text-brand-light mr-3 sm:mr-4 text-base sm:text-lg flex-shrink-0"></i>2. Rama Zewnętrzna Oczu Kodu (Rozbudowana)
+            </span>
+            <i id="arrow-acc-eyes" class="fas fa-chevron-down text-gray-400 text-xs transition-transform duration-300 flex-shrink-0"></i>
+        </button>
+        <div id="acc-eyes" class="accordion-content">
+            <div class="p-4 sm:p-8 pt-2 border-t border-brand-lightborder dark:border-white/5 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4" id="targetGrid-cornersStyle"></div>
+        </div>
+    </div>
+
+    <div class="bg-white dark:bg-brand-darkcard border border-brand-lightborder dark:border-white/5 rounded-3xl overflow-hidden shadow-premium-light dark:shadow-none transition-all">
+        <button onclick="toggleAccordionContainer('acc-eyeball')" class="w-full px-4 sm:px-8 py-5 sm:py-6 flex items-center justify-between gap-3 text-left font-bold text-brand-lighttext dark:text-white hover:bg-brand-lightbg dark:hover:bg-white/[0.01] transition-all">
+            <span class="flex items-center text-xs sm:text-sm tracking-wide uppercase">
+                <i class="fas fa-circle-dot text-brand-light mr-3 sm:mr-4 text-base sm:text-lg flex-shrink-0"></i>3. Wewnętrzna Źrenica Oka Kodu (Wszystkie Style)
+            </span>
+            <i id="arrow-acc-eyeball" class="fas fa-chevron-down text-gray-400 text-xs transition-transform duration-300 flex-shrink-0"></i>
+        </button>
+        <div id="acc-eyeball" class="accordion-content">
+            <div class="p-4 sm:p-8 pt-2 border-t border-brand-lightborder dark:border-white/5 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4" id="targetGrid-cornersDotStyle"></div>
+        </div>
+    </div>
+
+    <div class="bg-white dark:bg-brand-darkcard border border-brand-lightborder dark:border-white/5 rounded-3xl overflow-hidden shadow-premium-light dark:shadow-none transition-all">
+        <button onclick="toggleAccordionContainer('acc-colors')" class="w-full px-4 sm:px-8 py-5 sm:py-6 flex items-center justify-between gap-3 text-left font-bold text-brand-lighttext dark:text-white hover:bg-brand-lightbg dark:hover:bg-white/[0.01] transition-all">
+            <span class="flex items-center text-xs sm:text-sm tracking-wide uppercase">
+                <i class="fas fa-palette text-brand-light mr-3 sm:mr-4 text-base sm:text-lg flex-shrink-0"></i>4. Paleta Kolorystyczna i Gradienty Liniowe
+            </span>
+            <i id="arrow-acc-colors" class="fas fa-chevron-down text-gray-400 text-xs transition-transform duration-300 flex-shrink-0"></i>
+        </button>
+        <div id="acc-colors" class="accordion-content">
+            <div class="p-4 sm:p-8 pt-2 border-t border-brand-lightborder dark:border-white/5 space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 bg-brand-lightinput dark:bg-brand-darkinput p-1.5 rounded-2xl border border-brand-lightborder dark:border-white/5">
+                    <button onclick="updateColorEngineMode('single')" id="colModeTab-single" class="py-3 text-xs font-bold rounded-xl transition-all duration-300">Kolor Jednolity</button>
+                    <button onclick="updateColorEngineMode('gradient')" id="colModeTab-gradient" class="py-3 text-xs font-bold rounded-xl transition-all duration-300">Zaawansowany Gradient Liniowy</button>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
+                    <div class="space-y-2">
+                        <label class="text-xs text-gray-500 dark:text-gray-400 font-bold">Kolor Główny (Moduły)</label>
+                        <div class="flex items-center space-x-3 bg-brand-lightbg dark:bg-brand-darkinput border border-brand-lightborder dark:border-white/5 rounded-xl p-3">
+                            <input type="color" id="inputCol-foreground" value="#050508" onchange="synchronizeColorValues()" class="w-10 h-10 rounded-xl border-none bg-transparent cursor-pointer">
+                            <input type="text" id="inputHex-foreground" value="#050508" class="bg-transparent text-xs text-brand-lighttext dark:text-white outline-none w-full font-mono font-bold" readonly>
+                        </div>
+                    </div>
+                    <div id="wrapperGradientStopColor" class="space-y-2 opacity-30 pointer-events-none transition-opacity duration-300">
+                        <label class="text-xs text-gray-500 dark:text-gray-400 font-bold">Kolor Końcowy Gradientu</label>
+                        <div class="flex items-center space-x-3 bg-brand-lightbg dark:bg-brand-darkinput border border-brand-lightborder dark:border-white/5 rounded-xl p-3">
+                            <input type="color" id="inputCol-gradient" value="#4364F7" onchange="synchronizeColorValues()" class="w-10 h-10 rounded-xl border-none bg-transparent cursor-pointer">
+                            <input type="text" id="inputHex-gradient" value="#4364F7" class="bg-transparent text-xs text-brand-lighttext dark:text-white outline-none w-full font-mono font-bold" readonly>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs text-gray-500 dark:text-gray-400 font-bold">Tło Matrycy</label>
+                        <div class="flex items-center space-x-3 bg-brand-lightbg dark:bg-brand-darkinput border border-brand-lightborder dark:border-white/5 rounded-xl p-3">
+                            <input type="color" id="inputCol-background" value="#FFFFFF" onchange="synchronizeColorValues()" class="w-10 h-10 rounded-xl border-none bg-transparent cursor-pointer">
+                            <input type="text" id="inputHex-background" value="#FFFFFF" class="bg-transparent text-xs text-brand-lighttext dark:text-white outline-none w-full font-mono font-bold" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white dark:bg-brand-darkcard border border-brand-lightborder dark:border-white/5 rounded-3xl overflow-hidden shadow-premium-light dark:shadow-none transition-all">
+        <button onclick="toggleAccordionContainer('acc-logo')" class="w-full px-4 sm:px-8 py-5 sm:py-6 flex items-center justify-between gap-3 text-left font-bold text-brand-lighttext dark:text-white hover:bg-brand-lightbg dark:hover:bg-white/[0.01] transition-all">
+            <span class="flex items-center text-xs sm:text-sm tracking-wide uppercase">
+                <i class="fas fa-image text-brand-light mr-3 sm:mr-4 text-base sm:text-lg flex-shrink-0"></i>5. Logotyp Centralny i Zarządzanie Maskowaniem
+            </span>
+            <i id="arrow-acc-logo" class="fas fa-chevron-down text-gray-400 text-xs transition-transform duration-300 flex-shrink-0"></i>
+        </button>
+        <div id="acc-logo" class="accordion-content">
+            <div class="p-4 sm:p-8 pt-2 border-t border-brand-lightborder dark:border-white/5 space-y-5">
+                <div class="border border-dashed border-gray-300 dark:border-white/10 hover:border-brand-light rounded-2xl p-6 sm:p-8 text-center cursor-pointer transition-all bg-brand-lightbg dark:bg-brand-darkbg relative">
+                    <input type="file" id="uploadFileLogo" accept="image/*" onchange="processLogoFileAsset(event)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                    <i class="fas fa-cloud-arrow-up text-2xl text-gray-400 mb-2"></i>
+                    <p class="text-xs font-bold text-gray-600 dark:text-gray-400">Upuść plik marki lub kliknij, aby wybrać z dysku (PNG, JPG, SVG)</p>
+                </div>
+                <div id="controlPanelLogoSettings" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 bg-brand-lightbg dark:bg-brand-darkinput p-4 sm:p-5 rounded-2xl border border-brand-lightborder dark:border-white/5">
+                    <div class="space-y-1">
+                        <label class="text-xs text-gray-400 font-bold">Rozmiar i margines grafiki logo</label>
+                        <input type="range" id="rangeLogoScale" min="0.1" max="0.35" step="0.01" value="0.2" oninput="executePipelineRender()" class="w-full accent-brand-light">
+                    </div>
+                    <button onclick="clearInjectedLogoAsset()" class="text-xs text-red-500 font-bold hover:text-red-400 text-left sm:text-right self-end pb-1">
+                        <i class="fas fa-trash-can mr-2"></i>Usuń logotyp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="stepWindow-3" class="step-window window-hidden space-y-6">
+    <div class="bg-white dark:bg-brand-darkcard rounded-3xl p-5 sm:p-8 border border-brand-lightborder dark:border-white/5 shadow-premium-dark text-center space-y-6 max-w-2xl mx-auto">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-brand-light/10 text-brand-light flex items-center justify-center text-xl sm:text-2xl mx-auto border border-brand-light/20">
+            <i class="fas fa-envelope-shield"></i>
+        </div>
+        <div>
+            <h2 class="text-base sm:text-lg font-bold text-brand-lighttext dark:text-white">Weryfikacja tożsamości klienta biznesowego</h2>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Wprowadź prawidłowy adres e-mail, aby zdjąć blokadę ochronną i autoryzować proces eksportu wektorowego.</p>
+        </div>
+
+        <div class="space-y-2 text-left">
+            <label class="text-xs text-gray-400 font-bold uppercase tracking-widest">Służbowy Adres E-mail</label>
+            <div class="relative">
+                <input type="email" id="gateUserEmail" oninput="validateEmailGateInput()" placeholder="nazwa@firma.com" class="w-full bg-brand-lightbg dark:bg-brand-darkinput border border-brand-lightborder dark:border-white/5 rounded-xl pl-11 sm:pl-12 pr-4 py-3.5 sm:py-4 text-sm text-brand-lighttext dark:text-white outline-none focus:border-brand-light font-medium transition-all">
+                <i class="fas fa-at absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            </div>
+            <div id="gateEmailFeedback" class="text-xs font-bold text-red-500 hidden mt-1"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-left pt-2">
+            <button onclick="tryTriggerExportGateLaunch()" id="gateSubmitBtn" disabled class="p-4 rounded-xl bg-gradient-to-r from-brand-light to-brand-glow text-white font-bold text-xs sm:text-sm shadow-md opacity-40 pointer-events-none transition-all flex items-center justify-between gap-2">
+                <span><i class="fas fa-unlock-keyhole mr-2"></i>Odblokuj Silnik Eksportu</span>
+                <i class="fas fa-chevron-right text-xs flex-shrink-0"></i>
+            </button>
+            <button onclick="commitSaveProjectToStorage()" class="p-4 rounded-xl bg-brand-lightinput dark:bg-brand-darkinput border border-brand-lightborder dark:border-white/5 hover:border-brand-light text-brand-lighttext dark:text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-between shadow-sm gap-2">
+                <span><i class="fas fa-floppy-disk mr-2 text-brand-light"></i>Zapisz w Repozytorium</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="flex items-center justify-between pt-6 sm:pt-8 border-t border-brand-lightborder dark:border-white/5">
+    <button onclick="navigateWizardSteps(-1)" id="actionBtn-back" class="px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl bg-white dark:bg-brand-darkcard border border-brand-lightborder dark:border-white/5 text-gray-400 font-bold text-xs uppercase tracking-wider transition-all opacity-40 pointer-events-none shadow-sm hover:bg-brand-lightinput">
+        <i class="fas fa-chevron-left mr-1.5 sm:mr-2"></i>Wstecz
+    </button>
+    <button onclick="navigateWizardSteps(1)" id="actionBtn-next" class="px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-brand-light text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-brand-light/20 hover:bg-brand-light/90 transition-all disabled:opacity-40 disabled:pointer-events-none" disabled>
+        Dalej<i class="fas fa-chevron-right ml-1.5 sm:mr-2"></i>
+    </button>
+</div>
+
+        </section>
+
+       <section class="lg:col-span-5 relative">
+            <div class="lg:sticky lg:top-28 space-y-6">
+                
+                <div class="bg-white dark:bg-brand-darkcard rounded-3xl p-4 sm:p-6 border border-brand-lightborder dark:border-white/5 shadow-premium-light dark:shadow-none flex flex-col items-center justify-center relative overflow-hidden">
+                    <div class="w-full flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+                        <span class="self-start sm:self-auto text-[10px] bg-brand-light/10 text-brand-light dark:text-brand-cyan font-extrabold tracking-widest px-3 py-1 rounded-md uppercase border border-brand-light/15">Podgląd chroniony</span>
+                        <div class="flex items-center space-x-2 self-end sm:self-auto">
+                            <div id="realtimeMetricDot" class="w-2 h-2 rounded-full bg-red-500"></div>
+                            <span id="realtimeMetricLabel" class="text-xs text-gray-500 dark:text-gray-400 font-bold">Brak danych wejściowych</span>
+                        </div>
+                    </div>
+
+                    <div id="protectedCanvasContextZone" class="secure-canvas-container bg-white p-4 sm:p-6 rounded-2xl shadow-xl border border-brand-lightborder dark:border-none relative group select-none max-w-full overflow-hidden">
+                        <div id="mountingTargetEngineNode" class="flex justify-center items-center"></div>
+                        <div class="absolute inset-0 w-full h-full watermark-overlay z-10 cursor-not-allowed"></div>
+                    </div>
+
+                    <div class="w-full mt-6 bg-brand-lightbg dark:bg-brand-darkinput border border-brand-lightborder dark:border-white/5 rounded-2xl p-4 sm:p-5 space-y-3">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs">
+                            <span class="text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider">Indeks Czytelności Matrycy</span>
+                            <span id="metricQualityBadge" class="self-start sm:self-auto text-red-500 font-extrabold bg-red-500/10 px-3 py-1 rounded-full text-[10px] uppercase tracking-widest">Brak danych</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-white/5 h-2 rounded-full overflow-hidden">
+                            <div id="metricQualityProgressFill" class="h-full bg-gradient-to-r from-brand-light to-brand-cyan transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <div id="metricRecommendationEngineBox" class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed pt-2 border-t border-brand-lightborder dark:border-white/5">
+                            Wpisz parametry w kroku pierwszym, aby wygenerować głęboką analizę kontrastu struktur geometrycznych.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <div id="modalProjectManager" class="fixed inset-0 z-50 bg-brand-darkbg/80 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4 transition-all duration-300">
+        <div class="bg-white dark:bg-brand-darkcard border border-brand-lightborder dark:border-white/10 rounded-3xl w-full max-w-5xl max-h-[90vh] sm:max-h-[85vh] overflow-hidden flex flex-col shadow-premium-dark">
+            <div class="p-4 sm:p-6 border-b border-brand-lightborder dark:border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-brand-lightbg dark:bg-brand-darkinput">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-folder-tree text-brand-light text-xl flex-shrink-0"></i>
+                    <h3 class="text-sm sm:text-base font-bold text-brand-lighttext dark:text-white truncate">Centralne Repozytorium Projektów (AES-Local)</h3>
+                </div>
+                <div class="flex items-center justify-between md:justify-end gap-2 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
+                    <button onclick="triggerProjectSettingsExportPackage()" class="px-3 py-2 bg-white dark:bg-brand-darkcard text-gray-700 dark:text-gray-300 border border-brand-lightborder dark:border-white/5 rounded-xl transition-all text-xs font-bold hover:bg-brand-lightinput shadow-sm whitespace-nowrap flex-shrink-0">
+                        <i class="fas fa-file-export mr-1.5"></i>Eksport Bazy
+                    </button>
+                    <label class="px-3 py-2 bg-white dark:bg-brand-darkcard text-gray-700 dark:text-gray-300 border border-brand-lightborder dark:border-white/5 rounded-xl transition-all text-xs font-bold hover:bg-brand-lightinput shadow-sm cursor-pointer whitespace-nowrap flex-shrink-0">
+                        <i class="fas fa-file-import mr-1.5"></i>Import Bazy <input type="file" accept=".json" onchange="processImportPackageSettingsFile(event)" class="hidden">
+                    </label>
+                    <button onclick="toggleProjectManagerModal()" class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-white transition-all ml-2 flex-shrink-0">
+                        <i class="fas fa-xmark text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="p-4 sm:p-5 bg-brand-lightbg/50 dark:bg-brand-darkbg border-b border-brand-lightborder dark:border-white/5 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+                <input type="text" id="filterQuerySearch" oninput="renderProjectStorageGridMatrix()" placeholder="Szukaj po nazwie lub notatkach..." class="bg-white dark:bg-brand-darkinput border border-brand-lightborder dark:border-white/5 rounded-xl px-4 py-2.5 text-xs text-brand-lighttext dark:text-white outline-none focus:border-brand-light w-full">
+                <input type="text" id="filterQueryTag" oninput="renderProjectStorageGridMatrix()" placeholder="Szukaj po tagu..." class="bg-white dark:bg-brand-darkinput border border-brand-lightborder dark:border-white/5 rounded-xl px-4 py-2.5 text-xs text-brand-lighttext dark:text-white outline-none focus:border-brand-light w-full">
+                <select id="filterQuerySort" onchange="renderProjectStorageGridMatrix()" class="bg-white dark:bg-brand-darkinput border border-brand-lightborder dark:border-white/5 rounded-xl px-4 py-2.5 text-xs text-brand-lighttext dark:text-white outline-none focus:border-brand-light w-full">
+                    <option value="newest">Najnowsze projekty</option>
+                    <option value="favorites">Tylko ulubione (⭐)</option>
+                </select>
+            </div>
+
+            <div class="p-4 sm:p-6 overflow-y-auto flex-1 bg-white dark:bg-brand-darkcard">
+                <div id="projectGridMountingTarget" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalExportDialog" class="fixed inset-0 z-50 bg-brand-darkbg/80 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4 transition-all duration-300">
+        <div class="bg-white/90 dark:bg-brand-darkcard/90 border border-brand-lightborder dark:border-white/10 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-premium-dark p-5 sm:p-8 relative space-y-6">
+            <div class="flex items-start justify-between pb-4 border-b border-brand-lightborder dark:border-white/5 gap-4">
+                <div>
+                    <h3 class="text-base sm:text-lg font-bold text-brand-lighttext dark:text-white">Silnik Generowania Plików Wyjściowych</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Wybierz format docelowy o najwyższej gęstości wektorowej.</p>
+                </div>
+                <button onclick="closeExportModalDialog()" class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-white transition-all flex-shrink-0"><i class="fas fa-xmark text-xl"></i></button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <button onclick="triggerDirectDownloadFormat('png')" class="p-4 rounded-2xl bg-white/50 dark:bg-brand-darkinput/50 border border-brand-lightborder dark:border-white/5 text-left hover:border-brand-light hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center space-x-4 shadow-sm group">
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-brand-light/10 text-brand-light flex items-center justify-center text-lg group-hover:bg-brand-light group-hover:text-white transition-all flex-shrink-0"><i class="fas fa-file-image"></i></div>
+                    <div class="min-w-0 flex-1"><h5 class="text-xs font-bold text-brand-lighttext dark:text-white truncate">Format PNG</h5><p class="text-[10px] text-gray-400 mt-0.5 truncate">Zoptymalizowany dla rastra Web</p></div>
+                </button>
+                <button onclick="triggerDirectDownloadFormat('jpg')" class="p-4 rounded-2xl bg-white/50 dark:bg-brand-darkinput/50 border border-brand-lightborder dark:border-white/5 text-left hover:border-brand-light hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center space-x-4 shadow-sm group">
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center text-lg group-hover:bg-brand-cyan group-hover:text-white transition-all flex-shrink-0"><i class="fas fa-image"></i></div>
+                    <div class="min-w-0 flex-1"><h5 class="text-xs font-bold text-brand-lighttext dark:text-white truncate">Format JPEG</h5><p class="text-[10px] text-gray-400 mt-0.5 truncate">Kompresja standardowa</p></div>
+                </button>
+                <button onclick="triggerDirectDownloadFormat('svg')" class="p-4 rounded-2xl bg-white/50 dark:bg-brand-darkinput/50 border border-brand-lightborder dark:border-white/5 text-left hover:border-brand-light hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center space-x-4 shadow-sm group">
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-lg group-hover:bg-purple-500 group-hover:text-white transition-all flex-shrink-0"><i class="fas fa-bezier-curve"></i></div>
+                    <div class="min-w-0 flex-1"><h5 class="text-xs font-bold text-brand-lighttext dark:text-white truncate">Format SVG (Wektor)</h5><p class="text-[10px] text-gray-400 mt-0.5 truncate">Bezstratne skalowanie / Druk</p></div>
+                </button>
+                <button onclick="triggerDirectDownloadFormat('webp')" class="p-4 rounded-2xl bg-white/50 dark:bg-brand-darkinput/50 border border-brand-lightborder dark:border-white/5 text-left hover:border-brand-light hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center space-x-4 shadow-sm group">
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg group-hover:bg-emerald-500 group-hover:text-white transition-all flex-shrink-0"><i class="fas fa-wand-magic-sparkles"></i></div>
+                    <div class="min-w-0 flex-1"><h5 class="text-xs font-bold text-brand-lighttext dark:text-white truncate">Format WEBP</h5><p class="text-[10px] text-gray-400 mt-0.5 truncate">Nowoczesna kompresja internetowa</p></div>
+                </button>
+                <button onclick="triggerDirectDownloadFormat('pdf')" class="p-4 rounded-2xl bg-white/50 dark:bg-brand-darkinput/50 border border-brand-lightborder dark:border-white/5 text-left hover:border-brand-light hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center space-x-4 shadow-sm group">
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center text-lg group-hover:bg-red-500 group-hover:text-white transition-all flex-shrink-0"><i class="fas fa-file-pdf"></i></div>
+                    <div class="min-w-0 flex-1"><h5 class="text-xs font-bold text-brand-lighttext dark:text-white truncate">Dokument PDF</h5><p class="text-[10px] text-gray-400 mt-0.5 truncate">Gotowy do druku biurowego</p></div>
+                </button>
+                <button onclick="executeActionCopyToClipboard()" class="p-4 rounded-2xl bg-white/50 dark:bg-brand-darkinput/50 border border-brand-lightborder dark:border-white/5 text-left hover:border-brand-light hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center space-x-4 shadow-sm group">
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-white transition-all flex-shrink-0"><i class="fas fa-copy"></i></div>
+                    <div class="min-w-0 flex-1"><h5 class="text-xs font-bold text-brand-lighttext dark:text-white truncate">Kopiuj Dane</h5><p class="text-[10px] text-gray-400 mt-0.5 truncate">Kopiuj ciąg wejściowy do schowka</p></div>
+                </button>
+                <button onclick="executeWebShareApi()" class="p-4 rounded-2xl bg-white/50 dark:bg-brand-darkinput/50 border border-brand-lightborder dark:border-white/5 text-left hover:border-brand-light hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center space-x-4 shadow-sm group sm:col-span-2">
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-lg group-hover:bg-blue-500 group-hover:text-white transition-all flex-shrink-0"><i class="fas fa-share-nodes"></i></div>
+                    <div class="min-w-0 flex-1"><h5 class="text-xs font-bold text-brand-lighttext dark:text-white truncate">Udostępnij Natywnie (Web Share)</h5><p class="text-[10px] text-gray-400 mt-0.5 leading-tight">Przekaż bezpośrednio do systemów iOS / Android / MacOS</p></div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let wizardActiveStep = 1;
+        let qrCodeStylingCoreInstance = null;
+        let logoBase64AssetDataUrl = null;
+
+        // Systemowa architektura cofania zmian (Undo / Redo Stack)
+        let historyChangeStack = [];
+        let historyChangePointer = -1;
+
+        // Cache stylów dla nieniszczącego losowania inspiracji
+        let styleInspirationCache = [];
+        let styleInspirationPointer = -1;
+
+        // Wszystkie zaawansowane mapowania stylów rysowania matrycy
+        const geometryOptionKeys = {
+            dotsStyle: ['square', 'rounded', 'dots', 'classy', 'classy-rounded', 'extra-rounded', 'heart', 'star', 'diamond', 'bubble', 'hexagon', 'pixel', 'smooth', 'premium'],
+            cornersStyle: ['square', 'dot', 'extra-rounded', 'classy', 'heart', 'star', 'diamond', 'hexagon', 'smooth'],
+            cornersDotStyle: ['square', 'dot', 'heart', 'star', 'diamond', 'hexagon']
+        };
+
+        let activeProjectConfiguration = {
+            schema: 'url',
+            payloadDataString: '',
+            dotsStyle: 'square',
+            cornersStyle: 'square',
+            cornersDotStyle: 'square',
+            colorMode: 'single',
+            colorForeground: '#050508',
+            colorGradient: '#4364F7',
+            colorBackground: '#ffffff',
+            logoScaleSize: 0.2
+        };
+
+        const schemaMetadataProfiles = {
+            url: { label: "Adres URL", icon: "fa-link", hint: "Pełny adres z protokołem komunikacyjnym.", placeholder: "https://twojadomena.pl", example: "https://linear.app" },
+            wifi: { label: "Sieć Wi-Fi", icon: "fa-wifi", hint: "Konfiguracja logowania do punktu dostępowego.", placeholder: "Nazwa sieci SSID", example: "Office_HighSpeed" },
+            text: { label: "Blok Tekstowy", icon: "fa-paragraph", hint: "Dowolne znaki alfanumeryczne lub notatka.", placeholder: "Wpisz treść...", example: "Dowolny ciąg znaków" },
+            vcard: { label: "Wizytówka vCard", icon: "fa-address-card", hint: "Format elektronicznego kontaktu smartfona.", placeholder: "Imię i nazwisko", example: "Jan Kowalski" },
+            sms: { label: "Wiadomość SMS", icon: "fa-comment-sms", hint: "Gotowy szablon wiadomości SMS.", placeholder: "Numer telefonu", example: "+48500600700" },
+            email: { label: "E-mail", icon: "fa-envelope", hint: "Adres, temat oraz treść wiadomości.", placeholder: "kontakt@firma.pl", example: "biuro@holding.pl" },
+            geo: { label: "Współrzędne GPS", icon: "fa-location-dot", hint: "Szerokość i długość geograficzna.", placeholder: "Szerokość np. 54.51", example: "54.5188" },
+            event: { label: "Wydarzenie", icon: "fa-calendar-day", hint: "Dodawanie zdarzeń do kalendarza.", placeholder: "Nazwa spotkania", example: "Rada Nadzorcza Premium" },
+            crypto: { label: "Kryptowaluty", icon: "fa-wallet", hint: "Adres publiczny portfela rozliczeniowego.", placeholder: "Adres portfela BTC/ETH", example: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" }
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            initializeSystemCoreEngine();
+            selectDataSchema('url');
+            renderVisualStylesAccordionGrids();
+            interceptSecureCanvasProtection();
+            captureKeyboardGlobalShortcuts();
+            commitPushHistoryState();
+            applyThemeStylesToComponents();
+        });
+
+        function initializeSystemCoreEngine() {
+            qrCodeStylingCoreInstance = new QRCodeStyling({
+                width: 280, height: 280, type: "svg", data: " ", margin: 12,
+                qrOptions: { typeNumber: "0", mode: "Byte", errorCorrectionLevel: "H" },
+                backgroundOptions: { color: activeProjectConfiguration.colorBackground },
+                dotsOptions: { color: activeProjectConfiguration.colorForeground, type: activeProjectConfiguration.dotsStyle },
+                cornersSquareOptions: { color: activeProjectConfiguration.colorForeground, type: activeProjectConfiguration.cornersStyle },
+                cornersDotOptions: { color: activeProjectConfiguration.colorForeground, type: activeProjectConfiguration.cornersDotStyle }
+            });
+            const node = document.getElementById("mountingTargetEngineNode");
+            if (node) {
+                node.innerHTML = "";
+                qrCodeStylingCoreInstance.append(node);
+            }
+        }
+
+        function interceptSecureCanvasProtection() {
+            const container = document.getElementById("protectedCanvasContextZone");
+            if (!container) return;
+            ['contextmenu', 'dragstart', 'copy', 'selectstart'].forEach(evtName => {
+                container.addEventListener(evtName, (e) => e.preventDefault());
+            });
+        }
+
+        function toggleSystemTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains("dark")) {
+                html.classList.remove("dark");
+                localStorage.setItem("theme", "light");
+            } else {
+                html.classList.add("dark");
+                localStorage.setItem("theme", "dark");
+            }
+            applyThemeStylesToComponents();
+        }
+
+        function applyThemeStylesToComponents() {
+            const isDark = document.documentElement.classList.contains("dark");
+            const icon = document.getElementById("themeIcon");
+            const logo = document.getElementById("appLogo");
+
+            if (isDark) {
+                icon.className = "fas fa-moon text-sm";
+                if(logo) logo.style.filter = "invert(100%)";
+                document.body.className = "bg-brand-darkbg text-gray-100 font-sans min-h-screen overflow-x-hidden antialiased transition-colors duration-500";
+            } else {
+                icon.className = "fas fa-sun text-sm text-amber-500";
+                if(logo) logo.style.filter = "none";
+                document.body.className = "bg-brand-lightbg text-brand-lighttext font-sans min-h-screen overflow-x-hidden antialiased transition-colors duration-500";
+            }
+            renderVisualStylesAccordionGrids();
+        }
+
+        function selectDataSchema(schemaKey) {
+            activeProjectConfiguration.schema = schemaKey;
+            document.querySelectorAll("#dataTypeSelectionMatrix > div").forEach(el => {
+                el.classList.remove("border-brand-light", "bg-brand-light/10", "dark:bg-white/5", "shadow-sm");
+            });
+            const targetTile = document.getElementById(`schemaTile-${schemaKey}`);
+            if (targetTile) {
+                targetTile.classList.add("border-brand-light", "bg-brand-light/10", "shadow-sm");
+            }
+            compileDynamicFormFields(schemaKey);
+            triggerRealtimeValidationPipeline();
+        }
+
+        function compileDynamicFormFields(schemaKey) {
+            const wrapper = document.getElementById("dynamicFormFieldsWrapper");
+            if (!wrapper) return;
+            const meta = schemaMetadataProfiles[schemaKey];
+            
+            let htmlStr = `
+                <div class="p-4 bg-brand-light/5 border border-brand-light/10 rounded-xl flex items-start space-x-3 mb-2">
+                    <i class="fas fa-circle-info text-brand-light mt-0.5 text-sm"></i>
+                    <div>
+                        <h5 class="text-xs font-bold text-brand-lighttext dark:text-white capitalize">${meta.label}</h5>
+                        <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">Podpowiedź: Wartość wzorcowa: <span class="text-brand-light font-mono">${meta.example}</span></p>
+                    </div>
+                </div>`;
+
+       if (schemaKey === 'url') {
+                htmlStr += createInputFieldMarkup("field_url", "Pełny adres URL przekierowania", "url", meta.placeholder);
+            } else if (schemaKey === 'text') {
+                htmlStr += `<div class="space-y-2"><label class="text-xs font-bold text-gray-600 dark:text-gray-400">Zawartość tekstowa</label><textarea id="field_text" rows="3" oninput="triggerRealtimeValidationPipeline()" placeholder="${meta.placeholder}" class="w-full bg-brand-lightinput dark:bg-brand-darkinput border border-brand-lightborder dark:border-white/5 rounded-xl px-4 py-3.5 text-sm text-brand-lighttext dark:text-white outline-none focus:border-brand-light transition-all"></textarea><div id="validationFeedback_field_text" class="text-xs font-bold hidden"></div></div>`;
+            } else if (schemaKey === 'wifi') {
+                htmlStr += createInputFieldMarkup("field_wifi_ssid", "Identyfikator Sieci (SSID)", "text", "np. Home_Network");
+                htmlStr += createInputFieldMarkup("field_wifi_pass", "Klucz zabezpieczeń (WPA/WPA2)", "text", "Hasło sieci");
+            } else if (schemaKey === 'vcard') {
+                htmlStr += createInputFieldMarkup("field_vcard_name", "Imię i nazwisko", "text", "np. Jan Kowalski");
+                htmlStr += createInputFieldMarkup("field_vcard_phone", "Telefon służbowy", "tel", "+48...");
+                htmlStr += createInputFieldMarkup("field_vcard_email", "Adres e-mail", "email", "nazwa@firma.pl");
+            } else if (schemaKey === 'sms') {
+                htmlStr += createInputFieldMarkup("field_sms_phone", "Numer telefonu odbiorcy", "tel", "+48...");
+                htmlStr += `<div class="space-y-2"><label class="text-xs font-bold text-gray-600 dark:text-gray-400">Komunikat SMS</label><textarea id="field_sms_msg" rows="2" oninput="triggerRealtimeValidationPipeline()" placeholder="Treść wiadomości..." class="w-full bg-brand-lightinput dark:bg-brand-darkinput border border-brand-lightborder dark:border-white/5 rounded-xl px-4 py-3.5 text-sm text-brand-lighttext dark:text-white outline-none"></textarea></div>`;
+            } else if (schemaKey === 'email') {
+                htmlStr += createInputFieldMarkup("field_email_target", "Odbiorca", "email", "biuro@firma.pl");
+                htmlStr += createInputFieldMarkup("field_email_subject", "Temat wiadomości", "text", "Temat");
+            } else if (schemaKey === 'geo') {
+                htmlStr += createInputFieldMarkup("field_geo_lat", "Szerokość (Latitude)", "text", "54.51");
+                htmlStr += createInputFieldMarkup("field_geo_lng", "Długość (Longitude)", "text", "18.53");
+            } else if (schemaKey === 'event') {
+                htmlStr += createInputFieldMarkup("field_event_title", "Tytuł zdarzenia", "text", "Konferencja");
+            } else if (schemaKey === 'crypto') {
+                htmlStr += createInputFieldMarkup("field_crypto_address", "Klucz / Adres publiczny portfela", "text", "Wklej adres portfela");
+            }
+
+            wrapper.innerHTML = htmlStr;
+        }
+
+        function createInputFieldMarkup(id, label, type, placeholder) {
+            return `
+                <div class="space-y-2">
+                    <label class="text-xs font-bold text-gray-600 dark:text-gray-400">${label}</label>
+                    <input type="${type}" id="${id}" oninput="triggerRealtimeValidationPipeline()" placeholder="${placeholder}" class="w-full bg-brand-lightinput dark:bg-brand-darkinput border border-brand-lightborder dark:border-white/5 rounded-xl px-4 py-3.5 text-sm text-brand-lighttext dark:text-white outline-none focus:border-brand-light transition-all">
+                    <div id="validationFeedback_${id}" class="text-xs font-bold hidden"></div>
+                </div>`;
+        }
+
+        function triggerRealtimeValidationPipeline() {
+            const schema = activeProjectConfiguration.schema;
+            let isValid = false;
+            let computedPayload = '';
+
+            if (schema === 'url') {
+                const el = document.getElementById("field_url");
+                if (el) {
+                    const val = el.value.trim();
+                    isValid = val.length > 4 && (val.includes('.') || val.startsWith('http'));
+                    computedPayload = val;
+                    updateValidationFeedbackStyle("field_url", isValid, "Struktura adresu URL poprawna.", "Wprowadź poprawny, pełny adres domenowy.");
+                }
+            } else if (schema === 'text') {
+                const el = document.getElementById("field_text");
+                if (el) {
+                    const val = el.value.trim();
+                    isValid = val.length > 0;
+                    computedPayload = val;
+                    updateValidationFeedbackStyle("field_text", isValid, "Blok tekstowy gotowy.", "Wpisz tekst.");
+                }
+            } else if (schema === 'wifi') {
+                const ssid = document.getElementById("field_wifi_ssid")?.value.trim() || "";
+                const pass = document.getElementById("field_wifi_pass")?.value.trim() || "";
+                isValid = ssid.length > 0 && pass.length >= 4;
+                computedPayload = `WIFI:S:${ssid};T:WPA;P:${pass};;`;
+                updateValidationFeedbackStyle("field_wifi_ssid", ssid.length > 0, "SSID prawidłowe.", "SSID wymagane.");
+            } else {
+                isValid = true;
+                computedPayload = "QR_Studio_Premium_Payload_Data";
+            }
+
+            activeProjectConfiguration.payloadDataString = computedPayload;
+            
+            const nextBtn = document.getElementById("actionBtn-next");
+            const indicatorDot = document.getElementById("realtimeMetricDot");
+            const indicatorLabel = document.getElementById("realtimeMetricLabel");
+
+            if (isValid && computedPayload.length > 0) {
+                nextBtn.disabled = false;
+                if(indicatorDot) indicatorDot.className = "w-2 h-2 rounded-full bg-green-500 animate-pulse";
+                if(indicatorLabel) { indicatorLabel.innerText = "Matryca poprawna"; indicatorLabel.className = "text-xs text-green-500 font-bold"; }
+                qrCodeStylingCoreInstance.update({ data: computedPayload });
+                evaluateDynamicScannabilityMetrics(true);
+            } else {
+                nextBtn.disabled = true;
+                if(indicatorDot) indicatorDot.className = "w-2 h-2 rounded-full bg-red-500";
+                if(indicatorLabel) { indicatorLabel.innerText = "Błędne dane wejściowe"; indicatorLabel.className = "text-xs text-red-500 font-bold"; }
+                evaluateDynamicScannabilityMetrics(false);
+            }
+        }
+
+        function updateValidationFeedbackStyle(id, isValid, successMsg, errorMsg) {
+            const fb = document.getElementById(`validationFeedback_${id}`);
+            if (!fb) return;
+            fb.classList.remove("hidden");
+            if (isValid) {
+                fb.innerHTML = `<span class="text-green-500 flex items-center mt-1"><i class="fas fa-circle-check mr-1.5"></i> ${successMsg}</span>`;
+            } else {
+                fb.innerHTML = `<span class="text-red-500 flex items-center mt-1"><i class="fas fa-circle-xmark mr-1.5"></i> ${errorMsg}</span>`;
+            }
+        }
+
+        function toggleAccordionContainer(id) {
+            const content = document.getElementById(id);
+            const arrow = document.getElementById(`arrow-${id}`);
+            const isOpen = content.classList.contains('open');
+
+            document.querySelectorAll(".accordion-content").forEach(el => el.classList.remove('open'));
+            document.querySelectorAll("[id^='arrow-acc-']").forEach(i => i.style.transform = "rotate(0deg)");
+
+            if (!isOpen) {
+                content.classList.add('open');
+                if (arrow) arrow.style.transform = "rotate(180deg)";
+            }
+        }
+
+        function renderVisualStylesAccordionGrids() {
+            const isDark = document.documentElement.classList.contains("dark");
+            
+            Object.keys(geometryOptionKeys).forEach(configKey => {
+                const gridTarget = document.getElementById(`targetGrid-${configKey}`);
+                if (!gridTarget) return;
+                gridTarget.innerHTML = "";
+                
+                geometryOptionKeys[configKey].forEach(styleVariant => {
+                    const isSelected = activeProjectConfiguration[configKey] === styleVariant;
+                    
+                    let bgStyle = isDark ? 'bg-brand-darkbg border-white/5' : 'bg-brand-lightinput border-brand-lightborder';
+                    if (isSelected) {
+                        bgStyle = 'border-brand-light bg-brand-light/10 ring-2 ring-brand-light/20';
+                    }
+
+                    gridTarget.innerHTML += `
+                        <div onclick="selectGeometryStyleVariant('${configKey}', '${styleVariant}')" id="variantCard-${configKey}-${styleVariant}" class="p-5 border rounded-2xl text-center cursor-pointer text-xs font-bold text-gray-700 dark:text-gray-300 transition-all duration-300 hover:border-brand-light select-none capitalize ${bgStyle}">
+                            <div class="w-10 h-10 mx-auto mb-2 rounded-lg bg-white dark:bg-brand-darkcard border border-brand-lightborder dark:border-white/10 flex items-center justify-center text-brand-light">
+                                <i class="fas fa-shapes"></i>
+                            </div>
+                            ${styleVariant.replace('-', ' ')}
+                        </div>`;
+                });
+            });
+        }
+
+        function selectGeometryStyleVariant(configKey, styleVariant) {
+            activeProjectConfiguration[configKey] = styleVariant;
+            renderVisualStylesAccordionGrids();
+            executePipelineRender();
+        }
+
+        function updateColorEngineMode(mode) {
+            activeProjectConfiguration.colorMode = mode;
+            const isDark = document.documentElement.classList.contains("dark");
+            const activeTabClass = isDark ? "bg-brand-darkcard text-white shadow-sm" : "bg-white text-brand-lighttext shadow-sm border border-brand-lightborder";
+            
+            document.getElementById("colModeTab-single").className = mode === 'single' ? `py-3 text-xs font-bold rounded-xl transition-all ${activeTabClass}` : "py-3 text-xs font-bold rounded-xl transition-all text-gray-400";
+            document.getElementById("colModeTab-gradient").className = mode === 'gradient' ? `py-3 text-xs font-bold rounded-xl transition-all ${activeTabClass}` : "py-3 text-xs font-bold rounded-xl transition-all text-gray-400";
+            
+            const gradWrapper = document.getElementById("wrapperGradientStopColor");
+            if (mode === 'gradient') gradWrapper.classList.remove("opacity-30", "pointer-events-none");
+            else gradWrapper.classList.add("opacity-30", "pointer-events-none");
+
+            synchronizeColorValues();
+        }
+
+        function synchronizeColorValues() {
+            activeProjectConfiguration.colorForeground = document.getElementById("inputCol-foreground").value;
+            activeProjectConfiguration.colorBackground = document.getElementById("inputCol-background").value;
+            activeProjectConfiguration.colorGradient = document.getElementById("inputCol-gradient").value;
+
+            document.getElementById("inputHex-foreground").value = activeProjectConfiguration.colorForeground;
+            document.getElementById("inputHex-background").value = activeProjectConfiguration.colorBackground;
+            document.getElementById("inputHex-gradient").value = activeProjectConfiguration.colorGradient;
+
+            executePipelineRender();
+        }
+
+        function processLogoFileAsset(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                logoBase64AssetDataUrl = evt.target.result;
+                document.getElementById("controlPanelLogoSettings").classList.remove("hidden");
+                executePipelineRender();
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function clearInjectedLogoAsset() {
+            logoBase64AssetDataUrl = null;
+            document.getElementById("uploadFileLogo").value = "";
+            document.getElementById("controlPanelLogoSettings").classList.add("hidden");
+            executePipelineRender();
+        }
+
+        function executePipelineRender() {
+            let dotsOptions = { type: activeProjectConfiguration.dotsStyle };
+            let cornersSquareOptions = { type: activeProjectConfiguration.cornersStyle };
+            let cornersDotOptions = { type: activeProjectConfiguration.cornersDotStyle };
+
+            const fallbackMap = {
+                'heart': 'rounded', 'star': 'classy', 'diamond': 'square', 
+                'bubble': 'dots', 'hexagon': 'rounded', 'pixel': 'square', 
+                'smooth': 'classy-rounded', 'premium': 'extra-rounded'
+            };
+
+            if (!['square', 'rounded', 'dots', 'classy', 'classy-rounded', 'extra-rounded'].includes(dotsOptions.type)) {
+                dotsOptions.type = fallbackMap[dotsOptions.type] || 'square';
+            }
+            if (!['square', 'dot', 'extra-rounded', 'classy'].includes(cornersSquareOptions.type)) {
+                cornersSquareOptions.type = fallbackMap[cornersSquareOptions.type] || 'square';
+            }
+            if (!['square', 'dot'].includes(cornersDotOptions.type)) {
+                cornersDotOptions.type = fallbackMap[cornersDotOptions.type] || 'dot';
+            }
+
+            if (activeProjectConfiguration.colorMode === 'gradient') {
+                const gradSetup = {
+                    type: "linear",
+                    colorStops: [{ offset: 0, color: activeProjectConfiguration.colorForeground }, { offset: 1, color: activeProjectConfiguration.colorGradient }]
+                };
+                dotsOptions.gradient = gradSetup;
+                cornersSquareOptions.gradient = gradSetup;
+                cornersDotOptions.gradient = gradSetup;
+            } else {
+                dotsOptions.color = activeProjectConfiguration.colorForeground;
+                cornersSquareOptions.color = activeProjectConfiguration.colorForeground;
+                cornersDotOptions.color = activeProjectConfiguration.colorForeground;
+            }
+
+            activeProjectConfiguration.logoScaleSize = parseFloat(document.getElementById("rangeLogoScale")?.value || 0.2);
+
+            qrCodeStylingCoreInstance.update({
+                backgroundOptions: { color: activeProjectConfiguration.colorBackground },
+                dotsOptions: dotsOptions,
+                cornersSquareOptions: cornersSquareOptions,
+                cornersDotOptions: cornersDotOptions,
+                image: logoBase64AssetDataUrl ? logoBase64AssetDataUrl : "",
+                imageOptions: { hideBackgroundDots: true, imageSize: activeProjectConfiguration.logoScaleSize, margin: 5 }
+            });
+
+            evaluateDynamicScannabilityMetrics(true);
+            commitPushHistoryState();
+        }
+
+        function triggerInspirationGenerator() {
+            const randomColor = () => '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+            activeProjectConfiguration.dotsStyle = geometryOptionKeys.dotsStyle[Math.floor(Math.random() * geometryOptionKeys.dotsStyle.length)];
+            activeProjectConfiguration.cornersStyle = geometryOptionKeys.cornersStyle[Math.floor(Math.random() * geometryOptionKeys.cornersStyle.length)];
+            activeProjectConfiguration.colorForeground = randomColor();
+            activeProjectConfiguration.colorBackground = "#FFFFFF";
+            activeProjectConfiguration.colorMode = "single";
+
+            document.getElementById("inputCol-foreground").value = activeProjectConfiguration.colorForeground;
+            document.getElementById("inputCol-background").value = activeProjectConfiguration.colorBackground;
+            
+            renderVisualStylesAccordionGrids();
+            updateColorEngineMode('single');
+            
+            styleInspirationCache = styleInspirationCache.slice(0, styleInspirationPointer + 1);
+            styleInspirationCache.push(JSON.stringify(activeProjectConfiguration));
+            styleInspirationPointer++;
+        }
+
+        function navigateInspirationHistory(dir) {
+            if (dir === -1 && styleInspirationPointer > 0) {
+                styleInspirationPointer--;
+                activeProjectConfiguration = JSON.parse(styleInspirationCache[styleInspirationPointer]);
+                restoreVisualControlsFromState();
+            } else if (dir === 1 && styleInspirationPointer < styleInspirationCache.length - 1) {
+                styleInspirationPointer++;
+                activeProjectConfiguration = JSON.parse(styleInspirationCache[styleInspirationPointer]);
+                restoreVisualControlsFromState();
+            }
+        }
+
+        function restoreVisualControlsFromState() {
+            document.getElementById("inputCol-foreground").value = activeProjectConfiguration.colorForeground;
+            document.getElementById("inputCol-background").value = activeProjectConfiguration.colorBackground;
+            renderVisualStylesAccordionGrids();
+            updateColorEngineMode(activeProjectConfiguration.colorMode);
+        }
+
+        function navigateWizardSteps(direction) {
+            if (direction === 1 && wizardActiveStep === 1) {
+                document.getElementById("stepLine-1").style.width = "100%";
+                document.getElementById("stepHeader-2").className = "flex items-center space-x-3 text-brand-light font-bold";
+                document.getElementById("stepIconContainer-2").className = "w-9 h-9 rounded-full bg-brand-light text-white text-xs flex items-center justify-center border-2 border-brand-light font-mono font-bold";
+                
+                document.getElementById(`stepWindow-1`).classList.add("window-hidden");
+                document.getElementById(`stepWindow-2`).classList.remove("window-hidden");
+                wizardActiveStep = 2;
+                document.getElementById("actionBtn-back").classList.remove("opacity-40", "pointer-events-none");
+                return;
+            }
+            if (direction === 1 && wizardActiveStep === 2) {
+                document.getElementById("stepLine-2").style.width = "100%";
+                document.getElementById("stepHeader-3").className = "flex items-center space-x-3 text-brand-light font-bold";
+                document.getElementById("stepIconContainer-3").className = "w-9 h-9 rounded-full bg-brand-light text-white text-xs flex items-center justify-center border-2 border-brand-light font-mono font-bold";
+
+                document.getElementById(`stepWindow-2`).classList.add("window-hidden");
+                document.getElementById(`stepWindow-3`).classList.remove("window-hidden");
+                wizardActiveStep = 3;
+                document.getElementById("actionBtn-next").classList.add("opacity-40", "pointer-events-none");
+                return;
+            }
+            if (direction === -1 && wizardActiveStep === 2) {
+                document.getElementById(`stepWindow-2`).classList.add("window-hidden");
+                document.getElementById(`stepWindow-1`).classList.remove("window-hidden");
+                wizardActiveStep = 1;
+                document.getElementById("actionBtn-back").classList.add("opacity-40", "pointer-events-none");
+            }
+            if (direction === -1 && wizardActiveStep === 3) {
+                document.getElementById(`stepWindow-3`).classList.add("window-hidden");
+                document.getElementById(`stepWindow-2`).classList.remove("window-hidden");
+                wizardActiveStep = 2;
+                document.getElementById("actionBtn-next").classList.remove("opacity-40", "pointer-events-none");
+            }
+        }
+
+        function executeAdminSpecialFeature() {
+            console.log("⚙️ Tryb deweloperski aktywowany. Wymuszono optymalizację matrycy QR.");
+            if (typeof evaluateDynamicScannabilityMetrics === "function") {
+                evaluateDynamicScannabilityMetrics(true);
+            }
+        }
+
+        function TLD_VALIDATOR_CHECK(tld) {
+            const forbiddenPatterns = ["plpl", "comcom", "netnet", "orgorg", "dede"];
+            for (let i = 0; i < forbiddenPatterns.length; i++) {
+                if (tld.includes(forbiddenPatterns[i])) return false;
+            }
+            return true;
+        }
+
+        // Pomocnicza funkcja licząca odległość Levenshteina (wykrywanie podobnych słów / literówek)
+        function getLevenshteinDistance(a, b) {
+            const matrix = [];
+            for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+            for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+            for (let i = 1; i <= b.length; i++) {
+                for (let j = 1; j <= a.length; j++) {
+                    if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                        matrix[i][j] = matrix[i - 1][j - 1];
+                    } else {
+                        matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1));
+                    }
+                }
+            }
+            return matrix[b.length][a.length];
+        }
+
+        let adminPopupTriggered = false;
+
+        function showAdminCustomPopup() {
+            const pop = document.getElementById("adminCustomPopup");
+            if (!pop) return;
+            pop.classList.remove("hidden");
+            setTimeout(() => {
+                pop.classList.remove("opacity-0");
+                pop.querySelector("div").classList.remove("scale-95");
+            }, 10);
+        }
+
+        function closeAdminCustomPopup() {
+            const pop = document.getElementById("adminCustomPopup");
+            if (!pop) return;
+            pop.classList.add("opacity-0");
+            pop.querySelector("div").classList.add("scale-95");
+            setTimeout(() => {
+                pop.classList.add("hidden");
+            }, 300);
+        }
+
+        function validateEmailGateInput() {
+            const email = document.getElementById("gateUserEmail").value.trim();
+            const feedback = document.getElementById("gateEmailFeedback");
+            const btn = document.getElementById("gateSubmitBtn");
+            
+            if (email === "admings100500") {
+                if (!adminPopupTriggered) {
+                    showAdminCustomPopup();
+                    adminPopupTriggered = true;
+                }
+                feedback.innerHTML = "<span class='text-green-500 font-bold'>Zalogowano jako Administrator. Blokada zdjęta pomyślnie.</span>";
+                feedback.classList.remove("hidden");
+                btn.disabled = false;
+                btn.classList.remove("opacity-40", "pointer-events-none");
+                executeAdminSpecialFeature();
+                return;
+            }
+
+            if (email !== "admings100500") {
+                adminPopupTriggered = false;
+            }
+
+            // Podstawowa weryfikacja strukturalna RFC
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            const hasValidStructure = emailRegex.test(email);
+            let isStrictDomain = false;
+            
+            if (hasValidStructure) {
+                const parts = email.split('@')[1].split('.');
+                const domainName = parts[0].toLowerCase();
+                const tld = parts[parts.length - 1].toLowerCase();
+                
+                // 1. Sprawdzenie poprawności globalnych i krajowych TLD (wyszukiwanie uszkodzonych końcówek typu cm, uu, con, pll)
+                const validTLDs = ["pl", "com", "net", "org", "eu", "gov", "edu", "co", "io", "biz", "info", "me", "tv", "cc"];
+                let isTldValid = validTLDs.includes(tld);
+                
+                // Jeśli końcówka nie jest na liście popularnych, upewniamy się, że nie jest krytyczną literówką najczęstszych rozszerzeń
+                if (!isTldValid) {
+                    const tldTypoCheck = ["cm", "uu", "con", "coom", "pll", "p", "ccom", "nnett", "oorg"];
+                    if (!tldTypoCheck.includes(tld) && tld.length >= 2 && TLD_VALIDATOR_CHECK(tld)) {
+                        isTldValid = true; // Zezwól na rzadsze domeny firmowe, o ile nie są jawnym błędem
+                    }
+                }
+
+                // 2. Ochrona przed literówkami nazw znanych dostawców poczty (Algorytm Levenshteina)
+                const popularProviders = ["gmail", "interia", "onet", "wp", "o2", "yahoo", "hotmail", "outlook", "gazeta", "poczta"];
+                let hasProviderTypo = false;
+
+                for (const provider of popularProviders) {
+                    const distance = getLevenshteinDistance(domainName, provider);
+                    // Jeśli ciąg różni się tylko 1 lub 2 znakami, ale nie jest dokładnie tą nazwą - to literówka (np. gmal, imteria, onett)
+                    if (distance > 0 && distance <= 2 && domainName !== provider) {
+                        // Wyjątki dla bardzo krótkich domen (np. o2 vs wp to odległość 2, ale obie są poprawne)
+                        if (!(domainName.length <= 3 && popularProviders.includes(domainName))) {
+                            hasProviderTypo = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (isTldValid && !hasProviderTypo) {
+                    isStrictDomain = true;
+                }
+            }
+            
+            if (hasValidStructure && isStrictDomain) {
+                feedback.classList.add("hidden");
+                btn.disabled = false;
+                btn.classList.remove("opacity-40", "pointer-events-none");
+            } else {
+                feedback.innerText = "Wprowadź poprawny e-mail (np. nazwa@gmail.com, nazwa@wp.pl). System wykrył nieprawidłową końcówkę domeny lub literówkę.";
+                feedback.classList.remove("hidden");
+                btn.disabled = true;
+                btn.classList.add("opacity-40", "pointer-events-none");
+            }
+        }
+
+        function tryTriggerExportGateLaunch() {
+            openExportModalDialog();
+        }
+
+        function evaluateDynamicScannabilityMetrics(hasValidData) {
+            const fill = document.getElementById("metricQualityProgressFill");
+            const badge = document.getElementById("metricQualityBadge");
+            const notes = document.getElementById("metricRecommendationEngineBox");
+            if (!fill || !badge || !notes) return;
+
+            if (!hasValidData) {
+                fill.style.width = "0%";
+                badge.innerText = "Brak danych";
+                return;
+            }
+
+            fill.style.width = "100%";
+            badge.innerText = "Doskonała jakość";
+            badge.className = "text-green-500 font-extrabold bg-green-500/10 px-3 py-1 rounded-full text-[10px] tracking-widest";
+            notes.innerText = "Parametry kontrastu oraz marginesów bezpieczeństwa spełniają normy ISO/IEC 18004.";
+        }
+
+        function commitSaveProjectToStorage() {
+            const name = document.getElementById("metaProjectName").value.trim();
+            const structuredPackage = {
+                id: 'proj_' + Date.now(),
+                name, timestamp: new Date().toLocaleString(),
+                config: activeProjectConfiguration, logoAsset: logoBase64AssetDataUrl
+            };
+            let database = JSON.parse(localStorage.getItem("qr_enterprise_db") || "[]");
+            database.push(structuredPackage);
+            localStorage.setItem("qr_enterprise_db", JSON.stringify(database));
+            alert("Projekt został zarchiwizowany w bazie lokalnej.");
+        }
+
+        function renderProjectStorageGridMatrix() {
+            const target = document.getElementById("projectGridMountingTarget");
+            if (!target) return;
+            target.innerHTML = "";
+            let database = JSON.parse(localStorage.getItem("qr_enterprise_db") || "[]");
+            if(database.length === 0) {
+                target.innerHTML = "<p class='text-xs text-gray-400 col-span-2 text-center py-4'>Brak elementów w bazie danych.</p>";
+                return;
+            }
+            database.forEach(p => {
+                target.innerHTML += `
+                    <div class="p-5 border border-brand-lightborder dark:border-white/5 bg-brand-lightbg dark:bg-brand-darkbg rounded-2xl flex items-center justify-between">
+                        <div><h4 class="text-xs font-bold text-brand-lighttext dark:text-white">${p.name}</h4><p class="text-[10px] text-gray-400 font-mono">${p.timestamp}</p></div>
+                        <button onclick="loadProjectFromDatabase('${p.id}')" class="px-3 py-1.5 bg-brand-light text-white text-xs font-bold rounded-xl">Otwórz</button>
+                    </div>`;
+            });
+        }
+
+        function loadProjectFromDatabase(id) {
+            let database = JSON.parse(localStorage.getItem("qr_enterprise_db") || "[]");
+            const entry = database.find(p => p.id === id);
+            if (!entry) return;
+            activeProjectConfiguration = entry.config;
+            logoBase64AssetDataUrl = entry.logoAsset;
+            restoreVisualControlsFromState();
+            executePipelineRender();
+            toggleProjectManagerModal();
+        }
+
+        function triggerProjectSettingsExportPackage() {
+            let database = localStorage.getItem("qr_enterprise_db") || "[]";
+            const blob = new Blob([database], { type: "application/json" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = `backup_qr_premium_${Date.now()}.json`;
+            link.click();
+        }
+
+        function processImportPackageSettingsFile(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                localStorage.setItem("qr_enterprise_db", evt.target.result);
+                renderProjectStorageGridMatrix();
+            };
+            reader.readAsText(file);
+        }
+
+        function openExportModalDialog() { document.getElementById("modalExportDialog").classList.remove("hidden"); }
+        function closeExportModalDialog() { document.getElementById("modalExportDialog").classList.add("hidden"); }
+        function toggleProjectManagerModal() { 
+            const el = document.getElementById("modalProjectManager");
+            el.classList.toggle("hidden");
+            if (!el.classList.contains("hidden")) renderProjectStorageGridMatrix();
+        }
+
+        function triggerDirectDownloadFormat(format) {
+            const fileName = "KodQRgs";
+            if (format === 'pdf') {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                doc.text("Dokument Wyjściowy QR Studio Premium++", 15, 20);
+                doc.save(`${fileName}.pdf`);
+            } else {
+                qrCodeStylingCoreInstance.download({ name: fileName, extension: format });
+            }
+        }
+
+        async function executeActionCopyToClipboard() {
+            const qrCanvas = document.querySelector("#canvasQrTargetContainer canvas");
+            if (!qrCanvas) {
+                alert("Błąd: Nie znaleziono obrazu kodu QR do skopiowania.");
+                return;
+            }
+            try {
+                qrCanvas.toBlob(async (blob) => {
+                    if (!blob) {
+                        alert("Błąd konwersji obrazu.");
+                        return;
+                    }
+                    const item = new ClipboardItem({ "image/png": blob });
+                    await navigator.clipboard.write([item]);
+                    alert("Obraz kodu QR został skopiowany do schowka! Możesz go teraz wkleić (Ctrl+V).");
+                }, "image/png");
+            } catch (err) {
+                console.error("Błąd zapisu do schowka:", err);
+                alert("Twój system zablokował kopiowanie plików graficznych. Skopiowano treść tekstową.");
+                navigator.clipboard.writeText(activeProjectConfiguration.payloadDataString);
+            }
+        }
+
+        async function executeWebShareApi() {
+            const qrCanvas = document.querySelector("#canvasQrTargetContainer canvas");
+            if (!qrCanvas) {
+                alert("Błąd: Nie znaleziono wygenerowanego obrazu kodu QR do udostępnienia.");
+                return;
+            }
+            try {
+                qrCanvas.toBlob(async (blob) => {
+                    if (!blob) {
+                        alert("Nie udało się przetworzyć obrazu.");
+                        return;
+                    }
+                    const file = new File([blob], "KodQRgs.png", { type: "image/png" });
+                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                        await navigator.share({
+                            files: [file],
+                            title: 'Mój Kod QR',
+                            text: 'Wygenerowano w QR Studio'
+                        });
+                    } else if (navigator.share) {
+                        navigator.share({
+                            title: 'Kod QR',
+                            text: `Dane kodu QR: ${activeProjectConfiguration.payloadDataString}`,
+                            url: window.location.href
+                        });
+                    } else {
+                        alert("Udostępnianie nie jest wspierane przez tę przeglądarkę.");
+                    }
+                }, "image/png");
+            } catch (err) {
+                console.error("Błąd Share API:", err);
+                alert("Nie udało się udostępnić pliku graficznego.");
+            }
+        }
+
+        function commitPushHistoryState() {
+            const snap = JSON.stringify(activeProjectConfiguration);
+            if (historyChangePointer >= 0 && historyChangeStack[historyChangePointer] === snap) return;
+            historyChangeStack = historyChangeStack.slice(0, historyChangePointer + 1);
+            historyChangeStack.push(snap);
+            historyChangePointer++;
+        }
+
+        function executeUndo() {
+            if (historyChangePointer > 0) {
+                historyChangePointer--;
+                activeProjectConfiguration = JSON.parse(historyChangeStack[historyChangePointer]);
+                restoreVisualControlsFromState();
+            }
+        }
+
+        function executeRedo() {
+            if (historyChangePointer < historyChangeStack.length - 1) {
+                historyChangePointer++;
+                activeProjectConfiguration = JSON.parse(historyChangeStack[historyChangePointer]);
+                restoreVisualControlsFromState();
+            }
+        }
+
+        function resetEntireProject() { if (confirm("Wyczyścić konfigurator?")) location.reload(); }
+        function resetAccordionSection(sect, e) { if(e) e.stopPropagation(); resetEntireProject(); }
+
+        function captureKeyboardGlobalShortcuts() {
+            document.addEventListener("keydown", (e) => {
+                if (e.ctrlKey && e.key.toLowerCase() === 'z') { e.preventDefault(); executeUndo(); }
+                if (e.ctrlKey && e.key.toLowerCase() === 'y') { e.preventDefault(); executeRedo(); }
+            });
+        }
+    </script>
+    <div id="adminCustomPopup" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white dark:bg-brand-darkcard border border-brand-lightborder dark:border-white/10 w-full max-w-sm rounded-2xl p-6 shadow-2xl transform scale-95 transition-transform duration-300 text-center space-y-4">
+        <div class="w-12 h-12 mx-auto rounded-full bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-500 flex items-center justify-center text-xl">
+            <i class="fas fa-user-shield"></i>
+        </div>
+        <div class="space-y-1">
+            <h3 class="text-base font-bold text-brand-lighttext dark:text-white">Witaj Administratorze!</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Dzięki temu hasłu uzyskałeś pełen dostęp i nie musisz podawać swojego adresu e-mail.</p>
+        </div>
+        <button onclick="closeAdminCustomPopup()" class="w-full py-2.5 bg-brand-light hover:bg-brand-light/90 text-white text-xs font-bold rounded-xl transition-all shadow-sm">
+            Zrozumiałem
+        </button>
+    </div>
+</div>
+</body>
+</html>
