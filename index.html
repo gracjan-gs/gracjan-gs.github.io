@@ -167,7 +167,7 @@ nav a:hover{
 /* LOGO */
 
 .navbar-logo{
-  height:2.2rem;
+  height:4.2rem;
   width:auto;
   object-fit:contain;
   transition:0.3s ease;
@@ -175,19 +175,19 @@ nav a:hover{
 
 @media (min-width:64rem){
   .navbar-logo{
-    height:4.1rem;
+    height:4.1rem !important;
   }
 }
 
 @media (max-width:64rem){
   .navbar-logo{
-    height:4rem;
+    height:4rem !important;
   }
 }
 
 @media (max-width:48rem){
   .navbar-logo{
-    height:4rem;
+    height:4rem !important;
   }
 }
 
@@ -612,285 +612,6 @@ video{
   .price-card{
     text-align:center;
   }
-}
-
-/* =========================
-   ABOUT SECTION
-========================= */
-
-.about-section{
-  position:relative;
-  overflow:hidden;
-
-  /* większy odstęp */
-  margin-top:16rem;
-}
-
-.about-glow{
-  position:absolute;
-  top:50%;
-  left:50%;
-
-  width:40rem;
-  height:40rem;
-
-  transform:translate(-50%,-50%);
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(0,174,255,0.14),
-      transparent 65%
-    );
-
-  filter:blur(4rem);
-
-  pointer-events:none;
-}
-
-/* =========================
-   CARD
-========================= */
-
-.about-card{
-  position:relative;
-
-  display:grid;
-  grid-template-columns:30rem 1fr;
-  gap:3rem;
-
-  align-items:center;
-
-  padding:2rem;
-
-  border-radius:2rem;
-
-  border:1px solid rgba(255,255,255,0.08);
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.05),
-      rgba(255,255,255,0.02)
-    );
-
-  backdrop-filter:blur(1.2rem);
-
-  overflow:hidden;
-
-  transition:
-    border-color .25s ease;
-}
-
-.about-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(0,174,255,0.06),
-      transparent 45%
-    );
-
-  pointer-events:none;
-}
-
-/* DELIKATNY HOVER */
-
-.about-card:hover{
-  border-color:rgba(255,255,255,0.16);
-}
-
-/* =========================
-   IMAGE WRAP
-========================= */
-
-.about-image-wrap{
-  position:relative;
-  z-index:2;
-
-  height:30rem;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:1.7rem;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.03),
-      rgba(255,255,255,0.01)
-    );
-
-  border:1px solid rgba(255,255,255,0.06);
-
-  overflow:hidden;
-}
-
-/* =========================
-   IMAGE
-========================= */
-
-.about-image{
-
-  /* MNIEJSZE ZDJĘCIE */
-  width:55%;
-/*
-  np:
-  35%
-  40%
-  45%
-*/
-
-  height:auto;
-
-  object-fit:contain;
-
-  display:block;
-}
-
-/* =========================
-   CONTENT
-========================= */
-
-.about-content{
-  position:relative;
-  z-index:2;
-}
-
-.about-badge{
-  width:max-content;
-
-  padding:0.55rem 1rem;
-
-  border-radius:999rem;
-
-  background:rgba(0,174,255,0.08);
-
-  border:1px solid rgba(0,174,255,0.18);
-
-  color:#0ab3e1;
-
-  font-size:0.78rem;
-  font-weight:700;
-
-  margin-bottom:1.2rem;
-}
-
-.about-content h2{
-
-  line-height:1.08;
-
-  margin:0 0 1.5rem;
-
-  letter-spacing:-0.04em;
-
-  color:#fff;
-  font-size: 2.2rem;
-}
-
-.about-content p{
-  margin:0;
-
-  max-width:40rem;
-
-  color:rgba(255,255,255,0.7);
-
-  line-height:1.9;
-
-  font-size:1rem;
-}
-
-/* =========================
-   TAGS
-========================= */
-
-.about-tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:0.8rem;
-
-  margin-top:2rem;
-}
-
-.about-tags span{
-  padding:0.7rem 1rem;
-
-  border-radius:999rem;
-
-  background:rgba(255,255,255,0.04);
-
-  border:1px solid rgba(255,255,255,0.06);
-
-  color:#fff;
-
-  font-size:0.8rem;
-  font-weight:600;
-}
-
-/* =========================
-   TABLET
-========================= */
-
-@media(max-width:64rem){
-
-  .about-card{
-    grid-template-columns:1fr;
-  }
-
-  .about-image-wrap{
-    height:24rem;
-  }
-
-  .about-image{
-    width:35%;
-  }
-
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:48rem){
-
-  .about-section{
-    margin-top:10rem;
-  }
-
-  .about-card{
-    padding:1.3rem;
-    gap:1.5rem;
-
-    border-radius:1.5rem;
-  }
-
-  .about-image-wrap{
-    height:22rem;
-    border-radius:1.3rem;
-  }
-
-  .about-image{
-    width:40%;
-  }
-
-  .about-content h2{
-    font-size:2rem;
-  }
-
-  .about-content p{
-    font-size:0.92rem;
-    line-height:1.8;
-  }
-
-  .about-tags span{
-    font-size:0.74rem;
-  }
-
 }
 /* =========================
    PORTFOLIO
@@ -1578,37 +1299,1015 @@ video{
 
 <body>
 
-<header>
+<style>
+:root {
+  --nav-bg: rgba(9, 9, 11, 0.85);
+  --nav-border: rgba(255, 255, 255, 0.06);
+  --panel-bg: #09090b;
+  --card-bg: #18181b; 
+  --card-hover: #222226;
+  --text-main: #f4f4f5;
+  --text-muted: #a1a1aa;
   
-  <div class="container nav">
+  /* PALETA KOLORYSTYCZNA */
+  --grad-1: #00f2fe;
+  --grad-2: #0088ff;
+  --grad-3: #004bf2;
+  
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-    <a href="#start"><img src="CzarneLogo.png" class="navbar-logo" alt="logo" style="filter: invert(1);"/></a>
-    <nav>
+body.mobile-nav-lock {
+  overflow: hidden !important;
+}
+
+/* --- OVERLAY BLUR --- */
+.page-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s var(--ease-premium), visibility 0.4s var(--ease-premium);
+  z-index: 1500;
+}
+.page-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Ikony monet w tle baneru */
+.mm-banner-social::after {
+  content: '\f51e' !important;
+  font-family: 'Font Awesome 6 Free' !important;
+  font-weight: 900 !important;
+  position: absolute;
+  bottom: -0.5rem;
+  right: -0.5rem;
+  font-size: 6rem;
+  color: rgba(0, 242, 254, 0.035);
+  pointer-events: none;
+}
+.mobile-nav-push .mm-banner-social::after {
+  content: '\f51e' !important;
+  font-family: 'Font Awesome 6 Free' !important;
+  font-weight: 900 !important;
+  font-size: 5rem;
+  bottom: -0.3rem;
+  right: -0.3rem;
+}
+
+/* --- MAIN NAVBAR --- */
+header.main-modern-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 4.8rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--nav-border);
+  z-index: 900;
+}
+
+.nav-h-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.navbar-logo {
+  filter: invert(1);
+  height: 2.4rem;
+  width: auto;
+  display: block;
+}
+
+/* --- DESKTOP NAV LIST --- */
+.desktop-nav-list {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.desktop-nav-list > li > a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.desktop-nav-list > li:hover > a {
+  color: var(--text-main);
+}
+
+.gradient-accent-link > a {
+  background: linear-gradient(135deg, var(--grad-1) 0%, var(--grad-2) 50%, var(--grad-3) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.gradient-accent-link > a i {
+  -webkit-text-fill-color: initial;
+  color: var(--grad-2);
+  font-size: 0.75rem;
+  transition: transform 0.4s var(--ease-premium);
+}
+.gradient-accent-link:hover > a i {
+  transform: rotate(180deg);
+}
+
+.gradient-accent-link::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: transparent;
+  z-index: 950;
+}
+
+/* --- MEGA MENU PANEL (PC) --- */
+.mega-menu-panel {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  right: 0;
+  width: 100%; 
+  max-width: 56rem;
+  margin: 0 auto;
+  background: var(--panel-bg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  padding: 1.2rem;
+  display: grid;
+  grid-template-columns: 1.5fr 1.3fr;
+  gap: 1.2rem;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.85);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: opacity 0.35s var(--ease-premium), visibility 0.35s var(--ease-premium), transform 0.35s var(--ease-premium);
+  pointer-events: none;
+  z-index: 999;
+}
+.gradient-accent-link:hover .mega-menu-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.mm-tools-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+/* KARTA PC - IDEALNE WYRÓWNANIE W PIONIE (FLEX) */
+.mm-tool-card {
+  position: relative;
+  display: flex;
+  align-items: center; 
+  padding: 1rem 1.1rem;
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.01);
+  border-radius: 0.65rem;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  height: 3.4rem; 
+  box-sizing: border-box;
+}
+.mm-tool-card:not(.has-overflow-badge) {
+  overflow: hidden;
+}
+.mm-tool-card:hover {
+  background: var(--card-hover);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.mm-card-content {
+  display: flex;
+  align-items: center; 
+  gap: 0.8rem;
+  width: 100%;
+}
+.mm-tool-card i {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  width: 1.2rem;
+  text-align: center;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+.mm-tool-card:hover i {
+  color: var(--grad-1);
+}
+
+/* POPRAWIONA WLEPKA PC - WYCHODZI ELEGANCKO POZA KRAWĘDŹ KARTY */
+.mm-badge.new {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(20%, -35%); /* Przesunięcie idealnie na krawędź */
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.35rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  z-index: 10;
+}
+
+/* 100% SPRAWNY AUTOMATYCZNY PRO MARQUEE W CSS */
+.mm-tool-name-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* Efekt maskowania krawędzi – aktywuje się tylko, gdy włączona jest karuzela */
+.mm-tool-name-wrapper.has-marquee {
+  mask-image: linear-gradient(to right, transparent, #fff 5%, #fff 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #fff 5%, #fff 90%, transparent);
+}
+
+/* Wewnętrzny elastyczny kontener dla tekstu karuzeli */
+.mm-marquee-inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: max-content;
+}
+
+.mm-tool-name {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-main);
+  display: inline-block;
+  line-height: 1;
+}
+
+/* NOWA LOGIKA: Karuzela kręci się ciągle dla elementów z klasą .has-marquee */
+.has-marquee .mm-marquee-inner {
+  animation: continuous-scroll 8s linear infinite;
+}
+
+/* Zatrzymanie karuzeli po najechaniu myszką (tylko na urządzeniach z kursorem) */
+@media (hover: hover) {
+  .mm-tool-card:hover .has-marquee .mm-marquee-inner {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes continuous-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 1rem)); } 
+}
+
+.mm-grid-footer-btn {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 0.5rem;
+  color: var(--text-main);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.mm-grid-footer-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- BANER MARKETINGOWY --- */
+.mm-banner-social {
+  position: relative;
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.1) 0%, rgba(0, 75, 242, 0.15) 100%);
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  border-radius: 0.75rem;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.85rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.mm-banner-badge {
+  background: linear-gradient(to right, #00ff00, #009b00);
+  color: #050508;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 2rem;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.mm-banner-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.25;
+}
+.mm-banner-desc {
+  font-size: 0.85rem;
+  color: #d4d4d8;
+  margin: 0 0 0.5rem 0;
+  max-width: 18rem;
+  line-height: 1.5;
+}
+
+/* --- PRZYCISK PREMIUM UIVERSE --- */
+.uiverse-glow-btn {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 9999px;
+  padding: 1px;
+  overflow: hidden;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+.uiverse-glow-btn:hover {
+  transform: scale(1.02);
+}
+.uiverse-glow-btn .bg-blur-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.uiverse-glow-btn .bg-blur-blob {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -33%);
+  width: 6rem;
+  height: 6rem;
+  filter: blur(24px);
+  background: linear-gradient(135deg, var(--grad-1), var(--grad-2), var(--grad-3));
+}
+.uiverse-glow-btn .animated-border-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  animation: border-glow-translate 10s ease-in-out infinite alternate;
+}
+.uiverse-glow-btn .animated-border-blob {
+  display: block;
+  z-index: 0;
+  height: 100%;
+  width: 3rem;
+  filter: blur(24px);
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--grad-1), var(--grad-2), var(--grad-3));
+  animation: border-glow-scale 10s ease-in-out infinite alternate;
+}
+.uiverse-glow-btn .btn-inner-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 1;
+  background: rgba(9, 9, 11, 0.92);
+  border-radius: 9999px;
+  padding: 0.65rem 1.3rem;
+}
+.uiverse-glow-btn .icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.uiverse-glow-btn svg {
+  opacity: 0.9;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.uiverse-glow-btn:hover svg {
+  transform: rotate(180deg);
+}
+.uiverse-glow-btn .star-shine-layer {
+  border-radius: 9999px;
+  width: 2.75rem;
+  height: 2.75rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(16px);
+  opacity: 0.25;
+  background: linear-gradient(135deg, var(--grad-1), var(--grad-2), var(--grad-3));
+  animation: star-shine 14s ease-in-out infinite alternate;
+}
+.uiverse-glow-btn .btn-text {
+  background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0.6));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s;
+}
+
+@keyframes border-glow-translate {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(150%); }
+}
+@keyframes border-glow-scale {
+  0% { transform: scaleX(1) translateX(-50%); }
+  100% { transform: scaleX(1.5) translateX(-50%); }
+}
+@keyframes star-shine {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.15; }
+  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.35; }
+}
+
+/* --- HAMBURGER --- */
+.hamburger {
+  cursor: pointer;
+  display: none;
+  position: fixed; 
+  top: 1.15rem;
+  right: 1rem;
+  z-index: 2000 !important;
+}
+.hamburger input {
+  display: none;
+}
+.hamburger svg {
+  height: 2.5rem;
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.line {
+  fill: none;
+  stroke: white;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.5;
+  transition: stroke-dasharray 500ms cubic-bezier(0.16, 1, 0.3, 1), stroke-dashoffset 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.line-top-bottom {
+  stroke-dasharray: 12 63;
+}
+.hamburger input:checked + svg {
+  transform: rotate(-45deg);
+}
+.hamburger input:checked + svg .line-top-bottom {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+}
+
+/* --- PANEL MOBILNY --- */
+.mobile-nav-push {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 22rem;
+  background: var(--panel-bg);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 1600; 
+  padding: 5.5rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transform: translateX(101%);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mobile-nav-push.active {
+  transform: translateX(0);
+}
+
+.mobile-inner-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto; 
+  padding: 0 1.2rem 2.5rem 1.2rem;
+  box-sizing: border-box;
+}
+
+.mobile-main-links {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  flex-shrink: 0;
+}
+.mobile-main-links a {
+  font-size: 1.12rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+.mobile-main-links a:active {
+  color: var(--text-main);
+  padding-left: 4px;
+}
+.mobile-main-links a.mobile-grad-text {
+  background: linear-gradient(to right, var(--grad-1), var(--grad-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* BENTO MOBILE */
+.mobile-tools-grid-ui {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 2rem;
+  flex-shrink: 0;
+}
+.mobile-tools-grid-ui h4 {
+  margin: 0 0 0.1rem 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.06em;
+}
+.mobile-mini-bento-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 0.55rem;
+}
+
+/* MOBILNA KARTA */
+.mobile-mini-bento-card {
+  position: relative;
+  display: flex;
+  align-items: center; 
+  gap: 0.7rem;
+  padding: 0.9rem 0.8rem;
+  background: linear-gradient(145deg, rgba(24, 24, 27, 0.9) 0%, rgba(18, 18, 20, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 0.6rem;
+  text-decoration: none;
+  height: 3.5rem; 
+  box-sizing: border-box;
+}
+.mobile-mini-bento-card:not(.has-overflow-badge) {
+  overflow: hidden;
+}
+
+/* Dopasowanie wlepki na mobile tak, żeby też delikatnie wystawała */
+.mobile-mini-bento-card .mm-badge.new {
+  transform: translate(15%, -45%);
+  font-size: 0.55rem;
+}
+
+/* KOREKTA IKONEK MOBILE */
+.mobile-mini-bento-card i, 
+.mobile-mini-bento-card .fa-custom-stack {
+  font-size: 1.05rem;
+  color: var(--text-muted); 
+  flex-shrink: 0;
+  width: 1.2rem;
+  text-align: center;
+  margin: 0; 
+  transition: color 0.2s ease;
+}
+.mobile-mini-bento-card:active i,
+.mobile-mini-bento-card:active .fa-custom-stack {
+  color: var(--grad-1);
+}
+
+.mobile-mini-bento-card .fa-custom-stack {
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* WYLĄCZENIE I ZABEZPIECZENIE KARUZELI NA MOBILE (TEKST SIĘ ZAWIJA / ZMIEJSZA LINIE) */
+.mobile-mini-bento-title-wrapper {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.mobile-mini-bento-title-wrapper .mm-marquee-inner {
+  animation: none !important; /* Wyłączenie animacji */
+  width: 100% !important;
+  gap: 0 !important;
+  white-space: normal !important; /* Pozwolenie na łamanie wiersza, jeśli trzeba */
+}
+.mobile-mini-bento-title {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-main);
+  line-height: 1.2;
+  display: block;
+}
+
+.mobile-explore-all-btn {
+  margin-top: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem;
+  background: linear-gradient(90deg, rgba(0, 242, 254, 0.03), rgba(0, 75, 242, 0.05));
+  border: 1px solid rgba(0, 136, 255, 0.4);
+  border-radius: 0.55rem;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* BANER REKLAMOWY MOBILE */
+.mobile-nav-push .mm-banner-social {
+  display: flex !important; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: max-content !important;
+  flex-shrink: 0 !important;
+  padding: 1.6rem 1rem !important;
+  margin-top: 0.5rem !important;
+  gap: 0.7rem;
+  border-color: rgba(0, 242, 254, 0.25);
+}
+.mobile-nav-push .mm-banner-social::after {
+  font-size: 5rem;
+  bottom: -0.3rem;
+  right: -0.3rem;
+}
+.mobile-nav-push .mm-banner-title {
+  font-size: 1.15rem;
+}
+.mobile-nav-push .mm-banner-desc {
+  font-size: 0.8rem;
+  max-width: 100%;
+  margin-bottom: 0.2rem;
+}
+.mobile-nav-push .uiverse-glow-btn {
+  width: 100%;
+  display: block;
+  flex-shrink: 0 !important;
+}
+.mobile-nav-push .btn-inner-content {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 64rem) {
+  .mega-menu-panel {
+    max-width: calc(100% - 2rem);
+    grid-template-columns: 1fr;
+  }
+  .mega-menu-panel .mm-banner-social {
+    display: none !important; 
+  }
+}
+@media (max-width: 48rem) {
+  .desktop-nav-list {
+    display: none !important;
+  }
+  .hamburger {
+    display: block !important;
+  }
+}
+</style>
+
+<!-- BACKGROUND OVERLAY -->
+<div class="page-overlay" id="pageOverlay"></div>
+
+<!-- MAIN MODERN HEADER -->
+<header class="main-modern-header" id="mainHeader">
+  <div class="container nav-h-container">
+
+    <a href="#start" style="display: flex; align-items: center;">
+      <img src="CzarneLogo.png" class="navbar-logo" alt="logo"/>
+    </a>
+
+    <!-- PC NAVIGATION -->
+    <ul class="desktop-nav-list">
+      <li><a href="#start">Start</a></li>
+      <li><a href="#offer">Oferta</a></li>
+      <li><a href="#cont">Kontakt</a></li>
+      <li><a href="#about">O mnie</a></li>
+      <li><a href="#port">Portfolio</a></li>
+      
+      <li class="gradient-accent-link">
+        <a href="javascript:void(0);">Narzędzia <i class="fa-solid fa-chevron-down"></i></a>
+        
+        <div class="mega-menu-panel">
+          <div class="mm-tools-grid">
+            
+            <!-- DODANA KLASA .has-overflow-badge ŻEBY WLEPKA NIE BYŁA UCIĘTA -->
+            <a href="kodQR.html" class="mm-tool-card has-overflow-badge">
+              <div class="mm-card-content">
+                <i class="fa-solid fa-qrcode"></i>
+                <div class="mm-tool-name-wrapper run-marquee-detect">
+                  <div class="mm-marquee-inner">
+                    <span class="mm-tool-name">Generator QR</span>
+                  </div>
+                </div>
+          <span class="mm-badge new" style="color: #a270ff; background-color: #7b00ff75;">Wczesny dostęp</span>
+              </div>
+            </a>
+
+            <a href="brakaktualnosci" class="mm-tool-card">
+              <div class="mm-card-content">
+                <i class="fa-solid fa-barcode"></i>
+                <div class="mm-tool-name-wrapper run-marquee-detect">
+                  <div class="mm-marquee-inner">
+                    <span class="mm-tool-name">Generator Kodów Kreskowych</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="brakaktualnosci" class="mm-tool-card">
+              <div class="mm-card-content">
+                <i class="fa-solid fa-scissors"></i>
+                <div class="mm-tool-name-wrapper run-marquee-detect">
+                  <div class="mm-marquee-inner">
+                    <span class="mm-tool-name">Kadrowanie Obrazu</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="brakaktualnosci" class="mm-tool-card">
+              <div class="mm-card-content">
+                <i class="fa-solid fa-file-image"></i>
+                <div class="mm-tool-name-wrapper run-marquee-detect">
+                  <div class="mm-marquee-inner">
+                    <span class="mm-tool-name">Kompresor Obrazów</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="brakaktualnosci" class="mm-tool-card">
+              <div class="mm-card-content">
+                <i class="fa-solid fa-border-top-left"></i>
+                <div class="mm-tool-name-wrapper run-marquee-detect">
+                  <div class="mm-marquee-inner">
+                    <span class="mm-tool-name">Obramowanie Obrazu</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="brakaktualnosci" class="mm-tool-card">
+              <div class="mm-card-content">
+                <i class="fa-solid fa-signature"></i>
+                <div class="mm-tool-name-wrapper run-marquee-detect">
+                  <div class="mm-marquee-inner">
+                    <span class="mm-tool-name">Kreator Ręcznego Podpisu</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="brakaktualnosci" class="mm-grid-footer-btn">
+              Zobacz wszystkie bezpłatne narzędzia (12) <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+          </div>
+
+          <div class="mm-banner-social">
+            <span class="mm-banner-badge"><i class="fa-solid fa-bolt"></i> 100% DARMOWY DOSTĘP</span>
+            <span class="mm-banner-title">Wszystkie narzędzia są całkowicie darmowe</span>
+            <p class="mm-banner-desc">Bez rejestracji, limitów i ukrytych opłat. Projektuj i eksportuj bez ograniczeń.</p>
+            
+            <a href="#" class="uiverse-glow-btn">
+              <span class="bg-blur-layer"><span class="bg-blur-blob"></span></span>
+              <span class="animated-border-container"><span class="animated-border-blob"></span></span>
+              <span class="btn-inner-content">
+                <span class="icon-wrapper">
+                  <i class="fa-solid fa-money-bill-coins" style="color: #00f2fe; font-size: 0.9rem; position: relative; z-index: 2;"></i>
+                  <span class="star-shine-layer"></span>
+                </span>
+                <span class="btn-text">Wypróbuj teraz za darmo</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</header>
+
+<!-- MOBILE NAVIGATION PANEL -->
+<div class="mobile-nav-push" id="mobileNavPush">
+  <div class="mobile-inner-layout">
+    
+    <!-- 1. LINKI MOBILNE -->
+    <div class="mobile-main-links">
       <a href="#start">Start</a>
       <a href="#offer">Oferta</a>
       <a href="#cont">Kontakt</a>
       <a href="#about">O mnie</a>
       <a href="#port">Portfolio</a>
-      <a href="https://skankod.github.io/Kodqr.html" style="color: #6c82ff;">QR Generator</a>
-    </nav>
+      <a href="javascript:void(0);" class="mobile-grad-text">Narzędzia</a>
+    </div>
 
-    <div class="menu-btn" id="menuBtn">
-      <span></span>
-      <span></span>
-      <span></span>
+    <!-- 2. MINI BENTO -->
+    <div class="mobile-tools-grid-ui">
+      <h4>Top Elements</h4>
+      <div class="mobile-mini-bento-container">
+        
+                  <!-- DODANA KLASA .has-overflow-badge ŻEBY WLEPKA NIE BYŁA UCIĘTA -->
+            <a href="kodQR.html" class="mm-tool-card has-overflow-badge">
+              <div class="mm-card-content">
+                <i class="fa-solid fa-qrcode"></i>
+                <div class="mm-tool-name-wrapper run-marquee-detect">
+                  <div class="mm-marquee-inner">
+                    <span class="mm-tool-name">Generator QR</span>
+                  </div>
+                </div>
+          <span class="mm-badge new" style="color: #a270ff; background-color: #7b00ff75;">Wczesny dostęp</span>
+              </div>
+            </a>
+
+            <a href="brakaktualnosci" class="mm-tool-card">
+              <div class="mm-card-content">
+                <i class="fa-solid fa-barcode"></i>
+                <div class="mm-tool-name-wrapper run-marquee-detect">
+                  <div class="mm-marquee-inner">
+                    <span class="mm-tool-name">Generator Kodów Kreskowych</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="brakaktualnosci" class="mm-tool-card">
+              <div class="mm-card-content">
+                <i class="fa-solid fa-scissors"></i>
+                <div class="mm-tool-name-wrapper run-marquee-detect">
+                  <div class="mm-marquee-inner">
+                    <span class="mm-tool-name">Kadrowanie Obrazu</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="brakaktualnosci" class="mm-tool-card">
+              <div class="mm-card-content">
+                <i class="fa-solid fa-file-image"></i>
+                <div class="mm-tool-name-wrapper run-marquee-detect">
+                  <div class="mm-marquee-inner">
+                    <span class="mm-tool-name">Kompresor Obrazów</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="brakaktualnosci" class="mm-tool-card">
+              <div class="mm-card-content">
+                <i class="fa-solid fa-border-top-left"></i>
+                <div class="mm-tool-name-wrapper run-marquee-detect">
+                  <div class="mm-marquee-inner">
+                    <span class="mm-tool-name">Obramowanie Obrazu</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="brakaktualnosci" class="mm-tool-card">
+              <div class="mm-card-content">
+                <i class="fa-solid fa-signature"></i>
+                <div class="mm-tool-name-wrapper run-marquee-detect">
+                  <div class="mm-marquee-inner">
+                    <span class="mm-tool-name">Kreator Ręcznego Podpisu</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+      </div>
+      <a href="brakaktualnosci" class="mobile-explore-all-btn">
+        Zobacz wszystkie narzędzia (12) <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+    </div>
+
+    <!-- 3. BANER ZACHĘCENIA MOBILNY -->
+    <div class="mm-banner-social">
+        <span class="mm-banner-badge"><i class="fa-solid fa-bolt"></i> 100% DARMOWY DOSTĘP</span>
+        <span class="mm-banner-title">Wszystkie narzędzia są całkowicie darmowe</span>
+        <p class="mm-banner-desc">Bez rejestracji, limitów i ukrytych opłat. Projektuj i eksportuj bez ograniczeń.</p>
+      
+      <a href="#" class="uiverse-glow-btn">
+        <span class="bg-blur-layer"><span class="bg-blur-blob"></span></span>
+        <span class="animated-border-container"><span class="animated-border-blob"></span></span>
+        <span class="btn-inner-content">
+          <span class="icon-wrapper">
+            <i class="fa-solid fa-money-bill-coins" style="color: #00f2fe; font-size: 0.9rem; position: relative; z-index: 2;"></i>
+            <span class="star-shine-layer"></span>
+          </span>
+          <span class="btn-text">Uruchom bez opłat</span>
+        </span>
+      </a>
     </div>
 
   </div>
-</header>
-
-<div class="mobile-nav" id="mobileNav">
-    <a href="#start">Start</a>
-    <a href="#offer">Oferta</a>
-    <a href="#cont">Kontakt</a>
-    <a href="#about">O mnie</a>
-    <a href="#port">Portfolio</a>
-    <a href="skankod.github.io/Kodqr.html" style="color: #6c82ff;">QR Generator</a>
 </div>
+
+<!-- INTERACTIVE HAMBURGER -->
+<label class="hamburger" id="hamburgerLabel">
+  <input type="checkbox" id="burgerCheckbox">
+  <svg viewBox="0 0 32 32">
+    <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+    <path class="line" d="M7 16 27 16"></path>
+  </svg>
+</label>
+
+<!-- SCRIPT LOGIC -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const burgerCheckbox = document.getElementById("burgerCheckbox");
+  const mobilePanel = document.getElementById("mobileNavPush");
+  const overlay = document.getElementById("pageOverlay");
+  const body = document.body;
+
+  function toggleMobileNav(isActive) {
+    burgerCheckbox.checked = isActive;
+    if (isActive) {
+      mobilePanel.classList.add("active");
+      overlay.classList.add("active");
+      body.classList.add("mobile-nav-lock");
+    } else {
+      mobilePanel.classList.remove("active");
+      overlay.classList.remove("active");
+      body.classList.remove("mobile-nav-lock");
+    }
+  }
+
+  burgerCheckbox.addEventListener("change", () => {
+    toggleMobileNav(burgerCheckbox.checked);
+  });
+
+  overlay.addEventListener("click", () => {
+    toggleMobileNav(false);
+  });
+
+  const links = mobilePanel.querySelectorAll("a");
+  links.forEach(link => {
+    link.addEventListener("click", () => {
+      if(link.classList.contains('mobile-grad-text')) return;
+      
+      setTimeout(() => {
+        toggleMobileNav(false);
+      }, 200);
+    });
+  });
+
+  // INTELIGENTNA DETEKCJA I AKTYWACJA KARUZELI (PC)
+  const elementsToDetect = document.querySelectorAll('.run-marquee-detect');
+  
+  elementsToDetect.forEach(wrapper => {
+    const marqueeInner = wrapper.querySelector('.mm-marquee-inner');
+    const textSpan = marqueeInner.querySelector('span');
+    
+    if (marqueeInner.scrollWidth > wrapper.clientWidth) {
+      wrapper.classList.add('has-marquee');
+      
+      const textClone = textSpan.cloneNode(true);
+      marqueeInner.appendChild(textClone);
+    }
+  });
+});
+</script>
 
 <main class="container">
 
@@ -2008,41 +2707,248 @@ Daj znać, jakich informacji potrzebujesz lub nad czym pracujemy. Staram się od
     </div>
 
   </div>
+   <style>
+/* =========================
+   SECTION & GLOWS
+========================= */
+.about-section {
+  position: relative;
+  overflow: hidden;
+  margin-top: 16rem;
+  padding: 4rem 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
 
-  <!-- =========================
-     ABOUT SECTION
-========================= -->
+.about-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(6rem);
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.glow-1 {
+  top: 20%;
+  left: 20%;
+  width: 35rem;
+  height: 35rem;
+  background: radial-gradient(circle, rgba(0, 174, 255, 0.2), transparent 70%);
+  animation: pulseGlow 8s infinite alternate ease-in-out;
+}
+
+.glow-2 {
+  bottom: 10%;
+  right: 15%;
+  width: 30rem;
+  height: 30rem;
+  background: radial-gradient(circle, rgba(10, 179, 225, 0.15), transparent 70%);
+  animation: pulseGlow 12s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+  100% { transform: translate(5%, 10%) scale(1.15); opacity: 0.8; }
+}
+
+/* =========================
+   CARD (MAIN)
+========================= */
+.about-card {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 22rem 1fr; /* Zmniejszona kolumna na zdjęcie, by lepiej pasowało do tekstu */
+  gap: 4rem;
+  align-items: center;
+  padding: 3.5rem;
+  border-radius: 2.5rem;
+  
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.01) 100%
+  );
+  backdrop-filter: blur(2rem);
+  -webkit-backdrop-filter: blur(2rem);
+  
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-card:hover {
+  border-color: rgba(0, 174, 255, 0.25);
+  box-shadow: 
+    0 40px 80px rgba(0, 174, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* =========================
+   IMAGE AREA (Brak dodatkowych ramek)
+========================= */
+.about-image-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-image {
+  width: 85%; /* Zdjęcie dopasowane proporcjami, nie dominuje */
+  max-width: 18rem;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.4));
+  transition: transform 0.4s ease;
+}
+
+.about-card:hover .about-image {
+  transform: translateY(-4px); /* Prosty, czysty hover */
+}
+
+/* =========================
+   CONTENT
+========================= */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: max-content;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  background: rgba(0, 174, 255, 0.06);
+  border: 1px solid rgba(0, 174, 255, 0.15);
+  color: #0ab3e1;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.about-badge span {
+  width: 6px;
+  height: 6px;
+  background-color: #0ab3e1;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #0ab3e1;
+  animation: badgeBlink 1.5s infinite;
+}
+
+@keyframes badgeBlink {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.about-content h2 {
+  font-size: 2.8rem;
+  line-height: 1.15;
+  margin: 0 0 1.5rem;
+  letter-spacing: -0.03em;
+  color: #fff;
+  font-weight: 800;
+}
+
+/* Gradient na pojedynczym słowie */
+.about-content h2 span {
+  background: linear-gradient(90deg, #2ed2ff, #00aeff, #12f3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-content p {
+  margin: 0;
+  max-width: 42rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.8;
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+
+/* =========================
+   TAGS (Subtelne)
+========================= */
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2.5rem;
+}
+
+.about-tags span {
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.about-tags span:hover {
+  background: rgba(0, 174, 255, 0.05);
+  border-color: rgba(0, 174, 255, 0.2);
+  color: #fff;
+}
+
+.desktop-only { display: block; }
+
+/* =========================
+   RESPONSIVNESS
+========================= */
+@media(max-width: 75rem){
+  .about-content h2 { font-size: 2.4rem; }
+  .desktop-only { display: none; }
+}
+
+@media(max-width: 64rem){
+  .about-card {
+    grid-template-columns: 1fr;
+    padding: 2.5rem;
+    gap: 2.5rem;
+  }
+  .about-image { width: 30%; }
+}
+
+@media(max-width: 48rem){
+  .about-section { margin-top: 10rem; }
+  .about-card { padding: 1.8rem; border-radius: 1.8rem; }
+  .about-image { width: 40%; }
+  .about-content h2 { font-size: 2rem; }
+  .about-content p { font-size: 0.95rem; }
+}
+</style>
 
 <section class="about-section" id="about">
-
-  <div class="about-glow"></div>
+  <div class="about-glow glow-1"></div>
+  <div class="about-glow glow-2"></div>
 
   <div class="container">
-
     <div class="about-card">
-
-      <!-- IMAGE -->
-
-      <div class="about-image-wrap">
-
+      
+      <div class="about-image-container">
         <img
           src="omnieOMNIE copy.png"
           alt="O mnie"
           class="about-image"
         >
-
       </div>
 
-      <!-- CONTENT -->
-
       <div class="about-content">
-
-        <div class="about-badge">
-          O mnie
-        </div>
-
         <h2>
-          Tworzenie stron internetowych
+          Tworzenie stron <br class="desktop-only"><span>internetowych</span>
         </h2>
 
         <p>
@@ -2050,18 +2956,15 @@ Daj znać, jakich informacji potrzebujesz lub nad czym pracujemy. Staram się od
         </p>
 
         <div class="about-tags">
-          <span>Nowoczesny Design</span>
-          <span>Responsywność</span>
+          <span>Optymalizacja UI/UX</span>
+          <span>Optymailzacja SEO</span>
+          <span>Pozycjonowanie</span>
         </div>
-
       </div>
 
     </div>
-
   </div>
-
 </section>
-
 <!-- =========================
    PORTFOLIO
 ========================= -->
@@ -2254,7 +3157,7 @@ Daj znać, jakich informacji potrzebujesz lub nad czym pracujemy. Staram się od
 </section>
 </section>
 </section>
-<section class="mini-cta">
+<!--<section class="mini-cta">
 
   <div class="mini-cta-box">
 
@@ -2305,7 +3208,7 @@ Daj znać, jakich informacji potrzebujesz lub nad czym pracujemy. Staram się od
 
   </div>
 
-</section>
+</section>-->
 </main>
 <footer class="footer">
 
@@ -3139,174 +4042,430 @@ textarea::placeholder{
     transition:none !important;
   }
 }
-.cookie-banner{
-  position: fixed;
-  left: 1rem;
-  right: 1rem;
-  bottom: 1rem;
-
-  max-width: 40rem;
-  margin: 0 auto;
-
-  background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(1.5rem);
-
-  border: 0.0625rem solid rgba(255,255,255,0.12);
-  border-radius: 1.2rem;
-
-  padding: 1.2rem 1.4rem;
-
-  transform: translateY(120%);
-  opacity: 0;
-
-  transition: 0.5s cubic-bezier(.4,0,.2,1);
-
-  z-index: 99999;
+</style>
+<!-- === APPLE ULTRA-MINIMAL COOKIE CONSENT (GREEN & RED EDITION) === -->
+<style>
+:root {
+  --ap-bg: rgba(10, 10, 12, 0.9);        /* Głęboka czerń OLED */
+  --ap-border: rgba(255, 255, 255, 0.08); /* Cienka ramka systemowa */
+  --ap-blue: #007aff;                     /* Czysty błękit Apple */
+  --ap-gold: #e5b842;                     /* Szlachetne złoto */
+  --ap-green: rgba(46, 204, 113, 0.15);   /* Przezroczysty zielony */
+  --ap-green-text: #2ecc71;
+  --ap-red: rgba(231, 76, 60, 0.15);      /* Przezroczysty czerwony */
+  --ap-red-text: #e74c3c;
+  --ap-text-main: #ffffff;
+  --ap-text-muted: #86868b;
 }
 
-.cookie-banner.show{
-  transform: translateY(0);
+.cookie-banner {
+  position: fixed;
+  left: 1.5rem;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  max-width: 38rem;
+  margin: 0 auto;
+  
+  background: var(--ap-bg);
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
+  
+  border: 1px solid var(--ap-border);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  
+  transform: translateY(150%) scale(0.95);
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease;
+  z-index: 999999;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.cookie-banner.show {
+  transform: translateY(0) scale(1);
   opacity: 1;
 }
 
-.cookie-inner{
+.cookie-banner:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.cookie-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.cookie-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--ap-text-main);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.cookie-header i {
+  color: var(--ap-gold);
+  font-size: 1.2rem;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cookie-banner:hover .cookie-header i {
+  transform: rotate(15deg) scale(1.1);
+}
+
+.cookie-text {
+  font-size: 0.85rem;
+  color: var(--ap-text-muted);
+  line-height: 1.5;
+}
+
+.cookie-text a {
+  color: var(--ap-blue);
+  text-decoration: none;
+}
+.cookie-text a:hover {
+  text-decoration: underline;
+}
+
+/* DYNAMICZNY PANEL USTAWIEŃ */
+.cookie-settings {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cookie-settings.open {
+  max-height: 300px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cookie-option {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
+  padding: 0.6rem 0;
 }
 
-.cookie-text{
+.option-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.option-title {
+  color: var(--ap-text-main);
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+}
+
+.option-desc {
+  color: var(--ap-text-muted);
+  font-size: 0.75rem;
   line-height: 1.4;
 }
 
-.cookie-actions{
-  display: flex;
-  gap: 0.5rem;
+/* TOGGLE BUTTONS (iOS) */
+.cookie-switch {
+  position: relative;
+  display: inline-block;
+  width: 2.6rem;
+  height: 1.45rem;
+  flex-shrink: 0;
 }
 
-.cookie-btn{
-  padding: 0.6rem 1rem;
-  border-radius: 0.7rem;
+.cookie-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.cookie-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.12);
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 999px;
+}
+
+.cookie-slider:before {
+  position: absolute;
+  content: "";
+  height: 1.2rem;
+  width: 1.2rem;
+  left: 0.125rem;
+  bottom: 0.125rem;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cookie-switch input:active + .cookie-slider:before {
+  width: 1.45rem;
+}
+
+input:checked + .cookie-slider {
+  background-color: var(--ap-blue);
+}
+
+input:disabled + .cookie-slider {
+  background-color: rgba(255, 255, 255, 0.05);
+  opacity: 0.4;
+}
+
+input:checked + .cookie-slider:before {
+  transform: translateX(1.15rem);
+}
+
+input:checked:active + .cookie-slider:before {
+  transform: translateX(0.9rem);
+}
+
+/* PRZYCISKI AKCJI (ZAPROJEKTOWANE OD NOWA) */
+.cookie-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.2rem;
+}
+
+.cookie-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.6rem;
   border: none;
   cursor: pointer;
-
   font-weight: 600;
   font-size: 0.8rem;
-
-  transition: 0.25s ease;
+  transition: background-color 0.25s ease, 
+              color 0.25s ease, 
+              transform 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
 }
 
-.cookie-btn.accept{
-  background: var(--primary);
+.cookie-btn:active {
+  transform: scale(0.94);
+}
+
+/* Domyslnie przezroczysty zielony */
+.cookie-btn.accept {
+  background: var(--ap-green);
+  color: var(--ap-green-text);
+  border: 1px solid rgba(46, 204, 113, 0.2);
+}
+
+.cookie-btn.accept:hover {
+  background: rgba(46, 204, 113, 0.25);
+  border-color: rgba(46, 204, 113, 0.4);
+}
+
+/* Po otwarciu opcji zmienia sie w niebieski akcent systemu */
+.cookie-btn.accept.save-mode {
+  background: var(--ap-blue);
   color: #fff;
+  border-color: transparent;
 }
 
-.cookie-btn.accept:hover{
-  transform: translateY(-0.1rem);
+.cookie-btn.accept.save-mode:hover {
+  background: #0062cc;
 }
 
-.cookie-btn.decline{
-  background: rgba(255,255,255,0.08);
-  color: #fff;
+/* Domyslnie przezroczysty czerwony */
+.cookie-btn.decline {
+  background: var(--ap-red);
+  color: var(--ap-red-text);
+  border: 1px solid rgba(231, 76, 60, 0.2);
 }
 
-.cookie-btn.decline:hover{
-  background: rgba(255,255,255,0.12);
+.cookie-btn.decline:hover {
+  background: rgba(231, 76, 60, 0.25);
+  border-color: rgba(231, 76, 60, 0.4);
 }
 
-@media (max-width: 48rem){
-  .cookie-inner{
-    flex-direction: column;
-    align-items: flex-start;
+.cookie-btn.preferences {
+  background: transparent;
+  color: var(--ap-text-muted);
+  margin-right: auto;
+  padding-left: 0;
+  padding-right: 0;
+  font-weight: 500;
+}
+
+.cookie-btn.preferences:hover {
+  color: var(--ap-blue);
+}
+
+@media (max-width: 48rem) {
+  .cookie-banner {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    padding: 1.2rem;
   }
-
-  .cookie-actions{
+  .cookie-actions {
+    flex-direction: column;
     width: 100%;
   }
-
-  .cookie-btn{
-    flex: 1;
+  .cookie-btn {
+    width: 100%;
+    text-align: center;
+  }
+  .cookie-btn.preferences {
+    order: 3;
+    margin-right: 0;
+    padding: 0.4rem 0;
   }
 }
-
 </style>
+
+<!-- === STRUKTURA HTML === -->
 <div class="cookie-banner" id="cookieBanner">
   <div class="cookie-inner">
-    <div class="cookie-text">
-      Ta strona używa plików cookies w celu poprawy działania serwisu i analityki.
+    
+    <div class="cookie-header">
+      <i class="fa-solid fa-cookie-bite"></i>
+      <span>Prywatność i pliki cookie</span>
     </div>
 
-    <div class="cookie-actions">
-      <button class="cookie-btn accept" id="cookieAccept">Akceptuję</button>
-      <button class="cookie-btn decline" id="cookieDecline">Odrzucam</button>
+    <div class="cookie-text">
+      Strona korzysta z plików cookie w celu optymalizacji kodu oraz analizy ruchu. Szczegóły znajdziesz w <a href="/polityka-prywatnosci">Polityce Prywatności</a>.
     </div>
+
+    <!-- PANEL USTAWIEŃ -->
+    <div class="cookie-settings" id="cookieSettingsPanel">
+      
+      <div class="cookie-option">
+        <div class="option-info">
+          <span class="option-title">Niezbędne</span>
+          <span class="option-desc">Konieczne do bezpiecznego działania i ochrony sesji.</span>
+        </div>
+        <label class="cookie-switch">
+          <input type="checkbox" checked disabled>
+          <span class="cookie-slider"></span>
+        </label>
+      </div>
+
+      <div class="cookie-option">
+        <div class="option-info">
+          <span class="option-title">Analityka</span>
+          <span class="option-desc">Pozwala badać statystyki odwiedzin (Google Analytics).</span>
+        </div>
+        <label class="cookie-switch">
+          <input type="checkbox" id="cookieAnalytics">
+          <span class="cookie-slider"></span>
+        </label>
+      </div>
+
+      <div class="cookie-option">
+        <div class="option-info">
+          <span class="option-title">Preferencje</span>
+          <span class="option-desc">Zapamiętuje indywidualne wybory, np. stany ciemnego motywu.</span>
+        </div>
+        <label class="cookie-switch">
+          <input type="checkbox" id="cookiePreferences">
+          <span class="cookie-slider"></span>
+        </label>
+      </div>
+
+    </div>
+
+    <!-- PRZYCISKI KONTROLI -->
+    <div class="cookie-actions">
+      <button class="cookie-btn preferences" id="cookiePrefsBtn">Opcje</button>
+      <button class="cookie-btn decline" id="cookieDecline">Odrzuć</button>
+      <button class="cookie-btn accept" id="cookieAccept">Akceptuj</button>
+    </div>
+
   </div>
 </div>
+
+<!-- === SKRYPT STEROWANIA WYGLĄDEM I AKCJAMI === -->
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const banner = document.getElementById("cookieBanner");
+  const acceptBtn = document.getElementById("cookieAccept");
+  const declineBtn = document.getElementById("cookieDecline");
+  const prefsBtn = document.getElementById("cookiePrefsBtn");
+  const settingsPanel = document.getElementById("cookieSettingsPanel");
+  
+  const checkAnalytics = document.getElementById("cookieAnalytics");
+  const checkPrefs = document.getElementById("cookiePreferences");
 
-const popup = document.getElementById("popup");
+  const savedConsent = localStorage.getItem("appleCookieConsent");
 
-function showPopup(text, type="error"){
-  popup.textContent = text;
-  popup.className = `popup show ${type}`;
-
-  setTimeout(() => {
-    popup.className = "popup";
-  }, 2500);
-}
-
-document.querySelector(".send-btn").addEventListener("click", () => {
-
-  const inputs = document.querySelectorAll("input");
-  const textarea = document.querySelector("textarea");
-
-  const name = inputs[0].value.trim();
-  const email = inputs[1].value.trim();
-  const project = inputs[2].value.trim();
-  const message = textarea.value.trim();
-
-  // VALIDACJA
-  if (!name) return showPopup("Podaj imię i nazwisko", "error");
-  if (!message) return showPopup("Wpisz wiadomość", "error");
-
-  if (email) {
-    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!valid) return showPopup("Niepoprawny email", "error");
+  if (!savedConsent) {
+    setTimeout(() => {
+      banner.classList.add("show");
+    }, 1200);
+  } else {
+    executeScripts(JSON.parse(savedConsent));
   }
 
-  // TEMAT
-  let subject = "Zapytanie – Strony internetowe";
+  prefsBtn.addEventListener("click", () => {
+    if (settingsPanel.classList.contains("open")) {
+      settingsPanel.style.maxHeight = "0";
+      settingsPanel.classList.remove("open");
+      acceptBtn.classList.remove("save-mode");
+      prefsBtn.textContent = "Opcje";
+      acceptBtn.textContent = "Akceptuj";
+    } else {
+      settingsPanel.classList.add("open");
+      settingsPanel.style.maxHeight = settingsPanel.scrollHeight + "px";
+      acceptBtn.classList.add("save-mode");
+      prefsBtn.textContent = "Ukryj";
+      acceptBtn.textContent = "Zapisz";
+    }
+  });
 
-  if (project) {
-    const p = project.toLowerCase();
+  acceptBtn.addEventListener("click", () => {
+    let finalConsent = { analytics: false, preferences: false };
 
-    if (p.includes("landing")) subject = "Landing Page – zapytanie";
-    else if (p.includes("sklep")) subject = "Sklep internetowy – wycena";
-    else if (p.includes("portfolio")) subject = "Portfolio – kontakt";
-    else if (p.includes("ui") || p.includes("ux")) subject = "UI/UX – zapytanie";
-    else subject = `Projekt: ${project}`;
+    if (settingsPanel.classList.contains("open")) {
+      finalConsent.analytics = checkAnalytics.checked;
+      finalConsent.preferences = checkPrefs.checked;
+    } else {
+      finalConsent = { analytics: true, preferences: true };
+    }
+
+    saveAndApply(finalConsent);
+  });
+
+  declineBtn.addEventListener("click", () => {
+    const finalConsent = { analytics: false, preferences: false };
+    saveAndApply(finalConsent);
+  });
+
+  function saveAndApply(consentObject) {
+    localStorage.setItem("appleCookieConsent", JSON.stringify(consentObject));
+    banner.classList.remove("show");
+    executeScripts(consentObject);
   }
 
-  const body =
-`Imię i nazwisko: ${name}
-Email: ${email || "brak"}
-Projekt: ${project || "brak"}
-
-Wiadomość:
-${message}`;
-
-  showPopup("Otwieranie maila...", "success");
-
-  setTimeout(() => {
-    window.location.href =
-`mailto:gracjan.sliwinski.gs@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  }, 600);
-
+  function executeScripts(consent) {
+    if (consent.analytics) {
+      console.log("RODO: Skrypty analityczne działają.");
+    } else {
+      console.log("RODO: Skrypty analityczne zablokowane.");
+      document.cookie = "_ga=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie = "_gid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    }
+  }
 });
-
 </script>
 </main>
 
@@ -3495,6 +4654,63 @@ if(isMobile){
   });
 }
 
+</script>
+<!-- Popup - Wklej to przed </body> -->
+<style>
+  /* Animacja pojawiania się */
+  #popup-overlay {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+  }
+  #popup-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  /* Efekt wnętrza */
+  .popup-content {
+    transition: transform 0.3s ease;
+    transform: scale(0.95);
+  }
+  #popup-overlay.is-visible .popup-content {
+    transform: scale(1);
+  }
+</style>
+
+<div id="popup-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px;" onclick="closePopup()">
+  
+  <div class="popup-content" style="background: #111111; border: 1px solid #262626; padding: 40px; border-radius: 24px; text-align: center; max-width: 400px; width: 100%; color: white; box-shadow: 0 30px 60px -12px rgba(0,0,0,0.5);" onclick="event.stopPropagation()">
+    
+    <!-- Ikona -->
+    <div style="font-size: 50px; color: #f97316; margin-bottom: 20px;">!</div>
+    
+    <h2 style="margin: 0 0 12px 0; font-size: 22px; font-weight: 600; letter-spacing: -0.5px;">Wkrótce</h2>
+    <p style="margin: 0 0 4px 0; color: #a3a3a3; font-size: 15px;">To narzędzie niestety nie jest jeszcze dostępne.</p>
+    <p style="margin: 0 0 24px 0; color: #525252; font-size: 12px;">Aktualizacja: 28.06.2026</p>
+    
+    <button onclick="closePopup()" style="background: white; border: none; padding: 12px 0; border-radius: 12px; cursor: pointer; font-weight: 600; color: black; width: 100%; transition: transform 0.2s, background 0.2s;">
+      Rozumiem
+    </button>
+  </div>
+</div>
+
+<script>
+  function showPopup() {
+    document.getElementById('popup-overlay').classList.add('is-visible');
+  }
+
+  function closePopup() {
+    document.getElementById('popup-overlay').classList.remove('is-visible');
+  }
+
+  // Obsługa kliknięcia w link
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a');
+    if (link && link.getAttribute('href') === 'brakaktualnosci') {
+      e.preventDefault();
+      showPopup();
+    }
+  });
 </script>
 </body>
 </html>
