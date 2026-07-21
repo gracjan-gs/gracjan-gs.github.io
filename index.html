@@ -2024,8 +2024,8 @@ header.main-modern-header {
       <li><a href="#about">O mnie</a></li>
       <li><a href="#port">Portfolio</a></li>
       
-      <li class="gradient-accent-link">
-        <a href="javascript:void(0);">Narzędzia <i class="fa-solid fa-chevron-down"></i></a>
+     <li class="gradient-accent-link">
+        <a href="javascript:void(0);" class="single-icon-enforcer">Narzędzia <i class="fa-solid fa-chevron-down"></i></a>
         
         <div class="mega-menu-panel">
           <div class="mm-tools-grid">
@@ -2139,7 +2139,7 @@ header.main-modern-header {
       <a href="#cont">Kontakt</a>
       <a href="#about">O mnie</a>
       <a href="#port">Portfolio</a>
-      <a href="javascript:void(0);" class="mobile-grad-text">Narzędzia</a>
+      <a href="javascript:void(0);" class="mobile-grad-text single-icon-enforcer">Narzędzia <i class="fa-solid fa-chevron-down"></i></a>
     </div>
 
     <!-- 2. MINI BENTO -->
@@ -2147,7 +2147,7 @@ header.main-modern-header {
       <h4>Top Elements</h4>
       <div class="mobile-mini-bento-container">
         
-                  <!-- DODANA KLASA .has-overflow-badge ŻEBY WLEPKA NIE BYŁA UCIĘTA -->
+                <!-- DODANA KLASA .has-overflow-badge ŻEBY WLEPKA NIE BYŁA UCIĘTA -->
             <a href="kodQR.html" class="mm-tool-card has-overflow-badge">
               <div class="mm-card-content">
                 <i class="fa-solid fa-qrcode"></i>
@@ -2226,7 +2226,7 @@ header.main-modern-header {
         <span class="mm-banner-badge"><i class="fa-solid fa-bolt"></i> 100% DARMOWY DOSTĘP</span>
         <span class="mm-banner-title">Wszystkie narzędzia są całkowicie darmowe</span>
         <p class="mm-banner-desc">Bez rejestracji, limitów i ukrytych opłat. Projektuj i eksportuj bez ograniczeń.</p>
-      
+       
       <a href="#" class="uiverse-glow-btn">
         <span class="bg-blur-layer"><span class="bg-blur-blob"></span></span>
         <span class="animated-border-container"><span class="animated-border-blob"></span></span>
@@ -2254,6 +2254,40 @@ header.main-modern-header {
 
 <!-- SCRIPT LOGIC -->
 <script>
+// Absolutnie bezwzględne usuwanie duplikatów z DOM w pętli natychmiastowej i obserwatorze zmian
+(function() {
+  const killExtraIcons = () => {
+    document.querySelectorAll('.single-icon-enforcer').forEach(el => {
+      const icons = el.querySelectorAll('.fa-chevron-down');
+      if (icons.length > 1) {
+        for (let i = 1; i < icons.length; i++) {
+          icons[i].remove();
+        }
+      }
+    });
+  };
+
+  killExtraIcons();
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', killExtraIcons);
+  } else {
+    killExtraIcons();
+  }
+  
+  window.addEventListener('load', killExtraIcons);
+
+  // Observer zabezpieczający przed dynamicznym duplikowaniem przez frameworki/skrypty
+  const observer = new MutationObserver(() => {
+    killExtraIcons();
+  });
+  
+  observer.observe(document.documentElement, {
+    childList: true,
+    subtree: true
+  });
+})();
+
 document.addEventListener("DOMContentLoaded", () => {
   const burgerCheckbox = document.getElementById("burgerCheckbox");
   const mobilePanel = document.getElementById("mobileNavPush");
@@ -2264,27 +2298,37 @@ document.addEventListener("DOMContentLoaded", () => {
     burgerCheckbox.checked = isActive;
     if (isActive) {
       mobilePanel.classList.add("active");
-      overlay.classList.add("active");
+      if (overlay) overlay.classList.add("active");
       body.classList.add("mobile-nav-lock");
     } else {
       mobilePanel.classList.remove("active");
-      overlay.classList.remove("active");
+      if (overlay) overlay.classList.remove("active");
       body.classList.remove("mobile-nav-lock");
     }
   }
 
-  burgerCheckbox.addEventListener("change", () => {
-    toggleMobileNav(burgerCheckbox.checked);
-  });
+  if (burgerCheckbox) {
+    burgerCheckbox.addEventListener("change", () => {
+      toggleMobileNav(burgerCheckbox.checked);
+    });
+  }
 
-  overlay.addEventListener("click", () => {
-    toggleMobileNav(false);
-  });
+  if (overlay) {
+    overlay.addEventListener("click", () => {
+      toggleMobileNav(false);
+    });
+  }
 
   const links = mobilePanel.querySelectorAll("a");
   links.forEach(link => {
     link.addEventListener("click", () => {
-      if(link.classList.contains('mobile-grad-text')) return;
+      if(link.classList.contains('mobile-grad-text')) {
+        const chevron = link.querySelector('.fa-chevron-down');
+        if (chevron) {
+          chevron.classList.toggle('rotated');
+        }
+        return;
+      }
       
       setTimeout(() => {
         toggleMobileNav(false);
@@ -2292,7 +2336,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // INTELIGENTNA DETEKCJA I AKTYWACJA KARUZELI (PC)
   const elementsToDetect = document.querySelectorAll('.run-marquee-detect');
   
   elementsToDetect.forEach(wrapper => {
@@ -2308,6 +2351,37 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+<style>
+/* Stanowcze wycięcie wszelkich dodatkowych i ukrytych "ptaszków" przez CSS */
+.single-icon-enforcer .fa-chevron-down ~ .fa-chevron-down,
+.single-icon-enforcer i + i,
+.gradient-accent-link i ~ i,
+.mobile-grad-text i ~ i {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Pojedyncza, poprawna ikona z płynną animacją */
+.gradient-accent-link > a .fa-chevron-down,
+.mobile-grad-text .fa-chevron-down {
+  display: inline-block !important;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+  will-change: transform;
+}
+
+/* Płynny obrót i zmiana koloru po najechaniu / kliknięciu */
+.gradient-accent-link:hover > a .fa-chevron-down {
+  transform: rotate(180deg) scale(1.3);
+  color: #00f2fe;
+}
+
+.mobile-grad-text .fa-chevron-down.rotated {
+  transform: rotate(180deg) scale(1.3);
+  color: #00f2fe;
+}
+</style>
 
 <main class="container">
 
@@ -2987,7 +3061,7 @@ Daj znać, jakich informacji potrzebujesz lub nad czym pracujemy. Staram się od
 
       <p class="portfolio-sub">
         Kilka nowoczesnych projektów stron internetowych,
-        które zaprojektowałem i wdrożyłem.
+        które zaprojektowałem.
       </p>
 
     </div>
@@ -2995,21 +3069,21 @@ Daj znać, jakich informacji potrzebujesz lub nad czym pracujemy. Staram się od
     <div class="portfolio-slider" id="portfolioSlider">
             <!-- CARD -->
 
-      <a href="https://qrioapp.github.io/" class="portfolio-card">
+      <a href="https://gsexample.github.io/" class="portfolio-card">
 
         <div class="portfolio-image-wrap">
-          <img src="GTOOL MAKIETA copy.png" alt="">
+          <img src="fryzjer.png" alt="">
         </div>
 
         <div class="portfolio-content">
 
           <div class="portfolio-name">
             
-          G<span style="color: #6c82ff;">T</span>OOL
+          Strona internetowa dla salonu fryzjerskiego
           </div>
 
           <div class="portfolio-desc">
-            Darmowe narzędzia ułatwiające prace, pomagające w budowie biznesu.
+            Strona dla Fryzjera PROFESJONALNY PROJEKT SZABLONOWY
           </div>
 
           <div class="portfolio-link">
@@ -3052,7 +3126,7 @@ Daj znać, jakich informacji potrzebujesz lub nad czym pracujemy. Staram się od
       <a href="https://przewodnikpohelu.github.io/" class="portfolio-card">
 
         <div class="portfolio-image-wrap">
-          <img src="resPorPrzewodnik.jpg" alt="">
+          <img src="DanielKretkiewicz.png" alt="">
         </div>
 
         <div class="portfolio-content">
@@ -3062,7 +3136,7 @@ Daj znać, jakich informacji potrzebujesz lub nad czym pracujemy. Staram się od
           </div>
 
           <div class="portfolio-desc">
-            Strona w trakcie budowy
+            Strona Profesjonalnego przewodnika po połwyspie helskim i okolicach.
           </div>
 
           <div class="portfolio-link">
@@ -3091,8 +3165,8 @@ Daj znać, jakich informacji potrzebujesz lub nad czym pracujemy. Staram się od
             Strona dla Fryzjera PROJEKT DEMO
           </div>
 
-          <div class="portfolio-link" style="color: rgb(255, 208, 0);">
-            Wkrótce
+          <div class="portfolio-link" style="color: orangered;">
+            Chwilowo niedostępne
           </div>
 
         </div>
@@ -3117,8 +3191,8 @@ Daj znać, jakich informacji potrzebujesz lub nad czym pracujemy. Staram się od
             Strona dla MECHANIKA SAMOCHODOWEGO PROJEKT DEMO
           </div>
 
-          <div class="portfolio-link" style="color: rgb(255, 213, 0);">
-            Wkrótce
+          <div class="portfolio-link" style="color: orangered;">
+            Chwilowo niedostępne 
           </div>
 
         </div>
