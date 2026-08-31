@@ -3216,133 +3216,142 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 </script>
-    <script>
-const darkSection = document.getElementById('dark-section');
-
-function updateDarkSectionCurve() {
-    if (!darkSection) return;
-    const rect = darkSection.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
+<script>
+    const darkSection = document.getElementById('dark-section');
     const isMobile = window.innerWidth <= 768;
 
-    let progress = (windowHeight - rect.top) / windowHeight;
-    progress = Math.max(0, Math.min(1, progress));
+    function updateDarkSectionCurve() {
+        if (!darkSection) return;
+        const rect = darkSection.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
 
-    const baseRadius = isMobile ? 80 : 38;
-    const radiusMultiplier = isMobile ? 50 : 100;
-    const radiusX = baseRadius + (radiusMultiplier * progress);
-    const startY = isMobile ? (55 + (20 * progress)) : (45 + (30 * progress));
-    
-    if (rect.top <= windowHeight * 0.10) {
-        darkSection.style.clipPath = 'none';
-    } else {
-        let smoothness = Math.min(1, Math.max(0, (windowHeight * 0.10 - rect.top) / (windowHeight * 0.5) + 1));
-        let currentRadiusX = radiusX + (smoothness * 150);
-        let currentY = startY + (smoothness * 20);
-        darkSection.style.clipPath = `ellipse(${currentRadiusX}% ${100 * progress + (isMobile ? 10 : 20)}% at 50% ${currentY}%)`;
+        let progress = (windowHeight - rect.top) / windowHeight;
+        progress = progress < 0 ? 0 : (progress > 1 ? 1 : progress);
+
+        const baseRadius = isMobile ? 80 : 38;
+        const radiusMultiplier = isMobile ? 50 : 100;
+        const radiusX = baseRadius + (radiusMultiplier * progress);
+        const startY = isMobile ? (55 + (20 * progress)) : (45 + (30 * progress));
+        
+        if (rect.top <= windowHeight * 0.10) {
+            darkSection.style.clipPath = 'none';
+        } else {
+            let smoothness = (windowHeight * 0.10 - rect.top) / (windowHeight * 0.5) + 1;
+            smoothness = smoothness < 0 ? 0 : (smoothness > 1 ? 1 : smoothness);
+            
+            let currentRadiusX = radiusX + (smoothness * 150);
+            let currentY = startY + (smoothness * 20);
+            darkSection.style.clipPath = `ellipse(${currentRadiusX}% ${100 * progress + (isMobile ? 10 : 20)}% at 50% ${currentY}%)`;
+        }
     }
-}
 
-window.addEventListener('scroll', updateDarkSectionCurve, { passive: true });
-window.addEventListener('resize', updateDarkSectionCurve);
+    // Płynne throttlowanie scrolla za pomocą rAF
+    let ticking = false;
+    const navbarWrapper = document.getElementById('navbar-wrapper');
+    let lastScrollY = window.scrollY;
 
-        /* --- ANIMACJA H1 --- */
-        document.addEventListener('DOMContentLoaded', () => {
-            const heading = document.getElementById('animated-heading');
-            if (heading) {
-                const words = heading.innerText.split(' ');
-                heading.innerHTML = '';
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                updateDarkSectionCurve();
                 
-                const startDelay = 0.25;
-                const wordStagger = 0.045;
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                    navbarWrapper.classList.add('nav-hidden');
+                } else {
+                    navbarWrapper.classList.remove('nav-hidden');
+                }
+                lastScrollY = currentScrollY;
 
-                words.forEach((word, index) => {
-                    const span = document.createElement('span');
-                    span.classList.add('word');
-                    span.innerText = word + (index < words.length - 1 ? ' ' : '');
-                    span.style.animationDelay = `${startDelay + (index * wordStagger)}s`;
-                    heading.appendChild(span);
-                });
-            }
-            updateDarkSectionCurve();
-        });
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
 
-        /* --- STICKY NAV --- */
-        const navbarWrapper = document.getElementById('navbar-wrapper');
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const navMenu = document.getElementById('nav-menu');
+    window.addEventListener('resize', updateDarkSectionCurve);
 
-        let lastScrollY = window.scrollY;
+    /* --- ANIMACJA H1 --- */
+    document.addEventListener('DOMContentLoaded', () => {
+        const heading = document.getElementById('animated-heading');
+        if (heading) {
+            const words = heading.innerText.split(' ');
+            heading.innerHTML = '';
+            
+            const startDelay = 0.25;
+            const wordStagger = 0.045;
 
-        window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
+            words.forEach((word, index) => {
+                const span = document.createElement('span');
+                span.classList.add('word');
+                span.innerText = word + (index < words.length - 1 ? ' ' : '');
+                span.style.animationDelay = `${startDelay + (index * wordStagger)}s`;
+                heading.appendChild(span);
+            });
+        }
+        updateDarkSectionCurve();
+    });
 
-            if (currentScrollY > lastScrollY && currentScrollY > 50) {
-                navbarWrapper.classList.add('nav-hidden');
-            } else {
-                navbarWrapper.classList.remove('nav-hidden');
-            }
+    /* --- STICKY NAV (Inicjalizacja) --- */
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const navMenu = document.getElementById('nav-menu');
 
-            lastScrollY = currentScrollY;
-        });
+    hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
 
-        hamburgerBtn.addEventListener('click', () => {
-            hamburgerBtn.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
+    /* --- CANVAS SIATKI 2D (Zoptymalizowany pod mobile) --- */
+    const canvas = document.getElementById('grid-canvas');
+    const ctx = canvas.getContext('2d');
 
-        /* --- CANVAS SIATKI 2D --- */
-        const canvas = document.getElementById('grid-canvas');
-        const ctx = canvas.getContext('2d');
+    const CONFIG = {
+        spacing: isMobile ? 36 : 24,             // Rzadsza siatka na mobile = mniejsze obciążenie
+        springK: isMobile ? 0.03 : 0.05,           
+        damping: isMobile ? 0.85 : 0.82,           
+        waveSpeed: isMobile ? 0.015 : 0.04,         
+        mouseInfluence: isMobile ? 3 : 10,      
+        accentRadius: isMobile ? 40 : 75         
+    };
 
-        let isMobileDevice = window.innerWidth <= 768;
+    let width, height;
+    let nodes = [];
+    let mouse = { x: -1000, y: -1000, active: false };
+    let time = 0;
 
-        const CONFIG = {
-            spacing: isMobileDevice ? 32 : 24,             
-            springK: isMobileDevice ? 0.03 : 0.05,           
-            damping: isMobileDevice ? 0.88 : 0.82,           
-            waveSpeed: isMobileDevice ? 0.02 : 0.04,         
-            mouseInfluence: isMobileDevice ? 4 : 10,      
-            accentRadius: isMobileDevice ? 50 : 75         
-        };
+    class Node {
+        constructor(x, y, i, j) {
+            this.baseX = x;
+            this.baseY = y;
+            this.x = x;
+            this.y = y;
+            this.vx = 0;
+            this.vy = 0;
+            this.i = i;
+            this.j = j;
+        }
 
-        let width, height;
-        let nodes = [];
-        let mouse = { x: -1000, y: -1000, active: false };
-        let time = 0;
+        update(t) {
+            let waveX = Math.sin(t + this.i * 0.15) * (isMobile ? 0.3 : 0.8);
+            let waveY = Math.cos(t + this.j * 0.15) * (isMobile ? 0.3 : 0.8);
+            
+            let targetX = this.baseX + waveX;
+            let targetY = this.baseY + waveY;
 
-        class Node {
-            constructor(x, y, i, j) {
-                this.baseX = x;
-                this.baseY = y;
-                this.x = x;
-                this.y = y;
-                this.vx = 0;
-                this.vy = 0;
-                this.i = i;
-                this.j = j;
-            }
+            let fx = (targetX - this.x) * CONFIG.springK;
+            let fy = (targetY - this.y) * CONFIG.springK;
 
-            update(t) {
-                let waveX = Math.sin(t + this.i * 0.15) * (isMobileDevice ? 0.4 : 0.8);
-                let waveY = Math.cos(t + this.j * 0.15) * (isMobileDevice ? 0.4 : 0.8);
-                
-                let targetX = this.baseX + waveX;
-                let targetY = this.baseY + waveY;
+            this.vx = (this.vx + fx) * CONFIG.damping;
+            this.vy = (this.vy + fy) * CONFIG.damping;
 
-                let fx = (targetX - this.x) * CONFIG.springK;
-                let fy = (targetY - this.y) * CONFIG.springK;
+            this.x += this.vx;
+            this.y += this.vy;
 
-                this.vx = (this.vx + fx) * CONFIG.damping;
-                this.vy = (this.vy + fy) * CONFIG.damping;
-
-                this.x += this.vx;
-                this.y += this.vy;
-
+            if (!isMobile) {
                 let dx = this.x - mouse.x;
                 let dy = this.y - mouse.y;
                 let dist = Math.hypot(dx, dy);
-                let radius = isMobileDevice ? 60 : 100;
+                let radius = 100;
 
                 if (dist < radius && dist > 0) {
                     let force = (1 - dist / radius) * CONFIG.mouseInfluence;
@@ -3352,123 +3361,109 @@ window.addEventListener('resize', updateDarkSectionCurve);
                 }
             }
         }
+    }
 
-        function initGrid() {
-            isMobileDevice = window.innerWidth <= 768;
-            CONFIG.spacing = isMobileDevice ? 32 : 24;
+    function initGrid() {
+        width = canvas.width = window.innerWidth * window.devicePixelRatio;
+        height = canvas.height = window.innerHeight * window.devicePixelRatio;
+        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 
-            width = canvas.width = window.innerWidth * window.devicePixelRatio;
-            height = canvas.height = window.innerHeight * window.devicePixelRatio;
-            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        nodes = [];
+        const cols = Math.floor(window.innerWidth / CONFIG.spacing) + 2;
+        const rows = Math.floor(window.innerHeight / CONFIG.spacing) + 2;
 
-            nodes = [];
-            const cols = Math.floor(window.innerWidth / CONFIG.spacing) + 2;
-            const rows = Math.floor(window.innerHeight / CONFIG.spacing) + 2;
+        const offsetX = (window.innerWidth - (cols - 1) * CONFIG.spacing) / 2;
+        const offsetY = (window.innerHeight - (rows - 1) * CONFIG.spacing) / 2;
 
-            const offsetX = (window.innerWidth - (cols - 1) * CONFIG.spacing) / 2;
-            const offsetY = (window.innerHeight - (rows - 1) * CONFIG.spacing) / 2;
+        for (let i = 0; i < cols; i++) {
+            nodes[i] = [];
+            for (let j = 0; j < rows; j++) {
+                let x = offsetX + i * CONFIG.spacing;
+                let y = offsetY + j * CONFIG.spacing;
+                nodes[i][j] = new Node(x, y, i, j);
+            }
+        }
+    }
 
-            for (let i = 0; i < cols; i++) {
-                nodes[i] = [];
-                for (let j = 0; j < rows; j++) {
-                    let x = offsetX + i * CONFIG.spacing;
-                    let y = offsetY + j * CONFIG.spacing;
-                    nodes[i][j] = new Node(x, y, i, j);
-                }
+    // Limit klatek na mobile (ok. 30 FPS zamiast 60 FPS dla Canvas, co uwalnia procesor na scroll)
+    let lastCanvasTime = 0;
+    const canvasFPS = isMobile ? 30 : 60;
+    const canvasInterval = 1000 / canvasFPS;
+
+    function animate(currentTime) {
+        requestAnimationFrame(animate);
+
+        const delta = currentTime - lastCanvasTime;
+        if (delta < canvasInterval) return;
+        lastCanvasTime = currentTime - (delta % canvasInterval);
+
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        time += CONFIG.waveSpeed;
+
+        let computedStyles = getComputedStyle(document.documentElement);
+        let gridColor = computedStyles.getPropertyValue('--grid').trim();
+        let accentColor = computedStyles.getPropertyValue('--accent').trim();
+
+        const cols = nodes.length;
+        if (cols === 0) return;
+        const rows = nodes[0].length;
+
+        for (let i = 0; i < cols; i++) {
+            for (let j = 0; j < rows; j++) {
+                nodes[i][j].update(time);
             }
         }
 
-        function animate() {
-            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-            time += CONFIG.waveSpeed;
+        ctx.lineWidth = 1;
+        for (let i = 0; i < cols; i++) {
+            for (let j = 0; j < rows; j++) {
+                let node = nodes[i][j];
 
-            let computedStyles = getComputedStyle(document.documentElement);
-            let gridColor = computedStyles.getPropertyValue('--grid').trim();
-            let accentColor = computedStyles.getPropertyValue('--accent').trim();
-
-            const cols = nodes.length;
-            if (cols === 0) return;
-            const rows = nodes[0].length;
-
-            for (let i = 0; i < cols; i++) {
-                for (let j = 0; j < rows; j++) {
-                    nodes[i][j].update(time);
+                if (i < cols - 1) {
+                    drawLine(node, nodes[i + 1][j], gridColor, accentColor);
+                }
+                if (j < rows - 1) {
+                    drawLine(node, nodes[i][j + 1], gridColor, accentColor);
                 }
             }
-
-            ctx.lineWidth = 1;
-            for (let i = 0; i < cols; i++) {
-                for (let j = 0; j < rows; j++) {
-                    let node = nodes[i][j];
-
-                    if (i < cols - 1) {
-                        drawLine(node, nodes[i + 1][j], gridColor, accentColor);
-                    }
-                    if (j < rows - 1) {
-                        drawLine(node, nodes[i][j + 1], gridColor, accentColor);
-                    }
-                }
-            }
-
-            requestAnimationFrame(animate);
         }
+    }
 
-        function drawLine(p1, p2, defaultColor, accentColor) {
-            let midX = (p1.x + p2.x) / 2;
-            let midY = (p1.y + p2.y) / 2;
-            let distToMouse = Math.hypot(midX - mouse.x, midY - mouse.y);
+    function drawLine(p1, p2, defaultColor, accentColor) {
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.strokeStyle = defaultColor;
+        ctx.globalAlpha = 1.0;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+    }
 
-            ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        mouse.active = true;
+    });
 
-            if (distToMouse < CONFIG.accentRadius) {
-                let ratio = 1 - (distToMouse / CONFIG.accentRadius);
-                ctx.strokeStyle = accentColor;
-                ctx.globalAlpha = Math.min(0.35 + ratio * 0.65, 1.0);
-                ctx.lineWidth = 1 + ratio * 0.5;
-            } else {
-                ctx.strokeStyle = defaultColor;
-                ctx.globalAlpha = 1.0;
-                ctx.lineWidth = 1;
-            }
+    window.addEventListener('mouseleave', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+        mouse.active = false;
+    });
 
-            ctx.stroke();
-            ctx.globalAlpha = 1.0;
+    window.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 0) {
+            mouse.x = e.touches.length > 0 ? e.touches[0].clientX : -1000;
+            mouse.y = e.touches.length > 0 ? e.touches[0].clientY : -1000;
         }
+    }, { passive: true });
 
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-            mouse.active = true;
-        });
-
-        window.addEventListener('mouseleave', () => {
-            mouse.x = -1000;
-            mouse.y = -1000;
-            mouse.active = false;
-        });
-
-        window.addEventListener('touchmove', (e) => {
-            if (e.touches.length > 0) {
-                mouse.x = e.touches[0].clientX;
-                mouse.y = e.touches[0].clientY;
-                mouse.active = true;
-            }
-        }, { passive: true });
-
-        window.addEventListener('touchend', () => {
-            mouse.x = -1000;
-            mouse.y = -1000;
-            mouse.active = false;
-        });
-
-        window.addEventListener('resize', () => {
-            initGrid();
-        });
-
+    window.addEventListener('resize', () => {
         initGrid();
-        animate();
-    </script>
+    });
+
+    initGrid();
+    requestAnimationFrame(animate);
+</script>
 </body>
 </html>
