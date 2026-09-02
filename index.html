@@ -142,10 +142,9 @@
         }
 
         .nav-logo-icon {
-            width: 34px;
-            height: 34px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            background: var(--accent);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -690,6 +689,10 @@
                 clip-path: ellipse(120% 100% at 50% 100%);
             }
         }
+        a {
+            text-decoration: none;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -697,8 +700,9 @@
     <div class="navbar-wrapper" id="navbar-wrapper">
         <nav class="navbar">
             <div class="nav-left">
-                <div class="nav-logo-icon">O.</div>
-                <div class="nav-logo-text">Śliwiński.</div>
+                <div class="ok">
+                    <img class="nav-logo-icon" src="CzarneLogo.png" alt="">
+                </div>
             </div>
 
             <button class="hamburger" id="hamburger-btn" aria-label="Menu">
@@ -709,10 +713,12 @@
 
             <div class="nav-menu-container" id="nav-menu">
                 <ul class="nav-links">
-                    <li><a href="#">Główna</a></li>
-                    <li><a href="#sekcja-biala">Sekcja 1</a></li>
-                    <li><a href="#sekcja-czarna">Sekcja 2</a></li>
-                    <li><a href="#">Kontakt</a></li>
+                    <li><a href="glowna">Główna</a></li>
+                    <li><a href="sekcja-biala">Współpraca</a></li>
+                    <li><a href="sekcja-czarna">O mnie </a></li>
+                    <li><a href="pomarancz">Kontakt</a></li>
+                    <li><a href="kolejnabiala">Oferta</a></li>
+                    <li><a href="kolejnaczarna">Porftolio</a></li>
                 </ul>
             </div>
         </nav>
@@ -720,16 +726,15 @@
 
     <canvas id="grid-canvas"></canvas>
 
-    <div class="hero-section">
+    <div class="hero-section" id="glowna">
         <div class="center-container">
             <div class="social-proof-badge">
                 <div class="avatar-group">
-                    <img src="https://i.pravatar.cc/100?img=33" alt="Klient 1">
-                    <img src="https://i.pravatar.cc/100?img=12" alt="Klient 2">
-                    <img src="https://i.pravatar.cc/100?img=47" alt="Klient 3">
-                    <img src="https://i.pravatar.cc/100?img=68" alt="Klient 4">
+                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjXpANyd7D_AwivuxT7kQTz_T94ApQOnvYPW3g-BHkUTv_kDc5qh=w72-h72-p-rp-mo-br100" alt="Klient 1">
+                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjVBNDD0Xzuv7G6iQUfeXSfcGDFY7bF451eR59Mkex6sYEbWXCHjNg=w72-h72-p-rp-mo-ba12-br100" alt="Klient 2">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxuL7C5kd2bnjj8l889LC_jza9dkpis0TgXgT8R_cEhGMicntq9MLfcOU&s=10" alt="Klient 3">
                 </div>
-                <span class="social-proof-text">Zaufało nam ponad <strong>500 klientów!</strong></span>
+                <span class="social-proof-text">Zadowolenie i zaufanie klientów</span>
             </div>
 
             <h1 class="heading" id="animated-heading">
@@ -737,10 +742,11 @@
             </h1>
             
             <p class="subheading">
-                Fueling the world's most influential digital experiences with top-tier creative engineering and design craftsmanship.
+                Tworzę nowoczesne strony internetowe, które doskonale reprezentują Twoją markę w internecie i zmieniają odwiedzających w klientów.
             </p>
 
             <div class="cta-row">
+                <a href="#kolejnaczarna">
                 <button class="animated-button primary-btn">
                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
@@ -748,36 +754,41 @@
                     <span class="text">Zobacz portfolio</span>
                     <span class="arrow-circle">→</span>
                 </button>
+                </a>
 
+                <a href="#pomarancz">
                 <button class="experts-btn">
                     <span class="circle"></span>
                     <div class="expert-avatar-wrap">
-                        <div class="expert-avatar"><img src="https://i.pravatar.cc/100?img=60" alt="Expert"></div>
+                        <div class="expert-avatar"><img src="https://scontent-waw2-1.cdninstagram.com/v/t51.82787-19/567427777_17854308849555668_2258342897907653839_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=111&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy42MjQuQzMifQ%3D%3D&_nc_ohc=CYeXjVn70ioQ7kNvwG2AbqE&_nc_oc=Adq6d9ZZKbP5TrDG6eWnOs-RyjDEfvQPGyKBoc-pzvgMhxX9VZN3FzJZeeiQ1F44Zzk&_nc_zt=24&_nc_ht=scontent-waw2-1.cdninstagram.com&_nc_gid=wbExJNSzJjaPIXbkgrwEyA&_nc_ss=7b689&oh=00_AQJvEpzz1lrx8lkNUsOXXbTqP9lxCPYHw11p_Io8kcafJw&oe=6A9B9A5C" alt="Expert"></div>
                         <div class="online-dot"></div>
                     </div>
                     <span class="text">Szybka forma kontaktu</span>
                     <span class="experts-arrow">→</span>
                 </button>
+                </a>
             </div>
         </div>
 
         <div class="ticker-wrapper">
             <div class="ticker-track">
                 <div class="ticker-item">
-                    <span>TWORZENIE stron internetowych</span> <span class="dot">•</span>
-                    <span>pozycjonowanie stron internetowych</span> <span class="dot">•</span>
-                    <span>szybki kontakt</span> <span class="dot">•</span>
-                    <span>dobra cena</span> <span class="dot">•</span>
-                    <span>indywidualny projekt dla kazdej osoby</span> <span class="dot">•</span>
-                    <span>indywidualna wycena</span> <span class="dot">•</span>
+                    <span>NOWOCZESNE STRONY</span> <span class="dot">•</span>
+                    <span>WIZERUNEK W SIECI</span> <span class="dot">•</span>
+                    <span>POZYCJONOWANIE</span> <span class="dot">•</span>
+                    <span>SZYBKI KONTAKT</span> <span class="dot">•</span>
+                    <span>INDYWIDUALNY PROJEKT</span> <span class="dot">•</span>
+                    <span>RZETELNA WYCENA</span> <span class="dot">•</span>
+                    <span>BEZPOŚREDNIA WSPÓŁPRACA</span> <span class="dot">•</span>
                 </div>
                 <div class="ticker-item">
-                    <span>TWORZENIE stron internetowych</span> <span class="dot">•</span>
-                    <span>pozycjonowanie stron internetowych</span> <span class="dot">•</span>
-                    <span>szybki kontakt</span> <span class="dot">•</span>
-                    <span>dobra cena</span> <span class="dot">•</span>
-                    <span>indywidualny projekt dla kazdej osoby</span> <span class="dot">•</span>
-                    <span>indywidualna wycena</span> <span class="dot">•</span>
+                    <span>NOWOCZESNE STRONY</span> <span class="dot">•</span>
+                    <span>WIZERUNEK W SIECI</span> <span class="dot">•</span>
+                    <span>POZYCJONOWANIE</span> <span class="dot">•</span>
+                    <span>SZYBKI KONTAKT</span> <span class="dot">•</span>
+                    <span>INDYWIDUALNY PROJEKT</span> <span class="dot">•</span>
+                    <span>RZETELNA WYCENA</span> <span class="dot">•</span>
+                    <span>BEZPOŚREDNIA WSPÓŁPRACA</span> <span class="dot">•</span>
                 </div>
             </div>
         </div>
@@ -799,7 +810,7 @@
                 </div>
                 <div class="coop-footer">
                     <i class="fa-solid fa-stopwatch"></i>
-                    <span>CZAS</span>
+                    <span>~1-2dni</span>
                 </div>
             </div>
             <!-- 2. Akcentowy blok (Pomarańczowy) -->
@@ -814,7 +825,7 @@
                 </div>
                 <div class="coop-footer">
                     <i class="fa-solid fa-stopwatch"></i>
-                    <span>CZAS</span>
+                    <span>~2-3dni</span>
                 </div>
             </div>
             <!-- 3. Jasny blok -->
@@ -829,7 +840,7 @@
                 </div>
                 <div class="coop-footer">
                     <i class="fa-solid fa-stopwatch"></i>
-                    <span>CZAS</span>
+                    <span>~2-3tygodnie</span>
                 </div>
             </div>
             <!-- 4. Czarny blok -->
@@ -844,12 +855,13 @@
                 </div>
                 <div class="coop-footer">
                     <i class="fa-solid fa-stopwatch"></i>
-                    <span>CZAS</span>
+                    <span>...</span>
                 </div>
             </div>
         </div>
         
         <div class="coop-cta-row">
+            <a href="#pomarancz">
             <button class="animated-button primary-btn">
                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
@@ -857,6 +869,7 @@
                 <span class="text">Kontakt</span>
                 <span class="arrow-circle">→</span>
             </button>
+            </a>
         </div>
     </div>
 </section>
@@ -1062,42 +1075,38 @@ document.addEventListener("DOMContentLoaded", function() {
     <section class="incoming-dark-section" id="dark-section">
         <div class="about-center-box">
             
-            <!-- AWATAR -->
-            <div class="about-avatar-wrapper">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" alt="Gracjan Śliwiński" class="about-avatar">
+            <div class="about-avatar-wrapper fade-in-item">
+                <img src="https://scontent-waw2-1.cdninstagram.com/v/t51.82787-19/567427777_17854308849555668_2258342897907653839_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=111&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy42MjQuQzMifQ%3D%3D&_nc_ohc=CYeXjVn70ioQ7kNvwG2AbqE&_nc_oc=Adq6d9ZZKbP5TrDG6eWnOs-RyjDEfvQPGyKBoc-pzvgMhxX9VZN3FzJZeeiQ1F44Zzk&_nc_zt=24&_nc_ht=scontent-waw2-1.cdninstagram.com&_nc_gid=wbExJNSzJjaPIXbkgrwEyA&_nc_ss=7b689&oh=00_AQJvEpzz1lrx8lkNUsOXXbTqP9lxCPYHw11p_Io8kcafJw&oe=6A9B9A5C" alt="Gracjan Śliwiński" class="about-avatar">
             </div>
 
-            <!-- NAGŁÓWEK Z ANIMACJĄ (LOKALNIE JASNY POMARAŃCZ) -->
-            <h2 class="about-heading-center">
-                Tworzę strony jako <br>
+            <h2 class="about-heading-center fade-in-item">
+                Nazywam się Gracjan i<br>
                 <div class="loader-inline">
                     <div class="words">
-                        <span class="word">pasjonat</span>
-                        <span class="word">programista</span>
-                        <span class="word">kreatywny</span>
-                        <span class="word">optymalizator</span>
-                        <span class="word">pasjonat</span>
+                        <span class="word">projektuję strony</span>
+                        <span class="word">koduję strony</span>
+                        <span class="word">tworzę design</span>
+                        <span class="word">projektuję strony</span>
                     </div>
                 </div>
             </h2>
 
-            <!-- TEKST (3 ZDANIA -> ROZWIJANY DO 5) -->
-            <div class="about-text-content">
+            <div class="about-text-content fade-in-item">
                 <p class="about-p">
-                    Jestem pasjonatem nowoczesnych technologii oraz programowania, który pomaga markom wyróżnić się w sieci. Tworzę zaawansowane, szybkie i w pełni responsywne strony internetowe dopasowane do Ciebie. Każdy projekt realizuję z dbałością o najwyższe standardy oraz świetny design.
+                    Nazywam się Gracjan Śliwiński i jestem uczniem szkoły średniej. W wolnym czasie zajmuję się projektowaniem i tworzeniem stron internetowych od podstaw, przekształcając je w dopracowane wizualnie i funkcjonalnie projekty.
                 </p>
 
                 <div class="about-more-collapse" id="more-collapse">
                     <p class="about-p extra-space">
-                        Przez lata współpracy z klientami wypracowałem jasne zasady i pełny profesjonalizm. Zapewniam kompleksowe wsparcie od A do Z, dbając o każdy detal techniczny.
+                        Każdy projekt realizuję z pełnym zaangażowaniem, dbając o nowoczesny wygląd, responsywność oraz poprawność techniczną. Zapewniam indywidualne podejście do każdego zadania.
                     </p>
                 </div>
             </div>
 
-            <button class="text-expand-trigger" id="expand-trigger-btn">Rozwiń więcej ↓</button>
+            <button class="text-expand-trigger fade-in-item" id="expand-trigger-btn">Rozwiń więcej ↓</button>
 
-            <!-- PRZYCISK ZOBACZ PORTFOLIO -->
-            <div class="button-wrapper-center">
+            <div class="button-wrapper-center fade-in-item">
+                <a href="#kolejnaczarna">
                 <button class="animated-button primary-btn">
                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
@@ -1105,6 +1114,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <span class="text">Zobacz portfolio</span>
                     <span class="arrow-circle">→</span>
                 </button>
+                </a>
             </div>
 
         </div>
@@ -1112,7 +1122,6 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 
 <style>
-    /* Nadpisujemy lokalnie kolor akcentu tylko dla tej sekcji na jasny pomarańcz */
     #dark-section {
         --local-orange: #ff7b00; 
     }
@@ -1146,6 +1155,24 @@ document.addEventListener("DOMContentLoaded", function() {
         margin: 0 auto;
     }
 
+    /* --- PŁYNNY FADE IN --- */
+    .fade-in-item {
+        opacity: 0;
+        transform: translateY(35px);
+        transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-in-item.in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .about-avatar-wrapper.fade-in-item { transition-delay: 0.1s; }
+    .about-heading-center.fade-in-item { transition-delay: 0.2s; }
+    .about-text-content.fade-in-item { transition-delay: 0.3s; }
+    .text-expand-trigger.fade-in-item { transition-delay: 0.4s; }
+    .button-wrapper-center.fade-in-item { transition-delay: 0.5s; }
+
     /* --- AWATAR --- */
     .about-avatar-wrapper {
         margin-bottom: 28px;
@@ -1163,27 +1190,28 @@ document.addEventListener("DOMContentLoaded", function() {
     /* --- NAGŁÓWEK --- */
     .about-heading-center {
         font-family: "Manrope", sans-serif;
-        font-size: clamp(42px, 5.5vw, 76px);
-        line-height: 1.1;
+        font-size: clamp(30px, 4vw, 56px);
+        line-height: 1.25;
         font-weight: 800;
-        letter-spacing: -2.5px;
+        letter-spacing: -1.5px;
         color: #ffffff;
         margin-bottom: 36px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 6px;
     }
 
-    /* --- LOADER UIVERSE W JASNYM POMARAŃCZU --- */
+    /* --- LOADER DLA KRÓTKICH FRAZ --- */
     .loader-inline {
         color: var(--local-orange);
         font-family: "Manrope", sans-serif;
         font-weight: 800;
-        height: 1.15em;
+        height: 1.25em;
         display: inline-flex;
         overflow: hidden;
         position: relative;
+        vertical-align: bottom;
     }
 
     .words {
@@ -1210,19 +1238,19 @@ document.addEventListener("DOMContentLoaded", function() {
         display: block;
         height: 100%;
         padding: 0 6px;
-        color: var(--local-orange); /* Jasny pomarańcz */
-        animation: spin_4991 12s infinite;
+        color: var(--local-orange);
+        animation: spin_short 9s infinite cubic-bezier(0.77, 0, 0.175, 1);
+        white-space: nowrap;
     }
 
-    @keyframes spin_4991 {
-        0%, 20% { transform: translateY(0); }
-        25%, 45% { transform: translateY(-102%); }
-        50%, 70% { transform: translateY(-202%); }
-        75%, 95% { transform: translateY(-302%); }
-        100% { transform: translateY(-400%); }
+    @keyframes spin_short {
+        0%, 25% { transform: translateY(0); }          /* projektuję strony */
+        33%, 58% { transform: translateY(-102%); }     /* koduję aplikacje */
+        66%, 91% { transform: translateY(-202%); }     /* tworzę design */
+        98%, 100% { transform: translateY(-300%); }    /* bezpieczny skok do resetu */
     }
 
-    /* --- TEKST APPLE STYLE --- */
+    /* --- TEKST --- */
     .about-text-content {
         max-width: 740px;
         margin-bottom: 20px;
@@ -1278,20 +1306,41 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 </style>
-<script>
-    const expandTrigger = document.getElementById('expand-trigger-btn');
-    const moreCollapse = document.getElementById('more-collapse');
 
-    if (expandTrigger && moreCollapse) {
-        expandTrigger.addEventListener('click', function() {
-            moreCollapse.classList.toggle('show');
-            if (moreCollapse.classList.contains('show')) {
-                expandTrigger.textContent = 'Zwiń tekst ↑';
-            } else {
-                expandTrigger.textContent = 'Rozwiń więcej ↓';
-            }
-        });
-    }
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const expandTrigger = document.getElementById('expand-trigger-btn');
+        const moreCollapse = document.getElementById('more-collapse');
+
+        if (expandTrigger && moreCollapse) {
+            expandTrigger.addEventListener('click', function() {
+                moreCollapse.classList.toggle('show');
+                if (moreCollapse.classList.contains('show')) {
+                    expandTrigger.textContent = 'Zwiń tekst ↑';
+                } else {
+                    expandTrigger.textContent = 'Rozwiń więcej ↓';
+                }
+            });
+        }
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -50px 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observerInstance) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observerInstance.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const fadeItems = document.querySelectorAll('.fade-in-item');
+        fadeItems.forEach(item => observer.observe(item));
+    });
 </script>
 
 
@@ -1310,7 +1359,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 <!-- === SEKCJA 1: POMARAŃCZOWA === -->
-<div class="orange-section-wrapper" id="sekcja-pomaranczowa">
+<div class="orange-section-wrapper" id="pomarancz">
     <section class="incoming-orange-section" id="orange-section-anim">
         <div class="about-center-box-orange">
             
@@ -1326,7 +1375,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             <span class="inline-input-wrapper">
                                 <input type="text" id="p-name" placeholder="Twoje imię" required autocomplete="off">
                             </span>
-                            chciałbym napisać maila odnośnie
+                            chcę napisać maila odnośnie
                             <span class="inline-input-wrapper">
                                 <input type="text" id="p-subject" placeholder="temat współpracy" required autocomplete="off">
                             </span>.
@@ -1354,7 +1403,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         </button>
 
                         <div class="pinterest-side-actions">
-                            <a href="https://wa.me/48123456789" target="_blank" rel="noopener noreferrer" class="contact-action-badge whatsapp-badge" title="Napisz na WhatsApp">
+                            <a href="https://wa.me/48881530022" target="_blank" rel="noopener noreferrer" class="contact-action-badge whatsapp-badge" title="Napisz na WhatsApp">
                                 <div class="badge-icon-box">
                                     <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
                                 </div>
@@ -1368,7 +1417,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 <span>E-mail</span>
                             </a>
 
-                            <a href="tel:+48123456789" class="contact-action-badge phone-badge" title="Zadzwoń">
+                            <a href="tel:+48881530022" class="contact-action-badge phone-badge" title="Zadzwoń">
                                 <div class="badge-icon-box">
                                     <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                                 </div>
@@ -1557,19 +1606,20 @@ document.addEventListener("DOMContentLoaded", function() {
         color: #111111;
     }
 
+    /* --- DOLNY RZĄD Z PRZYCISKAMI --- */
     .pinterest-bottom-row {
         margin-top: 50px;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
+        align-items: stretch;
         width: 100%;
-        flex-wrap: wrap;
-        gap: 25px;
+        gap: 20px;
     }
 
     .pinterest-send-btn {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 12px;
         background-color: #111111;
         color: #ffffff;
@@ -1582,10 +1632,11 @@ document.addEventListener("DOMContentLoaded", function() {
         cursor: pointer;
         transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
         box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        width: 100%;
     }
 
     .pinterest-send-btn:hover {
-        transform: translateY(-3px) scale(1.02);
+        transform: translateY(-3px) scale(1.01);
         background-color: #000000;
         box-shadow: 0 15px 35px rgba(0,0,0,0.25);
     }
@@ -1606,38 +1657,43 @@ document.addEventListener("DOMContentLoaded", function() {
         transform: translateX(3px);
     }
 
+    /* --- 3 PRZYCISKI OBOK SIEBIE (W JEDNYM RZĘDZIE) --- */
     .pinterest-side-actions {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         gap: 12px;
-        flex-wrap: wrap;
+        width: 100%;
     }
 
     .contact-action-badge {
         display: inline-flex;
         align-items: center;
-        gap: 10px;
+        justify-content: center;
+        gap: 8px;
         background: rgba(17, 17, 17, 0.05);
         color: #111111;
-        padding: 8px 16px 8px 8px;
+        padding: 10px 12px;
         border-radius: 35px;
         font-family: "Manrope", sans-serif;
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 600;
         text-decoration: none;
         transition: background-color 0.35s ease, color 0.35s ease, transform 0.3s ease, box-shadow 0.3s ease;
         border: 1px solid rgba(17, 17, 17, 0.1);
+        white-space: nowrap;
     }
 
     .badge-icon-box {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 30px;
-        height: 30px;
+        width: 26px;
+        height: 26px;
         background: #111111;
         color: #ffffff;
         border-radius: 50%;
         transition: background-color 0.35s ease, color 0.35s ease, transform 0.3s ease;
+        flex-shrink: 0;
     }
 
     .contact-action-badge:hover {
@@ -1656,67 +1712,6 @@ document.addEventListener("DOMContentLoaded", function() {
     .contact-action-badge.whatsapp-badge:hover .badge-icon-box {
         background: #ffffff;
         color: #25d366;
-    }
-
-    /* --- SEKCJA 2 (BIAŁA Z POMARAŃCZOWYM TŁEM W TLE) --- */
-    .white-section-outer-wrapper {
-        position: relative;
-        z-index: 35;
-        background-color: #ff7b00; /* Pomarańczowe tło widoczne na zewnątrz */
-        width: 100%;
-        padding: 60px 0;
-    }
-
-    .incoming-white-section {
-        position: relative;
-        background-color: #ffffff; /* Białe tło samej sekcji */
-        color: #111111;
-        min-height: 80vh;
-        padding: 120px 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border-radius: 40px;
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-
-    .about-center-box-white {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        max-width: 1000px;
-        width: 100%;
-        margin: 0 auto;
-    }
-
-    .about-heading-white {
-        font-family: "Manrope", sans-serif;
-        font-size: clamp(42px, 5.5vw, 74px);
-        line-height: 1.1;
-        font-weight: 800;
-        letter-spacing: -2.5px;
-        color: #111111;
-        margin-bottom: 40px;
-        text-align: center;
-    }
-
-    .white-content-layout {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        max-width: 850px;
-    }
-
-    .white-sentence-line {
-        font-family: "Manrope", sans-serif;
-        font-size: clamp(20px, 2.4vw, 28px);
-        line-height: 1.8;
-        font-weight: 500;
-        color: #333333;
-        margin: 0;
     }
 
     /* --- DESIGN POPUPU --- */
@@ -1898,32 +1893,18 @@ document.addEventListener("DOMContentLoaded", function() {
         box-shadow: 0 12px 25px rgba(255, 123, 0, 0.3);
     }
 
-    @media (max-width: 900px) {
-        .pinterest-bottom-row {
-            flex-direction: column;
-            align-items: stretch;
-        }
-        .pinterest-side-actions {
-            justify-content: center;
-        }
-    }
-
+    /* --- MOBILNE DOPASOWANIE (PEŁNA SZEROKOŚĆ INPUTÓW W LINII BEZ ŁAMANIA) --- */
     @media (max-width: 768px) {
         .incoming-orange-section {
             padding: 100px 20px;
         }
+        .inline-input-wrapper {
+            display: inline-block;
+            width: 100%;
+            margin: 4px 0;
+        }
         .inline-input-wrapper.wide {
             width: 100%;
-            display: inline-block;
-            margin: 8px 0;
-        }
-        .pinterest-side-actions {
-            flex-direction: column;
-        }
-        .contact-action-badge {
-            width: 100%;
-            justify-content: center;
-            padding: 10px;
         }
         .msg-popup-container {
             padding: 25px;
@@ -1935,6 +1916,21 @@ document.addEventListener("DOMContentLoaded", function() {
         .msg-popup-cancel, .msg-popup-save-btn {
             width: 100%;
             justify-content: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .contact-action-badge {
+            font-size: 11px;
+            padding: 8px 6px;
+        }
+        .badge-icon-box {
+            width: 22px;
+            height: 22px;
+        }
+        .badge-icon-box svg {
+            width: 12px;
+            height: 12px;
         }
     }
 </style>
@@ -2004,7 +2000,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const recipientEmail = "gracjan.sliwinski.gs@gmail.com";
             const emailSubject = encodeURIComponent(`Wiadomość od: ${senderName} - Temat: ${senderSubject}`);
-            const emailBody = encodeURIComponent(`Cześć,\n\nMam na imię ${senderName}.\nChciałbym napisać o: ${senderSubject}.\n\nTreść wiadomości:\n${senderMessage}\n\nMój adres e-mail: ${senderEmail}`);
+            const emailBody = encodeURIComponent(`Cześć,\n\nMam na imię ${senderName}.\nChcę napisać o: ${senderSubject}.\n\nTarcza wiadomości / Treść:\n${senderMessage}\n\nMój adres e-mail: ${senderEmail}`);
 
             window.location.href = `mailto:${recipientEmail}?subject=${emailSubject}&body=${emailBody}`;
         });
@@ -2071,43 +2067,40 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePageScrollAnimations();
 });
 </script>
-<!-- === SEKCJA 2: BIAŁA (DOKŁADNA KOPIA) === -->
-<div class="white-section-wrapper-copy" id="sekcja-biala-kopia">
+<div class="white-section-wrapper-copy" id="kolejnabiala">
     <section class="incoming-white-section-copy" id="white-section-anim-copy">
         <div class="about-center-box-white-copy">
             
-            <!-- WIĘKSZY CZARNY NAGŁÓWEK NAD KARTAMI -->
-            <div class="coop-header-box-top">
+            <div class="coop-header-box-top white-scroll-item-copy" style="--stagger: 1;">
                 <h2 class="coop-heading-black">Wybierz najlepszą ofertę</h2>
             </div>
             
             <div class="coop-grid-two">
-                <!-- 1. Pakiet Standard -->
-                <div class="coop-card" style="--card-bg: #f4f4f5; --card-color: #111111;">
+                <div class="coop-card white-scroll-item-copy" style="--stagger: 2; --card-bg: #f4f4f5; --card-color: #111111;">
                     <div class="coop-card-top">
                         <div class="coop-number">01</div>
                         <div class="coop-icon" style="background: rgba(0,0,0,0.06);"><i class="fa-solid fa-seedling"></i></div>
                     </div>
                     <div class="coop-content">
-                        <h3>Pakiet Standard</h3>
-                        <p>Idealne rozwiązanie dla mniejszych projektów, wizytówek oraz osób startujących w sieci.</p>
+                        <h3>Pakiet One-Page</h3>
+                        <p>Gotowy, sprawdzony szablon One-Page – tańsze i szybsze rozwiązanie dla Twojego biznesu.</p>
                         
                         <div class="coop-features-list">
                             <div class="feature-item">
                                 <span class="feature-check"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                                <span>Indywidualny projekt graficzny dopasowany do marki</span>
+                                <span>Wykorzystanie Twojego gotowego, sprawdzonego szablonu</span>
                             </div>
                             <div class="feature-item">
                                 <span class="feature-check"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                                <span>Pełna responsywność (Mobile / Desktop)</span>
+                                <span><strong>Stała struktura:</strong> bez zmieniania, dodawania czy odejmowania podstron</span>
                             </div>
                             <div class="feature-item">
                                 <span class="feature-check"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                                <span>Podstawowa optymalizacja pod wyszukiwarki</span>
+                                <span>Pełna personalizacja: wymiana zdjęć, grafik i tekstów</span>
                             </div>
                             <div class="feature-item">
                                 <span class="feature-check green"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                                <span><strong>Haczyk:</strong> Brak opłat za hosting przez pierwsze 12 miesięcy</span>
+                                <span><strong>W cenie:</strong> dokładnie 2 darmowe poprawki</span>
                             </div>
                         </div>
                     </div>
@@ -2123,32 +2116,31 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
-                <!-- 2. Pakiet Pro (Akcentowy) -->
-                <div class="coop-card" style="--card-bg: #ff5a1f; --card-color: #ffffff;">
+                <div class="coop-card white-scroll-item-copy" style="--stagger: 3; --card-bg: #ff5a1f; --card-color: #ffffff;">
                     <div class="coop-card-top">
                         <div class="coop-number">02</div>
                         <div class="coop-icon" style="background: rgba(255,255,255,0.2);"><i class="fa-solid fa-rocket"></i></div>
                     </div>
                     <div class="coop-content">
-                        <h3>Pakiet Pro</h3>
-                        <p>Zaawansowany projekt dla firm szukających profesjonalnego wizerunku i maksymalnej konwersji.</p>
+                        <h3>Projekt Indywidualny</h3>
+                        <p>Strona tworzona w 100% od zera, skrojona pod precyzyjne wytyczne i wymagania.</p>
                         
                         <div class="coop-features-list light-mode">
                             <div class="feature-item">
                                 <span class="feature-check"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                                <span>Wszystko z pakietu Standard + rozbudowane funkcje</span>
+                                <span>Projekt i kodowanie od podstaw pod Twoją markę</span>
                             </div>
                             <div class="feature-item">
                                 <span class="feature-check"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                                <span>Zaawansowana optymalizacja prędkości ładowania</span>
+                                <span><strong>Dokładnie 5 podstron</strong> zaprojektowanych dedykowanie</span>
                             </div>
                             <div class="feature-item">
                                 <span class="feature-check"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                                <span>Indywidualne animacje i systemy CRM</span>
+                                <span>Pełna swoboda w strukturze, funkcjach i animacjach</span>
                             </div>
                             <div class="feature-item">
                                 <span class="feature-check green-light"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                                <span><strong>Haczyk:</strong> Kompleksowy audyt SEO i wdrożenie gratis!</span>
+                                <span><strong>W cenie:</strong> aż 5 darmowych poprawek</span>
                             </div>
                         </div>
                     </div>
@@ -2169,6 +2161,19 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <style>
+    /* --- BAZOWE STYLE KASKADOWE DLA BIAŁEJ KOPII --- */
+    .white-scroll-item-copy {
+        opacity: 0;
+        transform: translateY(35px);
+        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        transition-delay: calc(var(--stagger, 1) * 0.12s);
+    }
+
+    .white-scroll-item-copy.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
     /* --- NAGŁÓWEK (ZNACZNIE WIĘKSZY I CZARNY) --- */
     .coop-header-box-top {
         position: relative !important;
@@ -2446,84 +2451,79 @@ document.addEventListener('DOMContentLoaded', () => {
     updateWhiteSectionCurveCopy();
 });
 </script>
-<div class="por-section-wrapper" id="por-sekcja-czarna">
+<div class="por-section-wrapper" id="kolejnaczarna">
     <section class="por-incoming-section" id="por-section-anim">
         <div class="por-center-box">
             
             <div class="por-header-box" id="por-custom-header">
-                <h2 class="por-heading por-reveal" style="--delay: 0s;">Nasze wybrane realizacje</h2>
+                <h2 class="por-heading por-reveal" style="delay: 0s;">Moje wybrane realizacje</h2>
             </div>
             
-            <!-- Kontener galerii / gridu -->
             <div class="por-gallery-container">
                 <div class="por-projects-grid" id="porProjectsTrack">
                     
-                    <!-- KARTA 1 (Boczna - ciemniejsza) -->
-                    <div class="por-project-card por-card-side por-reveal" style="--delay: 0.15s;">
-                        <a href="LINK_DO_PROJEKTU_1" class="por-card-main-link" target="_blank" rel="noopener" aria-label="Zobacz projekt 1">
+                    <div class="por-project-card por-card-side por-reveal" style="delay: 0.15s;">
+                        <a href="https://trenujzesliwka.pl" class="por-card-main-link" target="_blank" rel="noopener" aria-label="Zobacz projekt Trenuj ze śliwką">
                             <div class="por-card-image-wrapper">
-                                <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=900&q=80" alt="Projekt 1" class="por-card-img" loading="lazy">
+                                <img src="trenujzesliwkaWWW.jpg" alt="Trenuj ze śliwką" class="por-card-img" loading="lazy">
                                 <div class="por-card-overlay"></div>
                             </div>
                         </a>
                         <div class="por-card-content">
                             <div class="por-card-top-bar">
                                 <span class="por-card-number">01</span>
-                                <a href="LINK_DO_PROJEKTU_1" class="por-card-icon-box" target="_blank" rel="noopener" title="Otwórz w nowej karcie">
+                                <a href="https://trenujzesliwka.pl" class="por-card-icon-box" target="_blank" rel="noopener" title="Otwórz w nowej karcie">
                                     <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                                 </a>
                             </div>
-                            <span class="por-card-tag">E-commerce • 2026</span>
-                            <h3 class="por-card-title">Nazwa Pierwszego Projektu</h3>
-                            <p class="por-card-desc">Krótki, konkretny opis tego, co zostało zrobione i jakie rezultaty przyniosła strona.</p>
+                            <span class="por-card-tag">Fitness • 2026</span>
+                            <h3 class="por-card-title">Trenuj ze śliwką</h3>
+                            <p class="por-card-desc">Dynamiczna strona dla trenera personalnego, pakiety i łatwy kontakt.</p>
                         </div>
                     </div>
 
-                    <!-- KARTA 2 (Środkowa - pomarańczowa / główna) -->
-                    <div class="por-project-card por-card-center-accent por-reveal" style="--delay: 0.3s;">
-                        <a href="LINK_DO_PROJEKTU_2" class="por-card-main-link" target="_blank" rel="noopener" aria-label="Zobacz projekt 2">
+                    <div class="por-project-card por-card-center-accent por-reveal" style="delay: 0.3s;">
+                        <a href="https://przewodnikpohelu.pl" class="por-card-main-link" target="_blank" rel="noopener" aria-label="Zobacz projekt Przewodnik po Helu">
                             <div class="por-card-image-wrapper">
-                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="Projekt 2" class="por-card-img" loading="lazy">
+                                <img src="DanielKretkiewicz.png" alt="Przewodnik po Helu" class="por-card-img" loading="lazy">
                                 <div class="por-card-overlay"></div>
                             </div>
                         </a>
                         <div class="por-card-content">
                             <div class="por-card-top-bar">
                                 <span class="por-card-number">02</span>
-                                <a href="LINK_DO_PROJEKTU_2" class="por-card-icon-box" target="_blank" rel="noopener" title="Otwórz w nowej karcie">
+                                <a href="https://przewodnikpohelu.pl" class="por-card-icon-box" target="_blank" rel="noopener" title="Otwórz w nowej karcie">
                                     <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                                 </a>
                             </div>
-                            <span class="por-card-tag">Strona Korporacyjna • 2026</span>
-                            <h3 class="por-card-title">Nazwa Drugiego Projektu</h3>
-                            <p class="por-card-desc">Krótki, konkretny opis tego, co zostało zrobione i jakie rezultaty przyniosła strona.</p>
+                            <span class="por-card-tag">Przewodnik turystyczny • 2026</span>
+                            <h3 class="por-card-title">Przewodnik po Helu</h3>
+                            <p class="por-card-desc">Kompleksowy serwis turystyczny pełny atrakcji, pięknych kadrów i przydatnych informacji.</p>
                         </div>
                     </div>
 
-                    <!-- KARTA 3 (Boczna - ciemniejsza) -->
-                    <div class="por-project-card por-card-side por-reveal" style="--delay: 0.45s;">
-                        <a href="LINK_DO_PROJEKTU_3" class="por-card-main-link" target="_blank" rel="noopener" aria-label="Zobacz projekt 3">
+                    <div class="por-project-card por-card-side por-reveal" style="delay: 0.45s;">
+                        <a href="LINK_DO_NAJNOWSZEGO_SZABLONU" class="por-card-main-link" target="_blank" rel="noopener" aria-label="Zobacz najnowszy autorski szablon">
                             <div class="por-card-image-wrapper">
-                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Projekt 3" class="por-card-img" loading="lazy">
+                                <img src="fryzjer.png" alt="Najnowszy szablon autorski" class="por-card-img" loading="lazy">
                                 <div class="por-card-overlay"></div>
                             </div>
                         </a>
                         <div class="por-card-content">
                             <div class="por-card-top-bar">
                                 <span class="por-card-number">03</span>
-                                <a href="LINK_DO_PROJEKTU_3" class="por-card-icon-box" target="_blank" rel="noopener" title="Otwórz w nowej karcie">
+                                <a href="https://gsexample.github.io" class="por-card-icon-box" target="_blank" rel="noopener" title="Otwórz w nowej karcie">
                                     <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                                 </a>
                             </div>
-                            <span class="por-card-tag">Web App / UI • 2026</span>
-                            <h3 class="por-card-title">Nazwa Trzeciego Projektu</h3>
-                            <p class="por-card-desc">Krótki, konkretny opis tego, co zostało zrobione i jakie rezultaty przyniosła strona.</p>
+                            <span class="por-card-tag">Autorski Szablon • 2026</span>
+                            <h3 class="por-card-title">Salon fryzjerski</h3>
+                            <p class="por-card-desc">Nowoczesny system wizualny oparty na unikalnych animacjach i maksymalnej wydajności.</p>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- Interaktywne kropki paginacji dla mobile -->
                 <div class="por-dots-container" id="porDotsContainer">
                     <button class="por-dot active" data-index="0" aria-label="Przejdź do projektu 1"></button>
                     <button class="por-dot" data-index="1" aria-label="Przejdź do projektu 2"></button>
@@ -2549,7 +2549,6 @@ document.addEventListener('DOMContentLoaded', () => {
         background-color: #080808;
         color: #ffffff;
         min-height: 100vh;
-        /* Jeszcze większy margines wewnętrzny od góry i dołu */
         padding: 260px 20px;
         display: flex;
         flex-direction: column;
@@ -2812,14 +2811,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     @media (max-width: 768px) {
         .por-incoming-section {
-            /* Zwiększony margines także na mobile */
             padding: 160px 16px;
         }
         .por-header-box {
             margin-bottom: 35px;
         }
         
-        /* Wyłączenie animacji fade na mobile */
         .por-reveal {
             opacity: 1 !important;
             transform: none !important;
@@ -2910,7 +2907,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let smoothFactor = Math.min(1, Math.max(0, (winHeight * 0.10 - rect.top) / (winHeight * 0.5) + 1));
             let finalRadiusX = calculatedRadiusX + (smoothFactor * 150);
             let finalYPos = initialYPos + (smoothFactor * 20);
-            targetSection.style.clipPath = `ellipse(${finalRadiusX}% ${100 * progressVal + (isSmallScreen ? 10 : 20)}% at 50% ${finalYPos}%)`;
+            targetSection.style.clipPath = 'ellipse(' + finalRadiusX + '% ' + (100 * progressVal + (isSmallScreen ? 10 : 20)) + '% at 50% ' + finalYPos + '%)';
         }
     }
 
@@ -3108,7 +3105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <!-- Lewa strona: Zastrzeżenie praw autorskich -->
         <div class="footer-left">
             <p class="footer-copyright">
-                © <span id="footerYear">2026</span> Nazwa Firmy / Marki. Wszelkie prawa zastrzeżone.
+                © <span id="footerYear">2026</span> Gracjan Śliwiński. Wszelkie prawa zastrzeżone.
             </p>
         </div>
 
@@ -3217,6 +3214,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 </script>
 <script>
+    // Automatyczna aktualizacja bieżącego roku w stopce
+    document.addEventListener('DOMContentLoaded', () => {
+        const yearSpan = document.getElementById('footerYear');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+    });
+
     const darkSection = document.getElementById('dark-section');
     const isMobile = window.innerWidth <= 768;
 
@@ -3301,17 +3306,17 @@ document.addEventListener('DOMContentLoaded', () => {
         navMenu.classList.toggle('active');
     });
 
-    /* --- CANVAS SIATKI 2D (Zoptymalizowany pod mobile) --- */
+    /* --- CANVAS SIATKI 2D --- */
     const canvas = document.getElementById('grid-canvas');
     const ctx = canvas.getContext('2d');
 
     const CONFIG = {
-        spacing: isMobile ? 36 : 24,             // Rzadsza siatka na mobile = mniejsze obciążenie
+        spacing: isMobile ? 36 : 24,             
         springK: isMobile ? 0.03 : 0.05,           
         damping: isMobile ? 0.85 : 0.82,           
         waveSpeed: isMobile ? 0.015 : 0.04,         
         mouseInfluence: isMobile ? 3 : 10,      
-        accentRadius: isMobile ? 40 : 75         
+        accentRadius: isMobile ? 50 : 75         
     };
 
     let width, height;
@@ -3385,7 +3390,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Limit klatek na mobile (ok. 30 FPS zamiast 60 FPS dla Canvas, co uwalnia procesor na scroll)
     let lastCanvasTime = 0;
     const canvasFPS = isMobile ? 30 : 60;
     const canvasInterval = 1000 / canvasFPS;
@@ -3429,14 +3433,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Przywrócona obsługa podświetlenia akcentowego (pomarańczowego) wokół kursora/dotyku
     function drawLine(p1, p2, defaultColor, accentColor) {
+        let midX = (p1.x + p2.x) / 2;
+        let midY = (p1.y + p2.y) / 2;
+        let distToMouse = Math.hypot(midX - mouse.x, midY - mouse.y);
+
         ctx.beginPath();
         ctx.moveTo(p1.x, p1.y);
         ctx.lineTo(p2.x, p2.y);
-        ctx.strokeStyle = defaultColor;
-        ctx.globalAlpha = 1.0;
-        ctx.lineWidth = 1;
+
+        if (distToMouse < CONFIG.accentRadius) {
+            let ratio = 1 - (distToMouse / CONFIG.accentRadius);
+            ctx.strokeStyle = accentColor;
+            ctx.globalAlpha = Math.min(0.35 + ratio * 0.65, 1.0);
+            ctx.lineWidth = 1 + ratio * 0.5;
+        } else {
+            ctx.strokeStyle = defaultColor;
+            ctx.globalAlpha = 1.0;
+            ctx.lineWidth = 1;
+        }
+
         ctx.stroke();
+        ctx.globalAlpha = 1.0;
     }
 
     window.addEventListener('mousemove', (e) => {
@@ -3453,10 +3472,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('touchmove', (e) => {
         if (e.touches.length > 0) {
-            mouse.x = e.touches.length > 0 ? e.touches[0].clientX : -1000;
-            mouse.y = e.touches.length > 0 ? e.touches[0].clientY : -1000;
+            mouse.x = e.touches[0].clientX;
+            mouse.y = e.touches[0].clientY;
+            mouse.active = true;
         }
     }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+        mouse.active = false;
+    });
 
     window.addEventListener('resize', () => {
         initGrid();
