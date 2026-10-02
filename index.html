@@ -3491,5 +3491,114 @@ document.addEventListener('DOMContentLoaded', () => {
     initGrid();
     requestAnimationFrame(animate);
 </script>
+
+
+<!-- Link do biblioteki Lenis (wymagany do płynnego scrolla) -->
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+<script>
+  (() => {
+    const initScrollSystem = () => {
+      let lenis = null;
+
+      // Próba uruchomienia Lenis z zabezpieczeniem typu try-catch (głównie pod mobile/błędy)
+      try {
+        // Jeśli biblioteka się nie załadowała z CDN, wyrzuć błąd do bloku catch
+        if (typeof Lenis === 'undefined') {
+          throw new Error('Lenis niedostępny');
+        }
+
+        lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          wheelMultiplier: 1,
+          touchMultiplier: 1.5,
+          infinite: false,
+        });
+
+        function raf(time) {
+          if (lenis) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+          }
+        }
+        requestAnimationFrame(raf);
+
+      } catch (error) {
+        // === ZABEZPIECZENIE (FALLBACK) ===
+        // Jeśli wystąpi jakikolwiek błąd (np. na mobile), informujemy konsolę
+        // i przywracamy domyślny, bezpieczny scroll przeglądarki.
+        console.warn('Lenis napotkano błąd lub brak biblioteki. Przełączam na natywny scroll.', error);
+        document.documentElement.style.scrollBehavior = 'smooth';
+        lenis = null;
+      }
+
+      // Wspólna obsługa efektów (paralaksy, navbar itp.) działająca zarówno dla Lenis, jak i natywnego scrolla
+      const heroBg = document.getElementById('heroBg');
+      const parallaxImages = document.querySelectorAll('.parallax-img');
+      const mainNav = document.getElementById('mainNav');
+
+      const handleScrollEffects = (scrollY) => {
+        // Efekt tła Hero
+        if (heroBg && window.innerHeight) {
+          if (scrollY < window.innerHeight * 1.5) {
+            heroBg.style.transform = `translate3d(0, ${scrollY * 0.25}px, 0)`;
+          }
+        }
+
+        // Efekt paralaksy obrazów w kartach
+        if (parallaxImages.length > 0) {
+          parallaxImages.forEach(img => {
+            const card = img.closest('.project-card');
+            if (!card) return;
+            const rect = card.getBoundingClientRect();
+
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+              const cardCenter = rect.top + rect.height / 2;
+              const windowCenter = window.innerHeight / 2;
+              const distanceFromCenter = cardCenter - windowCenter;
+              const translateY = distanceFromCenter * 0.08;
+
+              img.style.transform = `translate3d(0, ${translateY}px, 0)`;
+            }
+          });
+        }
+
+        // Klasa 'scrolled' dla nawigacji
+        if (mainNav) {
+          if (scrollY > 30) {
+            mainNav.classList.add('scrolled');
+          } else {
+            mainNav.classList.remove('scrolled');
+          }
+        }
+      };
+
+      // Podpięcie zdarzeń w zależności od tego, czy Lenis działa, czy fallback
+      if (lenis) {
+        // Jeśli Lenis działa, słuchamy jego zdarzenia 'scroll'
+        lenis.on('scroll', (e) => {
+          handleScrollEffects(e.scroll);
+        });
+      } else {
+        // Jeśli Lenis padł / nie ma go, słuchamy zwykłego scrolla okna (bezpieczeństwo dla mobile)
+        window.addEventListener('scroll', () => {
+          handleScrollEffects(window.scrollY || window.pageYOffset);
+        }, { passive: true });
+        
+        // Wywołanie na start dla natywnego scrolla
+        handleScrollEffects(window.scrollY || window.pageYOffset);
+      }
+    };
+
+    // Odpalamy po załadowaniu DOM
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initScrollSystem);
+    } else {
+      initScrollSystem();
+    }
+  })();
+</script>
 </body>
 </html>
